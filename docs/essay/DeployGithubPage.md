@@ -1,3 +1,20 @@
+---
+title: 如何在github部署静态网站
+date: 2022-03-15
+author: Sino
+sticky: 5
+
+---
+
+## 1、 GitHubPage介绍
+
+### 1.1 
+
+## 2、配合github的Action实现自动化部署
+
+### 2.1 自动部署脚本
+
+```yml
 name: docs
 
 on:
@@ -9,7 +26,7 @@ on:
 
 jobs:
   docs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest #在github服务器使用ubuntu环境
 
     steps:
       - uses: actions/checkout@v2
@@ -41,15 +58,21 @@ jobs:
 
       # 运行构建脚本
       - name: Build VuePress site
-        run: npm run build
+        run: npm run build  #命令和package.json保持一直，本地打包用什么，这里写什么
 
       # 查看 workflow 的文档来获取更多信息
       # @see https://github.com/crazy-max/ghaction-github-pages
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
-          ACCESS_TOKEN: ${secrets.sino}
+          ACCESS_TOKEN: ${secrets.ACCESS_TOKEN} #在github设置，这里名字要和你设置的保持一致,当
           # 部署到 gh-pages 分支
           BRANCH: gh-pages
           # 部署目录为 VuePress 的默认输出目录
           FOLDER: public
+
+```
+
+***注意***
+
+1. 

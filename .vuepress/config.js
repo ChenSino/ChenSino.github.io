@@ -110,7 +110,8 @@ module.exports = {
             ],
             "/docs/essay/": [
                 "",
-                "TyporaPicgo"
+                "TyporaPicgo",
+                "DeployGithubPage"
             ],
         },
         "type": "blog",
