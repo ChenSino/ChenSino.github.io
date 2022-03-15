@@ -1,5 +1,5 @@
 module.exports = {
-    base: '/blog1/',
+    base: '/',
     "title": "一头老母猪",
     "description": "Good good study ,day day up!",
     "dest": "public",
