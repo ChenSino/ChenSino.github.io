@@ -10,9 +10,19 @@ sticky: 5
 
 ### 1.1 
 
+### 1.2 搭建个人githubpage
+
+个人page和项目page的区别就是个人page只有一个，所谓的个人Page说白了也是一个特殊的项目Page,无非就是它的仓库名字比较特殊，必须为<username>.github.io，比如java框架`spring-cloud.github.io`、`facebook.github.io`，注意个人page的仓库名一定要加上 `.github.io`才算个人Page，不加的话就是一个普通项目了。
+
+个人page有啥特殊之处呢？
+
+在访问页面时可以直接使用https://<username>.github.io,不用加仓库名，普通的项目page,访问时需要加仓库名，比如https://<username>.github.io/<reponame>
+
 ## 2、配合github的Action实现自动化部署
 
 ### 2.1 自动部署脚本
+
+
 
 ```yml
 name: docs
@@ -65,7 +75,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
-          ACCESS_TOKEN: ${secrets.ACCESS_TOKEN} #在github设置，这里名字要和你设置的保持一致,当
+          ACCESS_TOKEN: ${secrets.xxx} #在github设置，这里名字要和你设置的保持一致,注意这里不是要你直接写token,是把xxx改成你设置的那个名字就ok了
           # 部署到 gh-pages 分支
           BRANCH: gh-pages
           # 部署目录为 VuePress 的默认输出目录
@@ -75,4 +85,7 @@ jobs:
 
 ***注意***
 
-1. 
+1. 在项目根路径新建一个.github/workflows/main.yml，yml中放以上内容
+2. 现在github主分支改成了main,所以需要在本地把分支修改一下`git branch -M main`
+3. 源码和打包后的public(一般是dist)文件夹分别放在两个分支，我这里源码在main分支，部署是在gh-pages分支，部署脚本会自动创建一个gh-pages分支。
+4. ACCESS_TOKEN这里不要直接放密钥，而是放你生成的密钥对应的名字（github设置中那个note字段）
