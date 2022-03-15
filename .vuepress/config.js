@@ -136,10 +136,10 @@ module.exports = {
         "logo": "/logo.png",
         "search": true,
         "searchMaxSuggestions": 10,
-        "lastUpdated": "Last Updated",
+        "lastUpdated": "上次更新",
         "author": "a_fat_pig",
         "authorAvatar": "/avatar.jpg",
-        "record": "xxxx",
+        "record": "Just go go go",
         "startYear": "2017"
     },
     "markdown": {
