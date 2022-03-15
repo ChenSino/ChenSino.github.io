@@ -1,6 +1,6 @@
 module.exports = {
     base: '/',
-    "title": "一头老母猪",
+    "title": "Cute baby Sino Chen",
     "description": "Good good study ,day day up!",
     "dest": "public",
     "head": [
