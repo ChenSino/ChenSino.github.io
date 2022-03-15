@@ -3,9 +3,8 @@ title: mysql8搭建主从复制
 permalink: /pages/256670/
 categories:
   - java
-  - middle
 tags:
-  - 
+  - 部署搭建
 ---
 ### 1、mysql主从复制
 
