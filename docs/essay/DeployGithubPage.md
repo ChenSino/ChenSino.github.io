@@ -9,17 +9,14 @@ tags:
 ---
 
 ## 1、 GitHubPage介绍
-
-### 1.1 
-
+ ### 1.1 ok
 ### 1.2 搭建个人githubpage
-
+```text
 个人page和项目page的区别就是个人page只有一个，所谓的个人Page说白了也是一个特殊的项目Page,无非就是它的仓库名字比较特殊，必须为<username>.github.io，比如java框架`spring-cloud.github.io`、`facebook.github.io`，注意个人page的仓库名一定要加上 `.github.io`才算个人Page，不加的话就是一个普通项目了。
-
 个人page有啥特殊之处呢？
-
 在访问页面时可以直接使用https://<username>.github.io,不用加仓库名，普通的项目page,访问时需要加仓库名，比如https://<username>.github.io/<reponame>
 
+```
 ## 2、配合github的Action实现自动化部署
 
 ### 2.1 自动部署脚本

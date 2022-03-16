@@ -111,7 +111,8 @@ module.exports = {
             "/docs/essay/": [
                 "",
                 "TyporaPicgo",
-                "DeployGithubPage"
+                "DeployGithubPage",
+                "CDN"
             ],
         },
         "type": "blog",
