@@ -112,7 +112,8 @@ module.exports = {
                 "",
                 "TyporaPicgo",
                 "DeployGithubPage",
-                "CDN"
+                "CDN",
+                "GreatWallProxy"
             ],
         },
         "type": "blog",
