@@ -4,6 +4,6 @@
 set -e
 
 git add -A
-git commit -m '测试github'
+git commit -m 'github挂了吗'
 git push
 
