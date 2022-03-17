@@ -60,6 +60,19 @@ module.exports = {
                             {
                                 "text": "SpringBoot",
                                 "link": "/docs/java/framework/springboot/SpringBootAutoConfiguration"
+                            },
+                            {
+                                "text": "Mybatis",
+                                "link": "/docs/java/framework/mybatis/mybatis"
+                            }
+                        ]
+                    },
+                    {
+                        text: "分布式微服务",
+                        items: [
+                            {
+                                "text": "分布式",
+                                "link": "/docs/distributeservice/"
                             }
                         ]
                     }
@@ -114,15 +127,22 @@ module.exports = {
                 "ProxyInjava",
                 "Mysql8主从复制搭建"
             ],
-            //java框架
+            //java框架Spring
             "/docs/java/framework/spring/": [
                 "",
                 "SpringExtensionPoint",
                 "DesignPatternInSpring",
-                "SpringCache"
+                "SpringCache",
+                "BeanPostProcessor"
             ],
+            //java框架SpringBoot
             "/docs/java/framework/springboot/": [
                 "SpringBootAutoConfiguration",
+                "AOPLog"
+            ],
+            //java框架Mybatis
+            "/docs/java/framework/mybatis/": [
+                "mybatis"
             ],
             //随笔
             "/docs/essay/": [
@@ -141,6 +161,11 @@ module.exports = {
             "/docs/daily/": [
                 "",
                 "2022-03-17"
+            ],
+            //分布式微服务
+            "/docs/distributeservice/": [
+                "",
+                "DistributeLock"
             ],
         },
         "type": "blog",
