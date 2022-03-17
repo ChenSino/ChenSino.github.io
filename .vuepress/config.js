@@ -66,6 +66,14 @@ module.exports = {
                 ]
             },
             {
+                "text": "Linux",
+                "link": "/docs/linux/"
+            },
+            {
+                "text": "每日一记",
+                "link": "/docs/daily/"
+            },
+            {
                 "text": "随笔杂记",
                 "link": "/docs/essay/"
             },
@@ -116,12 +124,23 @@ module.exports = {
             "/docs/java/framework/springboot/": [
                 "SpringBootAutoConfiguration",
             ],
+            //随笔
             "/docs/essay/": [
                 "",
                 "TyporaPicgo",
                 "DeployGithubPage",
                 "CDN",
-                "GreatWallProxy"
+                "GreatWallProxy",
+                "todaynote/2022-03-17"
+            ],
+            "/docs/linux/": [
+                "",
+                "CommonUsedCMD"
+            ],
+            //每日一记
+            "/docs/daily/": [
+                "",
+                "2022-03-17"
             ],
         },
         "type": "blog",
