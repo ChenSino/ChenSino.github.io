@@ -21,7 +21,7 @@ BeanDefinition里包含信息如下：
 
 #### 1.2  第二步：根据BeanDefinition来生成真正的对象
 
-![image-20210526182642991](/home/chenkun/.config/Typora/typora-user-images/image-20210526182642991.png)
+![image-20210526182642991](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20210526182642991.png)
 
 ### 2. 扩展点介绍
 

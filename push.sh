@@ -4,10 +4,6 @@
 set -e
 
 git add -A
-git commit -m 'push'
-git push origin main
+git commit -m '添加插件，vuepress支持mermaid解析'
+git push -u origin main
 
-
-# 如果发布到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:chen462488588/blog.git master:gh-pages
-cd -

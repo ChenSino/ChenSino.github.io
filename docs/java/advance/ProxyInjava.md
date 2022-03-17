@@ -13,8 +13,14 @@ tags:
 <!-- more -->
 
 ### 1、代理的分类
-![](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220314134623779.png)
+```mermaid
+graph LR;
+JAVA中的代理-->动态代理-->jdk动态代理
+动态代理-->cglib动态代理
+JAVA中的代理--> 静态代理-->AspectJ
+```
 ### 2、各种代理的区别
+
 #### 2.1 动态代理
 > 动态代理指的是程序**运行期间**动态的生成代理类，比如jdk的动态代理，技术上是通过反射来生成代理的类。cglib也是在运行时动态生成代理类，和jdk动态代理区别在于cglib是利用asm开源框架直接操作class字节码文件来生成代理类。
 

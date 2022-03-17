@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "vuepress": "1.8.2",
+    "vuepress-plugin-mermaidjs": "^1.9.1",
     "vuepress-theme-reco": "1.6.10"
   },
   "description": "Good good study ,day day up!"

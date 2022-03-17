@@ -34,7 +34,7 @@ module.exports = {
                 "icon": "reco-blog",
                 "items": [
                     {
-                        text: "Java核心",
+                        text: "Java Core",
                         items: [
                             {
                                 "text": "Java基础",
@@ -51,11 +51,15 @@ module.exports = {
                         ]
                     },
                     {
-                        text: "Java框架",
+                        text: "Java FrameWork",
                         items: [
                             {
-                                "text": "Java框架Spring",
+                                "text": "Spring",
                                 "link": "/docs/java/framework/spring/"
+                            },
+                            {
+                                "text": "SpringBoot",
+                                "link": "/docs/java/framework/springboot/SpringBootAutoConfiguration"
                             }
                         ]
                     }
@@ -76,7 +80,7 @@ module.exports = {
                 "items": [
                     {
                         "text": "GitHub",
-                        "link": "https://github.com/chen462488588",
+                        "link": "https://github.com/chensino",
                         "icon": "reco-github"
                     }
                 ]
@@ -105,8 +109,12 @@ module.exports = {
             //java框架
             "/docs/java/framework/spring/": [
                 "",
+                "SpringExtensionPoint",
+                "DesignPatternInSpring",
+                "SpringCache"
+            ],
+            "/docs/java/framework/springboot/": [
                 "SpringBootAutoConfiguration",
-                "SpringExtensionPoint"
             ],
             "/docs/essay/": [
                 "",
@@ -147,5 +155,5 @@ module.exports = {
     "markdown": {
         "lineNumbers": true
     },
-    plugins: ['@vuepress/last-updated']
+    plugins: ['@vuepress/last-updated', 'vuepress-plugin-mermaidjs']
 }
