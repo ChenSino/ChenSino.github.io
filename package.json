@@ -1,7 +1,7 @@
 {
   "name": "SinoChen",
   "version": "1.0.0",
-  "author": "reco_luan",
+  "author": "ChenSino",
   "scripts": {
     "dev": "vuepress dev .",
     "build": "vuepress build ."
