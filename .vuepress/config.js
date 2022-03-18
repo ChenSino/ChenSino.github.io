@@ -79,6 +79,20 @@ module.exports = {
                 ]
             },
             {
+                "text": "web前端",
+                "icon": "reco-blog",
+                items: [
+                    {
+                        text: "vue",
+                        link:"#"
+                    },
+                    {
+                        text: "javascript基础",
+                        link:"#"
+                    }
+                ]
+            },
+            {
                 "text": "Linux",
                 "link": "/docs/linux/"
             },
