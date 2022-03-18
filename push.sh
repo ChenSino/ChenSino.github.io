@@ -4,6 +4,6 @@
 set -e
 
 git add -A
-git commit -m 'Push daily note!'
+git commit -m '添加依赖，解决文件和目录中文不支持的问题'
 git push
 
