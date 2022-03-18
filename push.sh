@@ -4,6 +4,6 @@
 set -e
 
 git add -A
-git commit -m 'daily note'
+git commit -m 'Push daily note!'
 git push
 

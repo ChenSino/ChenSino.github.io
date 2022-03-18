@@ -150,8 +150,7 @@ module.exports = {
                 "TyporaPicgo",
                 "DeployGithubPage",
                 "CDN",
-                "GreatWallProxy",
-                "todaynote/2022-03-17"
+                "GreatWallProxy"
             ],
             "/docs/linux/": [
                 "",
