@@ -160,7 +160,8 @@ module.exports = {
             //每日一记
             "/docs/daily/": [
                 "",
-                "2022-03-17"
+                "2022-03-17",
+                "2022-03-18"
             ],
             //分布式微服务
             "/docs/distributeservice/": [
