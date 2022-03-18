@@ -4,6 +4,6 @@
 set -e
 
 git add -A
-git commit -m '添加依赖，解决文件和目录中文不支持的问题'
+git commit -m '测试似有仓库的action部署'
 git push
 
