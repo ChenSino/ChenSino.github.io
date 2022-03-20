@@ -4,6 +4,6 @@
 set -e
 
 git add -A
-git commit -m '测试似有仓库的action部署'
+git commit -m 'Add JetBrains Activation code！'
 git push
 

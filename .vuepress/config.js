@@ -163,7 +163,7 @@ module.exports = {
             ],
             "/docs/tools/": [
                 "",
-                "Idea激活"
+                "IdeaActivation"
             ],
             //每日一记
             "/docs/daily/": [
