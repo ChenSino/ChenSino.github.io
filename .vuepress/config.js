@@ -83,6 +83,10 @@ module.exports = {
                 "link": "/docs/linux/"
             },
             {
+                "text": "工具软件",
+                "link": "/docs/tools/"
+            },
+            {
                 "text": "每日一记",
                 "link": "/docs/daily/"
             },
@@ -152,9 +156,14 @@ module.exports = {
                 "CDN",
                 "GreatWallProxy"
             ],
+            //linux
             "/docs/linux/": [
                 "",
                 "CommonUsedCMD"
+            ],
+            "/docs/tools/": [
+                "",
+                "Idea激活"
             ],
             //每日一记
             "/docs/daily/": [
