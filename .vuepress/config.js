@@ -162,7 +162,7 @@ module.exports = {
             "/docs/linux/": [
                 "",
                 "CommonUsedCMD",
-                "Manjaro",
+                "Manjaro"
             ],
             "/docs/tools/": [
                 "",
