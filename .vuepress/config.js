@@ -163,7 +163,6 @@ module.exports = {
                 "",
                 "CommonUsedCMD",
                 "Manjaro",
-                "AutoDetectFileChange"
             ],
             "/docs/tools/": [
                 "",
