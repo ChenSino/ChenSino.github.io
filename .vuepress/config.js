@@ -118,7 +118,8 @@ module.exports = {
                 "ConstantPool",
                 "IntegerConstantPool",
                 "String",
-                "Serialization"
+                "Serialization",
+                "CustomLRU"
             ],
             //jvm
             "/docs/java/jvm/": [
