@@ -21,7 +21,25 @@ lru(latest recently used)最近最少使用，在缓存中可以使用LRU算法�
 
 > 在java中LinkedHashMap已经实现了LRU算法，在使用时只需要继承此类，然后重写`removeEldestEntry`方法即可
 
-<script src="https://gist.github.com/ChenSino/f0d92c1b268e00b8188029dff5cff7cc.js"></script>
+```java
+public class MyLRU<K, V> extends LinkedHashMap<K, V> {
+
+    private int cacheCount;
+
+    public MyLRU(int initialCapacity) {
+        //必须指定accessOrder为true,true代表会重新排序，刚被访问的元素会被放到头部，false则按照插入顺序排序
+        super(initialCapacity, .75f, true);
+        this.cacheCount = initialCapacity;
+    }
+
+    @Override
+    protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
+        //当集合中实际数量超过最大缓存，就移除最老的元素
+        return size() > cacheCount;
+    }
+}
+
+```
 
 以上定义一个map,指定其缓存容量为3,size超过3时，会自动移除，下面进行测试
 
