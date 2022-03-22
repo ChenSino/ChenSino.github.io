@@ -1,7 +1,6 @@
 ---
 title: 通过反汇编来看String的拼接
 date: 2022-03-14 14:23:35
-permalink: /pages/8a689b/
 sticky: 2
 categories:
   - java
@@ -43,7 +42,7 @@ public class JvmTest {
 }
 ```
 
-先反汇编，到class文件所在目录打开控制台执行```javap -c 类名```
+先反汇编，到class文件所在目录打开控制台执行`javap -c 类名`
 
 ```shell
 $ javap -c JvmTest
@@ -74,9 +73,9 @@ public class com.chen.base.jvm.JvmTest {
 }
 ```
 
-接下来一个指令一个指令的分析，为什么```new String("hel") + "lo";```创建了两个对象。
+接下来一个指令一个指令的分析，为什么`new String("hel") + "lo";`创建了两个对象。
 
-| 行号 |     指令      |                             含义                             |
+| 行号 |     指令      |                             含义   |               
 | :--: | :-----------: | :----------------------------------------------------------: |
 |  13  |      new      |  堆中创建一个StringBuilder对象，并把堆中此对象地址压入栈顶   |
 |  14  |      dup      |                    复制栈顶的值，压入栈顶                    |
@@ -84,7 +83,7 @@ public class com.chen.base.jvm.JvmTest {
 |  16  |      new      |      堆中创建一个String对象，并把堆中此对象地址压入栈顶      |
 |  17  |      dup      |                    复制栈顶的值，压入栈顶                    |
 |  18  |      ldc      |              从常量池取出字符串"hel"并压入栈顶               |
-|  19  | invokespecial | 和前面一样，先分配地址，再调用String的初始化方法，把"hel"压入new的对象中，注意看19行注释，初始化时有传参(Ljava/lang/String;)，15行是"<init>":()V，无参的 |
+|  19  | invokespecial | `和前面一样，先分配地址，再调用String的初始化方法，把"hel"压入new的对象中，注意看19行注释，初始化时有传参(Ljava/lang/String;)，15行是"<init>":()V，无参的` |
 |  20  | invokevirtual | 调用StringBuilder.append，并且也是有传参的，这一步是用之前创建并初始化过的StringBuilder空对象来和“hel”字符串先拼接 |
 |  21  |      ldc      |                 把字符串“lo”从常量池压入栈顶                 |
 |  22  | invokevirtual |         同上面一样，再用StringBuilder拼接“lo”字符串          |
@@ -94,7 +93,7 @@ public class com.chen.base.jvm.JvmTest {
 
 
 
-小结：```new String("hel") + "lo";```该行代码在虚拟机执行时，是先创建一个StringBuilder并初始化（开始为空对象，注意空对象不是null），然后创建一个String对象并初始化（初始化后String对象内容是hel），然后调用用StringBuilder的append方法先把空对象和hel字符串拼接，然后再次调用append拼接lo.
+小结：`new String("hel") + "lo";`该行代码在虚拟机执行时，是先创建一个StringBuilder并初始化（开始为空对象，注意空对象不是null），然后创建一个String对象并初始化（初始化后String对象内容是hel），然后调用用StringBuilder的append方法先把空对象和hel字符串拼接，然后再次调用append拼接lo.
 
 
 
@@ -129,12 +128,12 @@ System.out.println(s1 == s6);
 ```java
 public class JvmTest {
     public void test() {
-        String s2 = "hel" + "lo";
+        String s3 = "hel" + "lo";
     }
 }
 ```
 
-反汇编，发现确实没有new新对象，是因为纯字符串相加在编译期间已经被优化了```String s2 = "hel" + "lo";```优化后就是```String s2 = "hello"```
+反汇编，发现确实没有new新对象，是因为纯字符串相加在编译期间已经被优化了```String s3 = "hel" + "lo";```优化后就是```String s3 = "hello"```
 
 ```shell
 $ javap -c JvmTest

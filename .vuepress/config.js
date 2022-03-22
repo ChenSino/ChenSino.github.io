@@ -124,7 +124,8 @@ module.exports = {
             "/docs/java/jvm/": [
                 "",
                 "SetObjectNull",
-                "StringAdd"
+                "StringAdd",
+                "NewObject"
             ],
             //java进阶
             "/docs/java/advance/": [
@@ -161,7 +162,8 @@ module.exports = {
             "/docs/linux/": [
                 "",
                 "CommonUsedCMD",
-                "Manjaro"
+                "Manjaro",
+                "AutoDetectFileChange"
             ],
             "/docs/tools/": [
                 "",
