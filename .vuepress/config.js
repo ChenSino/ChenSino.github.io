@@ -123,7 +123,8 @@ module.exports = {
             //jvm
             "/docs/java/jvm/": [
                 "",
-                "SetObjectNull"
+                "SetObjectNull",
+                "StringAdd"
             ],
             //java进阶
             "/docs/java/advance/": [
