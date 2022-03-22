@@ -159,7 +159,8 @@ module.exports = {
             //linux
             "/docs/linux/": [
                 "",
-                "CommonUsedCMD"
+                "CommonUsedCMD",
+                "Manjaro"
             ],
             "/docs/tools/": [
                 "",
@@ -200,7 +201,7 @@ module.exports = {
         "search": true,
         "searchMaxSuggestions": 10,
         "lastUpdated": "上次更新",
-        "author": "a_fat_pig",
+        "author": "chenkun",
         "authorAvatar": "/avatar.jpg",
         "record": "Just go go go",
         "startYear": "2017"
