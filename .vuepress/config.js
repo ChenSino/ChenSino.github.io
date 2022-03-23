@@ -97,6 +97,10 @@ module.exports = {
                 "link": "/docs/linux/"
             },
             {
+                "text": "工具软件",
+                "link": "/docs/tools/"
+            },
+            {
                 "text": "每日一记",
                 "link": "/docs/daily/"
             },
@@ -128,12 +132,15 @@ module.exports = {
                 "ConstantPool",
                 "IntegerConstantPool",
                 "String",
-                "Serialization"
+                "Serialization",
+                "CustomLRU"
             ],
             //jvm
             "/docs/java/jvm/": [
                 "",
-                "SetObjectNull"
+                "SetObjectNull",
+                "StringAdd",
+                "NewObject"
             ],
             //java进阶
             "/docs/java/advance/": [
@@ -164,17 +171,23 @@ module.exports = {
                 "TyporaPicgo",
                 "DeployGithubPage",
                 "CDN",
-                "GreatWallProxy",
-                "todaynote/2022-03-17"
+                "GreatWallProxy"
             ],
+            //linux
             "/docs/linux/": [
                 "",
-                "CommonUsedCMD"
+                "CommonUsedCMD",
+                "Manjaro"
+            ],
+            "/docs/tools/": [
+                "",
+                "IdeaActivation"
             ],
             //每日一记
             "/docs/daily/": [
                 "",
-                "2022-03-17"
+                "2022-03-17",
+                "2022-03-18"
             ],
             //分布式微服务
             "/docs/distributeservice/": [
@@ -205,7 +218,7 @@ module.exports = {
         "search": true,
         "searchMaxSuggestions": 10,
         "lastUpdated": "上次更新",
-        "author": "a_fat_pig",
+        "author": "chenkun",
         "authorAvatar": "/avatar.jpg",
         "record": "Just go go go",
         "startYear": "2017"

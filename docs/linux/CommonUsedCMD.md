@@ -10,14 +10,23 @@ tags:
 ---
 
 <!--more-->
-### 1、降级包（Arch）
-   有时太新的包会有bug，我们希望降级到更老版本的包，并且降级后我们希望下次检查更新的时候跳过此包的检查。
+### 1、查找多个文件中是否包含字符串
 
-### 2、解决方法
-1. 安装downgrade程序
-`sudo pacman -S downgrade`
-2. 降级
-`sudo DOWNGRADE_FROM_ALA=1 downgrade ${packagename}`
-注意DOWNGRADE_FROM_ALA=1一定要按照我上边这样写，不能单独export DOWNGRADE_FROM_ALA=1
-设置忽略升级的包
-第二步会让你选择更新的时候是否要忽略更新，选择y的话，它会在/etc/pacman.conf添加一个忽略，如果不想湖绿，把下面的IgnorePkg注释即可
+```shell
+grep -r targetString targetDirectory
+# -r 表示递归查询
+# targetString  表示目标字符串
+# targetDirectory 表示目录
+```
+
+更多功能：
+-r 是递归查找
+-n 是显示行号
+-R 查找所有文件包含子目录
+-i 忽略大小写
+xargs配合grep查找
+
+```shell
+find -type f -name '*.php'|xargs grep 'message'
+```
+

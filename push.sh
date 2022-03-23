@@ -4,6 +4,6 @@
 set -e
 
 git add -A
-git commit -m 'github挂了吗'
+git commit -m 'Add JetBrains Activation code！'
 git push
 
