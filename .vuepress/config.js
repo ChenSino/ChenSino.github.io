@@ -165,6 +165,12 @@ module.exports = {
             "/docs/java/framework/mybatis/": [
                 "mybatis"
             ],
+            "/docs/frontWeb/vue/":[
+                "vue-router1"
+            ],
+            "/docs/frontWeb/javacript/":[
+                "aboutAsync"
+            ],
             //随笔
             "/docs/essay/": [
                 "",
