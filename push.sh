@@ -4,6 +4,6 @@
 set -e
 
 git add -A
-git commit -m 'Add JetBrains Activation code！'
+git commit -m '开启评论功能！'
 git push
 
