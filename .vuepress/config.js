@@ -83,12 +83,12 @@ module.exports = {
                 "icon": "reco-blog",
                 items: [
                     {
-                        text: "vue",
-                        link:"#"
+                        "text": "javascript基础",
+                        "link": "/docs/frontWeb/javascript/"
                     },
                     {
-                        text: "javascript基础",
-                        link:"#"
+                        "text": "vue知识点",
+                        "link": "/docs/frontWeb/vue/"
                     }
                 ]
             },
