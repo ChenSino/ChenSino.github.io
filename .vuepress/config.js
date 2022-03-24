@@ -173,6 +173,7 @@ module.exports = {
                 "mybatis"
             ],
             "/docs/frontWeb/vue/":[
+                "",
                 "vue-router1",
                 "vue-nextTick"
             ],
