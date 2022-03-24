@@ -169,8 +169,10 @@ module.exports = {
                 "vue-router1",
                 "vue-nextTick"
             ],
-            "/docs/frontWeb/javascript/":[
-                "aboutAsync"
+            "/docs/frontWeb/javascript/": [
+                "",
+                "aboutAsync",
+                "01"
             ],
             //随笔
             "/docs/essay/": [
