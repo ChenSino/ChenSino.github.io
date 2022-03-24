@@ -166,9 +166,10 @@ module.exports = {
                 "mybatis"
             ],
             "/docs/frontWeb/vue/":[
-                "vue-router1"
+                "vue-router1",
+                "vue-nextTick"
             ],
-            "/docs/frontWeb/javacript/":[
+            "/docs/frontWeb/javascript/":[
                 "aboutAsync"
             ],
             //随笔
