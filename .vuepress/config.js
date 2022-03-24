@@ -21,6 +21,13 @@ module.exports = {
     ],
     "theme": "reco",
     "themeConfig": {
+        vssueConfig: {
+            platform: 'github',
+            owner: 'ChenSino',
+            repo: 'ChenSino.github.io',
+            clientId: '8730ff09031fd6fcc754',
+            clientSecret: '655372b976941560dfe0e2a8e6d34ab4b162353e',
+        },
         lastUpdated: '上次更新', // string | boolean
         subSidebar: 'auto',//在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
         "nav": [
