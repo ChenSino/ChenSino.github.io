@@ -565,6 +565,7 @@ public class MyThreadFactory implements ThreadFactory {
                     }
                     System.out.println(Thread.currentThread().getName());
                 });
+                //一定不要打开future.get()，这个方法会触发同步操作，导致永远只有一个线程在工作
 //                future.get();
             } catch (Exception e) {
                 System.out.println(e);
@@ -579,3 +580,9 @@ public class MyThreadFactory implements ThreadFactory {
 过了10s后，发现只有一个了，符合我们的预期
 
 ![image-20220329213033143](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329213033143.png)
+
+
+
+`java.util.concurrent.Future#get()`有说明，get是会一直等到此线程结束
+
+![image-20220329213244994](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329213244994.png)
