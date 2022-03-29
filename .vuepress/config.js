@@ -153,7 +153,8 @@ module.exports = {
             "/docs/java/advance/": [
                 "",
                 "ProxyInjava",
-                "Mysql8主从复制搭建"
+                "Mysql8主从复制搭建",
+                "ThreadPool"
             ],
             //java框架Spring
             "/docs/java/framework/spring/": [
