@@ -387,3 +387,151 @@ public static ExecutorService newFixedThreadPool(int nThreads) {
 #### 3.2.3 线程池中任务执行流程
 
 ![](https://img2018.cnblogs.com/blog/940289/201903/940289-20190317152802067-348051138.png)
+
+### 3.3 线程池中的异常处理
+
+线程池中提交任务的两种方法：`submit`、`execute`，submit方法的参数可以是`Runnable`、`Caller`，execute的参数类型只有`Runnable`，submit提交的方法可以获取返回值，要想获取返回值需要传递Caller类型
+
+```java
+//java.util.concurrent.ThreadPoolExecutor#execute
+public void execute(Runnable command) {
+        if (command == null)
+            throw new NullPointerException();
+        /*
+         * Proceed in 3 steps:
+         *
+         * 1. If fewer than corePoolSize threads are running, try to
+         * start a new thread with the given command as its first
+         * task.  The call to addWorker atomically checks runState and
+         * workerCount, and so prevents false alarms that would add
+         * threads when it shouldn't, by returning false.
+         *
+         * 2. If a task can be successfully queued, then we still need
+         * to double-check whether we should have added a thread
+         * (because existing ones died since last checking) or that
+         * the pool shut down since entry into this method. So we
+         * recheck state and if necessary roll back the enqueuing if
+         * stopped, or start a new thread if there are none.
+         *
+         * 3. If we cannot queue task, then we try to add a new
+         * thread.  If it fails, we know we are shut down or saturated
+         * and so reject the task.
+         */
+        int c = ctl.get();
+        if (workerCountOf(c) < corePoolSize) {
+            if (addWorker(command, true))
+                return;
+            c = ctl.get();
+        }
+        if (isRunning(c) && workQueue.offer(command)) {
+            int recheck = ctl.get();
+            if (! isRunning(recheck) && remove(command))
+                reject(command);
+            else if (workerCountOf(recheck) == 0)
+                addWorker(null, false);
+        }
+        else if (!addWorker(command, false))
+            reject(command);
+    }
+```
+
+```java
+
+//继承自AbstractExecutorService
+//java.util.concurrent.AbstractExecutorService#submit(java.util.concurrent.Callable<T>)
+    public <T> Future<T> submit(Callable<T> task) {
+        if (task == null) throw new NullPointerException();
+        RunnableFuture<T> ftask = newTaskFor(task);
+        execute(ftask);
+        return ftask;
+    }
+
+```
+
+
+
+```java
+//继承自AbstractExecutorService
+//java.util.concurrent.AbstractExecutorService#submit(java.lang.Runnable)
+    public Future<?> submit(Runnable task) {
+        if (task == null) throw new NullPointerException();
+        RunnableFuture<Void> ftask = newTaskFor(task, null);
+        execute(ftask);
+        return ftask;
+    }
+```
+
+#### 3.2.1 使用execute时的异常处理
+
+使用execute提交有异常会正常的抛出，当然也可以自定义异常处理器
+
+```java
+public class MyThreadFactory implements ThreadFactory {
+    @Override
+    public Thread newThread(Runnable r) {
+        Thread thread = new Thread(null, r, "xxxxxxx" + System.nanoTime());
+        thread.setUncaughtExceptionHandler((t, e) -> {
+            System.out.println("enter into uncaughtException");
+            System.out.println("异常信息:"+ e.getMessage());
+        });
+        return thread;
+    }
+}
+
+```
+
+
+
+```java
+    public static void main(String[] args) {
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 11, 100L, TimeUnit.SECONDS, new LinkedBlockingQueue<>(2), new MyThreadFactory());
+        try {
+            threadPoolExecutor.execute(() -> {
+                System.out.println("enter into submit");
+                throw new RuntimeException("我是一个异常信息。。。");
+            });
+        } catch (Exception e) {
+            System.out.println("eee");
+            System.out.println(e);
+        }
+    }
+```
+
+#### 3.2.2 使用submit时的异常处理
+
+submit会返回一个future,需要主动调用这个future才会触发异常，如果正常执行传递的runnable类型从那还素，则返回null,如果是caller类型参数，会返回相应的值
+
+```java
+public class MyThreadFactory implements ThreadFactory {
+    @Override
+    public Thread newThread(Runnable r) {
+        Thread thread = new Thread(null, r, "xxxxxxx" + System.nanoTime());
+        thread.setUncaughtExceptionHandler((t, e) -> {
+            System.out.println("enter into uncaughtException");
+            System.out.println("异常信息:"+ e.getMessage());
+        });
+        return thread;
+    }
+}
+
+```
+
+
+
+```java
+
+ public static void main(String[] args) {
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 11, 100L, TimeUnit.SECONDS, new LinkedBlockingQueue<>(2), new MyThreadFactory());
+        try {
+          Future future= threadPoolExecutor.submit(() -> {
+                System.out.println("enter into submit");
+                throw new RuntimeException("我是一个异常信息。。。");
+            });
+            future.get();
+        } catch (Exception e) {
+            System.out.println("eee");
+            System.out.println(e);
+        }
+    }
+```
+
