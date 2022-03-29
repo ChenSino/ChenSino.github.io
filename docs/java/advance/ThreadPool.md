@@ -535,3 +535,47 @@ public class MyThreadFactory implements ThreadFactory {
     }
 ```
 
+### 3.4 补充说明
+
+关于`ThreadPoolExecutor`的构造方法中的`keepAliveTime`说明
+
+
+
+[在前面有说明](#3.2.1 构造方法)，在举例罗嗦一边，代码如下，第一个任务进来，直接启动一个线程，也就是corePoolSize设置的那个线程，第二个任务进来直接缓存到`LinkedBlockingQueue`中，第三个线程进来，发现`LinkedBlockingQueue`已经满了（因为示例代码缓存长度是1）直接再启动一个线程，这个占用的是maxmumPoolSize设置的线程，第4个、第5个任务进来和第三个一样，再各自启动一个线程，此时池中一共有4个线程了，再有任务进来就会触发拒绝策略，此处不做描述了。当池子中的数量超过了corePoolSize设置的数量是，这个keepAliveTime参数就起作用了，假如任务都执行完了，4个线程都是空闲（idle），则先空闲满keepAliveTime这么长时间的线程就会被回收，最后剩下corePoolSize个时不再回收，这corePoolSize个线程一直缓存在池子中。
+
+```java
+
+ new ThreadPoolExecutor(1, 4, 200, TimeUnit.SECONDS, new LinkedBlockingQueue<>(1), new MyThreadFactory());
+```
+
+
+
+测试代码如下，我设置`keepAliveTime`是10s,
+
+```java
+  public static void main(String[] args) {
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 4, 10, TimeUnit.SECONDS, new LinkedBlockingQueue<>(1), new MyThreadFactory());
+        for (int i = 0; i < 5; i++) {
+            try {
+                Future future = threadPoolExecutor.submit(() -> {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println(Thread.currentThread().getName());
+                });
+//                future.get();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+```
+
+测试结果，发现刚开始有4个线程，
+
+![image-20220329212937714](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329212937714.png)
+
+过了10s后，发现只有一个了，符合我们的预期
+
+![image-20220329213033143](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329213033143.png)
