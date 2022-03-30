@@ -586,3 +586,8 @@ public class MyThreadFactory implements ThreadFactory {
 `java.util.concurrent.Future#get()`有说明，get是会一直等到此线程结束
 
 ![image-20220329213244994](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329213244994.png)
+
+
+
+
+

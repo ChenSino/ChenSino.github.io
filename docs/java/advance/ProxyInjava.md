@@ -15,9 +15,9 @@ tags:
 ### 1、代理的分类
 ```mermaid
 graph LR;
-JAVA中的代理-->动态代理-->jdk动态代理
-动态代理-->cglib动态代理
-JAVA中的代理--> 静态代理-->AspectJ
+A[JAVA中的代理]-->B[动态代理]-->C[jdk动态代理]
+B[动态代理]-->D[cglib动态代理]
+A[JAVA中的代理]--> E[静态代理]-->F[AspectJ]
 ```
 ### 2、各种代理的区别
 

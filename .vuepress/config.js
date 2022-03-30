@@ -205,7 +205,8 @@ module.exports = {
             "/docs/daily/": [
                 "",
                 "2022-03-17",
-                "2022-03-18"
+                "2022-03-18",
+                "Service"
             ],
             //分布式微服务
             "/docs/distributeservice/": [
