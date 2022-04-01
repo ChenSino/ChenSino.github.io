@@ -183,5 +183,9 @@ considering log /var/log/btmp
 
 ![image-20220322172038617](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220322172038617.png)
 
+### linux下输入法无法输入中文中括号问题
+如果使用的是fcitx5，修改/usr/share/fcitx5/punctuation/punc.mb.zh_CN下的对应符号即可，打开文件有两列，第一列代表英文
+状态下的符号，第二列是中文下符号。
+有时发现无论怎么输入都只有英文，那么就续呀点击一下输入法上的半角符号
 
 

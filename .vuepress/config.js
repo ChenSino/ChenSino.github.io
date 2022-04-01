@@ -154,7 +154,8 @@ module.exports = {
                 "",
                 "ProxyInjava",
                 "Mysql8主从复制搭建",
-                "ThreadPool"
+                "ThreadPool",
+                "ParentDelegationClassloader"
             ],
             //java框架Spring
             "/docs/java/framework/spring/": [

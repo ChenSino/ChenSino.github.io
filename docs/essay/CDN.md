@@ -137,3 +137,5 @@ HTTP请求流程说明：
    ```
 
    
+
+![image-20220330191016561](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220330191016561.png)

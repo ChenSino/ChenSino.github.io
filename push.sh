@@ -4,6 +4,6 @@
 set -e
 
 git add -A
-git commit -m '添加多线程，线程池！'
+git commit -m '证明jdbc打破双亲委派！'
 git push
 
