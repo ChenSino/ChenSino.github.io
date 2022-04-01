@@ -1,9 +1,10 @@
 ---
-title: 打破双亲委派模式
+title: 证明SPI打破双亲委派模式
 date: 2022/3/30
 author: chenkun
 sidebar: 'auto'
 publish: true
+sticky: 1
 keys:
 categories:
 tags:
