@@ -10,6 +10,7 @@ categories:
  - 多线程
 tags:
  - 多线程
+ - 线程池
 ---
 线程池
 <!--more-->
@@ -499,7 +500,7 @@ public class MyThreadFactory implements ThreadFactory {
 
 #### 3.2.2 使用submit时的异常处理
 
-submit会返回一个future,需要主动调用这个future才会触发异常，如果正常执行传递的runnable类型从那还素，则返回null,如果是caller类型参数，会返回相应的值
+submit会返回一个future,需要主动调用这个future的get方法才会触发异常，如果正常执行传递的runnable类型，则返回null,如果是caller类型参数，会返回相应的值
 
 ```java
 public class MyThreadFactory implements ThreadFactory {

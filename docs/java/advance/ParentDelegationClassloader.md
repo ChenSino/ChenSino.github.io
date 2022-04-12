@@ -322,3 +322,12 @@ linux 、jdk8（jdbc4.2）、mysql驱动：5.1.6
 8. 跟踪进去，最后会进入`java.util.ServiceLoader.LazyIterator#nextService`，可以到这里用AppClassLoader加载了`com.mysql.jdbc.Driver`，这个类就是之前在`java.sql.DriverManager`的静态代码快中受到BootStrapClassLoader的委托而加载的。这就证明了父加载器委托子加载器加载，从而证明了spi打破了双亲委派机制
 
    ![image-20220401115555240](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401115555240.png)
+
+
+
+
+
+**注：**
+
+==*打破双亲委派不是看类最终由哪个类加载器加载，而是看有没有父加载器委托子加载器进行加载，这个逆向的动作。*==
+

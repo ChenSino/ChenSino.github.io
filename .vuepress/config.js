@@ -155,7 +155,8 @@ module.exports = {
                 "ProxyInjava",
                 "Mysql8主从复制搭建",
                 "ThreadPool",
-                "ParentDelegationClassloader"
+                "ParentDelegationClassloader",
+                "Collection"
             ],
             //java框架Spring
             "/docs/java/framework/spring/": [
@@ -207,7 +208,8 @@ module.exports = {
                 "",
                 "2022-03-17",
                 "2022-03-18",
-                "Service"
+                "Service",
+                "2022-04-12"
             ],
             //分布式微服务
             "/docs/distributeservice/": [
