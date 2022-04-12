@@ -4,6 +4,6 @@
 set -e
 
 git add -A
-git commit -m '证明jdbc打破双亲委派！'
+git commit -m 'daily commit！'
 git push
 

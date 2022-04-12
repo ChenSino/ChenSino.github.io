@@ -6,11 +6,11 @@ sidebar: 'auto'
 publish: true
 keys:
 categories:
-- 线程池
-- 多线程
-  tags:
-- 多线程
-- 线程池
+  - 线程池
+  - 多线程
+tags:
+  - 多线程
+  - 线程池
 ---
 
 <!--more-->
