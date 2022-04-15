@@ -191,7 +191,8 @@ module.exports = {
                 "TyporaPicgo",
                 "DeployGithubPage",
                 "CDN",
-                "GreatWallProxy"
+                "GreatWallProxy",
+                "Jenkins"
             ],
             //linux
             "/docs/linux/": [
