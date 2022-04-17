@@ -4,6 +4,6 @@
 set -e
 
 git add -A
-git commit -m 'jenkins 更新插件问题记录！'
+git commit -m 'update great wall proxy！'
 git push
 

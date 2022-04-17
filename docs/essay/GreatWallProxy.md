@@ -1,8 +1,37 @@
 ---
 title: 墙外的世界
 date: 2018-05-15
+keys:
+  - E10ADC3949BA59ABBE56E057F20F883E
 ---
-### Manjaro使用v2raya
+### 1、使用原生v2ray
+
+1. 前台启动
+
+```bash
+# 启动
+sudo v2ray -config /etc/v2ray/config.json
+```
+
+2. 后台启动
+
+```bash
+ sudo systemctl start v2ray
+```
+
+
+
+> 1. 编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式；
+>
+> 2. 运行 service v2ray start 来启动 V2Ray 进程；
+>
+> 3. 之后可以使用 service v2ray start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行。
+>
+>    （systemctl兼容service服务）
+
+
+
+### 2、Manjaro使用v2raya
 
 ```shell
 #启动
@@ -14,23 +43,27 @@ sudo systemctl stop v2raya.service
 sudo v2raya --reset-password
 ```
 
-![image-20220316214713478](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220316214713478.png)
 
 
+### 3、手动编译qv2ray
 
-```text
-2022/03/16 21:47:25 [Warning] [285899553] app/proxyman/outbound: failed to process outbound traffic > proxy/vless/outbound: failed to find an available destination > common/retry: [transport/internet/http: failed to dial to tcp:s290.s2022.xyz:33903 > Put "https://s290.s2022.xyz:33903/": tls: invalid NextProtos value] > common/retry: all retry attempts failed
-2022/03/16 21:47:26 [Warning] app/proxyman/outbound: failed to process outbound traffic > proxy/vless/outbound: failed to find an available destination > common/retry: [transport/internet/http: failed to dial to tcp:s290.s2022.xyz:33903 > Put "https://s290.s2022.xyz:33903/": tls: invalid NextProtos value] > common/retry: all retry attempts failed
-2022/03/16 21:47:27 [Warning] app/proxyman/outbound: failed to process outbound traffic > proxy/vless/outbound: failed to find an available destination > common/retry: [transport/internet/http: failed to dial to tcp:s290.s2022.xyz:33903 > Put "https://s290.s2022.xyz:33903/": tls: invalid NextProtos value] > common/retry: all retry attempts failed
-2022/03/16 21:47:28 [Warning] app/proxyman/outbound: failed to process outbound traffic > proxy/vless/outbound: failed to find an available destination > common/retry: [transport/internet/http: failed to dial to tcp:s290.s2022.xyz:33903 > Put "https://s290.s2022.xyz:33903/": tls: invalid NextProtos value] > common/retry: all retry attempts failed
-2022/03/16 21:47:30 [Warning] app/proxyman/outbound: failed to process outbound traffic > proxy/vless/outbound: failed to find an available destination > common/retry: [transport/internet/http: failed to dial to tcp:s290.s2022.xyz:33903 > Put "https://s290.s2022.xyz:33903/": tls: invalid NextProtos value] > common/retry: all retry attempts failed
-2022/03/16 21:47:31 127.0.0.1:51634 accepted //history.google.com:443 [msdxpyczsflkejh]
-2022/03/16 21:47:31 [Warning] app/proxyman/outbound: failed to process outbound traffic > proxy/vless/outbound: failed to find an available destination > common/retry: [transport/internet/http: failed to dial to tcp:s290.s2022.xyz:33903 > Put "https://s290.s2022.xyz:33903/": tls: invalid NextProtos value] > common/retry: all retry attempts failed
-2022/03/16 21:47:32 127.0.0.1:51638 accepted //www.google.com:443 [msdxpyczsflkejh]
-2022/03/16 21:47:32 [Warning] app/proxyman/outbound: failed to process outbound traffic > proxy/vless/outbound: failed to find an available destination > common/retry: [transport/internet/http: failed to dial to tcp:s290.s2022.xyz:33903 > Put "https://s290.s2022.xyz:33903/": tls: invalid NextProtos value] > common/retry: all retry attempts failed
-2022/03/16 21:47:33 [Warning] [3480984951] app/proxyman/outbound: failed to process outbound traffic > proxy/vless/outbound: failed to find an available destination > common/retry: [transport/internet/http: failed to dial to tcp:s290.s2022.xyz:33903 > Put "https://s290.s2022.xyz:33903/": tls: invalid NextProtos value] > common/retry: all retry attempts failed
-2022/03/16 21:47:34 [Warning] [3852245298] app/proxyman/outbound: failed to process outbound traffic > proxy/vless/outbound: failed to find an available destination > common/retry: [transport/internet/http: failed to dial to tcp:s290.s2022.xyz:33903 > Put "https://s290.s2022.xyz:33903/": tls: invalid NextProtos value] > common/retry: all retry attempts failed
-2022/03/16 21:47:35 [Warning] app/proxyman/outbound: failed to process outbound traffic > proxy/vless/outbound: failed to find an available destination > common/retry: [transport/internet/http: failed to dial to tcp:s290.s2022.xyz:33903 > Put "https://s290.s2022.xyz:33903/": tls: invalid NextProtos value] > common/retry: all retry attempts failed
-2022/03/16 21:47:35 [Warning] app/proxyman/outbound: failed to process outbound traffic > proxy/vless/outbound: failed to find an available destination 
+> 因qv2ray放弃维护，导致每次升级我的manjaro系统时，qv2ray因为依赖包版本问题无法启动，所以需要在自己的电脑上手动编译出和当前系统兼容的软件。
+
+参考文档：https://qv2ray.net/lang/zh/hacking/manuallybuild.html#_0-%E6%9E%84%E5%BB%BA%E4%BE%9D%E8%B5%96
+
+```bash
+# 1. 下载指定的tag,并且使用--recursive下载依赖包
+git clone --recursive --branch v2.7.0  https://github.com/Qv2ray/Qv2ray.git
+# 2. 创建一个build目录防止污染原来的文件
+cd Qv2ray
+mkdir build; cd build;
+# 3. 执行
+cmake ..
+# 4. cmake --build .
+cmake --build .
+# 5. sudo cmake --install .
+sudo cmake --install .
 ```
+
+
 
