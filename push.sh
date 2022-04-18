@@ -4,6 +4,6 @@
 set -e
 
 git add -A
-git commit -m 'update great wall proxy！'
+git commit -m 'update InteliJ license server！'
 git push
 
