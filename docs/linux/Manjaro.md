@@ -188,4 +188,29 @@ considering log /var/log/btmp
 状态下的符号，第二列是中文下符号。
 有时发现无论怎么输入都只有英文，那么就续呀点击一下输入法上的半角符号
 
+### 3、美化
 
+kde设置proxy有个很大的bug,就是无法全局，搞笑的是通过kde设置的proxy,它自己都无法使用，在国内用kde下载主题、图标等根本下载不动。
+
+解决办法就是挂梯子，下载后手动安装，
+
+![image-20220418155819498](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220418155819498.png)
+
+![image-20220418155847045](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220418155847045.png)
+
+![image-20220418155927678](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220418155927678.png)
+
+![image-20220418155956979](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220418155956979.png)
+
+### 4、设置yakuake提示没有权限修改文件
+
+1. 修改yakuake的文字大小
+
+![image-20220419110311199](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220419110311199.png)
+
+![image-20220419110401735](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220419110401735.png)
+
+2. 保存时会报错，大概是没有`/usr/share/konsole`的权限
+3. 添加一下权限就行了
+
+​		给当前用户添加一下权限，`chmod 666 xxx`
