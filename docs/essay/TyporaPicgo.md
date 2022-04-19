@@ -41,7 +41,7 @@ date: 2020-03-09
 
 打开typora的配置，按照如下图配置，选择PicGo-Core,点击下载，此时会自动下载PicGo-Core，
 
-![image-20220309141611583](https://gitee.com/_live_/blogimages/raw/master/img/image-20220309141611583.png)
+![image-20220309141611583](https://gitee.com/ChenSino/blogimages/raw/master/img/image-20220309141611583.png)
 
 
 
@@ -65,7 +65,7 @@ picgo install gitee-uploader
 
 从typora打开配置，修改配置
 
-![image-20220309145003089](https://gitee.com/_live_/blogimages/raw/master/img/image-20220309145003089.png)
+![image-20220309145003089](https://gitee.com/ChenSino/blogimages/raw/master/img/image-20220309145003089.png)
 
 用如下配置覆盖原来的，同时记得把带有注释信息的部分修改成自己的
 
@@ -78,7 +78,7 @@ picgo install gitee-uploader
       "customPath": "", 
       "customUrl": "",
       "path": "img",;//上传的时候创建一个文件夹用来放图片
-      "repo": "_live_/blogimages",//你的gitee用户名/仓库名
+      "repo": "ChenSino/blogimages",//你的gitee用户名/仓库名
       "token": ""//gitee的token
     }
   },
@@ -95,7 +95,7 @@ picgo install gitee-uploader
 
 测试上传图片
 
-![image-20220309145521751](https://gitee.com/_live_/blogimages/raw/master/img/image-20220309145521751.png)
+![image-20220309145521751](https://gitee.com/ChenSino/blogimages/raw/master/img/image-20220309145521751.png)
 
 ### 2、给typora中picgo设置代理
 
