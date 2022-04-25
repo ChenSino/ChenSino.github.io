@@ -183,7 +183,8 @@ module.exports = {
             "/docs/frontWeb/javascript/": [
                 "",
                 "aboutAsync",
-                "01"
+                "01",
+                "crossDomain"
             ],
             //随笔
             "/docs/essay/": [
