@@ -13,7 +13,7 @@ date: 2020-03-09
 
 ==picgo的ui剪贴板上传功能，需要win10+==
 
-### 1、picgo搭建
+
 
 ### 1、搭建Typora + PicGo + gitee
 

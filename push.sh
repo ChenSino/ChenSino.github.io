@@ -4,6 +4,6 @@
 set -e
 
 git add -A
-git commit -m 'update InteliJ license server！'
+git commit -m 'update linux cmd！'
 git push
 

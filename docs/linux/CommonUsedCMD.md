@@ -1,5 +1,5 @@
 ---
-title: 常用的命令
+title: Linux命令使用小技巧
 date: 2022/3/17
 author: chenkun
 sidebar: 'auto'
@@ -30,3 +30,12 @@ xargs配合grep查找
 find -type f -name '*.php'|xargs grep 'message'
 ```
 
+### 2、高亮关键字
+
+在生产环境查看日志时高亮`ERROR`关键字，方便定位问题，这里利用linux管道加上`perl`在管道中替换
+
+```bash
+tail -f xxx.log | perl -pe 's/(ERROR)/\e[1;31m$1\e[0m/g'  
+```
+
+参考：https://www.cnblogs.com/Detector/p/7246377.html
