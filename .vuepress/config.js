@@ -184,7 +184,8 @@ module.exports = {
                 "",
                 "aboutAsync",
                 "01",
-                "crossDomain"
+                "crossDomain",
+                "crossDomain2"
             ],
             //随笔
             "/docs/essay/": [
