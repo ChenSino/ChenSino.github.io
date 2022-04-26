@@ -4,6 +4,6 @@
 set -e
 git pull
 git add -A
-git commit -m 'update linux cmd！'
+git commit -m 'Fix syntax error！'
 git push
 

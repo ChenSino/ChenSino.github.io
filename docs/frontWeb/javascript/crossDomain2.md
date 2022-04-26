@@ -5,8 +5,6 @@ categories:
   - vue知识点
 tags: 
   - 必会
-
-
 ---
 
 
@@ -14,27 +12,17 @@ tags:
 
 > Jsonp(JSON with Padding) 是 json 的一种"使用模式"，可以让网页从别的域名（网站）那获取资料，即跨域读取数据。
 
-
-
-
-
 为什么我们从不同的域（网站）访问数据需要一个特殊的技术( JSONP )呢？这是因为同源策略。
-
 同源策略，它是由 Netscape 提出的一个著名的安全策略，现在所有支持 JavaScript 的浏览器都会使用这个策略。
-
----
-
-
-
 
 ### 二，JSONP的原理
 
+```text
   我们知道，在页面上有三种资源是可以与页面本身不同源的。它们是：js脚本，css样式文件，图片。像taobao等大型网站，很定会将这些静态资源放入cdn中，然后在页面上链接。而jsonp就是利用了<script>标签可以链接到不同源的js脚本，来到达跨域目的。
-  
   于是可以判断，当前阶段如果想通过纯web端（ActiveX控件、服务端代理、Web socket等方式不算）跨域访问数据就只有一种可能，那就是在远程服务器上设法把数据装进js格式的文件里，供客户端调用和进一步处理；
+```
 
 
----
 
 ### 三,JSONP的具体实现
 
@@ -42,11 +30,13 @@ JSONP实现跨域请求的具体实现就是动态创建script标签，利用“
 
 **1，服务端JSONP格式数据**
 
+```text
 如客户想访问 : https://www.runoob.com/try/ajax/jsonp.php?jsoncallback=callbackFunction。
 
 假设客户期望返回数据：["customername1","customername2"]。
 
 真正返回到客户端的数据显示为: callbackFunction(["customername1","customername2"])。
+```
 
 ```php
 <?php
@@ -63,7 +53,7 @@ echo $jsoncallback . "(" . $json_data . ")";
 
 **2，客户端接收**
 
-```javascript
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +63,7 @@ echo $jsoncallback . "(" . $json_data . ")";
 <body>
 <script>
   function callbackFunction(data){
-    console.log("i got it")；
+    console.log("i got it")
     console.log(data);
   }
 </script>
@@ -81,7 +71,7 @@ echo $jsoncallback . "(" . $json_data . ")";
   window.onload=function(){
     var script=document.createElement("script");
     script.src="https://www.runoob.com/try/ajax/jsonp.php?jsoncallback=callbackFunction";
-    document.head.append(script)；
+    document.head.append(script)
   }
 </script>
 </body>
@@ -95,9 +85,9 @@ $.getJSON()方法允许通过使用JSONP形式的回调函数来加载其他网�
 使用$.getJSON()方法实现跨域请求，需要在请求路径URL后增加callback＝?, jQuery将自动替换“？”为正确的函数名，以执行回调函数。
 
   **注：下面代码中路径后是jsoncallback=？，因为服务端的代码中回调函数名为jsoncallback，前后端应该是一致的**
-  
-  
-```javascript
+
+
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -145,4 +135,4 @@ $.ajax({
 
 
 
-![jsonp图片](https://img2022.cnblogs.com/blog/1045378/202204/1045378-20220426095036509-990636020.jpg)
+![jsonp图片](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/1045378-20220426095036509-990636020.jpg)
