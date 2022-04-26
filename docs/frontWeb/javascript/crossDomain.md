@@ -1,5 +1,5 @@
 ---
-title: 前端跨域(-)之vue项目中proxy配置
+title: 前端跨域(一)之vue项目中proxy配置
 date: 2022-04-25 16:57:01
 categories: 
   - vue知识点
