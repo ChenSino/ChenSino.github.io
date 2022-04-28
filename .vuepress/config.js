@@ -48,12 +48,12 @@ module.exports = {
                                 "link": "/docs/java/base/"
                             },
                             {
-                                "text": "Jvm",
-                                "link": "/docs/java/jvm/"
-                            },
-                            {
                                 "text": "Java进阶",
                                 "link": "/docs/java/advance/"
+                            },
+                            {
+                                "text": "Jvm",
+                                "link": "/docs/java/jvm/"
                             },
                         ]
                     },
@@ -86,6 +86,16 @@ module.exports = {
                 ]
             },
             {
+                "text": "数据库",
+                "icon": "reco-blog",
+                items: [
+                    {
+                        "text": "数据库基础",
+                        "link": "/docs/database/"
+                    }
+                ]
+            },
+            {
                 "text": "web前端",
                 "icon": "reco-blog",
                 items: [
@@ -106,10 +116,6 @@ module.exports = {
             {
                 "text": "工具软件",
                 "link": "/docs/tools/"
-            },
-            {
-                "text": "每日一记",
-                "link": "/docs/daily/"
             },
             {
                 "text": "随笔杂记",
@@ -188,6 +194,9 @@ module.exports = {
                 "crossDomain",
                 "crossDomain2"
             ],
+            "/docs/database/": [
+                "",
+            ],
             //随笔
             "/docs/essay/": [
                 "",
@@ -195,7 +204,11 @@ module.exports = {
                 "DeployGithubPage",
                 "CDN",
                 "GreatWallProxy",
-                "Jenkins"
+                "Jenkins",
+                "2022-03-17",
+                "2022-03-18",
+                "Service",
+                "2022-04-12"
             ],
             //linux
             "/docs/linux/": [
@@ -207,14 +220,6 @@ module.exports = {
                 "",
                 "IdeaActivation"
             ],
-            //每日一记
-            "/docs/daily/": [
-                "",
-                "2022-03-17",
-                "2022-03-18",
-                "Service",
-                "2022-04-12"
-            ],
             //分布式微服务
             "/docs/distributeservice/": [
                 "",
@@ -223,21 +228,21 @@ module.exports = {
         },
         "type": "blog",
         "blogConfig": {
-            "category": {
-                "location": 2,
-                "text": "Category"
-            },
-            "tag": {
-                "location": 3,
-                "text": "Tag"
-            }
+            // "category": {
+            //     "location": 2,
+            //     "text": "Category"
+            // },
+            // "tag": {
+            //     "location": 3,
+            //     "text": "Tag"
+            // }
         },
         "friendLink": [
             {
-                "title": "vuepress-theme-reco",
-                "desc": "A simple and beautiful vuepress Blog & Doc theme.",
+                "title": "作者CSDN",
+                "desc": "来看看我的博客吧.",
                 "avatar": "/avatar.jpg",
-                "link": "https://vuepress-theme-reco.recoluan.com"
+                "link": "https://blog.csdn.net/chen462488588"
             }
         ],
         "logo": "/logo.png",
