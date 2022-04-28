@@ -156,7 +156,8 @@ module.exports = {
                 "Mysql8主从复制搭建",
                 "ThreadPool",
                 "ParentDelegationClassloader",
-                "Collection"
+                "Collection",
+                "Arthas"
             ],
             //java框架Spring
             "/docs/java/framework/spring/": [

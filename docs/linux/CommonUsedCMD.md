@@ -41,3 +41,11 @@ tail -f xxx.log | perl -pe 's/(ERROR)/\e[1;31m$1\e[0m/g'
 参考：https://www.cnblogs.com/Detector/p/7246377.html
 
 ![测试](https://github.com/ChenSino/ChenSino.github.io/blob/main/docs/frontWeb/images/jsonp.jpg)
+
+### 3、查询大文件
+```bash
+#查看当前路径下各目录占用空间大小
+du -h --max-depth=1
+# 查看文件大小
+find / -type f -size +50M
+```
