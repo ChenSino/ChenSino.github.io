@@ -4,6 +4,6 @@
 set -e
 git pull
 git add -A
-git commit -m 'Fix syntax error！'
+git commit -m 'Update Manjaro note！'
 git push
 

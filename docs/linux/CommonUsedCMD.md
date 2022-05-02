@@ -49,3 +49,10 @@ du -h --max-depth=1
 # 查看文件大小
 find / -type f -size +50M
 ```
+### 4、查看文件被哪个进程占用
+```bash
+$ lsof sentinel-record.log.2022-04-28.0
+COMMAND   PID USER   FD   TYPE DEVICE SIZE/OFF   NODE NAME
+java    28789 root   23w   REG  253,1    17941 132492 sentinel-record.log.2022-04-28.0
+
+```

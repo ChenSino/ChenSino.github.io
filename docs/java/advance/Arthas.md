@@ -60,3 +60,4 @@ watch freemarker.template.Template process '{params,returnObj,throwExp}'  -n 5  
 7. 源码中因为异常未指定捕获`TemplateModelException`所以`template.process(dataMap, out);`方法报错后直接返回了null，所以直接把异常捕获改成`ExcelpTion`即可
 
    ![image-20220428113408828](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220428113408828.png)
+
