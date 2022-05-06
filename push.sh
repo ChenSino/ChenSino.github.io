@@ -4,6 +4,6 @@
 set -e
 git pull
 git add -A
-git commit -m 'Update Manjaro note！'
+git commit -m 'Add binary tree！'
 git push
 
