@@ -224,3 +224,12 @@ kde设置proxy有个很大的bug,就是无法全局，搞笑的是通过kde设�
 ![image-20220502211444881](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220502211444881.png)
 
 #### 3.2 使用docker安装Mysql
+
+### 4、Manjaro设置DNS
+
+**背景**
+
+> 用双网卡同时上内外网，有时一个域名是内网才能解析的，比如我司的iccm.sonoscape.com，这个是一个内网域名，要走内部DNS才能访问到，
+>
+> 但是公司因该是有两个DNS服务器，一个用来解析外网访问xxx.sonoscape.com，另一个是用来访问内网的xxx.sonoscape.com,
+
