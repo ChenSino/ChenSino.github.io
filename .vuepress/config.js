@@ -196,6 +196,7 @@ module.exports = {
             ],
             "/docs/database/": [
                 "",
+                "MysqlRemoteConnect"
             ],
             //随笔
             "/docs/essay/": [

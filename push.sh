@@ -4,6 +4,6 @@
 set -e
 git pull
 git add -A
-git commit -m 'Add tcpdump！'
+git commit -m 'Add mysql remote connect blog！'
 git push
 
