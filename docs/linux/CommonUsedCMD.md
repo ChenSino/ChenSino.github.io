@@ -56,3 +56,16 @@ COMMAND   PID USER   FD   TYPE DEVICE SIZE/OFF   NODE NAME
 java    28789 root   23w   REG  253,1    17941 132492 sentinel-record.log.2022-04-28.0
 
 ```
+
+### 5、看开机启动项启动耗时
+
+```shell
+$ systemd-analyze blame        
+6.925s NetworkManager-wait-online.service
+2.583s snapd.service
+2.027s systemd-modules-load.service
+1.928s linux-module-cleanup.service
+1.744s mariadb.service
+1.168s systemd-random-seed.service
+```
+

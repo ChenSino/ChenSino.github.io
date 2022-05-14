@@ -4,6 +4,6 @@
 set -e
 git pull
 git add -A
-git commit -m 'Add mysql remote connect blog！'
+git commit -m 'Linux start time analyze！'
 git push
 
