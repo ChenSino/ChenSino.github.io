@@ -4,6 +4,6 @@
 set -e
 git pull
 git add -A
-git commit -m 'Linux start time analyze！'
+git commit -m '添加mysql笔记！'
 git push
 

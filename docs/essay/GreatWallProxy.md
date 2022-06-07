@@ -63,6 +63,8 @@ cmake ..
 cmake --build .
 # 5. sudo cmake --install .
 sudo cmake --install .
+# 6. 复制编译好的二进制文件qv2ray到/usr/local/bin
+s
 ```
 
 

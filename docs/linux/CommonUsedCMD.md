@@ -69,3 +69,29 @@ $ systemd-analyze blame
 1.168s systemd-random-seed.service
 ```
 
+### 6、Curl命令
+
+*更详细的用法请参考手册`man curl`*
+
+1. 示例1,发送post请求，携带请求头，并且请求体中带form-data
+
+```
+curl -X POST -F "file=@/home/test/installrecorc.xlsx" -H "Authorization:Bearer 92e1622a-1fc8-40ea-b70a-937be40a3347" localhost:6061/import/installRecord
+```
+
+​	-X: 指定请求方法
+
+​	-F：带表单的请求，指定文件
+
+​	-H：带请求头
+
+2. 示例2,下载文件
+
+   ```shell
+   #   使用-o，修改下载下载的文件名
+   curl -o manjaro-kde-21.2.6-220416-linux515.iso  https://download.manjaro.org/kde/21.2.6/manjaro-kde-21.2.6-220416-linux515.iso
+   # -O,不修改文件名，直接使用服务器上的文件吗
+   curl -O https://download.manjaro.org/kde/21.2.6/manjaro-kde-21.2.6-220416-linux515.iso
+   ```
+
+   

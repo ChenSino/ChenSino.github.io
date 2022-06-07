@@ -196,7 +196,8 @@ module.exports = {
             ],
             "/docs/database/": [
                 "",
-                "MysqlRemoteConnect"
+                "MysqlRemoteConnect",
+                "MysqlNote"
             ],
             //随笔
             "/docs/essay/": [
@@ -226,7 +227,8 @@ module.exports = {
             //分布式微服务
             "/docs/distributeservice/": [
                 "",
-                "DistributeLock"
+                "DistributeLock",
+                "Nacos"
             ],
         },
         "type": "blog",
