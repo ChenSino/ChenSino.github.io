@@ -85,4 +85,4 @@ protected long[] executeBatchInternal() throws SQLException {
 
 **结论:**
 
-使用Mybatis时,批量插入慢,需要在jdbc的url上拼接`rewriteBatchedStatements=true`
+使用Mybatis时,批量插入慢,需要在jdbc的url上拼接`rewriteBatchedStatements=true`h
