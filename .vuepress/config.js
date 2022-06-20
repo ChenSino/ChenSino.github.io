@@ -52,7 +52,7 @@ module.exports = {
                                 "link": "/docs/java/advance/"
                             },
                             {
-                                "text": "Jvm",
+                                "text": "虚拟机",
                                 "link": "/docs/java/jvm/"
                             },
                         ]
@@ -86,16 +86,6 @@ module.exports = {
                 ]
             },
             {
-                "text": "数据库",
-                "icon": "reco-blog",
-                items: [
-                    {
-                        "text": "数据库基础",
-                        "link": "/docs/database/"
-                    }
-                ]
-            },
-            {
                 "text": "web前端",
                 "icon": "reco-blog",
                 items: [
@@ -110,16 +100,26 @@ module.exports = {
                 ]
             },
             {
-                "text": "Linux",
-                "link": "/docs/linux/"
-            },
-            {
-                "text": "工具软件",
-                "link": "/docs/tools/"
-            },
-            {
-                "text": "随笔杂记",
-                "link": "/docs/essay/"
+                "text": "其他",
+                "icon": "reco-blog",
+                "items": [
+                    {
+                        text: "数据库",
+                        link: "/docs/database/"
+                    },
+                    {
+                        text: "Linux",
+                        link: "/docs/linux/"
+                    },
+                    {
+                        "text": "工具软件",
+                        "link": "/docs/tools/"
+                    },
+                    {
+                        "text": "随笔杂记",
+                        "link": "/docs/essay/TyporaPicgo"
+                    },
+                ]
             },
             {
                 "text": "TimeLine",
@@ -201,7 +201,6 @@ module.exports = {
             ],
             //随笔
             "/docs/essay/": [
-                "",
                 "TyporaPicgo",
                 "DeployGithubPage",
                 "CDN",

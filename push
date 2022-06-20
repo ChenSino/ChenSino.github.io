@@ -4,6 +4,6 @@
 set -e
 git pull
 git add -A
-git commit -m '更新cdn和obs云服务！'
+git commit -m '更新目录结构'
 git push
 
