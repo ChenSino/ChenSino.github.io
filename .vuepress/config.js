@@ -211,7 +211,8 @@ module.exports = {
                 "2022-03-18",
                 "Service",
                 "2022-04-12",
-                "BTree"
+                "BTree",
+                "CloudService"
             ],
             //linux
             "/docs/linux/": [

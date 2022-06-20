@@ -4,6 +4,6 @@
 set -e
 git pull
 git add -A
-git commit -m '添加mysql笔记！'
+git commit -m '更新cdn和obs云服务！'
 git push
 
