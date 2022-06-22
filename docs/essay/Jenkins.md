@@ -15,7 +15,7 @@ tags:
 
 ### 1.1 报错如下，ssl证书问题
 
-### ![image-20220415144539319](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220415144539319.png)
+ ![image-20220415144539319](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220415144539319.png)
 
 Jenkins(**2020年及以后版本，2.260以上**)安装后，插件下载时失败，网上找了各种解决方法，修改jenkins插件的下载源地址：
 
@@ -24,8 +24,6 @@ Jenkins(**2020年及以后版本，2.260以上**)安装后，插件下载时失�
 把URL改为 https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json
 
 或把默认地址 https://updates.jenkins.io/update-center.json 的https改为http再重启。
-
-
 
 我使用的是最新版本（2022-04-15），使用以上方式无效。
 
@@ -245,3 +243,31 @@ public class InstallCert {
 
 
 
+## 2、gitlab通过webhook调用jenkins
+
+> gitlab自带的ci/cd很强大，但是还没有仔细研究，配置相对繁琐，所以直接采用webhook回调的方式调用我熟悉的jenkins
+
+### 2.1 jenkins端配置
+
+1. 安装插件`Generic Webhook Trigger`
+2. 在 构建触发器勾上，勾上后会有个提示的url，把里面的`JENKINS_URL`改一下，这个url在系统设置有
+
+![image-20220622183404790](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220622183404790.png)
+
+3. 设置一个token
+
+![image-20220622183613303](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220622183613303.png)
+
+
+
+### 2.1 、gitlab服务端配置
+
+用管理员或者Maintener账户登录，进入仓库的设置，选择webhooks，填入url和token，url要从jenkins去看
+
+url就是jenkins中提示的那个，更换`JENKINS_URL`后就是`http://10.10.102.105:8899/jenkins/generic-webhook-trigger/invoke`,`token`和jenkins保持一致。根据自己需求选择触发jenkins的实际，这里我选择push时触发
+
+![image-20220622182858347](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220622182858347.png)
+
+点击测试：
+
+![image-20220622183909687](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220622183909687.png)
