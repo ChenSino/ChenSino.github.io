@@ -206,12 +206,12 @@ module.exports = {
                 "CDN",
                 "GreatWallProxy",
                 "Jenkins",
-                "2022-03-17",
                 "2022-03-18",
                 "Service",
                 "2022-04-12",
                 "BTree",
-                "CloudService"
+                "CloudService",
+                "ChromeDevTools"
             ],
             //linux
             "/docs/linux/": [
