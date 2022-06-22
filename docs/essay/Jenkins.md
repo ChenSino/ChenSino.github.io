@@ -264,7 +264,7 @@ public class InstallCert {
 
 用管理员或者Maintener账户登录，进入仓库的设置，选择webhooks，填入url和token，url要从jenkins去看
 
-url就是jenkins中提示的那个，更换`JENKINS_URL`后就是`http://10.10.102.105:8899/jenkins/generic-webhook-trigger/invoke`,`token`和jenkins保持一致。根据自己需求选择触发jenkins的实际，这里我选择push时触发
+url就是jenkins中提示的那个，更换`JENKINS_URL`后就是`http://10.10.102.105:8899/jenkins/generic-webhook-trigger/invoke`,`token`和jenkins保持一致，把下面的ssl校验去掉。根据自己需求选择触发jenkins的实际，这里我选择push时触发
 
 ![image-20220622182858347](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220622182858347.png)
 
