@@ -56,7 +56,7 @@ sudo v2raya --reset-password
 git clone --recursive --branch v2.7.0  https://github.com/Qv2ray/Qv2ray.git
 # 2. 创建一个build目录防止污染原来的文件
 cd Qv2ray
-## 若已存在build目录,则先删除 rm
+## 若已存在build目录,则先删除 rm -rf build
 mkdir build; cd build;
 # 3. 执行
 cmake ..
