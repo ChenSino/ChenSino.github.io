@@ -271,3 +271,71 @@ url就是jenkins中提示的那个，更换`JENKINS_URL`后就是`http://10.10.1
 点击测试：
 
 ![image-20220622183909687](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220622183909687.png)
+
+## 3、使用部署springboot项目滚动显示日志
+
+> 需求：
+>
+> jenkins部署在105服务器，而springboot项目需要部署在106上，要求启动项目时能滚动显示启动日志
+
+1. 添加git地址，指定分支`refactor`
+
+![image-20220627121343842](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220627121343842.png)
+
+2. 配置gitlab触发器，让gitlab提交时自动触发jenkins，`Generic Webhook Trigger`插件需要自行安装，要把jenkins地址配置到gitlab对应仓库
+
+![image-20220627121511257](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220627121511257.png)
+
+3. maven打包编译
+
+![image-20220627121625898](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220627121625898.png)
+
+4. 打包后把包通过插件（**Send files or execute commands over SSH**）推动到指定服务器
+
+![image-20220627121701900](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220627121701900.png)
+
+5. 执行启动脚本
+
+
+
+先勾选`Verbose output in console`让启动日志能在jenkins滚动显示
+
+![image-20220627102932228](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220627102932228.png)
+
+执行脚本demo
+
+```shell
+#!/bin/bash
+JAVA_OPTS=''
+JAR_FILE='/home/ccs/ccs-data-biz.jar'
+CCS_DATA_LOG='/home/ccs/ccs-data.log'
+#kill原来的进程
+CC_DATA_PIDS=`ps -ef | grep $JAR_FILE | grep -v grep | awk '{print $2}' | xargs kill -9`
+if [ -n $CC_DATA_PIDS ];then
+    for PID in $CC_DATA_PIDS
+	do
+		if [ -n $PID ];then
+			echo "Kill process ${PID}">> $START_LOG
+			kill -9 $PID
+		fi
+	done
+fi
+##启动日志
+START_LOG='/home/ccs/start.log'
+if [[ ! -f $START_LOG ]];then
+	touch $START_LOG
+fi
+echo ''>>$START_LOG
+echo "【$(date +%Y-%m-%d" "%H:%M:%S)】Enter into start script">> $START_LOG
+
+echo "启动项目……"
+if [ -f $JAR_FILE ];then
+    echo 'Starting java programe.....'>> $START_LOG
+    nohup java -jar -server -Xms1000m -Xmx1000m ${JAR_FILE}|tee ${CCS_DATA_LOG}|sed -e '/send-msg->/Q' &
+fi
+exit 0
+```
+
+关键是后面这个启动命令`nohup java -jar -server -Xms1000m -Xmx1000m ${JAR_FILE}|tee ${CCS_DATA_LOG}|sed -e '/send-msg->/Q' &`
+
+使用`tee`命令把输出源写入文件`${CCS_DATA_LOG}`，同时在控制台也要显示，`sed -e '/send-msg->/Q'`这个很重要，代表当日志出现内容send-msg->时结束，一定要给启动命令一个结束标志，不然会把jenkins流水阻塞。
