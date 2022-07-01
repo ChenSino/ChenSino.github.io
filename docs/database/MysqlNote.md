@@ -85,4 +85,8 @@ protected long[] executeBatchInternal() throws SQLException {
 
 **结论:**
 
-使用Mybatis时,批量插入慢,需要在jdbc的url上拼接`rewriteBatchedStatements=true`h
+使用Mybatis时,批量插入慢,需要在jdbc的url上拼接`rewriteBatchedStatements=true`
+
+### 2、唯一索引
+
+> 唯一索引指的是一个字段的值在表中只能有一个，唯一索引可以有多个字段，比如用户表有姓名、年龄、性别等，当新建一个唯一索引，把姓名、年龄放在同一个唯一索引，代表用户表不允许存在姓名和年龄同时相等记录，姓名和年龄可以有一个相同。
