@@ -102,12 +102,8 @@ module.exports = {
             {
                 "text": "git基本操作",
                 "icon": "reco-blog",
-                items: [
-                    {
-                        "text": "git实战",
-                        "link": "/docs/git/"
-                    }
-                ]
+                "link": "/docs/git/"
+                
             },
             {
                 "text": "其他",
