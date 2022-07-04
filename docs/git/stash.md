@@ -1,8 +1,8 @@
 ---
-title: ConstantPool
+title: git stash 暂存
 date: 2022-03-09 16:57:01
 categories: 
-  - git stash 暂存
+  - git 操作
 tags: 
   - 必会
 
@@ -36,12 +36,12 @@ stash会跟踪文件的修改与暂存的改动——然后将未完成的修改
 
 ## 四，本地解决冲突
 
-1、把自己开发的代码储藏起来git stash
-		2、git pull 拉取最新代码
-		3、git stash pop 把暂存文件恢复
-		4、查看冲突，解决冲突 git status -s
-		5、解决完冲突后就可以像正常提交代码一样操作了，
-		git add xxx
-		git commit -m “xxx”
-		git push origin master:my_branch
+1. 把自己开发的代码储藏起来git stash
+2. git pull 拉取最新代码
+3. git stash pop 把暂存文件恢复
+4. 查看冲突，解决冲突 git status -s
+5. 解决完冲突后就可以像正常提交代码一样操作了，
+6. git add xxx
+7. git commit -m “xxx”
+8. git push origin master:my_branch
 
