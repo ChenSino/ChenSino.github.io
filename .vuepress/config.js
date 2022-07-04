@@ -200,6 +200,10 @@ module.exports = {
                 "crossDomain",
                 "crossDomain2"
             ],
+            "/docs/git/": [
+                "",
+                "stash"
+            ],
             "/docs/database/": [
                 "",
                 "MysqlRemoteConnect",
