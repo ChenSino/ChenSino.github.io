@@ -197,6 +197,7 @@ module.exports = {
                 "",
                 "aboutAsync",
                 "01",
+                "lazyLoad",
                 "crossDomain",
                 "crossDomain2"
             ],
