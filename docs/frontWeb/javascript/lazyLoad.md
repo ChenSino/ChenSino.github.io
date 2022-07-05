@@ -8,13 +8,11 @@ tags:
 
 ---
 
-# 图片懒加载
-
-## **一，为什么需要图片懒加载**
+### **一，为什么需要图片懒加载**
 
 在老版本的Chrome中，图片的加载其实是会阻塞DOM渲染的。在我们现代浏览器中，这一点基本不用担心了，也就是说现在的图片加载不会阻塞DOM渲染，**但是每一个图片都会对应一个HTTP请求**，**而浏览器允许同时并发请求的数量是有限的（数量为6）**，假设你的网站有大量的图片，那么加载的过程是很耗时的，尤其像那些电商类需要大量图片的网站，可想而知，网站的初始加载时间会很长，再加上网络等其它影响，用户体验会很差。为了解决这个问题，提高用户体验，所以就出现了懒加载这种方式来减轻服务器的压力，优先加载可视区域的内容，其他部分等进入了可视区域再加载，从而提高性能。
 
-**二，图片懒加载原理**
+### **二，图片懒加载原理**
 
 原理其实非常简单，主要就是需要判断元素是否进入了可视区，进入了可视区就去请求对应的图片，否则就显示一张兜底的占位图。
 
@@ -24,13 +22,9 @@ tags:
 
 
 
-三，实战
+### 三，实战
 
-常用:利用图片顶部距离小于浏览器可视区域的高度来判断是否加载图片
-
-> **getBoundingClientRect**返回值是一个DOMRect对象，这个对象是由该元素的getClientRects()方法返回的一组矩形的集合，就是该元素的 CSS 边框大小。返回的结果是包含完整元素的最小矩形，并且拥有left, top, right, bottom, x, y, width, 和 height这几个以像素为单位的只读属性用于描述整个边框。除了width 和 height 以外的属性是相对于视图窗口的左上角来计算的。
-
-![img](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/clipboard.png)
+3.1 常用:利用图片顶部距离小于浏览器可视区域的高度来判断是否加载图片
 
 ```javascript
 //获取图片元素
@@ -55,7 +49,11 @@ window.addEventListener('scroll',(e)=>{
 
 ```
 
-优化：使用浏览器提供的构造函数IntersectionObserver。
+> **getBoundingClientRect**返回值是一个DOMRect对象，这个对象是由该元素的getClientRects()方法返回的一组矩形的集合，就是该元素的 CSS 边框大小。返回的结果是包含完整元素的最小矩形，并且拥有left, top, right, bottom, x, y, width, 和 height这几个以像素为单位的只读属性用于描述整个边框。除了width 和 height 以外的属性是相对于视图窗口的左上角来计算的。
+
+![img](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/clipboard.png)
+
+3.2 优化：使用浏览器提供的构造函数IntersectionObserver。
 
 > `IntersectionObserver` 是一个新的 API，可以自动"观察"元素是否可见，Chrome 51+ 已经支持。由于可见（visible）的本质是，目标元素与视口产生一个交叉区，所以这个 API 叫做"交叉观察器"。
 
