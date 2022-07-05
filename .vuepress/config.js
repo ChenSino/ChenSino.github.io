@@ -232,8 +232,7 @@ module.exports = {
                 "Samba"
             ],
             "/docs/tools/": [
-                "",
-                "IdeaActivation"
+                ""
             ],
             //分布式微服务
             "/docs/distributeservice/": [
