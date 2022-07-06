@@ -191,7 +191,8 @@ module.exports = {
             "/docs/frontWeb/vue/":[
                 "",
                 "vue-router1",
-                "vue-nextTick"
+                "vue-nextTick",
+                "vueExtend"
             ],
             "/docs/frontWeb/javascript/": [
                 "",
@@ -200,8 +201,8 @@ module.exports = {
                 "aboutThis",
                 "lazyLoad",
                 "crossDomain",
-                "crossDomain2",
-                "vueExtend"
+                "crossDomain2"
+               
             ],
             "/docs/git/": [
                 "",
