@@ -1,7 +1,7 @@
 ---
 title: 关于vue-nextTick
 date: 2022-03-09 16:57:01
-author:qianxun
+author: qianxun
 categories: 
   - vue知识点
 tags: 
