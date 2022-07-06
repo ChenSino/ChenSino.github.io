@@ -1,6 +1,7 @@
 ---
 title:this指向问题
 date: 2022-04-25 16:57:01
+author:qianxun
 categories: 
   - js基础
 tags: 
