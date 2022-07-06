@@ -196,7 +196,8 @@ module.exports = {
             "/docs/frontWeb/javascript/": [
                 "",
                 "aboutAsync",
-                "01",
+                "throttle",
+                "aboutThis",
                 "lazyLoad",
                 "crossDomain",
                 "crossDomain2"
