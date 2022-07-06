@@ -1,6 +1,6 @@
 ---
 title: 前端跨域(二)之JSONP跨域
-date: 2022-04-25 16:57:01
+date: 2022-04-25
 author: qianxun
 categories: 
   - vue知识点
