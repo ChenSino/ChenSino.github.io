@@ -1,4 +1,12 @@
+---
+title:this指向问题
+date: 2022-04-25 16:57:01
+categories: 
+  - js基础
+tags: 
+  - 必会
 
+---
 
 ## 一，函数内部的this指向
 
