@@ -200,7 +200,8 @@ module.exports = {
                 "aboutThis",
                 "lazyLoad",
                 "crossDomain",
-                "crossDomain2"
+                "crossDomain2",
+                "vueExtend"
             ],
             "/docs/git/": [
                 "",
