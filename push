@@ -4,6 +4,6 @@
 set -e
 git pull
 git add -A
-git commit -m '添加Samba'
+git commit -m '解密'
 git push
 
