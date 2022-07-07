@@ -206,7 +206,8 @@ module.exports = {
             ],
             "/docs/git/": [
                 "",
-                "stash"
+                "stash",
+                "GitCommands"
             ],
             "/docs/database/": [
                 "",
