@@ -144,8 +144,8 @@ git push -u gitlab dev
 ```shell
 git branch -vv
 
-* dev    21a759b [gitlab/dev] 更新Git1.md
-  master 21a759b [github/master: 领先 3] 更新Git1.md
+  dev    6c63a89 [gitlab/dev] xx
+* master f8d3a10 [gitlab/master: 领先 1，落后 1] ooo
 ```
 
 ---
