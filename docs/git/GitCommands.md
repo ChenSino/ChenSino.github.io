@@ -169,6 +169,17 @@ git remote rm origin
 ```
 
 ### 4、git pull
+**冲突**  
+在实际开发中，冲突发生最多的地方就是多个协同人员往同一个远程分支push代码，这种场景在pull、push非常容易发生冲突，那什么是冲突？
+- 多个分支代码合并到一个分支时
+- 多个分支向同一个远端分支推送
+具体情况就是，多个分支修改了同一个文件(任何地方)或者多个分支修改了同一个文件的名称
+
+如果两个分支中分别修改了不同文件中的部分，是不会产生冲突，直接合并即可
+
+应用在命令中，就是push、pull、stash、rebase等命令下都有可能产生冲突情况，从本质上来讲，都是merge和patch(应用补丁)时产生冲突  
+
+
 >git pull 相当于git fetch + git merge
 
 当执行`git pull`本地和远程有冲突时会有以下提示，一下提示你指定git pull的默认行为，也可以直接git pull后加--rebase、--no-rebase、--ff-only取代默认行为，后续场景测试都是用的默认` git config pull.rebase false `
@@ -178,7 +189,7 @@ git remote rm origin
 提示：
 提示：  git config pull.rebase false  # 合并
 提示：  git config pull.rebase true   # 变基
-提示：  git config pull.ff only       # 仅快进
+提示：  git config pull.ff only       # 仅快进(ff=fast forward)
 提示：
 提示：您可以将 "git config" 替换为 "git config --global" 以便为所有仓库设置
 提示：缺省的配置项。您也可以在每次执行 pull 命令时添加 --rebase、--no-rebase，
@@ -202,20 +213,10 @@ pull.rebase=false
 ```
 
 > **场景1**  
-<<<<<<< HEAD
 > 本地修改了一个文件A，远程修改了文件B，此时pull是可以成功的  
 
 > **场景2**  
 > 本地修改了文件A，远程也修改了文件A ，并且本地修改A后还没有commit，会提示要么stash修改的文件，要么commit。  
-=======
-> 本地修改了一个文件A，远程修改了文件B，此时无论commit或者不commit A文件，pull都是可以成功的  
-
-> **场景2**  
-> 本地修改了文件A，远程也修改了文件A并且本地和远程修改的不是同一行代码 ，并且本地修改A后已经commit，执行git pull是可以直接成功的，因为这种情况不算冲突，冲突的定义是本地和远程修改了同一个文件的同一行代码
-
-> **场景3**  
-> 本地修改了文件A，远程也修改了文件A ，并且本地修改A后还没有commit
->>>>>>> 552a186762f03e5a5d0b6a222db2d146d75c3a78
 > 执行两次git pull结果如下，第一次有一串remote日志代表从远程拉取，第二次则没有拉取了，因为第一次已经把最新的代码拉到暂存区了，侧面印证了git pull包含了git fetch
 
 
@@ -275,12 +276,10 @@ aaaaasgedit last lineaaaaaaaaaaaaaaaaa
 asgedit last lineaaaaaaaaaaaaaaaaaaaa
 >>>>>>> be452dc49163e6f8e950d8cd43ad2d79c491be3b
 
-<<<<<<< HEAD
-```
 =======
 ```
 
 **总结**
 
 > 本地和远程未修改同一个文件，则本地无需提交即可pull成功，若本地和远程都修改了某个文件，则需要先把本地修改commit或者stash，然后再pull，若是刚好本地和远程修改了同一行，则pull后需要去手动解决冲突，若是没有修改同一行则无需解决冲突。
->>>>>>> 552a186762f03e5a5d0b6a222db2d146d75c3a78
+

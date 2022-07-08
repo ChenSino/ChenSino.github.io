@@ -20,19 +20,19 @@ stash会跟踪文件的修改与暂存的改动——然后将未完成的修改
 
 1.  **git status**查看哪些文件发生变化
 
-2. **git stash**把所有改动暂存起来，**git stash**`等同于`**git stash push**，可以给当前stash增加message方便后续查看
+2. **git stash**把所有改动暂存起来，`git stash`等同于`git stash push`，可以给当前stash增加message方便后续查看
 
-   **git stash push -m "message"**,执行完，会发现git status当前分支变得跟没有改动时一样干净
+   `git stash push -m "message"`,执行完，会发现`git status`当前分支变得跟没有改动时一样干净
 
-3. **git stash list**  查看当前栈中有多少暂存记录
+3. `git stash list`  查看当前栈中有多少暂存记录
 
-4. 恢复栈最新的一个暂存可以**git stash pop,**取暂存中的某一份` git stash apply stash@{1}`
+4. 恢复栈最新的一个暂存可以`git stash pop`,取暂存中的某一份` git stash apply stash@{1}`
 
 5. pop` 和`apply`都可以恢复暂存，但是，apply执行后，暂存记录还存在。`pop`则会从栈中移除
 
-6. **git stash clear**  删除所有缓存的stash
+6. `git stash clear`  删除所有缓存的stash
 
-7. **git stash drop stash@**{$num} ：丢弃stash@{$num}存储，从列表中删除这个存储
+7. `git stash drop stash@{$num}` ：丢弃stash@{$num}存储，从列表中删除这个存储
 
 ## 四，本地解决冲突
 
