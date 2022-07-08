@@ -144,8 +144,13 @@ git push -u gitlab dev
 ```shell
 git branch -vv
 
+<<<<<<< HEAD
 * dev    21a759b [gitlab/dev] 更新Git1.md
   master 21a759b [github/master: 领先 3] 更新Git1.md
+=======
+  dev    6c63a89 [gitlab/dev] xx
+* master f8d3a10 [gitlab/master: 领先 1，落后 1] ooo
+>>>>>>> 552a186762f03e5a5d0b6a222db2d146d75c3a78
 ```
 
 ---
@@ -197,10 +202,20 @@ pull.rebase=false
 ```
 
 > **场景1**  
+<<<<<<< HEAD
 > 本地修改了一个文件A，远程修改了文件B，此时pull是可以成功的  
 
 > **场景2**  
 > 本地修改了文件A，远程也修改了文件A ，并且本地修改A后还没有commit，会提示要么stash修改的文件，要么commit。  
+=======
+> 本地修改了一个文件A，远程修改了文件B，此时无论commit或者不commit A文件，pull都是可以成功的  
+
+> **场景2**  
+> 本地修改了文件A，远程也修改了文件A并且本地和远程修改的不是同一行代码 ，并且本地修改A后已经commit，执行git pull是可以直接成功的，因为这种情况不算冲突，冲突的定义是本地和远程修改了同一个文件的同一行代码
+
+> **场景3**  
+> 本地修改了文件A，远程也修改了文件A ，并且本地修改A后还没有commit
+>>>>>>> 552a186762f03e5a5d0b6a222db2d146d75c3a78
 > 执行两次git pull结果如下，第一次有一串remote日志代表从远程拉取，第二次则没有拉取了，因为第一次已经把最新的代码拉到暂存区了，侧面印证了git pull包含了git fetch
 
 
@@ -260,4 +275,12 @@ aaaaasgedit last lineaaaaaaaaaaaaaaaaa
 asgedit last lineaaaaaaaaaaaaaaaaaaaa
 >>>>>>> be452dc49163e6f8e950d8cd43ad2d79c491be3b
 
+<<<<<<< HEAD
 ```
+=======
+```
+
+**总结**
+
+> 本地和远程未修改同一个文件，则本地无需提交即可pull成功，若本地和远程都修改了某个文件，则需要先把本地修改commit或者stash，然后再pull，若是刚好本地和远程修改了同一行，则pull后需要去手动解决冲突，若是没有修改同一行则无需解决冲突。
+>>>>>>> 552a186762f03e5a5d0b6a222db2d146d75c3a78
