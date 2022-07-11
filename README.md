@@ -6,15 +6,3 @@ isShowTitleInHome: false
 actionText: Guide
 actionLink: /blogs/other/guide
 ---
-
-### Install required dependencies
-```shell
-npm install
-```
-
-### Start the project
-```shell
-npm run dev
-```
-
-### Add your markdown files
