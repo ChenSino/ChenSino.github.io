@@ -73,15 +73,6 @@ module.exports = {
                                 "link": "/docs/java/framework/mybatis/mybatis"
                             }
                         ]
-                    },
-                    {
-                        text: "分布式微服务",
-                        items: [
-                            {
-                                "text": "分布式",
-                                "link": "/docs/distributeservice/"
-                            }
-                        ]
                     }
                 ]
             },
@@ -100,30 +91,43 @@ module.exports = {
                 ]
             },
             {
-                "text": "git基本操作",
+                "text": "Web通用",
                 "icon": "reco-blog",
-                "link": "/docs/git/"
-                
+                items: [
+                    {
+                        "text": "Http",
+                        "link": "/docs/other/web/"
+                    }
+                ]
             },
             {
                 "text": "其他",
                 "icon": "reco-blog",
                 "items": [
                     {
+                        "text": "git",
+                        "link": "/docs/other/git/"
+
+                    },
+                    {
                         text: "数据库",
-                        link: "/docs/database/"
+                        link: "/docs/other/database/"
                     },
                     {
                         text: "Linux",
-                        link: "/docs/linux/"
+                        link: "/docs/other/linux/"
                     },
                     {
-                        "text": "工具软件",
-                        "link": "/docs/tools/"
+                        text: "工具软件",
+                        link: "/docs/other/tools/"
                     },
                     {
-                        "text": "随笔杂记",
-                        "link": "/docs/essay/TyporaPicgo"
+                        text: "分布式微服务",
+                        link: "/docs/other/distributeservice/"
+                    },
+                    {
+                        text: "随笔杂记",
+                        link: "/docs/other/essay/TyporaPicgo"
                     },
                 ]
             },
@@ -202,20 +206,20 @@ module.exports = {
                 "lazyLoad",
                 "crossDomain",
                 "crossDomain2"
-               
+
             ],
-            "/docs/git/": [
+            "/docs/other/git/": [
                 "",
                 "stash",
                 "GitCommands"
             ],
-            "/docs/database/": [
+            "/docs/other/database/": [
                 "",
                 "MysqlRemoteConnect",
                 "MysqlNote"
             ],
             //随笔
-            "/docs/essay/": [
+            "/docs/other/essay/": [
                 "TyporaPicgo",
                 "DeployGithubPage",
                 "CDN",
@@ -229,21 +233,26 @@ module.exports = {
                 "ChromeDevTools"
             ],
             //linux
-            "/docs/linux/": [
+            "/docs/other/linux/": [
                 "",
                 "CommonUsedCMD",
                 "Manjaro",
                 "TcpDump",
                 "Samba"
             ],
-            "/docs/tools/": [
+            "/docs/other/tools/": [
                 ""
             ],
             //分布式微服务
-            "/docs/distributeservice/": [
+            "/docs/other/distributeservice/": [
                 "",
                 "DistributeLock",
                 "Nacos"
+            ],
+            //HTTP
+            "/docs/other/web/": [
+                "",
+                "Restful"
             ],
         },
         "type": "blog",
