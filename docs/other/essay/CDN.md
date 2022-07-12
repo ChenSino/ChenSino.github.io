@@ -61,10 +61,6 @@ HTTP请求流程说明：
 
 适用于各行业动静态内容混合，含较多动态资源请求（如asp、jsp、php等格式的文件）的网站。全站加速融合了动态和静态加速，用户请求资源时，静态内容从边缘节点就近获取，动态内容通过动态加速技术智能选择较优路由回源获取。CDN全站加速有效提升动态页面的加载速度，避开网络拥堵路由，提高访问成功率，实现网站整体加速与实时优化。
 
-
-
-![点击放大](https://support.huaweicloud.com/productdesc-cdn/zh-cn_image_0170806896.png)
-
 #### 4、CDN加速原理
 
 ```
@@ -127,9 +123,7 @@ HTTP请求流程说明：
 
 [华为云CDN配置](https://support.huaweicloud.com/cdn/index.html)
 
-![image-20210812155106627](/home/chenkun/.config/Typora/typora-user-images/image-20210812155106627.png)
-
-​	举例说明：我要开通加速的地址是h.sonoscape.com，是公司下的一个子域名，则开通cdn的步骤如下：
+举例说明：我要开通加速的地址是h.sonoscape.com，是公司下的一个子域名，则开通cdn的步骤如下：
 
 1. 在华为云花钱开通CDN服务；
 
@@ -154,7 +148,3 @@ HTTP请求流程说明：
    ```
    正常，由于首次访问时，CDN未对源站的相关资源进行缓存，需要回源拉取资源。您可以在首次访问前，进行缓存预热，将访问频率高的资源预热到CDN。
    ```
-
-   
-
-![image-20220330191016561](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220330191016561.png)
