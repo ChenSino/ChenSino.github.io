@@ -220,7 +220,8 @@ module.exports = {
             "/docs/other/database/": [
                 "",
                 "MysqlRemoteConnect",
-                "MysqlNote"
+                "MysqlNote",
+                "CPUOverLoad"
             ],
             //随笔
             "/docs/other/essay/": [
