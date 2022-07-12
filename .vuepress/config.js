@@ -126,6 +126,10 @@ module.exports = {
                         link: "/docs/other/distributeservice/"
                     },
                     {
+                        text: "小组分享",
+                        link: "/docs/other/training/"
+                    },
+                    {
                         text: "随笔杂记",
                         link: "/docs/other/essay/TyporaPicgo"
                     },
@@ -253,6 +257,10 @@ module.exports = {
             "/docs/other/web/": [
                 "",
                 "Restful"
+            ],
+            "/docs/other/training/": [
+                "",
+                "CloudServiceTraining"
             ],
         },
         "type": "blog",
