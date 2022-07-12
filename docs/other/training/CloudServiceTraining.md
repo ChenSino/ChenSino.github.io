@@ -212,9 +212,9 @@ minio是基于S3协议的开源存储系统，需要自己搭建服务，优点�
 
 **OBS端配置**
 
-![image-20220712145942828](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220712145942828.png)
+![](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/202207121516906.png)
 
-![image-20220712150009732](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220712150009732.png)
+![](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/202207121516071.png)
 
 # 四、回到问题
 ## 4.1 一个域名能绑定多少个IP？
