@@ -11,6 +11,10 @@ tags:
 ---
 <!--more-->
 
+[TOC]
+
+
+
 > 问题： 
 > 1. 一个域名能解析出多少个IP？
 > 2. 请求一个地址，加www和不加是否有区别？
@@ -18,6 +22,7 @@ tags:
 ---
 
 # 一、DNS
+
 本章节参考[DNS 原理入门——阮一峰](https://www.ruanyifeng.com/blog/2016/06/dns.html)
 ## 1.1 什么是DNS
 DNS （Domain Name System 的缩写）的作用非常简单，就是根据域名查出IP地址。你可以把它想象成一本巨大的电话本。
@@ -311,6 +316,6 @@ www.sonoscape.com.      3079    IN      A       47.242.63.134
 
 一般情况下加www是用来做cname绑定到原来的A记录，所以访问时加不加都一样，若是把www.sonoscape.com和sonoscape.com分别绑定到不同ip，则他俩其实只是有个子域名关联关系。
 
-# 五、云服务使用遇到的问题
+# 五、云服务使用遇到的问题案例
 
 [云服务问题分析](https://chensino.github.io/docs/other/essay/CloudService.html)
