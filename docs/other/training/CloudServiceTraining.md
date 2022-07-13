@@ -311,3 +311,6 @@ www.sonoscape.com.      3079    IN      A       47.242.63.134
 
 一般情况下加www是用来做cname绑定到原来的A记录，所以访问时加不加都一样，若是把www.sonoscape.com和sonoscape.com分别绑定到不同ip，则他俩其实只是有个子域名关联关系。
 
+# 五、云服务使用遇到的问题
+
+[云服务问题分析](https://chensino.github.io/docs/other/essay/CloudService.html)
