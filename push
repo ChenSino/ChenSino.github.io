@@ -4,6 +4,6 @@
 set -e
 git pull
 git add -A
-git commit -m 'Remove useless picture'
+git commit -m 'Revision cloudservice'
 git push
 
