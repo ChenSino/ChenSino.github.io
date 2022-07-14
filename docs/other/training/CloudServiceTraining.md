@@ -209,11 +209,11 @@ minio是基于S3协议的开源存储系统，需要自己搭建服务，优点�
 
 ![](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220712144509.png)
 
-## 3.3 远程S3协议sdk
+## 3.3 S3协议sdk
 
 [参考亚马逊文档](https://docs.aws.amazon.com/zh_cn/sdk-for-java/v1/developer-guide/prog-services.html)
 
-## 3.3 CDN加速OBS中存储的图片
+## 3.3 CDN加速OBS中存储的图片.
 
 **OBS端配置**
 
