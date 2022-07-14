@@ -283,3 +283,86 @@ asgedit last lineaaaaaaaaaaaaaaaaaaaa
 
 > 本地和远程未修改同一个文件，则本地无需提交即可pull成功，若本地和远程都修改了某个文件，则需要先把本地修改commit或者stash，然后再pull，若是刚好本地和远程修改了同一行，则pull后需要去手动解决冲突，若是没有修改同一行则无需解决冲突。
 
+### 5、git rebase
+
+#### 5.1 合并多次commit
+
+> 本地有多次commit还没push，此时可以把多次commit记录改成一次，-i 指的是交互式进行(interactive)
+
+```shell
+#一下命令可以对当前分支的前n个commit进行进一步处理，
+git rebase -i HEAD~n
+```
+
+#### 5.2 合并分支
+
+> 合并两个分支，让commit历史保持一条直线，看起来更间接。
+>
+> 场景：现有两个分支master、dev，dev由master检出，检出后dev和master都分别有commit，现在想合并dev到master，同时要保持分支图谱是一条直线。
+
+下图可看到，dev来自于master，并且之后dev和master都有一次commit
+
+![](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/202207141557178.png)
+
+```shell
+#完成操作流程如下
+#1. 切换到dev分支
+git switch dev
+
+
+#2. 在dev上rebase
+git rebase master
+
+
+#3. 若出现冲突，则提示如下
+$ git rebase master
+Auto-merging READM.md
+CONFLICT (content): Merge conflict in READM.md
+error: could not apply 6c064e6... Commit by branch dev
+hint: Resolve all conflicts manually, mark them as resolved with
+hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+hint: You can instead skip this commit: run "git rebase --skip".
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+Could not apply 6c064e6... Commit by branch dev
+
+
+# 4. 当出现冲突时，在bash命令行分支会显示如下，在dev后面有个REBASE字样，还有1/1代表有一个冲突
+204506@204506A MINGW64 /f/GitRepo/gitstudyproject (dev|REBASE 1/1)
+
+
+#5. 按照提示进入文件解决冲突文件
+解决前：
+<<<<<<< HEAD
+## git命令测试
+   - 测试命令
+   - 测试命令
+   modify by master
+=======
+
+modify by dev
+>>>>>>> 6c064e6 (Commit by branch dev)
+
+解决后：
+## git命令测试
+   - 测试命令
+   - 测试命令
+   modify by master
+modify by dev
+
+
+# 6. 修改冲突后要git add
+git add -A;
+
+# 7. 继续rebase，此时会进入交互式命令行，让输入commit信息，因上一次add后还没commit，所以这一步要输入。
+#第6步add后，还可以直接commit，那么这一步就不会进入交互式命令行让你输入c
+git rebase --continue
+
+#8. 这是dev就变成基于master的一条直线了，所以切换到master就可以直接快进合入
+git switch master  
+#这一步因为dev已经基于master了，所以肯定能快进合入
+git merge dev  
+
+
+
+```
+
