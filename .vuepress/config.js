@@ -209,8 +209,8 @@ module.exports = {
                 "aboutThis",
                 "lazyLoad",
                 "crossDomain",
-                "crossDomain2"
-
+                "crossDomain2",
+                "aboutEvent"
             ],
             "/docs/other/git/": [
                 "",
