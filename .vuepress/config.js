@@ -258,7 +258,8 @@ module.exports = {
             //HTTP
             "/docs/other/web/": [
                 "",
-                "Restful"
+                "Restful",
+                "BuildWebProject"
             ],
             "/docs/other/training/": [
                 "",
