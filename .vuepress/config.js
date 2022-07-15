@@ -246,7 +246,8 @@ module.exports = {
                 "Samba"
             ],
             "/docs/other/tools/": [
-                ""
+                "",
+                "VsCode"
             ],
             //分布式微服务
             "/docs/other/distributeservice/": [
