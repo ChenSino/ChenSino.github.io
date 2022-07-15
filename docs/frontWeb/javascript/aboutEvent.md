@@ -1,7 +1,7 @@
 ---
 
 title:JS原生事件
-date: 2022-07-15 16:57:01
+date: 2022-07-15
 author: qianxun
 categories: 
   - js基础
