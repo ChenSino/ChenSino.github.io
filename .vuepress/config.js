@@ -87,7 +87,23 @@ module.exports = {
                     {
                         "text": "vue知识点",
                         "link": "/docs/frontWeb/vue/"
-                    }
+                    },
+                    {
+                        "text": "node",
+                        "link": "/docs/frontWeb/node/"
+                    },
+                    {
+                        "text": "构建工具",
+                        "link": "/docs/frontWeb/aboutVite/"
+                    },
+                    {
+                        "text": "es6",
+                        "link": "/docs/frontWeb/es6/"
+                    },
+                    {
+                        "text": "typeScript",
+                        "link": "/docs/frontWeb/typeScript/"
+                    },
                 ]
             },
             {
