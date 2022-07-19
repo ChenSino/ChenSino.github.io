@@ -1,5 +1,8 @@
 ---
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7516f419e23ad3ff301f368418ae731d737de0b6
 title: JS原生事件
 date: 2022-07-15
 author: qianxun
