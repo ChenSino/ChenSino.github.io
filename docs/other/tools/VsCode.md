@@ -62,3 +62,8 @@ tags:
 ```
 
 ![](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/202207151115182.png)
+
+### 3. vscode代码片段
+[参考](https://juejin.cn/post/6844903869424599053)
+
+设置片段格式可以使用[在线生成工具](https://snippet-generator.app/)
