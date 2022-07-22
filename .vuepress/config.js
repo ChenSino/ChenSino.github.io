@@ -201,7 +201,8 @@ module.exports = {
                 "SpringExtensionPoint",
                 "DesignPatternInSpring",
                 "SpringCache",
-                "BeanPostProcessor"
+                "BeanPostProcessor",
+                "SpringIOC"
             ],
             //java框架SpringBoot
             "/docs/java/framework/springboot/": [
