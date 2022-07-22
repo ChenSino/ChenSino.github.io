@@ -261,7 +261,8 @@ module.exports = {
                 "CommonUsedCMD",
                 "Manjaro",
                 "TcpDump",
-                "Samba"
+                "Samba",
+                "wsl"
             ],
             "/docs/other/tools/": [
                 "",
