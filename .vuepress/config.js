@@ -218,7 +218,7 @@ module.exports = {
                 "vue-router1",
                 "vue-nextTick",
                 "vueExtend",
-                "vueLifeTime"
+                "vue3LifeTime"
             ],
             "/docs/frontWeb/javascript/": [
                 "",
