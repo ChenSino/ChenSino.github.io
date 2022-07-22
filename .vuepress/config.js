@@ -263,7 +263,8 @@ module.exports = {
             ],
             "/docs/other/tools/": [
                 "",
-                "VsCode"
+                "VsCode",
+                "SoftWare"
             ],
             //分布式微服务
             "/docs/other/distributeservice/": [
