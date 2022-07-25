@@ -233,7 +233,9 @@ module.exports = {
             "/docs/other/git/": [
                 "",
                 "stash",
-                "GitCommands"
+                "GitCommands",
+                "gitConflict",
+                "gitRebase"
             ],
             "/docs/other/database/": [
                 "",
