@@ -126,12 +126,12 @@ module.exports = {
 
                     },
                     {
-                        text: "数据库",
-                        link: "/docs/other/database/"
-                    },
-                    {
                         text: "Linux",
                         link: "/docs/other/linux/"
+                    },
+                    {
+                        text: "数据库",
+                        link: "/docs/other/database/"
                     },
                     {
                         text: "工具软件",
@@ -148,6 +148,10 @@ module.exports = {
                     {
                         text: "随笔杂记",
                         link: "/docs/other/essay/TyporaPicgo"
+                    },
+                    {
+                        text: "电子书资源",
+                        link: "/docs/other/books/ebooks"
                     },
                 ]
             },
@@ -287,6 +291,9 @@ module.exports = {
                 "",
                 "CloudServiceTraining"
             ],
+            "/docs/other/books/": [
+                "ebooks"
+            ]
         },
         "type": "blog",
         "blogConfig": {
