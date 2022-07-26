@@ -8,7 +8,7 @@ tags:
   - 必会
 ---
 
-## 一，用于合并当前分支的多个commit记录
+### 一，用于合并当前分支的多个commit记录
 
 应用场景，如下第2-4次提交是对同一功能的代码提交记录，完全可以合并成一次提交记录。这个时候rebase就很有用了。
 
@@ -52,15 +52,16 @@ tags:
 
 ![image-20220724182912368](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220724182912368.png)
 
+### 二、使用rebase替代merge合并分支
 
+2.1 使用merge合并分支代码
 
-二，当只有dev分支有提交，master分支没有任何提交，dev分支merge到master分支上，依旧是保持一条直线，也没有多余的提交。
+**注意：当只有dev分支有提交，master分支没有任何提交，dev分支merge到master分支上，依旧是保持一条直线，也没有多余的提交。**
 
 ![image-20220724212609039](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220724212609039.png)
 
 
-
-给master新增两个提交，dev分支与master分支立即就会不重合，不在一条直线上。
+**给master新增两个提交，dev分支与master分支立即就会不重合，不在一条直线上。**
 
 ![image-20220724213219850](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220724213219850.png)
 
@@ -86,8 +87,7 @@ git 分支就显示如下图所示
 
 ![image-20220724214614292](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220724214614292.png)
 
-​	总之，merge dev分支到master上会出现以下结果：
-
+总之，merge dev分支到master上会出现以下结果：
 
 1. 会保留所有的commit(hashId不变)
 
@@ -97,15 +97,17 @@ git 分支就显示如下图所示
 
    
 
-二，使用rebase合并dev分支到master上
+2.2 使用rebase合并dev分支到master上
 
-1,切换当前分支为dev
+
+
+**1,切换当前分支为dev**
 
 ```` bash
 git switch  dev
 ````
 
-2，给dev变基到master (如果有冲突需解决冲突)
+**2，给dev变基到master (如果有冲突需解决冲突)**
 
 ``` bash
 git rebase master
@@ -113,7 +115,9 @@ git rebase master
 
 ![image-20220724220033035](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220724220033035.png)
 
-3，提示解决冲突，去冲突文件解决冲突。解决冲突后，执行命令
+
+
+**3，提示解决冲突，去冲突文件解决冲突。解决冲突后，执行命令**
 
 ``` bash
 git add '冲突文件'
@@ -124,16 +128,18 @@ git rebase --continue
 
 这里是修改commit 信息
 
-修改完按:wq保存退出。
+修改完按`:wq`保存退出。
 
 ![image-20220724220742643](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220724220742643.png)
 
-此时dev分支和master分支已经重合
+此时`dev`分支和`master`分支已经重合
 
 
 ![image-20220724221217031](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220724221217031.png)
 
-3，合并dev代码到master上
+
+
+**4，合并dev代码到master上**
 
 ``` bash
 git switch master

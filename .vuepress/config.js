@@ -239,7 +239,9 @@ module.exports = {
                 "stash",
                 "GitCommands",
                 "gitConflict",
-                "gitRebase"
+                "gitRebase",
+                "mergeBranch",
+                "rebaseAndMerge",
             ],
             "/docs/other/database/": [
                 "",
