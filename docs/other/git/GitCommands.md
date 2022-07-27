@@ -65,9 +65,29 @@ $ git --help
 
 ---
 ## 二、 本地基本命令使用
+### 2.1 分支操作
+
+#### 2.1.1使用`git branch -a`可以查看到本地分支和远程分支，以本项目为例结果如下
+
+```bash
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/gh-pages
+  remotes/origin/main
+```
+
+其中分支remotes/origin/HEAD最让人奇怪，可以看到它有个HEAD，代表此分支是代表远程服务器上的默认操作分支，类似我们在本地操作某分支时，HEAD总是指向当前正在操作的分支，远程默认分支一般是master（或者main），如果把远程服务器上的默认分支改为dev，则看到的就是 `remotes/origin/HEAD -> origin/dev`，并且无论你在本地怎么样操作，它都不会发生变化。远程一定要有个默认分支，当使用git clone xx命令时，实际上就clone的默认分支。
+#### 2.1.2 `git branch -vv`
+
+```bash
+main 8805a71a [origin/main: behind 3] 提交git
+```
+
+以上结果比代表本地的main分支，对应origin/main，至于origin/main是什么意思，它实际上是代表远程分支在本地的的一个映射。这个分支是不可操作的，只能通过诸如fetch、pull、push等命令与远端进行交互，从而来改变此分支的HEAD指向。当我们操作main分支后，commit后实际上是把内容提交到了本地main分支，当执行push后，远端和origin/main的HEAD才会发生变化
+
 
 ---
-### 1、撤销修改
+### 2.2、撤销修改
 > **使用场景：**
 > 
 > 适用于修改了一个版本库中的文件，想还原
@@ -95,7 +115,7 @@ $ git status
 ```
 
 ---
-### 2、使用`git reflog`在各个commit中穿梭
+### 2.3、使用`git reflog`在各个commit中穿梭
 > **使用场景：**  
 > 使用了`git reset`命令重置了git指针，比如使用`git reset --hard HEAD^`还原到上一个版本后，想再还原到最新的一次提交，再使用`git log`是看不到最新的commit log的，但使用`git reflog`可以看到所有log
 ```bash
@@ -103,7 +123,7 @@ git reflog <commitid>
 ```
 
 ---
-### 3、`git rm`
+### 2.4、`git rm`
 > `git rm file`和直接删除文件的区别？  
 > `git rm <file>` 相当于是操作版本库中的文件，删除后直接commit就可以提交，无需执行`git add <file>`，而直接删除文件相当于操作工作目录中的文件，删除 后需要执行`git add <file> `才能commit
 
@@ -144,13 +164,8 @@ git push -u gitlab dev
 ```shell
 git branch -vv
 
-<<<<<<< HEAD
 * dev    21a759b [gitlab/dev] 更新Git1.md
   master 21a759b [github/master: 领先 3] 更新Git1.md
-=======
-  dev    6c63a89 [gitlab/dev] xx
-* master f8d3a10 [gitlab/master: 领先 1，落后 1] ooo
->>>>>>> 552a186762f03e5a5d0b6a222db2d146d75c3a78
 ```
 
 ---
