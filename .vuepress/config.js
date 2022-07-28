@@ -234,7 +234,8 @@ module.exports = {
             //maven
             "/docs/java/related/maven/": [
                 "",
-                "problem"
+                "problem",
+                "multiModule"
             ],
             "/docs/frontWeb/vue/": [
                 "",
