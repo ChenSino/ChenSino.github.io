@@ -73,6 +73,19 @@ module.exports = {
                                 "link": "/docs/java/framework/mybatis/mybatis"
                             }
                         ]
+                    },
+                    {
+                        text: "Java Related",
+                        items: [
+                            {
+                                "text": "Maven",
+                                "link": "/docs/java/related/maven/"
+                            },
+                            {
+                                "text": "Gradle",
+                                "link": "/docs/java/related/gradle/"
+                            }
+                        ]
                     }
                 ]
             },
@@ -217,7 +230,13 @@ module.exports = {
             "/docs/java/framework/mybatis/": [
                 "mybatis"
             ],
-            "/docs/frontWeb/vue/":[
+            //java相关的其他知识点
+            //maven
+            "/docs/java/related/maven/": [
+                "",
+                "problem"
+            ],
+            "/docs/frontWeb/vue/": [
                 "",
                 "vue-router1",
                 "vue-nextTick",
