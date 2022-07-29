@@ -12,7 +12,8 @@ tags:
 > //TODO
 ## 2、使用
 
-## 3、 使用反射在当前线程获取所有的TheradLocal（包括其他线程的）
+## 3、 使用反射在当前线程获取所有的ThreadLocal
+> 一个线程是可能有多个ThreadLocal的，所以源码中字段使用的复数形式`threadLocals`  
 ```java
 public class ThreadLocalUtil {
 
