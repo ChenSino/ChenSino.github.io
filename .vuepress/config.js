@@ -228,7 +228,8 @@ module.exports = {
             ],
             //java框架Mybatis
             "/docs/java/framework/mybatis/": [
-                "mybatis"
+                "mybatis",
+                "MybatisPlusDataSource"
             ],
             //java相关的其他知识点
             //maven
