@@ -210,7 +210,8 @@ module.exports = {
                 "ThreadPool",
                 "ParentDelegationClassloader",
                 "Collection",
-                "Arthas"
+                "Arthas",
+                "ThreadLocal"
             ],
             //java框架Spring
             "/docs/java/framework/spring/": [
