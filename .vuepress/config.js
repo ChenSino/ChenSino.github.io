@@ -264,6 +264,7 @@ module.exports = {
                 "gitRebase",
                 "mergeBranch",
                 "rebaseAndMerge",
+                "Reset"
             ],
             "/docs/other/database/": [
                 "",

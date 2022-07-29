@@ -115,5 +115,20 @@ public final class DynamicDataSourceContextHolder {
 
 使用`@DS`注解注解只能保证数据源在当前线程生效，而我们在代码使用了`parallelStream`，这个方法本质使用的是`ForkJoinPool`，是多线程操作，所以在新的线程里面使用ThreadLocal肯定获取不到数据源了，于是就使用默认数据源所以报错。
 
-## 3、MybatisPlus多线程数据源切换的源码分析
-//TODO
+## 3、解决方法
+> 在多线程内部使用`DynamicDataSourceContextHolder.push("<your datasource>");`，  
+> 使用后务必调用`DynamicDataSourceContextHolder.clear();`
+
+
+## 4、MybatisPlus多线程数据源切换的源码分析
+测试代码：
+```java
+	@DS("ccsx_data")
+	public Map<String, Object> getLifeCycleInfoByDeptId(Integer sysHospitalDeptId) {
+		Map<ThreadLocal, Object> threadLocalMap = ThreadLocalUtil.getThreadLocalMap();
+		DynamicDataSourceContextHolder.push("ccsx_test");
+		DynamicDataSourceContextHolder.clear();
+        //略
+    }
+```
+使用 [ThreadLocalUtil.getThreadLocalMap()](https://chensino.github.io/docs/java/advance/ThreadLocal.html)获取所有的线程的ThreadLocalMap，debug模式查看每一行执行过后数据源的变化
