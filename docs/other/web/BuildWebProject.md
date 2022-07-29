@@ -25,7 +25,7 @@ tags:
 > 分模块后，如何读取到其他模块中的bean，比如全局异常处理放在了common模块，在业务模块依赖了common，如何让common中的全局异常拦截生效？  
 > 首先要明白无法common模块的component在core-biz不生效的原因是在biz模块默认扫描的component的包范围是启动类所在的包，也就是`com.chensino.core`，而全局异常类所在的包是`com.chensino.common.security.exception`，根本没有被扫描到。
 > 
-![](afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728165959.png)
+![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728165959.png)
 
 解决方法有三种
 [参考此处文档](https://afatpig.oss-cn-chengdu.aliyuncs.com/ebooks/Springboot.pdf)
@@ -63,12 +63,12 @@ public class App {
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.chensino.common.security.exception.GlobalExceptionHandlerResolver
 ```
-![](afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728171332.png)
+![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728171332.png)
 
 
 4. 使用`@import`注解(会把import的实体加入ioc)  
 import作用  
-![](afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728171753.png)  
+![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728171753.png)  
 
 ```java
 @SpringBootApplication
@@ -83,7 +83,7 @@ public class App {
 ```
 5. 对`@import`进行封装  
 在原common模块加上注解`EnableGlobalExceptionHandlerConfiguration`，在注解中import全局异常处理类
-![](afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728172557.png)  
+![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728172557.png)  
 在启动类加上注解`EnableGlobalExceptionHandlerConfiguration`
 ```java
 @SpringBootApplication
@@ -130,7 +130,7 @@ springboot全局异常处理比较简单，直接拦截Exception，设置respons
 git reset --hard 1c4d8022ba4b34187a1627534e05ec69399fc4a9
 ```
 springboot作为开箱即用的框架，默认使用slfj+logback日志框架
-![](afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728180403.png)  
+![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728180403.png)  
 即使不添加logback.xml配置，springboot也会默认输出console上的日志，生产环境肯定还是需要把日志写入到文件的，所以先添加一下logback.xml配置，这个模板可以直接用，要改的就是日志存储位置以及包名
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

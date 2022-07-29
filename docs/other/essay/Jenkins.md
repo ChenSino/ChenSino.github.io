@@ -15,7 +15,7 @@ tags:
 
 ### 1.1 报错如下，ssl证书问题
 
- ![image-20220415144539319](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220415144539319.png)
+ ![image-20220415144539319](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220415144539319.png)
 
 Jenkins(**2020年及以后版本，2.260以上**)安装后，插件下载时失败，网上找了各种解决方法，修改jenkins插件的下载源地址：
 
@@ -252,11 +252,11 @@ public class InstallCert {
 1. 安装插件`Generic Webhook Trigger`
 2. 在 构建触发器勾上，勾上后会有个提示的url，把里面的`JENKINS_URL`改一下，这个url在系统设置有
 
-![image-20220622183404790](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220622183404790.png)
+![image-20220622183404790](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220622183404790.png)
 
 3. 设置一个token
 
-![image-20220622183613303](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220622183613303.png)
+![image-20220622183613303](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220622183613303.png)
 
 
 
@@ -266,11 +266,11 @@ public class InstallCert {
 
 url就是jenkins中提示的那个，更换`JENKINS_URL`后就是`http://10.10.102.105:8899/jenkins/generic-webhook-trigger/invoke`,`token`和jenkins保持一致，把下面的ssl校验去掉。根据自己需求选择触发jenkins的实际，这里我选择push时触发
 
-![image-20220622182858347](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220622182858347.png)
+![image-20220622182858347](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220622182858347.png)
 
 点击测试：
 
-![image-20220622183909687](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220622183909687.png)
+![image-20220622183909687](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220622183909687.png)
 
 ## 3、使用部署springboot项目滚动显示日志
 
@@ -280,19 +280,19 @@ url就是jenkins中提示的那个，更换`JENKINS_URL`后就是`http://10.10.1
 
 1. 添加git地址，指定分支`refactor`
 
-![image-20220627121343842](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220627121343842.png)
+![image-20220627121343842](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220627121343842.png)
 
 2. 配置gitlab触发器，让gitlab提交时自动触发jenkins，`Generic Webhook Trigger`插件需要自行安装，要把jenkins地址配置到gitlab对应仓库
 
-![image-20220627121511257](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220627121511257.png)
+![image-20220627121511257](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220627121511257.png)
 
 3. maven打包编译
 
-![image-20220627121625898](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220627121625898.png)
+![image-20220627121625898](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220627121625898.png)
 
 4. 打包后把包通过插件（**Send files or execute commands over SSH**）推动到指定服务器
 
-![image-20220627121701900](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220627121701900.png)
+![image-20220627121701900](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220627121701900.png)
 
 5. 执行启动脚本
 
@@ -300,7 +300,7 @@ url就是jenkins中提示的那个，更换`JENKINS_URL`后就是`http://10.10.1
 
 先勾选`Verbose output in console`让启动日志能在jenkins滚动显示
 
-![image-20220627102932228](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220627102932228.png)
+![image-20220627102932228](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220627102932228.png)
 
 执行脚本demo
 

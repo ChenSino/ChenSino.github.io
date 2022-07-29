@@ -33,17 +33,17 @@ Found existing java process, please choose one and input the serial number of th
 
 2. 根据线上log定位到异常大致的位置
 
-![image-20220428111351818](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220428111351818.png)
+![image-20220428111351818](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220428111351818.png)
 
 3. 到本地IDE打开源码
 
-![image-20220428111556978](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220428111556978.png)
+![image-20220428111556978](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220428111556978.png)
 
 createPDF方法空指针，那首先肯定想到的是参数htmlStr是null
 
 4. 进入freemarkerRender方法查看，为何返回null
 
-![image-20220428112248916](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220428112248916.png)
+![image-20220428112248916](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220428112248916.png)
 
 5. 直接查看关键处理函数`template.process(dataMap, out);`
 
@@ -55,9 +55,9 @@ watch freemarker.template.Template process '{params,returnObj,throwExp}'  -n 5  
 
 追踪发现
 
-![image-20220428113034007](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220428113034007.png)
+![image-20220428113034007](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220428113034007.png)
 
 7. 源码中因为异常未指定捕获`TemplateModelException`所以`template.process(dataMap, out);`方法报错后直接返回了null，所以直接把异常捕获改成`ExcelpTion`即可
 
-   ![image-20220428113408828](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220428113408828.png)
+   ![image-20220428113408828](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220428113408828.png)
 

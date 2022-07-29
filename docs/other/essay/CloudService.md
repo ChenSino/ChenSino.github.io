@@ -21,17 +21,17 @@ tags:
 
 先上cdn原理图，对照原理图来进行分析
 
-![img](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/zh-cn_image_0000001129063959.png)
+![img](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/zh-cn_image_0000001129063959.png)
 
 ### 3.1 使用cdn 第一次访问慢原因分析
 
-![image-20220620164944526](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220620164944526.png)
+![image-20220620164944526](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220620164944526.png)
 
 以上是我的服务访问线路：
 
 1. 客户端通过加速域名`obs.sonoscapecloud.com`去请求图片，以下是我 在云服务管理台做的配置，使用obs.sonoscapecloud.com加速桶域名ccs.obs.ap-southeast-1.myhuaweicloud.com
 
-   ![image-20220620163303675](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220620163303675.png)
+   ![image-20220620163303675](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220620163303675.png)
 
 2. cdn通过cname去查找是否缓存过此文件，若没有缓存，则回源到原来的obs存储服务器，先把图片从obs服务器拉到就近的cdn服务器，比如我在武汉访问图片，可能就把图片拉到了华中区的服务器，缓存到华中区后，再把图片返回到客户端。
 
@@ -86,7 +86,7 @@ private void preHeatingFile(String fileName) {
 
 ### 3.3、问题2分析
 
-![image-20220620165052448](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220620165052448.png)
+![image-20220620165052448](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220620165052448.png)
 
 问题2，我需要实现的功能是用户请求ecs上的后端接口，接口根据ftl模板去创建pdf文件，这个模板会访问很多图片，访问图片的路径和问题1中的方式一样，都是用的加速域名访问，类似`http://obs.sonoscapecloud.com/14c84f0716ec4c25bd4f97c23fd55e83.jpg`，用户反馈偶尔会出现导出pdf失败，或者时间过长。
 
@@ -145,7 +145,7 @@ Affect(class count: 1 , method count: 1) cost in 199 ms, listenerId: 5
 
 从日志中可以看出`com.sonoscape.ccs.data.utils.PDFUtil:createPDF()`，花费了大量时间渲染pdf，我导出了两个，以上日志可以看到第一次后端的`createPDF()`执行了7s多，第二次居然执行了快18s。
 
-![image-20220620170554398](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220620170554398.png)
+![image-20220620170554398](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220620170554398.png)
 
 再配合浏览器控制台看，可以看到后端一共执行了18.21s，真正的download只用了1.03s，所以能得出结论，**问题还是在后端接口的渲染函数createPDF**
 
@@ -153,7 +153,7 @@ Affect(class count: 1 , method count: 1) cost in 199 ms, listenerId: 5
 
 基于以上3.3的分析，并且我用了cdn加速，我一直认为是程序渲染太慢导致，一直尝试找优化方法，从没有往网络方面去想。后来突然灵感来了，**既然我的ecs和obs都是在华为云并且都在香港区域，他们应该是同属一个内网，那么我用CDN加速就是脱裤子放屁了**。然后上提工单，询问华为云如何使用内网访问obs中的图片。我的诉求就是当我在ecs服务器上访问obs图片让他走内网，经过与华为云工程师沟通，他给出的结论是：**因为我用了自定义域名obs.sonoscapecloud.com加速obs，所以当我在ecs服务器上使用obs.sonoscapecloud.com访问obs图片时无法走内网，一个加速域名不能既走cdn又走内网，要实现内网访问建议我修改代码，直接在代码中用桶域名访问，同时在服务器上配置内网dns把桶域名解析到内网**。
 
-![image-20220620171351216](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220620171351216.png)
+![image-20220620171351216](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220620171351216.png)
 
 在未配内网dns时，`ping obs.sonoscapecloud.com`结果如下，可以看到返回的是一个Cname，说明配置的cdn加速在生效，这是符合预期的。
 
@@ -268,7 +268,7 @@ PING obs.sonoscapecloud.com (100.125.100.3) 56(84) bytes of data.
 
 
 
-![image-20220620184752843](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220620184752843.png)
+![image-20220620184752843](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220620184752843.png)
 
 **问题二：如何实现一个加速域名既能保证加速效果，又能保证ecs的内网访问呢？**
 

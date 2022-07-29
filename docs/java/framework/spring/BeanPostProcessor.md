@@ -168,7 +168,7 @@ postProcessAfterInitialization是在initMethod后执行，就不做过多分析�
 
 ### 3. bean实例化过程
 
-![image-20211018150608365](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20211018150608365.png)
+![image-20211018150608365](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20211018150608365.png)
 
 ```java
 //org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods   

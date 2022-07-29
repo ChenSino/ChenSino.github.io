@@ -30,7 +30,7 @@ tags:
 2、启动方式后加 --disable-[gpu](https://so.csdn.net/so/search?q=gpu&spm=1001.2101.3001.7020)，似乎是禁用 GPU 硬件加速
 找其他各种方法都无效，管理员、兼容、改setting.json都没用。
 
-![](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/202207151112664.png)
+![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/202207151112664.png)
 
 ### 2、在vscode中使用git-bash作为默认终端
 
@@ -61,7 +61,7 @@ tags:
     },
 ```
 
-![](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/202207151115182.png)
+![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/202207151115182.png)
 
 ### 3. vscode代码片段
 [参考](https://juejin.cn/post/6844903869424599053)

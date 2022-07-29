@@ -64,7 +64,7 @@ mybatis缓存有一级缓存也叫SelSession缓存，是强制打开的，也就
     }
 ```
 
-![image-20210926204622261](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20210926204622261-16326603908611.png)
+![image-20210926204622261](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20210926204622261-16326603908611.png)
 
 针对以上代码，如果再新创建一个SqlSession,叫sqlSession2,在第一次和第二次查询的中间用sqlSession2去删除一条记录，然后再查询，这时第二查询的数据是第一次缓存的，这就导致了第二次查询结果不准确。
 
@@ -91,7 +91,7 @@ mybatis缓存有一级缓存也叫SelSession缓存，是强制打开的，也就
 
 删除后，第二次查询的结果应该比第一次少一个，但是实际去却没少，如下图
 
-![image-20210926205004963](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20210926205004963-16326606075292.png)
+![image-20210926205004963](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20210926205004963-16326606075292.png)
 
 在实际项目中SqlSession 并没有太大作用，显得很鸡肋，测试如下：
 
@@ -206,7 +206,7 @@ public class DataScope extends HashMap {
 
    很容易就定位到`DataScopeInterceptor`这个类中使用到了`DataScope`
 
-   ![image-20211220114833903](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20211220114833903-16399721171081.png)
+   ![image-20211220114833903](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20211220114833903-16399721171081.png)
 
 核心代码是重写了Interceptor的intercept方法，在此方法中#18行调用了一个findDataScopeObject方法，此方法先判断查找参数是有有个DataScope对象，如果没有，则直接进行普通的sql查询，如果有则需要根据DataScope来限制查询数据的范围，#36行调用calcScope计算当前请求用户所拥有的具体权限
 

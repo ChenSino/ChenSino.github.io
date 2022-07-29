@@ -137,4 +137,4 @@ $.ajax({
 
 
 
-![jsonp图片](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/1045378-20220426095036509-990636020.jpg)
+![jsonp图片](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/1045378-20220426095036509-990636020.jpg)

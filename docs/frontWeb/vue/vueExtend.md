@@ -46,7 +46,7 @@ new Profile().$mount('#mount-point')
 
 接下来我们使用Vue.extend来构造一个自定义弹窗基本步骤如下：
 
-![image-20220706142143958](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220706142143958.png)
+![image-20220706142143958](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220706142143958.png)
 
 **2.1 创建Dialog.vue组件**
 

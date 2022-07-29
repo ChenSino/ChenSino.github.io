@@ -130,7 +130,7 @@ moduleA的pom：
 </dependencies>
 ```
 要注意的是，moduleB如果想把moduleA中dependencyManagement中的内容继承过来，需要指定type为pom，以及scope为import，如果不指定在A模块直接使用会提示没有lombok版本号
-![](afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728151559.png)
+![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728151559.png)
 
 
 

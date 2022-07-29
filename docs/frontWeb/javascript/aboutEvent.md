@@ -178,7 +178,7 @@ div>
 
 事件流又称为事件传播，描述的是从页面接收事件的顺序。当事件发生时会在元素节点之间按照 特定 的顺序传播，这个传播过程就叫 DOM 事件流 。
 
-![img](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/27493437-16b0e5bc10d1aab3.png)
+![img](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/27493437-16b0e5bc10d1aab3.png)
 
 （1）JavaScript 代码中只能执行捕获或冒泡其中一个阶段，要么冒泡，要么捕获。
 		（2）onclick 与 attachEvent 方式注册的事件只有冒泡阶段。

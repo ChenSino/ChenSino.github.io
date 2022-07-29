@@ -10,7 +10,7 @@ tags:
 
 ## 一，vue生命周期钩子函数
 
-![d0c8a786c9177f3e668177cd4bfcf9c19e3d5676](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/d0c8a786c9177f3e668177cd4bfcf9c19e3d5676.png)
+![d0c8a786c9177f3e668177cd4bfcf9c19e3d5676](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/d0c8a786c9177f3e668177cd4bfcf9c19e3d5676.png)
 
 ### 1.1  beforeCreate
 

@@ -76,7 +76,7 @@ all((功能))-->core((核心业务))
 
 中控的一部分首页看板数据需要从ccm数据库获取，而ccm的数据库在内网，此处使用的是FRP内网穿透技术来实现公网访问内网。
 
-![image-20220330115046571](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220330115046571.png)
+![image-20220330115046571](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220330115046571.png)
 
 **具体实现原理：**
 
@@ -113,7 +113,7 @@ remote_port = 1006
 
 ```
 
-![image-20220330120441985](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220330120441985.png)
+![image-20220330120441985](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220330120441985.png)
 
 
 
@@ -121,7 +121,7 @@ remote_port = 1006
 
 云服务器的配置：
 
-![image-20220330120828935](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220330120828935.png)
+![image-20220330120828935](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220330120828935.png)
 
 上图中devie-mysql我在hosts中配置映射到了127.0.0.1，在云服务器上访问`device-mysql:1006`会自动映射到内网`10.10.102.106:3306`
 
@@ -131,7 +131,7 @@ remote_port = 1006
 
 中控请求主机制造的接口采用的这种方式
 
-![image-20220330133638523](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220330133638523.png)
+![image-20220330133638523](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220330133638523.png)
 
 ### 3.3 从业务角度优化访问内网数据慢的问题
 

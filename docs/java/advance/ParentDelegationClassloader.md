@@ -13,7 +13,7 @@ tags:
 <!--more-->
 # 1、什么是双亲委派？
 
-![image-20220330170731913](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220330170731913.png)
+![image-20220330170731913](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220330170731913.png)
 
 *注：此处直接摘抄周志明老师的《深入理解java虚拟机》*
 
@@ -177,7 +177,7 @@ public class MysqlDriver implements Driver {
 
 按照SPI规范配置好具体实现类
 
-![image-20220331151619068](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220331151619068.png)
+![image-20220331151619068](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220331151619068.png)
 
 ```java
 public class Client {
@@ -191,7 +191,7 @@ public class Client {
 
 输出：
 
-![image-20220331151531624](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220331151531624.png)
+![image-20220331151531624](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220331151531624.png)
 
 # 3、为什么SPI打破了双亲委派
 ## 3.1 ContextClassLoader
@@ -228,15 +228,15 @@ A[Custom ClassLoader]-->B[Application classloader]-->C[Extension classloader]-->
 
 5.1.6版本的mysql驱动,可以看到有一个META-INF/services/java.sql.Driver  就是SPI规范要求的文件
 
-![image-20220401100944285](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401100944285.png)
+![image-20220401100944285](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401100944285.png)
 
 5.1.5版本打开看看,就没有了META-INF/services/java.sql.Driver
 
-![image-20220401101107751](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401101107751.png)
+![image-20220401101107751](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401101107751.png)
 
 jdbc4.0规范说了，可以自动加载驱动，就是因为用了这个SPI，当然你的驱动必须是>=5.1.6版本
 
-![image-20220401101430752](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401101430752.png)
+![image-20220401101430752](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401101430752.png)
 
 ### 4.2 jdbc一定打破双亲委派吗?
 
@@ -268,7 +268,7 @@ public static void main(String[] args) {
 
 关于` Class.forName("com.mysql.jdbc.Driver");`这里调试类加载过程不再分析，调试中使用`-verbose:class`可以看到类加载过程，`Class.forName("com.mysql.jdbc.Driver");`执行完后，`com.mysql.jdbc.Driver`类就会被加载。
 
-![image-20220401103855153](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401103855153.png)
+![image-20220401103855153](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401103855153.png)
 
 ### 4.3 调试jdbc4.0+、mysql5.1.6+版本的spi打破双亲委派
 
@@ -287,41 +287,41 @@ linux 、jdk8（jdbc4.2）、mysql驱动：5.1.6
 
 1. 记得打上断点开启debug之路，第一次进入断点输出的类加载信息如下，可以看到我们的Client类被加载了，看完了日志后清理，防止太多看起来烟花缭乱
 
-![image-20220401112702397](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401112702397.png)
+![image-20220401112702397](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401112702397.png)
 
 2. 接下来肯用到`DriverManager`，肯定要触发加载，在日志中可以看到
 
-![image-20220401112907223](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401112907223.png)
+![image-20220401112907223](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401112907223.png)
 
 3. 提前到`java.sql.DriverManager#loadInitialDrivers`打好断点，586行看到了熟悉的`ServiceLoader`，这就是SPI的核心，它要触发Driver.class的加载了。
 
    ==注意：此时我们还在`DriverManager`中这个类在jdk的核心包中lib下，也就是rt.jar中，[在第一节就说了](#1、什么是双亲委派？)，此包中的类是由启动类加载器BootStrapClassLoader负责的，这是由C++写的，java中看不到，这个类加载器就要委托其子孙加载器来加载`Driver`==，先到`java.util.ServiceLoader#load(java.lang.Class<S>)`提前打好断点继续调试，来证明
 
-![image-20220401113115859](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401113115859.png)
+![image-20220401113115859](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401113115859.png)
 
-![image-20220401113617886](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401113617886.png)
+![image-20220401113617886](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401113617886.png)
 
-![image-20220401113707945](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401113707945.png)
+![image-20220401113707945](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401113707945.png)
 
 4. 先加载了`java.sql.Driver`，这个肯定也是启动类加载器加载的，然后注意看`ClassLoader cl = Thread.currentThread().getContextClassLoader();`这里获取线程上下文加载器，默认就是AppClassLoader，然后用获取到的类加载器来加载Driver==>`ServiceLoader.load(service, cl);`
 
-   ![image-20220401114332820](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401114332820.png)
+   ![image-20220401114332820](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401114332820.png)
 
 5. 跟踪进入另一个load方法
 
-![image-20220401114631784](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401114631784.png)
+![image-20220401114631784](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401114631784.png)
 
 6. 继续跟踪，`java.util.ServiceLoader#load(java.lang.Class<S>)`执行完了回到此处
 
-   ![image-20220401115310972](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401115310972.png)
+   ![image-20220401115310972](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401115310972.png)
 
 7. 这里就是真正要加载`com.mysql.jdbc.Driver`了
 
-![image-20220401115430364](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401115430364.png)
+![image-20220401115430364](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401115430364.png)
 
 8. 跟踪进去，最后会进入`java.util.ServiceLoader.LazyIterator#nextService`，可以到这里用AppClassLoader加载了`com.mysql.jdbc.Driver`，这个类就是之前在`java.sql.DriverManager`的静态代码快中受到BootStrapClassLoader的委托而加载的。这就证明了父加载器委托子加载器加载，从而证明了spi打破了双亲委派机制
 
-   ![image-20220401115555240](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401115555240.png)
+   ![image-20220401115555240](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220401115555240.png)
 
 
 

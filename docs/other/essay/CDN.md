@@ -18,7 +18,7 @@ CDN（Content Delivery Network，内容分发网络）是构建在现有互联�
 
 当用户访问使用CDN服务的网站时，本地DNS服务器通过CNAME方式将最终域名请求重定向到CDN服务。CDN通过一组预先定义好的策略(如内容类型、地理区域、网络负载状况等)，将当时能够最快响应用户的CDN节点IP地址提供给用户，使用户可以以最快的速度获得网站内容。使用CDN后的HTTP请求处理流程如下。
 
-![img](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/zh-cn_image_0000001129063959.png)
+![img](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/zh-cn_image_0000001129063959.png)
 
 HTTP请求流程说明：
 

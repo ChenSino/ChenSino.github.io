@@ -221,4 +221,4 @@ JSONP只支持GET请求，JSONP的优势在于支持老式浏览器，以及可�
 
 其实实现代理跨域的逻辑非常简单：就是在不同的资源服务：js资源、html资源、css资源、接口数据资源服务的前端搭建一个中间层，所有的浏览器及客户端访问都通过代理转发。所以在浏览器、客户端看来，它们访问的都是同一个ip、同一个端口的资源，从而符合同源策略实现跨域访问。
 
-![image-20220704100300804](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220704100300804.png)
+![image-20220704100300804](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220704100300804.png)

@@ -19,7 +19,7 @@ tags:
 >
 > 如下图，我给dev环境设置了两个Group，CCS代表中控系统，BOM代表bom系统。
 
-![image-20220602103505994](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220602103505994.png)
+![image-20220602103505994](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220602103505994.png)
 
 **Group**
 

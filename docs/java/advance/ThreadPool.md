@@ -39,7 +39,7 @@ tags:
 
 测试结果：
 
-![image-20220329145737001](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329145737001.png)
+![image-20220329145737001](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329145737001.png)
 
 测试发现异常并未抛出，如果不知道这个知识点线上遇到问题就不好排查，我因为在测试环境使用`executorService.submit`,submit方法提交后就没管了，结果在submit有异常，一直没往这里想，搞了俩小时才定位到。
 
@@ -96,7 +96,7 @@ tags:
 
 
 
-![image-20220329151313405](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329151313405.png)
+![image-20220329151313405](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329151313405.png)
 
 可以看到第一次执行成功的任务返回得到的是`null`，第二次抛出了异常，所以调用`submit`是要注意，此方法是带返回值的，和`execute`有区别，`execute`是没有返回值。
 
@@ -104,7 +104,7 @@ tags:
 
 再看看为什么调用`java.util.concurrent.Future#get()`抛出异常，在以下源码注释写的很清楚了，当任务本身抛出异常，则调用`get`也会抛出一个`ExecutionException`
 
-![image-20220329152103052](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329152103052.png)
+![image-20220329152103052](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329152103052.png)
 
 
 
@@ -123,17 +123,17 @@ tags:
     }
 ```
 
-![image-20220329153946950](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329153946950.png)
+![image-20220329153946950](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329153946950.png)
 
 可以看到调用get方法获取到了caller接口实现类中的返回值
 
-![image-20220329153915843](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329153915843.png)
+![image-20220329153915843](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329153915843.png)
 
 
 
 `java.util.concurrent.ExecutorService#submit(java.util.concurrent.Callable<T>)`源码
 
-![image-20220329154106854](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329154106854.png)
+![image-20220329154106854](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329154106854.png)
 
 
 
@@ -143,17 +143,17 @@ tags:
 
 `Executors`工具类实际上只是对`ThreadPoolExecutor`进行了简单的封装，所以还是有必要对`ThreadPoolExecutor`进行学习
 
-![image-20220329155120825](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329155120825.png)
+![image-20220329155120825](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329155120825.png)
 
 ### 3.2 `java.util.concurrent.ThreadPoolExecutor`
 
 #### 3.2.1 构造方法
 
-![image-20220329161315724](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329161315724.png)
+![image-20220329161315724](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329161315724.png)
 
 表面上看有4个，实际上就一个在干活，最终都调用的是下面这个，无非就是传递不同的构造参数，这里点开`java.util.concurrent.Executors#newFixedThreadPool(int)`看一下就知道了
 
-![image-20220329161738207](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329161738207.png)
+![image-20220329161738207](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329161738207.png)
 
 **构造参数说明：**
 
@@ -576,17 +576,17 @@ public class MyThreadFactory implements ThreadFactory {
 
 测试结果，发现刚开始有4个线程，
 
-![image-20220329212937714](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329212937714.png)
+![image-20220329212937714](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329212937714.png)
 
 过了10s后，发现只有一个了，符合我们的预期
 
-![image-20220329213033143](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329213033143.png)
+![image-20220329213033143](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329213033143.png)
 
 
 
 `java.util.concurrent.Future#get()`有说明，get是会一直等到此线程结束
 
-![image-20220329213244994](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329213244994.png)
+![image-20220329213244994](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329213244994.png)
 
 
 

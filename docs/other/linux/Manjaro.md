@@ -19,7 +19,7 @@ tags:
 设置忽略升级的包
 第二步会让你选择更新的时候是否要忽略更新，选择y的话，它会在/etc/pacman.conf添加一个忽略，如果不想湖绿，把下面的IgnorePkg注释即可
 
-![image-20220322171440300](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220322171440300.png)
+![image-20220322171440300](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220322171440300.png)
 
 ### 2、开机报错failed to start rotate log files
 
@@ -171,17 +171,17 @@ considering log /var/log/btmp
 
 5. 在日志中找error
 
-   ![image-20220322171948840](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220322171948840.png)
+   ![image-20220322171948840](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220322171948840.png)
 
 6. 报错很明显了是mysqlroute的日志切割失败了。
 
 7. logrotate其实是被很多程序都使用了，其配置文件在/etc/logrotate.d下
 
-   ![image-20220322172023905](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220322172023905.png)
+   ![image-20220322172023905](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220322172023905.png)
 
 可以看到nginx ，mysqlrouter，Samba等都用了logrotate，并且他们都有自己的配置，根据上面我们已经知道了是mysqlrouter配置有问题，我们只需要打开nginx的配置和mysqlrouter对比就知道了。经过比我我的mysqlrouter的配置文件在var前面少了一个/ 加上就好了
 
-![image-20220322172038617](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220322172038617.png)
+![image-20220322172038617](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220322172038617.png)
 
 ### linux下输入法无法输入中文中括号问题
 如果使用的是fcitx5，修改/usr/share/fcitx5/punctuation/punc.mb.zh_CN下的对应符号即可，打开文件有两列，第一列代表英文
@@ -194,21 +194,21 @@ kde设置proxy有个很大的bug,就是无法全局，搞笑的是通过kde设�
 
 解决办法就是挂梯子，下载后手动安装，
 
-![image-20220418155819498](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220418155819498.png)
+![image-20220418155819498](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220418155819498.png)
 
-![image-20220418155847045](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220418155847045.png)
+![image-20220418155847045](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220418155847045.png)
 
-![image-20220418155927678](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220418155927678.png)
+![image-20220418155927678](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220418155927678.png)
 
-![image-20220418155956979](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220418155956979.png)
+![image-20220418155956979](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220418155956979.png)
 
 ### 4、设置yakuake提示没有权限修改文件
 
 1. 修改yakuake的文字大小
 
-![image-20220419110311199](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220419110311199.png)
+![image-20220419110311199](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220419110311199.png)
 
-![image-20220419110401735](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220419110401735.png)
+![image-20220419110401735](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220419110401735.png)
 
 2. 保存时会报错，大概是没有`/usr/share/konsole`的权限
 3. 添加一下权限就行了
@@ -221,7 +221,7 @@ kde设置proxy有个很大的bug,就是无法全局，搞笑的是通过kde设�
 
 #### 3.1 使用MariaDB代替mysql
 
-![image-20220502211444881](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220502211444881.png)
+![image-20220502211444881](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220502211444881.png)
 
 #### 3.2 使用docker安装Mysql
 

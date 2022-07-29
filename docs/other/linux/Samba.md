@@ -73,4 +73,4 @@ windows开启samba过程省略……
 
 连接时的路径格式为`\\IP\test`，IP是你的samba地址，test是在smb.conf配置的那个 [test] 
 
-![image-20220627134822676](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220627134822676.png)
+![image-20220627134822676](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220627134822676.png)

@@ -61,7 +61,7 @@ $ git --help
 
 一般情况在每个子命令下使用--help能查看更详细的文档，例如`git pull --help`，或者在linux环境使用`man git pull`，其他命令使用一样方式查看
 
-![git pull --help](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220707154502.png)
+![git pull --help](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220707154502.png)
 
 ---
 ## 二、 本地基本命令使用
@@ -129,11 +129,11 @@ git reflog <commitid>
 
 图一图片使用git rm 把文件移除版本库后，使用git status查看是绿色的，代表该文件已经在暂存空间
 
-![图一](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220707135422.png)
+![图一](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220707135422.png)
 
 图二手动直接删除文件后，git status看到的文件是红色的，代表没有在暂存空间，所以需要使用git add才能提交
 
-![图二](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220707135355.png)
+![图二](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220707135355.png)
 
 
 ## 三、 远程命令使用
@@ -317,7 +317,7 @@ git rebase -i HEAD~n
 
 下图可看到，dev来自于master，并且之后dev和master都有一次commit
 
-![](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/202207141557178.png)
+![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/202207141557178.png)
 
 ```shell
 #完成操作流程如下

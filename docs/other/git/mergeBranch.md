@@ -14,14 +14,14 @@ tags:
 
 ​				在git log中往往会发现在log中出现`Merge branch 'master of .....'`这种合并节点，造成日志的污染
 
-![image-20220726115529360](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220726115529360.png)
+![image-20220726115529360](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220726115529360.png)
 
 
 
 ### 二，产生的原因
 
 当多人合作开发一个项目时，本地仓库落后于远程仓库是一个非常正常的事情，可参考下图
-![在这里插入图片描述](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20190719174211701.png)
+![在这里插入图片描述](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20190719174211701.png)
 
 具体情境如下：
 

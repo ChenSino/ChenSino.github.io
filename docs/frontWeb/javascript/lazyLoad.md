@@ -19,7 +19,7 @@ tags:
 
 实现图片懒加载基本要点如下所示：
 
-![img](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/图片懒加载.png)
+![img](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/图片懒加载.png)
 
 
 
@@ -52,7 +52,7 @@ window.addEventListener('scroll',(e)=>{
 
 > **getBoundingClientRect**返回值是一个DOMRect对象，这个对象是由该元素的getClientRects()方法返回的一组矩形的集合，就是该元素的 CSS 边框大小。返回的结果是包含完整元素的最小矩形，并且拥有left, top, right, bottom, x, y, width, 和 height这几个以像素为单位的只读属性用于描述整个边框。除了width 和 height 以外的属性是相对于视图窗口的左上角来计算的。
 
-![img](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/clipboard.png)
+![img](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/clipboard.png)
 
 3.2 优化：使用浏览器提供的构造函数IntersectionObserver。
 

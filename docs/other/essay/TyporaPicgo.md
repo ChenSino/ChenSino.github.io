@@ -41,7 +41,7 @@ date: 2020-03-09
 
 打开typora的配置，按照如下图配置，选择PicGo-Core,点击下载，此时会自动下载PicGo-Core，
 
-![image-20220309141611583](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220309141611583.png)
+![image-20220309141611583](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220309141611583.png)
 
 
 
@@ -65,7 +65,7 @@ picgo install gitee-uploader
 
 从typora打开配置，修改配置
 
-![image-20220309145003089](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220309145003089.png)
+![image-20220309145003089](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220309145003089.png)
 
 用如下配置覆盖原来的，同时记得把带有注释信息的部分修改成自己的
 
@@ -95,7 +95,7 @@ picgo install gitee-uploader
 
 测试上传图片
 
-![image-20220309145521751](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220309145521751.png)
+![image-20220309145521751](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220309145521751.png)
 
 ### 2、给typora中picgo设置代理
 

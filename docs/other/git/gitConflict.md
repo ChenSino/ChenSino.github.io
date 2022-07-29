@@ -21,7 +21,7 @@ tags:
 - 然后修改远程component.html远程文件第14行
 - 本地执行git pull,拉取代码提示，同时修改component.html，提示发生冲突
 
-![image-20220723162517914](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220723162517914.png)
+![image-20220723162517914](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220723162517914.png)
 
  此时，有以下3种解决办法。
 
@@ -29,7 +29,7 @@ tags:
 
 2. 按照提示，先`commit`本地修改，然后再次执行pull操作，得到如下丑陋的提交记录。此时本地`commit`记录便会显示如下的丑陋的`commit`记录。由于发生了冲突，但是由于是修改的不同行，git直接帮我们把本地修改和远程修改直接合并了，并产生了一个新的提交节点 Merge branch.....
 
-   ![img](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/clipboard.png)
+   ![img](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/clipboard.png)
 
    
 
@@ -42,7 +42,7 @@ tags:
 
 **1.2  本地代码已经`commit`但是还没有`push`.  有时候经常会忘记先pull远程代码，直接push代码.如果本地和远程同时修改了同一文件，会产生提示**。
 
-![image-20220723172630686](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220723172630686.png)
+![image-20220723172630686](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220723172630686.png)
 
  看到这个提示:远程代码有修改，本地代码先要合并远程的代码才可以push.
 
@@ -50,11 +50,11 @@ tags:
 
 我的操作，先关闭提示框。先执行git pull 同步远程代码，此时编辑器提示我有文件发生了冲突。
 
-![image-20220723173039634](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220723173039634.png)
+![image-20220723173039634](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220723173039634.png)
 
 点击Merge,选择手动合并冲突的代码。此时也会产生一个合并节点。
 
-![image-20220723173207361](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220723173207361.png)
+![image-20220723173207361](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220723173207361.png)
 
 然后git add ->git commit -> git push.
 
@@ -64,7 +64,7 @@ tags:
 
 例如，我在远程新增一个文件，本地没有pull代码，此时本地分支是落后于远程分支的。如果你此时不知情，commit一些代码并准备push代码到远程会收到如下提示：
 
-![image-20220726104412089](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220726104412089.png)
+![image-20220726104412089](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220726104412089.png)
 
 
 
@@ -72,9 +72,9 @@ tags:
 
 
 
-![image-20220726105156403](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220726105156403.png)
+![image-20220726105156403](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220726105156403.png)
 
-![image-20220726105424098](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220726105424098.png)
+![image-20220726105424098](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220726105424098.png)
 
 
 
