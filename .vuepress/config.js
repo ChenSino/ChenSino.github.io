@@ -298,7 +298,8 @@ module.exports = {
             "/docs/other/tools/": [
                 "",
                 "VsCode",
-                "SoftWare"
+                "SoftWare",
+                "IdeaDebug"
             ],
             //分布式微服务
             "/docs/other/distributeservice/": [
