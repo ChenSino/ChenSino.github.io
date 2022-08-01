@@ -2,51 +2,48 @@ import { navbar } from "vuepress-theme-hope";
 
 export default navbar([
   "/",
-  "/home",
-  { text: "使用指南", icon: "creative", link: "/guide/" },
+  // "/home",
   {
-    text: "博文",
-    icon: "edit",
-    prefix: "/posts/",
+    text: "Java",
+    icon: "java",
+    prefix: "/java/",
     children: [
-      {
-        text: "文章 1-4",
-        icon: "edit",
-        prefix: "article/",
-        children: [
-          { text: "文章 1", icon: "edit", link: "article1" },
-          { text: "文章 2", icon: "edit", link: "article2" },
-          "article3",
-          "article4",
-        ],
-      },
-      {
-        text: "文章 5-12",
-        icon: "edit",
-        children: [
-          {
-            text: "文章 5",
-            icon: "edit",
-            link: "article/article5",
-          },
-          {
-            text: "文章 6",
-            icon: "edit",
-            link: "article/article6",
-          },
-          "article/article7",
-          "article/article8",
-        ],
-      },
-      { text: "文章 9", icon: "edit", link: "article9" },
-      { text: "文章 10", icon: "edit", link: "article10" },
-      "article11",
-      "article12",
-    ],
+      { text: "Java基础", icon: "java", link: "base/Serialization" },
+      { text: "Java进阶", icon: "java", link: "advance/ProxyInJava" },
+      { text: "Java虚拟机", icon: "java", link: "jvm/NewObject" }
+    ]
   },
   {
-    text: "主题文档",
-    icon: "note",
-    link: "https://vuepress-theme-hope.github.io/v2/zh/",
+    text: "前端",
+    icon: "javascript",
+    prefix: "/frontweb/",
+    children: [
+      { text: "Vue", icon: "vue", link: "vue/" },
+      { text: "Vite", icon: "vue", link: "aboutVite/" },
+      { text: "ES5", icon: "javascript", link: "es5/" },
+      { text: "ES6", icon: "javascript", link: "es6/" },
+      { text: "TypeScript", icon: "javascript", link: "typeScript/" },
+    ]
   },
+  {
+    text: "从零开始搭建前后分离项目",
+    icon: "app",
+    link: "/other/web/README.md"
+  },
+  {
+    text: "其他",
+    icon: "others",
+    prefix: "/other/",
+    // children: ["git/","linux/","database/","tools/","training/","essay/","books/","distributeservice/"]
+    children: [
+      { text: "Git", icon: "git", link: "git/GitCommands" },
+      { text: "Linux", icon: "linux", link: "linux/CommonUsedCMD" },
+      { text: "DataBase", icon: "java", link: "database/CPUOverLoad" },
+      { text: "工具软件", icon: "software", link: "tools/IdeaDebug" },
+      { text: "小组分享", icon: "share", link: "training/CloudServiceTraining" },
+      { text: "随笔杂记", icon: "activity", link: "essay/2022-04-12" },
+      { text: "电子书资源", icon: "app", link: "books/ebooks" },
+      { text: "分布式微服务", icon: "class", link: "distributeservice/DistributeLock" },
+    ]
+  }
 ]);

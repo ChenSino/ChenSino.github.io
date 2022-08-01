@@ -1,7 +1,7 @@
 {
   "name": "chensino",
   "version": "2.0.0",
-  "description": "ChenSino's persional project.",
+  "description": "A project of chensino",
   "license": "MIT",
   "scripts": {
     "docs:build": "vuepress build docs",
