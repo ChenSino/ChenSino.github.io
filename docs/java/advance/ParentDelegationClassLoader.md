@@ -32,8 +32,8 @@ category:
 >java.lang.ClassLoader.getClassLoader()方法的代码片段,其中的注释和代码实现都明确地说明了以null值
 >来代表引导类加载器的约定规则。
 >
->·扩展类加载器(Extension Class Loader):这个类加载器是在类sun.misc.Launcher$ExtClassLoader
->中以Java代码的形式实现的。它负责加载<JAVA_HOM E>\lib\ext目录中,或者被java.ext.dirs系统变量所
+>·扩展类加载器(Extension Class Loader):这个类加载器是在类`sun.misc.Launcher$ExtClassLoader`
+>中以Java代码的形式实现的。它负责加载<JAVA_HOME>\lib\ext目录中,或者被java.ext.dirs系统变量所
 >指定的路径中所有的类库。根据“扩展类加载器”这个名称,就可以推断出这是一种Java系统类库的扩
 >展机制,JDK的开发团队允许用户将具有通用性的类库放置在ext目录里以扩展Java SE的功能,在JDK
 >9之后,这种扩展机制被模块化带来的天然的扩展能力所取代。由于扩展类加载器是由Java代码实现

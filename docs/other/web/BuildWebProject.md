@@ -11,19 +11,23 @@ tag:
   - springboot
 ---
 
+::: danger 温馨提示
 
-> 项目地址https://github.com/ChenSino/ChenSino.git，每个节点的代码使用commitId作为区分，想看某个节点代码，直接还原到对应commitid即可，执行`git reset --hard <commitId>`
+[项目地址](https://github.com/ChenSino/ChenSino.git)，每个节点的代码使用commitId作为区分，想看某个节点代码，直接还原到对应commitid即可，执行git reset --hard commitId
 
-
+:::
 ## 1、后端篇
 
 ### 1.1 初始化springboot项目
+
 `git reset --hard 20e22c237e51fb9c7f01bdfd589a90f47fa73c34  `
+
 #### 1.1.1 使用maven聚合模块以及parent依赖的方式初始化好了项目
+
 > 问题1  
 > 分模块后，如何读取到其他模块中的bean，比如全局异常处理放在了common模块，在业务模块依赖了common，如何让common中的全局异常拦截生效？  
-> 首先要明白无法common模块的component在core-biz不生效的原因是在biz模块默认扫描的component的包范围是启动类所在的包，也就是`com.chensino.core`，而全局异常类所在的包是`com.chensino.common.security.exception`，根本没有被扫描到。
-> 
+> 首先要明白无法common模块的component在core-biz不生效的原因是在biz模块默认扫描的component的包范围是启动类所在的包，也就是`com.chensino.core`，而全局异常类所在的包是`com.chensino.common.security.exception`，根本没有被扫描到。  
+
 ![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728165959.png)
 
 解决方法有三种
@@ -131,6 +135,10 @@ git reset --hard 1c4d8022ba4b34187a1627534e05ec69399fc4a9
 springboot作为开箱即用的框架，默认使用slfj+logback日志框架
 ![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728180403.png)  
 即使不添加logback.xml配置，springboot也会默认输出console上的日志，生产环境肯定还是需要把日志写入到文件的，所以先添加一下logback.xml配置，这个模板可以直接用，要改的就是日志存储位置以及包名
+<<<<<<< HEAD
+=======
+
+>>>>>>> ad166c3b (fix(java): Fix some syntax error.)
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!--

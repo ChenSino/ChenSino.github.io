@@ -105,5 +105,9 @@ export default sidebar({
       collapsable: true,
       children: "structure",
     },
+  ],
+  "/other/web/": [
+    "Restful",
+    "BuildWebProject"
   ]
 });
