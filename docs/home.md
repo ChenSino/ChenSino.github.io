@@ -1,17 +1,17 @@
 ---
 home: true
 icon: home
-title: 项目主页
+title: Home
 heroImage: /logo.svg
-heroText: 项目名称
-tagline: 你可以在这里放置或是整个项目的描述。
+heroText: ChenSino
+tagline: 小白进阶之路
 actions:
-  - text: 使用指南 💡
-    link: /guide/
+  - text: 跟着Sino学Java 💕 
+    link: /java/
     type: primary
 
-  - text: 博客主页 🏠
-    link: /
+  - text: 跟着Sino学前端 💗
+    link: /frontweb/
 
 features:
   - title: Markdown 增强
