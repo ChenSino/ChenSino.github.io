@@ -1,7 +1,6 @@
 import { defineUserConfig } from "vuepress";
 import theme from "./theme";
 import { searchPlugin } from "@vuepress/plugin-search";
-import { photoSwipePlugin } from "vuepress-plugin-photo-swipe";
 import { componentsPlugin } from "vuepress-plugin-components";
 
 export default defineUserConfig({
@@ -14,11 +13,9 @@ export default defineUserConfig({
     searchPlugin({
       // 你的选项
     }),
-    photoSwipePlugin({
-      // your options
-    }),
     componentsPlugin({
-      components: ["CodePen","Badge",]
+      components: ["CodePen","Badge"],
+      backToTop: true
     }),
   ],
 

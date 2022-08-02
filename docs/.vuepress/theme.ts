@@ -5,7 +5,7 @@ import sidebar from "./sidebar";
 
 
 export default hopeTheme({
-  hostname: "https://vuepress-theme-hope-v2-demo.mrhope.site",
+  hostname: "https://ChenSino.github.io",
 
   fullscreen: true,
 
@@ -34,9 +34,19 @@ export default hopeTheme({
 
   displayFooter: true,
 
+  themeColor: {
+    blue: "#2196f3",
+    red: "#f26d6d",
+    green: "#3eaf7c",
+    orange: "#fb9b5f",
+  },
+
   pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime"],
 
   blog: {
+    name:"ChenSino",
+    avatar:"https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220802180305.png",
+    roundAvatar: true,
     description: "洛星星的爸爸，芳狗子的老公",
     intro: "https://chensino.github.io/",
     medias: {
@@ -52,10 +62,10 @@ export default hopeTheme({
     },
   },
   plugins: {
+    
     blog: {
       autoExcerpt: true,
     },
-
     // 如果你不需要评论，可以直接删除 comment 配置，
     // 以下配置仅供体验，如果你需要评论，请自行配置并使用自己的环境，详见文档。
     // 为了避免打扰主题开发者以及消耗他的资源，请不要在你的正式环境中直接使用下列配置!!!!!

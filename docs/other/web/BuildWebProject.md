@@ -30,7 +30,7 @@ tag:
 
 ![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728165959.png)
 
-解决方法有三种
+解决方法有三种  
 [参考此处文档](https://afatpig.oss-cn-chengdu.aliyuncs.com/ebooks/Springboot.pdf)
 
 1. 把扫描范围搞大一点
