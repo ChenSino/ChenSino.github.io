@@ -85,6 +85,13 @@ export default sidebar({
       children: "structure",
     },
     {
+      text: "MarkDown",
+      icon: "markdown",
+      prefix: "markdown/",
+      collapsable: true,
+      children: "structure",
+    },
+    {
       text: "工具软件",
       icon: "software",
       prefix: "tools/",

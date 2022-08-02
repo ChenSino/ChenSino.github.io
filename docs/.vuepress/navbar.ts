@@ -39,6 +39,7 @@ export default navbar([
       { text: "Git", icon: "git", link: "git/GitCommands" },
       { text: "Linux", icon: "linux", link: "linux/CommonUsedCMD" },
       { text: "DataBase", icon: "java", link: "database/CPUOverLoad" },
+      { text: "MarkDown", icon: "markdown", link: "markdown/" },
       { text: "工具软件", icon: "software", link: "tools/IdeaDebug" },
       { text: "小组分享", icon: "share", link: "training/CloudServiceTraining" },
       { text: "随笔杂记", icon: "activity", link: "essay/2022-04-12" },
