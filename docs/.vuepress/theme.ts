@@ -62,7 +62,6 @@ export default hopeTheme({
     },
   },
   plugins: {
-    
     blog: {
       autoExcerpt: true,
     },
@@ -91,7 +90,9 @@ export default hopeTheme({
       // provider: "Waline",
       // serverURL: "https://vuepress-theme-hope-comment.vercel.app",
     },
-
+    photoSwipe: {
+      
+    },
     mdEnhance: {
       // enableAll: true,
       tabs: true,
