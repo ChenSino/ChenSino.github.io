@@ -1,5 +1,6 @@
 import { defineUserConfig } from "vuepress";
 import theme from "./theme";
+import { searchPlugin } from "@vuepress/plugin-search";
 
 export default defineUserConfig({
   lang: "zh-CN",
@@ -7,4 +8,9 @@ export default defineUserConfig({
   description: "ChenSino's Blog",
   base: "/",
   theme,
+  plugins: [
+    searchPlugin({
+      // 你的选项
+    }),
+  ],
 });
