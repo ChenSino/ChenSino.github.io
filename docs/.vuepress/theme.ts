@@ -47,7 +47,6 @@ export default hopeTheme({
       "/guide/encrypt.html": ["123456"],
     },
   },
-
   plugins: {
     blog: {
       autoExcerpt: true,
@@ -80,10 +79,28 @@ export default hopeTheme({
     },
 
     mdEnhance: {
-      enableAll: true,
+      // enableAll: true,
+      tabs: true,
+      chart: true,
+      echarts: true,
+      mermaid: true,
+      codetabs: true,
+      demo: true,
+      tasklist: true,
+      // 启用图片标记
+      imageMark: true,
+      // 启用图片大小
+      imageSize: true,
+      //幻灯片
       presentation: {
         plugins: ["highlight", "math", "search", "notes", "zoom"],
       },
+      //语法高亮
+      mark: true,
+      //流程图
+      flowchart: true,
+      //自定义容器
+      container: true
     },
   },
 });
