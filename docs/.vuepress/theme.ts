@@ -7,6 +7,8 @@ import sidebar from "./sidebar";
 export default hopeTheme({
   hostname: "https://vuepress-theme-hope-v2-demo.mrhope.site",
 
+  fullscreen: true,
+
   author: {
     name: "ChenSino",
     url: "https://ChenSino.github.io",
@@ -19,6 +21,8 @@ export default hopeTheme({
   repo: "ChenSino/ChenSino.github.io",
 
   docsDir: "docs",
+
+  docsBranch:"dev",
 
   // navbar
   navbar: navbar,
