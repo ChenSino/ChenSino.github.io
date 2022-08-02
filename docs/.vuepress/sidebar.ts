@@ -35,7 +35,7 @@ export default sidebar({
     {
       text: "Vite",
       icon: "vue",
-      prefix: "aboutVite/",
+      prefix: "vite/",
       collapsable: true,
       children: [],
     },

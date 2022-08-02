@@ -19,7 +19,7 @@ export default navbar([
     prefix: "/frontweb/",
     children: [
       { text: "Vue", icon: "vue", link: "vue/" },
-      { text: "Vite", icon: "vue", link: "aboutVite/" },
+      { text: "Vite", icon: "vue", link: "vite/" },
       { text: "ES5", icon: "javascript", link: "es5/" },
       { text: "ES6", icon: "javascript", link: "es6/" },
       { text: "TypeScript", icon: "javascript", link: "typeScript/" },
