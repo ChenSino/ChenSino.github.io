@@ -245,7 +245,8 @@ module.exports = {
                 "vue-nextTick",
                 "vueExtend",
                 "vue3LifeTime",
-                "eventBus"
+                "eventBus",
+                "vue-pic"
             ],
             "/docs/frontWeb/javascript/": [
                 "",
