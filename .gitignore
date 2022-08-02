@@ -3,3 +3,5 @@ yarn.lock
 yarn.error
 .idea/
 public/
+docs/.vuepress/.cache/
+docs/.vuepress/.temp/
