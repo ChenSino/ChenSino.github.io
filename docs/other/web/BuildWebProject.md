@@ -1,5 +1,5 @@
 ---
-title: 从零开始搭建前后分离项目
+title: 前后分离项目搭建
 date: 2022-07-14
 author: chenkun
 publish: true

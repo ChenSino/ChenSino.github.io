@@ -26,7 +26,7 @@ export default navbar([
     ]
   },
   {
-    text: "从零开始搭建前后分离项目",
+    text: "前后分离项目搭建",
     icon: "app",
     link: "/other/web/README.md"
   },
