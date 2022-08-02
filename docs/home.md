@@ -16,8 +16,13 @@ actions:
 features:
   - title: Markdown 语法
     icon: markdown
-    details: MarkkDown官方教程
+    details: MarkDown官方教程
     link: https://markdown.com.cn/
+
+  - title: Vue3文档
+    icon: vue
+    details: Vue3中文文档（预览版）
+    link: https://staging-cn.vuejs.org/
 
   - title: VuePress2文档
     icon: vue
@@ -29,15 +34,6 @@ features:
     details: 一个具有强大功能的 vuepress 主题✨
     link: https://vuepress-theme-hope.github.io/v2/zh/
 
-  - title: 幻灯片页面
-    icon: slides
-    details: 添加幻灯片页面以显示你喜欢的内容
-    link: https://vuepress-theme-hope.github.io/v2/zh/guide/layout/slides
-
-  - title: 测试本地页面
-    icon: more
-    details: 测试本地页面跳转
-    link: /java/base/CustomLRU
 copyright: false
 footer: MIT Licensed | Copyright © 2019-present Mr.Hope
 ---

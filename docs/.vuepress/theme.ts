@@ -91,7 +91,7 @@ export default hopeTheme({
       // serverURL: "https://vuepress-theme-hope-comment.vercel.app",
     },
     photoSwipe: {
-      
+
     },
     mdEnhance: {
       // enableAll: true,
