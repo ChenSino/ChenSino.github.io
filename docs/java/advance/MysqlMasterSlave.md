@@ -110,8 +110,6 @@ tag:
 
 7. 在master添加一个账户，并给用户授权，目的是给slave用来从master同步数据用的（创建用户建议用navicat，因为要选择插件为mysql_native_password）
 
-   ![image-20210930101337807](/home/chenkun/TyporaProjects/学习/mysql8搭建主从复制.assets/image-20210930101337807.png)
-
    ```shell
    #如果非要使用命令行创建用户使用以下命令（推荐使用navicat）
    mysql>CREATE USER 'slave'@'%' IDENTIFIED BY 'root';

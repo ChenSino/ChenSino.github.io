@@ -115,7 +115,6 @@ configurations，此configurations列表其实就是要被自动花配置的类�
 
 5. 举例分析，我们在spring.factories中可以看到org.springframework.boot.autoconfigure.EnableAutoConfiguration后有一个org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration，说明springboot希望redis能够自动化配置。接着我们打开RedisAutoConfiguration源码查看。此处我故意没复制源码，用的截图，可以看到截图直接有报错，编译错误，错误的原因是我们还没添加spring-boot-starter-data-redis的依赖。**这里有个问题，为什么明明代码都报错，Cannot resolve symbol xxx（未找到类），但是我们的项目依然可以启动？不信你建立一个简单的springboot项目，只添加web依赖，手动打开RedisAutoConfiguration，发现是报红错的，但是你启动项目，发现没任何问题，why？？**这个问题后面再解答，先接着看自动配置的问题。
 
-![image-20211014164552205](/home/chenkun/TyporaProjects/学习/框架/springboot自动配置原理.assets/image-20211014164552205.png)
 
 6. 先把RedisAutoConfiguration源码复制出来方便我写注释，上面用截图主要是让大家看到报错
 
@@ -254,11 +253,9 @@ public @interface ConditionalOnClass {
 
 ConditionalOnClass类图如下，它继承了condition接口
 
-![image-20211014173235491](/home/chenkun/TyporaProjects/学习/框架/springboot自动配置原理.assets/image-20211014173235491.png)
 
 打开Condition接口如下，查看注释，注释中有说明 **条件判断是在bean定义即将注册到容器之前进行的，**看过springIoC源码的同学应该知道，spring创建一个对象的过程是当服务启动后，先读取xml配置文件（或者通过注解），根据配置文件先定义一个BeanDefinition，然后把这个bean给放到容器（在spring中实际就是一个Map），然后在根据bean定义，通过反射创建真正的对象。反射会触发类加载，当condition条件不满足时，根据如下注释可知，bean定义后续都被拦截了，连注册都不行，所以自然就不可能通过反射创建对象，不反射自然不会触发类加载，不触发类加载那么RedisAutoConfiguration当然啊不会加载，它不加载，那么即使它里面引用了一个不存在的类也不会有啥问题。
 
-![image-20211014172802298](/home/chenkun/TyporaProjects/学习/框架/springboot自动配置原理.assets/image-20211014172802298.png)
 
 
 
@@ -334,21 +331,16 @@ public class RedisAutoConfiguration {
 
 `org.springframework.boot.autoconfigure.AutoConfigurationImportSelector#getAutoConfigurationEntry`
 
-![image-20211019093225350](/home/chenkun/TyporaProjects/学习/框架/springboot自动配置原理.assets/image-20211019093225350.png)
 
 `org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.ConfigurationClassFilter#filter`
 
-![image-20211019093347031](/home/chenkun/TyporaProjects/学习/框架/springboot自动配置原理.assets/image-20211019093347031.png)
 
 `org.springframework.boot.autoconfigure.condition.FilteringSpringBootCondition#match`
 
-![image-20211019093515089](/home/chenkun/TyporaProjects/学习/框架/springboot自动配置原理.assets/image-20211019093515089.png)
 
 `org.springframework.boot.autoconfigure.condition.OnBeanCondition#getOutcomes`
 
-![image-20211019093614723](/home/chenkun/TyporaProjects/学习/框架/springboot自动配置原理.assets/image-20211019093614723.png)
 
 `org.springframework.boot.autoconfigure.condition.OnBeanCondition#getOutcome`
 
-![image-20211019093658594](/home/chenkun/TyporaProjects/学习/框架/springboot自动配置原理.assets/image-20211019093658594.png)
 
