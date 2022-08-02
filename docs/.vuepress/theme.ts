@@ -9,7 +9,7 @@ export default hopeTheme({
 
   author: {
     name: "ChenSino",
-    url: "https://mrhope.site",
+    url: "https://ChenSino.github.io",
   },
 
   iconAssets: "iconfont",
@@ -44,7 +44,7 @@ export default hopeTheme({
 
   encrypt: {
     config: {
-      "/guide/encrypt.html": ["1234"],
+      "/guide/encrypt.html": ["123456"],
     },
   },
 
