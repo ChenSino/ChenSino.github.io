@@ -135,10 +135,6 @@ git reset --hard 1c4d8022ba4b34187a1627534e05ec69399fc4a9
 springboot作为开箱即用的框架，默认使用slfj+logback日志框架
 ![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728180403.png)  
 即使不添加logback.xml配置，springboot也会默认输出console上的日志，生产环境肯定还是需要把日志写入到文件的，所以先添加一下logback.xml配置，这个模板可以直接用，要改的就是日志存储位置以及包名
-<<<<<<< HEAD
-=======
-
->>>>>>> ad166c3b (fix(java): Fix some syntax error.)
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
