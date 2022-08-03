@@ -13,10 +13,10 @@ export default defineUserConfig({
     searchPlugin({
       // 你的选项
     }),
-    componentsPlugin({
-      components: ["CodePen","Badge"],
-      backToTop: true
-    }),
+    // componentsPlugin({
+    //   components: ["CodePen","Badge","FontIcon"],
+    //   backToTop: true
+    // }),
   ],
 
 });
