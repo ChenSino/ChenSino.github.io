@@ -34,6 +34,17 @@ features:
     details: 一个具有强大功能的 vuepress 主题✨
     link: https://vuepress-theme-hope.github.io/v2/zh/
 
+  - title: TypeScript文档
+    icon: typescript
+    details: typescript民间文档
+    link: http://ts.xcatliu.com/introduction/index.html
+
+  - title: TypeScript官方文档
+    icon: typescript
+    details: typescript官方文档
+    link: https://typescript.bootcss.com/basic-types.html
+    
+
 copyright: false
 footer: MIT Licensed | Copyright © 2019-present Mr.Hope
 ---
