@@ -2,13 +2,12 @@
 title: 使用问题记录
 date:  2022-07-28
 author: chenkun
-sidebar: 'auto'
 publish: true
 keys:
 category:
 ---
 
-# 1、继承
+## 1、继承
 
 > 继承使用场景  
 把公共的依赖都放在父模块，在子模块通过parent引用，使用了parent后，在父模块中**dependencies**定义的依赖会自动传递到子模块。
@@ -58,6 +57,7 @@ category:
 
 **子模块配置**
 子模块要想使用lombok，必须显式引用，但是不用指定version
+
 ```xml
 <dependencies>
     <dependency>
@@ -67,18 +67,21 @@ category:
 </dependencies>
 ```
 
-**总结**  
+**总结**
+
 >继承解决的是公共依赖的问题，使用parent继承时，会继承dependencies下所有的依赖，但是不会继承dependencyManagement下的依赖，要想使用就要显式引用，但是不用配置version
 
-# 2、聚合
+## 2、聚合
+
 >使用场景  
 
 如果我们的项目分成了好几个模块，那么我们构建的时候是不是有几个模块就需要构建几次了（到每个模块的目录下执行 mvn 命令）？  
 当然，你逐个构建没问题，但是非要这么麻烦的一个一个的构建吗  
 简单的做法就是使用聚合，一次构建全部模块  
 
-# 3、依赖
-# 4、dependencies  vs dependencyManagement
+## 3、依赖
+
+## 4、dependencies  vs dependencyManagement
 
 它们的区别在第一节已经说明了，这里说一下dependencyManagement使用的注意事项。
 假如我有3个模块分别是moudelA、moduleB、moduleC，moduleB依赖于moduleB，moduleB依赖于moduleC
@@ -92,6 +95,7 @@ moduleA --> moduleB -->mouduleC
 > 把moduleC的dependencyManagement中定义的依赖继承到moduleB，然后在业务模块A中直接通过无版本号方式引入lombok使用
 
 moduleC的pom：
+
 ```xml
  <dependencyManagement>
         <dependencies>
@@ -109,7 +113,9 @@ moduleC的pom：
         </dependencies>
     </dependencyManagement>
 ```
+
 moduleB的pom：
+
 ```xml
 <dependencyManagement>
         <dependencies>
@@ -123,7 +129,9 @@ moduleB的pom：
         </dependencies>
     </dependencyManagement>
 ```
+
 moduleA的pom：
+
 ```xml
  <dependencies>
     <dependency>
@@ -132,8 +140,6 @@ moduleA的pom：
     </dependency>
 </dependencies>
 ```
+
 要注意的是，moduleB如果想把moduleA中dependencyManagement中的内容继承过来，需要指定type为pom，以及scope为import，如果不指定在A模块直接使用会提示没有lombok版本号
-![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728151559.png)
-
-
-
+![a](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728151559.png)

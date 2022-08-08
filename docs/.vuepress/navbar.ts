@@ -10,7 +10,19 @@ export default navbar([
     children: [
       { text: "Java基础", icon: "java", link: "base/Serialization" },
       { text: "Java进阶", icon: "java", link: "advance/ProxyInJava" },
-      { text: "Java虚拟机", icon: "java", link: "jvm/NewObject" }
+      { text: "Java虚拟机", icon: "java", link: "jvm/NewObject" },
+      {
+        text: "Java框架", icon: "java", prefix: "framework/", children: [
+          { text: "Spring", link: "spring/" },
+          { text: "SpringBoot", link: "springboot/" },
+          { text: "Mybatis", link: "mybatis/" },
+        ]
+      },
+      {
+        text: "其他", icon: "other", prefix: "other/", children: [
+          { text: "Maven", link: "maven/" },
+        ]
+      },
     ]
   },
   {

@@ -23,6 +23,22 @@ export default sidebar({
       collapsable: true,
       children: "structure",
     },
+    {
+      text: "Java框架",
+      icon: "write",
+      prefix: "framework/",
+      collapsable: true,
+      children: "structure",
+    }
+  ],
+  "/java/other/":[
+    {
+      text: "Maven",
+      icon: "discover",
+      prefix: "maven/",
+      collapsable: true,
+      children: "structure",
+    },
   ],
   "/frontweb/": [
     {

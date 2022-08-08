@@ -2,7 +2,6 @@
 title: 多模块maven项目的搭建
 date:  2022-07-28
 author: chenkun
-sidebar: 'auto'
 publish: true
 keys:
 category:
