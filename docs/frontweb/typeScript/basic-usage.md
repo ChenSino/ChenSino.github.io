@@ -5,15 +5,13 @@ author: qianxun
 category: 
   - vue知识点
 tag: 
-  - 必会y一板中的 TypeScript
+  - 必会
+  - vue中的 TypeScript
 ---
 
+### 一，模板中的 TypeScript
 
-
-###  一，模板中的 TypeScript
-
-
-在使用了 <script lang="ts"> 或 <script setup lang="ts"> 后，<template> 在绑定表达式中也支持 TypeScript。
+在使用了 &lt;script lang="ts"> 或 &lt;script setup lang="ts"> 后，&lt;template> 在绑定表达式中也支持 TypeScript。
 
 ```vue
 <script setup lang="ts">
@@ -38,11 +36,9 @@ let x: string | number = 1
 </template>
 ```
 
+### 二，为组件的prop标注类型
 
-
-###  二，为组件的prop标注类型
-
-**2.1当使用 `<script setup>` 时，这个 `defineProps()` 宏函数支持从它的参数中推导类型**
+#### 2.1当使用 `<script setup>` 时，这个 `defineProps()` 宏函数支持从它的参数中推导类型
 
 ```vue
 <script setup lang="ts">
@@ -56,11 +52,9 @@ props.bar // number | undefined
 </script>
 ```
 
-这被称之为**“运行时声明**”，因为传递给 `defineProps()` 的参数会作为运行时的 `props` 选项使用。
+这被称之为 ==运行时声明== ，因为传递给 `defineProps()` 的参数会作为运行时的 `props` 选项使用。
 
-
-
-**2.2  然而，通过泛型参数来定义 prop 的类型通常更直接：**
+#### 2.2  然而，通过泛型参数来定义 prop 的类型通常更直接
 
 ```vue
 <script setup lang="ts">
@@ -85,7 +79,8 @@ interface Props {
 const props = defineProps<Props>()
 </script>
 ```
-**2.3  Prop 默认值** 
+
+#### 2.3  Prop 默认值
 
 当使用基于类型的声明时，我们失去了对 prop 定义默认值的能力。这可以通过目前实验性的[响应性语法糖](https://staging-cn.vuejs.org/guide/extras/reactivity-transform.html#reactive-props-destructure)来解决：
 
@@ -102,11 +97,9 @@ const { foo, bar = 100 } = defineProps<Props>()
 </script>
 ```
 
+### 三，为组件的 emit 标注类型
 
-
-###  二，为组件的 emit 标注类型
-
-在 <script setup> 中，emit 函数的类型标注可以通过运行时声明或类型声明进行
+在 &lt;script setup> 中，emit 函数的类型标注可以通过运行时声明或类型声明进行
 
 ```vue
 <script setup lang="ts">
