@@ -1,5 +1,4 @@
 ---
-
 title: 利用vue-cli搭建项目
 date: 2022-07-06  
 author: qianxun
@@ -9,7 +8,7 @@ tag:
   - 必会
 ---
 
-###  创建一个新项目
+### 一、创建一个新项目
 
 ```vue
 vue create vue2-admin
@@ -18,17 +17,15 @@ vue create vue2-admin
 
 这里搭建好的脚手架是采用`vue2+webpack`,并且预装了`vueRouter`、`vuex`、`scss`、`eslint`.
 
-![image-20220809105240533](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220809105240533.png)
+![image-20220809105240533](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220809105240533.png)
 
 生成的文件夹如下所示：
 
-![image-20220809105924589](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220809105924589.png)
+![image-20220809105924589](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220809105924589.png)
 
 `vue-cli` 脚手架搭建完成后，项目中是没有 `vue.config.js` 文件，需要手动创建。
 
-
-
-###   二，创建`vue.config.js`
+### 二、创建`vue.config.js`
 
 `vue.config.js`(相当于之前的`webpack.config.js`) 是一个可选的配置文件。如果项目的 (和`package.json`同级的) 根目录中存在这个文件，那么它会被`@vue/cli-service`自动加载。
 
@@ -68,6 +65,3 @@ module.exports = {
 };
 
 ```
-
-
-
