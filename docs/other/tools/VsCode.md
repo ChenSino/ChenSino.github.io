@@ -28,7 +28,7 @@ category:
 2、启动方式后加 --disable-[gpu](https://so.csdn.net/so/search?q=gpu&spm=1001.2101.3001.7020)，似乎是禁用 GPU 硬件加速
 找其他各种方法都无效，管理员、兼容、改setting.json都没用。
 
-![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/202207151112664.png)
+![1](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/202207151112664.png)
 
 ### 2、在vscode中使用git-bash作为默认终端
 
@@ -59,9 +59,35 @@ category:
     },
 ```
 
-![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/202207151115182.png)
+![2](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/202207151115182.png)
 
 ### 3. vscode代码片段
+
 [参考](https://juejin.cn/post/6844903869424599053)
 
 设置片段格式可以使用[在线生成工具](https://snippet-generator.app/)
+
+### 4. 设置jdk环境
+
+vscode要求`java.jdt.ls.java.home`至少为jdk17，runtime可设置多个，把其中一个设置为默认
+
+```json
+"java.jdt.ls.java.home": "D:\\Program Files\\jdk-17",
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-1.8",
+            "path": "D:\\Program Files\\jdk-1.8",
+            "default": false
+        },
+        {
+            "name": "JavaSE-11",
+            "path": "D:\\Program Files\\jdk-11",
+            "default": true
+        },
+        {
+            "name": "JavaSE-17",
+            "path": "D:\\Program Files\\jdk-17",
+            "default": false
+        }
+    ]
+```
