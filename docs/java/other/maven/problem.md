@@ -143,3 +143,24 @@ moduleA的pom：
 
 要注意的是，moduleB如果想把moduleA中dependencyManagement中的内容继承过来，需要指定type为pom，以及scope为import，如果不指定在A模块直接使用会提示没有lombok版本号
 ![a](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728151559.png)
+
+## 5、springboot 找不到包
+
+> 在聚合maven项目中，maven install 或者 maven package时报错，但是编译时却正常，并且项目使用idea能正常运行。
+
+解决方法是在被依赖的模块pom加入以下内容
+
+```xml
+ <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <classifier>exec</classifier>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+```
+

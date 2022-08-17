@@ -21,7 +21,7 @@ tag:
 
 ### 1.1 初始化springboot项目
 
-`git reset --hard 20e22c237e51fb9c7f01bdfd589a90f47fa73c34  `
+`git reset --hard 20e22c237e51fb9c7f01bdfd589a90f47fa73c34`
 
 #### 1.1.1 使用maven聚合模块以及parent依赖的方式初始化好了项目
 
@@ -29,12 +29,13 @@ tag:
 > 分模块后，如何读取到其他模块中的bean，比如全局异常处理放在了common模块，在业务模块依赖了common，如何让common中的全局异常拦截生效？  
 > 首先要明白无法common模块的component在core-biz不生效的原因是在biz模块默认扫描的component的包范围是启动类所在的包，也就是`com.chensino.core`，而全局异常类所在的包是`com.chensino.common.security.exception`，根本没有被扫描到。  
 
-![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728165959.png)
+![1](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728165959.png)
 
 解决方法有三种  
 [参考此处文档](https://afatpig.oss-cn-chengdu.aliyuncs.com/ebooks/Springboot.pdf)
 
-1. 把扫描范围搞大一点
+1. 把扫描范围搞大一点  
+
 ```java
 package com.chensino.core;
 
@@ -54,25 +55,29 @@ public class App {
     }
 
 }
-
 ```
+
 2. 在原有的基础上加上新的包，和方法1本质一样都是增加包的扫描范围
+
 ```java
 @ComponentScan({"com.chensino.core","com.chensino.common"})
 ```
 
 3. 使用spi，利用自动装配
+
 在resource目录新建META-INF/spring.factories，内容如下
+
 ```properties
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.chensino.common.security.exception.GlobalExceptionHandlerResolver
 ```
-![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728171332.png)
 
+![1](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728171332.png)
 
 4. 使用`@import`注解(会把import的实体加入ioc)  
+
 import作用  
-![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728171753.png)  
+![2](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728171753.png)  
 
 ```java
 @SpringBootApplication
@@ -85,7 +90,9 @@ public class App {
 
 }
 ```
+
 5. 对`@import`进行封装  
+
 在原common模块加上注解`EnableGlobalExceptionHandlerConfiguration`，在注解中import全局异常处理类
 ![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728172557.png)  
 在启动类加上注解`EnableGlobalExceptionHandlerConfiguration`
