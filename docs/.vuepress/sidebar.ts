@@ -32,6 +32,7 @@ export default sidebar({
     }
   ],
   "/java/other/":[
+   "JdkVersion",
     {
       text: "Maven",
       icon: "discover",

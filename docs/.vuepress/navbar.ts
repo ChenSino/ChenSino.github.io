@@ -21,6 +21,7 @@ export default navbar([
       {
         text: "其他", icon: "other", prefix: "other/", children: [
           { text: "Maven", link: "maven/" },
+          { text: "Java版本", icon: "java",link:"JdkVersion.md" },
         ]
       },
     ]
