@@ -1,0 +1,1 @@
+import{_ as e}from"./plugin-vue_export-helper.21dcd24c.js";import{o as t,c as r}from"./app.b3fdbcec.js";const o={};function c(_,a){return t(),r("div")}var i=e(o,[["render",c],["__file","vue-authority.html.vue"]]);export{i as default};
