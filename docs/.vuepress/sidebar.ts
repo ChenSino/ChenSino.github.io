@@ -40,6 +40,13 @@ export default sidebar({
       collapsable: true,
       children: "structure",
     },
+    {
+      text: "Java问题定位",
+      icon: "java",
+      prefix: "locateproblem/",
+      collapsable: true,
+      children: "structure",
+    },
   ],
   "/frontweb/": [
     {
