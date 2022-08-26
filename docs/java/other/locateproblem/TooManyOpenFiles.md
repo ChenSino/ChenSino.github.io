@@ -28,7 +28,7 @@ java.io.IOException: Too many open files
 Linux中每个进程、每个用户打开的文件数量是有限制的，查看数量限制可使用`ulimit`命令，常使用命令如下：
 
 - `ulimit -a`：查看系统资源设置
-- `ulimit -n`：查看系统同一时间最多可打开的文件数量
+- `ulimit -n`：查看系统同一时间一个进程最多可打开的文件数量
 - `lsof`：查看当前系统打开的所有文件
 - `lsof | wc -l`： 统计系统已打开的文件数
 - `lsof -p <pid>`：查看某个进程打开的文件
@@ -63,3 +63,9 @@ $ ulimit -n
 根据`ulimit -n`得知系统设置的最大打开文件为65535,然后通过`lsof|wc -l`发现，打开的文件已经超过65535,所以报错`Too many files open`是正常的。
 接下来使用`jps -lv`查看报错的java服务进程id，再使用`lsof -p <pid>`查看打开的文件都有哪些，通过查看发现有一个文件ip2region.db被打开几万次，然后
 到代码查找此文件名，定位到代码，发现一段代码打开文件后未调用close方法导致程序运行到一段时间就抛出Too many files open异常。
+
+::: danger 注意
+
+`lsof`查看到的结果数和实际并不一致，以上描述不正确，定位Too many open files问题仍然可按照上述思路找到被打开多次的文件，然后根据文件名去定位问题。
+
+:::
