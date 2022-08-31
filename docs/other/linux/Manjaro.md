@@ -33,10 +33,7 @@ category:
 -rw-r--r-- 1 root root  191  1月  8  2021 logrotate.timer
 ```
 
-
-
 可以看到和[这个问题](https://blog.csdn.net/chen462488588/article/details/118737574?spm=1001.2014.3001.5501)一模一样的套路。
-
 3. 到 logrotate.service查看它实际上执行的是什么命令
 
 ```shell
@@ -75,16 +72,10 @@ ProtectKernelTunables=true
 ProtectSystem=full
 RestrictNamespaces=true
 RestrictRealtime=true
-
-
 ```
 
 可以看到`ExecStart=/usr/sbin/logrotate /etc/logrotate.conf`
 执行的是这个命令，那就好办了，手动以debug模式执行一下此命令
-
-
-
-
 4. 查看执行结果
 
 ```shell
@@ -168,13 +159,9 @@ considering log /var/log/btmp
 ```
 
 5. 在日志中找error
-
    ![image-20220322171948840](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220322171948840.png)
-
 6. 报错很明显了是mysqlroute的日志切割失败了。
-
 7. logrotate其实是被很多程序都使用了，其配置文件在/etc/logrotate.d下
-
    ![image-20220322172023905](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220322172023905.png)
 
 可以看到nginx ，mysqlrouter，Samba等都用了logrotate，并且他们都有自己的配置，根据上面我们已经知道了是mysqlrouter配置有问题，我们只需要打开nginx的配置和mysqlrouter对比就知道了。经过比我我的mysqlrouter的配置文件在var前面少了一个/ 加上就好了
@@ -182,6 +169,7 @@ considering log /var/log/btmp
 ![image-20220322172038617](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220322172038617.png)
 
 ### linux下输入法无法输入中文中括号问题
+
 如果使用的是fcitx5，修改/usr/share/fcitx5/punctuation/punc.mb.zh_CN下的对应符号即可，打开文件有两列，第一列代表英文
 状态下的符号，第二列是中文下符号。
 有时发现无论怎么输入都只有英文，那么就续呀点击一下输入法上的半角符号
@@ -225,9 +213,19 @@ kde设置proxy有个很大的bug,就是无法全局，搞笑的是通过kde设�
 
 ### 4、Manjaro设置DNS
 
-**背景**
-
 > 用双网卡同时上内外网，有时一个域名是内网才能解析的，比如我司的iccm.sonoscape.com，这个是一个内网域名，要走内部DNS才能访问到，
 >
 > 但是公司因该是有两个DNS服务器，一个用来解析外网访问xxx.sonoscape.com，另一个是用来访问内网的xxx.sonoscape.com,
 
+### 4、Manjaro fcitx5中文大括号问题
+
+```shell
+sudo vim /usr/share/fcitx5/punctuation/punc.mb.zh_CN
+```
+
+修改对应的行符号就可以了
+
+```bash
+[ 【
+] 】
+```
