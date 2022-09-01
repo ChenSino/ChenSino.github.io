@@ -96,6 +96,7 @@ public class App {
 在原common模块加上注解`EnableGlobalExceptionHandlerConfiguration`，在注解中import全局异常处理类
 ![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728172557.png)  
 在启动类加上注解`EnableGlobalExceptionHandlerConfiguration`
+
 ```java
 @SpringBootApplication
 @EnableGlobalExceptionHandlerConfiguration
@@ -110,11 +111,12 @@ public class App {
 
 本次项目采用spi的方式
 
-
 ### 1.2 全局异常处理
+
 ```bash
 git reset --hard feb6a4a830a9c323dd58427e8aa0be9af0eb1ef3
 ```
+
 ```java
 @RestControllerAdvice
 @Slf4j
@@ -133,16 +135,21 @@ public class GlobalExceptionHandlerResolver {
     }
 }
 ```
+
 springboot全局异常处理比较简单，直接拦截Exception，设置response响应码为500，然后返回统一实体。
 
 ### 1.3 aop统一日志处理
+
 #### 1.3.1 添加基础日志
+
 ```bash
 git reset --hard 1c4d8022ba4b34187a1627534e05ec69399fc4a9
 ```
+
 springboot作为开箱即用的框架，默认使用slfj+logback日志框架
 ![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220728180403.png)  
 即使不添加logback.xml配置，springboot也会默认输出console上的日志，生产环境肯定还是需要把日志写入到文件的，所以先添加一下logback.xml配置，这个模板可以直接用，要改的就是日志存储位置以及包名
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
@@ -214,6 +221,98 @@ springboot作为开箱即用的框架，默认使用slfj+logback日志框架
         <appender-ref ref="console"/>
     </root>
 </configuration>
+```
+
+### 1.4 添加Mybatis-plus
+
+#### 1.4.1 maven依赖
+
+```xml
+<!-- mybatis-plus-->
+<dependency>
+    <groupId>com.baomidou</groupId>
+    <artifactId>mybatis-plus-boot-starter</artifactId>
+    <version>${mybatis-plus.version}</version>
+</dependency>
+<!-- 开发环境sql监控性能分析-->
+<dependency>
+    <groupId>p6spy</groupId>
+    <artifactId>p6spy</artifactId>
+    <version>${p6spy.version}</version>
+</dependency>
+<!-- jdbc驱动-->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>${jdbc.version}</version>
+</dependency>
+```
+
+#### 1.4.2 springboot配置
+
+```yaml
+spring:
+  datasource:
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver #此处用p6sy驱动代替原jdbc驱动
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:p6spy:mysql://${MYSQL_HOST:chensino-mysql}:${MYSQL_PORT:3306}/${MYSQL_DB:chensino}?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: delFlag  #逻辑删除
+      logic-delete-value: 1 
+      logic-not-delete-value: 0
+```
+
+#### 1.4.3 其他配置
+
+最重要的是开启注解扫描，指定mapper所在的包
+
+```java
+@SpringBootApplication()
+@MapperScan("com.chensino.core.mapper")
+public class App {
+
+    public static void main(String[] args) {
+        SpringApplication.run(App.class, args);
+    }
+
+}
+```
+
+其他的service、mapper.xml、entity推荐使用idea插件连接数据库自动生成，插件名字是MybatisX-Generator，下载好后连接数据库，在对应表上右键选择MybatisX-Generator，再填写相应信息即可自动生成相应的文件
+
+![20220901150908](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220901150908.png)
+
+spy.properties配置：
+
+```yaml
+#3.2.1以上使用
+modulelist=com.baomidou.mybatisplus.extension.p6spy.MybatisPlusLogFactory,com.p6spy.engine.outage.P6OutageFactory
+
+# 自定义日志打印
+logMessageFormat=com.baomidou.mybatisplus.extension.p6spy.P6SpyLogger
+#日志输出到控制台
+appender=com.baomidou.mybatisplus.extension.p6spy.StdoutLogger
+# 使用日志系统记录 sql
+#appender=com.p6spy.engine.spy.appender.Slf4JLogger
+# 设置 p6spy driver 代理
+deregisterdrivers=true
+# 取消JDBC URL前缀
+useprefix=true
+# 配置记录 Log 例外,可去掉的结果集有error,info,batch,debug,statement,commit,rollback,result,resultset.
+excludecategories=info,debug,result,commit,resultset
+# 日期格式
+dateformat=yyyy-MM-dd HH:mm:ss
+# 实际驱动可多个
+#driverlist=org.h2.Driver
+# 是否开启慢SQL记录
+outagedetection=true
+# 慢SQL记录标准 2 秒
+outagedetectioninterval=2
 ```
 
 ### 1.4 添加Security
