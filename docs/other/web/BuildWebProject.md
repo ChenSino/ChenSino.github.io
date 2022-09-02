@@ -409,11 +409,37 @@ Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8
     private LocalDateTime updateTime;
 ```
 
-### 1.6 添加Security
+### 1.6 添加swagger
 
-### 1.7 角色权限控制
+#### 1.6.1 依赖
 
-### 1.8 菜单权限
+使用3.0.0只需要下面这一个依赖
+
+```xml
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-boot-starter</artifactId>
+    <version>3.0.0</version>
+</dependency>
+```
+
+#### 1.6.2 swagger配置
+
+[swagger基本配置](https://gist.github.com/ChenSino/0572236b3bbbbff7a40d7e2737205c24)
+
+#### 1.6.3 使用
+
+1. 在Controller添加注解`@Api(value = "用户管理",tags = {"用户管理"})`
+2. 在方法上添加注解`@ApiOperation(value = "根据id查询-value")`
+
+注意，Controller上注解中的tags是一个逻辑分组，比如如果把两个不同的Contrller都用同样的tags,则这两个不同Controller中的接口会被放到一个分组下，一般情况下我们只需要按照上面配置即可，没必要高的过于复杂
+![20220902135942](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220902135942.png)
+
+### 1.7 添加Security
+
+### 1.8 角色权限控制
+
+### 1.9 菜单权限
 
 ## 2、前端篇
 
