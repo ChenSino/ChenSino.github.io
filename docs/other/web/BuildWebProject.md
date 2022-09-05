@@ -437,6 +437,24 @@ Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8
 
 ### 1.7 添加Security
 
+#### 1.7.1 maven依赖
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+```
+
+#### 1.7.2 启动
+
+引入依赖后直接启动项目在控制台会生成随机密码，用户名：user 密码：xx登陆。此时swagger也需要用户名和密码才能访问
+
+![20220902155557](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220902155557.png)
+
+#### 1.7.3 
+
+
 ### 1.8 角色权限控制
 
 ### 1.9 菜单权限

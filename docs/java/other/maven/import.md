@@ -30,3 +30,34 @@ scope=import只能用在dependencyManagement并且type必须为pom,作用就是�
     </dependencies>
 </dependencyManagement>
 ```
+
+## 3.使用parent
+
+使用parent也能实现类似上面import的功能，但是parent只能有一个，所以以上方式是对parent的补充，类似java单继承多实现
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.4.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--此处无需写version，因为parent已经包含了版本信息-->
+                <!-- <version></version> -->
+            </plugin>
+        </plugins>
+    </build>
+</project>
+```
