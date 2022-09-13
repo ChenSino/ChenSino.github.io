@@ -127,3 +127,7 @@ public class User implements UserDetails, CredentialsContainer {
 	private final boolean enabled;
 }
 ```
+
+## 4、开启方法级别的权限控制
+
+`@EnableGlobalMethodSecurity(prePostEnabled=true)`在配置类要开启方法级别权限控制后，就可以使用`@PreAuthorize`, `@PostAuthorize`, `@Secured`等配合上el表达式，对方法进行鉴权。

@@ -452,7 +452,8 @@ Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8
 
 ![20220902155557](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220902155557.png)
 
-#### 1.7.3 
+#### 1.7.3 security对接数据库，从数据库读取角色和权限
+
 
 
 ### 1.8 角色权限控制
