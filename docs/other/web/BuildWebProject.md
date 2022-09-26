@@ -435,6 +435,10 @@ Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8
 注意，Controller上注解中的tags是一个逻辑分组，比如如果把两个不同的Contrller都用同样的tags,则这两个不同Controller中的接口会被放到一个分组下，一般情况下我们只需要按照上面配置即可，没必要高的过于复杂
 ![20220902135942](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220902135942.png)
 
+#### 1.6.4 访问入口
+
+`http://<IP:PORT>/swagger-ui/index.html`
+
 ### 1.7 添加Security
 
 #### 1.7.1 maven依赖
@@ -454,9 +458,150 @@ Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8
 
 #### 1.7.3 security对接数据库，从数据库读取角色和权限
 
+要从数据库读取用户到security上下文，需要重写`com.chensino.core.security.service.CustomUserDetailsService#loadUserByUsername`，在重写方法中去进行具体的业务处理，其实也就是查询数据库那些，当然数据库表也要创建，至少包括用户表t_user、角色表t_role、权限表t_menu、用户角色表t_user_role、角色权限表t_role_menu，也就是常说的RBAC(role based access control基于角色得权限控制)，这里得权限指的是页面权限，因此我得表取名为menu，实际上权限包含数据权限、界面权限两种。
+
+我重写UserDetailsService的如下：
+
+```java
+
+@AllArgsConstructor
+public class CustomUserDetailsService implements UserDetailsService {
+    private final SysUserService sysUserService;
+
+    /**
+     * @param username the username identifying the user whose data is required.
+     * @return
+     * @throws UsernameNotFoundException
+     */
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        SysUser sysUser = Optional.ofNullable(sysUserService.getOne(Wrappers.<SysUser>query().lambda().eq(SysUser::getUserName, username))).orElseThrow(() -> new UsernameNotFoundException("用户不存在"));
+        UserInfo userInfo = sysUserService.findUserInfo(sysUser);
+        return getUserDetails(userInfo);
+    }
+
+    /**
+     * 根据sysUser构造UserDetails
+     *
+     * @param info
+     * @return
+     */
+    private UserDetails getUserDetails(UserInfo info) {
+        Set<String> dbAuthsSet = new HashSet<>();
+        if (ArrayUtil.isNotEmpty(info.getRoles())) {
+            // 把角色写入用户信息
+            info.getRoles().forEach(role -> dbAuthsSet.add(SecurityConstants.ROLE + role.getRoleCode()));
+            // 把权限（资源）写入用户信息
+            dbAuthsSet.addAll(Arrays.asList(info.getPermissions()));
+        }
+        Collection<? extends GrantedAuthority> authorities = AuthorityUtils
+                .createAuthorityList(dbAuthsSet.toArray(new String[0]));
+        SysUser user = info.getSysUser();
+        return new CustomSecurityUser(user.getUserId(), user.getDeptId(), user.getPhone(), user.getAvatar(), user.getUserName(), user.getPassword(), !user.getLockFlag(), true, true, !user.getLockFlag(), authorities);
+    }
+```
+
+
+
+重写后，需要在Security的配置类中引入对应的Bean
+
+```java
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig {
+
+    /**
+     * 自定义密码加密方式，解密会自动调用PasswordEncoder的match方法
+     *
+     * @return
+     */
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    /**
+     * WebSecurity 处理静态资源不走过滤器，注意区别HttpSecurity,HttpSecurity主要用来处理后端接口，比如login接口虽然可以ignore,但是
+     * 还有其他逻辑还要走过滤器，如果使用WebSecurity，则login直接就不会受到任何过滤器处理，代表这个接口已经超脱于Security之外了。一句话：
+     * WebSecurity负责过滤不需要处理的静态资源，HttpSecurity负责处理普通的api接口。
+     *
+     * @return
+     */
+    @Bean
+    WebSecurityCustomizer webSecurityCustomizer() {
+        return web -> web.ignoring().antMatchers("/user/list");
+    }
+
+    /**
+     * 处理接口权限
+     */
+    @Bean
+    @Order(2)
+    public SecurityFilterChain webSiteSecurityFilterChain(HttpSecurity http) throws Exception {
+        return http.antMatcher("/**")
+                .authorizeRequests()
+                // 所有请求都必须要认证才可以访问
+                .anyRequest()
+                .hasRole("ADMIN")
+//                .permitAll()
+                .and()
+                // 禁用csrf
+                .csrf()
+                .disable()
+                // 启用表单登录
+                .formLogin()
+                .permitAll()
+                .and()
+                // 捕获成功认证后无权限访问异常，直接跳转到 百度
+                .exceptionHandling()
+                .accessDeniedHandler((request, response, exception) -> response.sendRedirect("http://www.baidu.com"))
+                .and()
+                .build();
+    }
+
+    @Bean
+    UserDetailsService userDetailsService(SysUserService sysUserService) {
+//        System.out.println(new BCryptPasswordEncoder().encode("123456"));
+        return new CustomUserDetailsService(sysUserService);
+    }
+}
+```
+
 
 
 ### 1.8 角色权限控制
+
+#### 1.8.1 接口权限控制
+
+定义一个Component，从Security上下文读取用户权限信息，注释中有写明，其实用户得角色和菜单权限都在authorities 中，不同得是角色会有个ROLE_前缀
+
+<script src="https://gist.github.com/ChenSino/9f2f55e145eaaf2a1b2ab55c45cb7edd.js"></script>
+
+使用权限控制接口
+
+```java
+    //此接口需要ADMIN角色
+	@SysLog("获取权限")
+    @GetMapping("authentication")
+    @PreAuthorize("@pms.hasRole('ADMIN')")
+    public ResponseEntity<Object> getAuthentication() {
+        return ResponseEntity.ok(SecurityContextHolder.getContext().getAuthentication());
+    }
+
+//此接口需要user_query权限
+   @ApiOperation(value = "根据id查询-value")
+    @SysLog("根据用户id查询")
+    @GetMapping("/{userId}")
+    @PreAuthorize("@pms.hasPermission('user_query')")
+    public ResponseEntity<SysUser> getUserById(@PathVariable Long userId) {
+        SysUser user = sysUserService.getById(userId);
+        globalCache.set("user:" + user.getUserName(), user);
+        return ResponseEntity.ok(user, "根据id查询用户,username=" + user.getUserName());
+    }
+```
+
+
 
 ### 1.9 菜单权限
 
