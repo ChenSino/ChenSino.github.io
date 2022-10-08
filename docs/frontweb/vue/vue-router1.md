@@ -123,5 +123,4 @@ export default {
 
 ```
 
-
-
+更多关于在组合式` API`中使用`vue-router`请参考[官网](https://router.vuejs.org/zh/guide/advanced/composition-api.html)
