@@ -576,7 +576,7 @@ public class SecurityConfig {
 
 定义一个Component，从Security上下文读取用户权限信息，注释中有写明，其实用户得角色和菜单权限都在authorities 中，不同得是角色会有个ROLE_前缀
 
-<script src="https://gist.github.com/ChenSino/9f2f55e145eaaf2a1b2ab55c45cb7edd.js"></script>
+[代码展示](https://gist.github.com/ChenSino/9f2f55e145eaaf2a1b2ab55c45cb7edd)
 
 使用权限控制接口
 
