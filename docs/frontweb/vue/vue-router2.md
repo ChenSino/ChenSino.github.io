@@ -79,7 +79,7 @@ hash 是 URL 中 hash (#) 及后面的那部分，常用作锚点在页面内进
 
 ###  四，原生js实现前端路由
 
-4.1基于hash实现
+##### 4.1基于hash实现
 
 ```html
 <!DOCTYPE html>
@@ -122,7 +122,7 @@ hash 是 URL 中 hash (#) 及后面的那部分，常用作锚点在页面内进
 2. 我们监听`hashchange`事件。一旦事件触发，就改变**`routerView`**的内容，若是在`vue`中，这改变的应当是**router-view**这个组件的内容
 3. 为何又监听了`load`事件？这时应为页面第一次加载完不会触发 `hashchange`，因而用`load`事件来监听`hash`值，再将视图渲染成对应的内容。
 
-4.2  基于 history 实现
+##### 4.2  基于 history 实现
 
 ```html
 <!DOCTYPE html>
