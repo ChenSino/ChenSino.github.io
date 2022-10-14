@@ -30,8 +30,14 @@ yarn 是由 Facebook、Google、Exponent 和 Tilde 联合推出了一个*新的 
 
 ##  三，yarn优点
 
-![image-20221014114510133](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20221014114510133.png)
+![image-20221014114909514](http://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20221014114909514.png)
 
+之前一直有个误区，就是yarn不用设置淘宝镜像，速度慢的话，依旧需要设置
 
+```
+
+yarn config set registry 'https://registry.npm.taobao.org' 
+
+```
 
 [yarn 中文文档](https://yarn.bootcss.com/docs)

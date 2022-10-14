@@ -8,7 +8,9 @@ tag:
   - 必会
 ---
 
-一，什么是npm
+## 一，什么是npm
+
+
 
 npm是node官方的包管理工具
 		cnpm 是淘宝NPM镜像官网，来自[淘宝NPM镜像官网](https://developer.aliyun.com/mirror/NPM?from=tnpm)的说明：
@@ -31,7 +33,9 @@ http://registry.npmjs.org
 npm config get registry
 ```
 
-二，什么时候使用cnpm? 
+## 二，什么时候使用cnpm? 
+
+
 
 因为npm的远程服务器在国外，所以有时候难免出现访问过慢，甚至无法访问的情况。
 
@@ -73,3 +77,4 @@ npm config get registry
 
 
 
+### [【混淆系列】三问：npx、npm、cnpm、pnpm区别你搞清楚了吗？](https://zhuanlan.zhihu.com/p/494076214)
