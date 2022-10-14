@@ -124,7 +124,7 @@ mapComponent(serviceMap)
 
 ### 三，按钮权限
 
-[使用自定义指令来实现按钮级别的权限控制]()
+[使用自定义指令来实现按钮级别的权限控制](https://chensino.github.io/frontweb/vue/vue-Direactive.html)
 
 参考文章
 
