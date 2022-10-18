@@ -33,15 +33,17 @@ http://registry.npmjs.org
 npm config get registry
 ```
 
+<br/>
+<br/>
+
+
 ## 二，什么时候使用cnpm? 
-
-
-
+真好笑！ :joy:
+❤️
 因为npm的远程服务器在国外，所以有时候难免出现访问过慢，甚至无法访问的情况。
 
 **第一种：**
-
-直接安装cnpm 安装淘宝提供的cnpm，并更改服务器地址为淘宝的国内地址， 
+<p style="color:orange">直接安装cnpm 安装淘宝提供的cnpm，并更改服务器地址为淘宝的国内地址，</p> 
 
 ```
 npm install -g cnpm --registry=https://registry.npm.taobao.org
