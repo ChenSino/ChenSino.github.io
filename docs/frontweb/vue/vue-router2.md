@@ -1,5 +1,5 @@
 ---
-title: vue-router的本质
+title: vue-router源码浅析
 date: 2022-10-08 
 author: qianxun
 category: 
@@ -20,25 +20,25 @@ tag:
 
 一般来说，浏览器端的路由分为两种：
 
-	1. hash 路由，特征是` url` 后面会有 # 号，如` baidu.com/#foo/bar/baz`。
-	2. history路由，`url` 和普通路径没有差异。如 `baidu.com/foo/bar/baz`。
+    1. hash 路由，特征是` url` 后面会有 # 号，如` baidu.com/#foo/bar/baz`。
+    2. history路由，`url` 和普通路径没有差异。如 `baidu.com/foo/bar/baz`。
 
 我们已经讲过了路由的本质，那么要实现前端路由，需要解决两个核心：
 
-1. 如何改变 URL 却不引起页面刷新？
-2. 如何检测 URL 变化了？，并且展示对应的组件
+    1. 如何改变 URL 却不引起页面刷新？
+    2. 如何检测 URL 变化了？，并且展示对应的组件
 
 ## 三，路由简单实现
 
-#### 3.1 **hash**模式
+### 3.1 **hash**模式
 
-hash 是 URL 中 hash (#) 及后面的那部分，常用作锚点在页面内进行导航，**改变 URL 中的 hash 部分不会引起页面刷新**。
+hash 是 URL 中 hash (#) 及后面的那部分，常用作锚点在页面内进行导航，改变 URL 中的 hash 部分不会引起页面刷新。
 
 通过 hashchange 事件监听 URL 的变化，改变 URL 的方式只有这几种：
 
-1. 通过浏览器前进后退改变 URL
-2. 通过`<a>`标签改变 URL
-3. 通过window.location改变URL
+    1. 通过浏览器前进后退改变 URL
+    2. 通过`<a>`标签改变 URL
+    3. 通过window.location改变URL
 
 通过 `location.hash = 'foo'` 这样的语法来**改变**，路径就会由 `baidu.com` 变更为 `baidu.com/#foo`。
 
@@ -46,35 +46,18 @@ hash 是 URL 中 hash (#) 及后面的那部分，常用作锚点在页面内进
 
 
 
-#### 3.2 **history**模式
+### 3.2 **history**模式
 
 `history` 提供了` pushState `和 `replaceState `两个方法，**这两个方法改变 `URL` 的` path` 部分不会引起页面刷新**.
 
 `history` 提供类似` hashchange `事件的 `popstate `事件，但` popstate` 事件有些不同：
 
-1. 通过浏览器前进后退改变 `URL `时会触发` popstate` 事件
-2. 通过`pushState/replaceState`或`<a>`标签改变 `URL `不会触发 `popstate` 事件。
-3. 好在我们可以拦截 `pushState/replaceState`的调用和`<a>`标签的点击事件来检测 URL 变化
-4. 通过`js` 调用`history`的`back`，`go`，`forward`方法来触发该事件。
+    1. 通过浏览器前进后退改变 URL时会触发` popstate` 事件
+    2. 通过`pushState/replaceState`或`<a>`标签改变 `URL `不会触发 `popstate` 事件。
+    3. 好在我们可以拦截 `pushState/replaceState`的调用和`<a>`标签的点击事件来检测 URL 变化
+    4. 通过`js` 调用`history`的`back`，`go`，`forward`方法来触发该事件。
 
 所以监听` URL `变化可以实现，只是没有` hashchange `那么方便。
-
-
-
-**为什么路径更新后，浏览器页面不会重新加载？**
-
-这里我们需要思考一个问题，平常通过 `location.href = 'baidu.com/foo'` 这种方式来跳转，是会让浏览器重新加载页面并且请求服务器的，但是 `history.pushState` 的神奇之处就在于它可以让 `url` 改变，但是不重新加载页面，完全由用户决定如何处理这次 url 改变。
-
-因此，这种方式的前端路由必须在支持 ``histroy` `API `的浏览器上才可以使用。
-
-
-
-**为什么刷新后会 404？**
-
-本质上是因为刷新以后是带着 `baidu.com/foo` 这个页面去请求服务端资源的，但是服务端并没有对这个路径进行任何的映射处理，当然会返回 404，处理方式是让服务端对于"不认识"的页面,返回 `index.html`，这样这个包含了前端路由相关`js`代码的首页，就会加载你的前端路由配置表，并且此时虽然服务端给你的文件是首页文件，但是你的 `url` 上是 `baidu.com/foo`，前端路由就会加载 `/foo` 这个路径相对应的视图，完美的解决了 404 问题。
-
-`history` 路由的**监听**也有点坑，浏览器提供了 `window.addEventListener('popstate')` 事件，但是它只能监听到浏览器回退和前进所产生的路由变化，对于主动的 `pushState` 却监听不到。解决方案当然有，下文实现 `react-router` 的时候再细讲~
-
 
 
 ##  四，原生js实现前端路由
@@ -274,11 +257,13 @@ export default router
 
    
 
-六，分析`Vue.use`
+## 六，分析`Vue.use`
 
-`Vue.use(plugin)`;
-
+> `Vue.use(plugin)`;
+>
 > 参数：{ **Object** | **Function** } plugin
+
+
 
 用法：安装Vue.js插件。如果插件是一个对象，必须提供install方法。如果插件是一个函数，它会被作为install方法。						调用install方法时，会将`Vue`作为参数传入。install方法被同一个插件多次调用时，插件也只会被安装一次。
 
@@ -376,7 +361,7 @@ Vue.use = function(plugin){
    没报错。没毛病！
 
    
-## 六、 完善install方法
+## 七、 完善install方法
 
 install 一般是给每个`vue`实例添加东西的，在这里就是给每个组件添加$route和$router。
 
@@ -472,7 +457,7 @@ Object.defineProperty(this,'$router',{
 
 到这里还install还没写完，可能你也发现了，`$route`还没实现，现在还实现不了，没有完善`VueRouter`的话，没办法获得当前路径.
 
-## 七，完善`VueRouter`类
+## 八，完善`VueRouter`类
 
 我们先看看我们`new VueRouter`类时传进了什么参数。
 
@@ -543,7 +528,7 @@ const routes = [
 ```javascript
 //myVueRouter.js
 let Vue = null;
-新增代码
+//新增代码
 class HistoryRoute {
     constructor(){
         this.current = null
@@ -554,7 +539,7 @@ class VueRouter{
         this.mode = options.mode || "hash"
         this.routes = options.routes || [] //你传递的这个路由是一个数组表
         this.routesMap = this.createMap(this.routes)
-        新增代码
+       // 新增代码
         this.history = new HistoryRoute();
         
     }
@@ -588,11 +573,11 @@ class VueRouter{
         this.routes = options.routes || [] //你传递的这个路由是一个数组表
         this.routesMap = this.createMap(this.routes)
         this.history = new HistoryRoute();
-        新增代码
+       // 新增代码
         this.init()
 
     }
-    新增代码
+    //新增代码
     init(){
         if (this.mode === "hash"){
             // 先判断用户打开时有没有hash值，没有的话跳转到#/
@@ -623,3 +608,235 @@ class VueRouter{
 }
 
 ```
+
+## 九，完善$route
+
+前面那我们讲到，要先实现VueRouter的history.current的时候，才能获得当前的路径，而现在已经实现了，那么就可以着手实现`$route`了。
+
+很简单，跟实现`$router`一样
+
+```javascript
+
+VueRouter.install = function (v) {
+    Vue = v;
+    Vue.mixin({
+        beforeCreate(){
+            if (this.$options && this.$options.router){ // 如果是根组件
+                this._root = this; //把当前实例挂载到_root上
+                this._router = this.$options.router;
+            }else { //如果是子组件
+                this._root= this.$parent && this.$parent._root
+            }
+            Object.defineProperty(this,'$router',{
+                get(){
+                    return this._root._router
+                }
+            });
+             //新增代码
+            Object.defineProperty(this,'$route',{
+                get(){
+                    return this._root._router.history.current
+                }
+            })
+        }
+    })
+    Vue.component('router-link',{
+        render(h){
+            return h('a',{},'首页')
+        }
+    })
+    Vue.component('router-view',{
+        render(h){
+            return h('h1',{},'首页视图')
+        }
+    })
+};
+
+```
+
+## 十，完善router-view组件
+
+现在我们已经保存了当前路径，也就是说现在我们可以获得当前路径，然后再根据当前路径从路由表中获取对应的组件进行渲染。
+
+```javascript
+
+Vue.component('router-view',{
+    render(h){
+        let current = this._self._root._router.history.current
+        let routeMap = this._self._root._router.routesMap;
+        return h(routeMap[current])
+    }
+})
+
+```
+
+代码解释：
+
+render函数里的this指向的是一个Proxy代理对象，代理Vue组件，而我们前面讲到每个组件都有一个_root属性指向根组件，根组件上有_router这个路由实例。 所以我们可以从router实例上获得路由表，也可以获得当前路径。 然后再把获得的组件放到h()里进行渲染。
+
+现在已经实现了router-view组件的渲染，但是有一个问题，就是你改变路径，视图是没有重新渲染的，所以需要将_router.history进行响应式化。
+
+```javascript
+
+Vue.mixin({
+    beforeCreate(){
+        if (this.$options && this.$options.router){ // 如果是根组件
+            this._root = this; //把当前实例挂载到_root上
+            this._router = this.$options.router;
+            
+            //新增代码
+            Vue.util.defineReactive(this,"xxx",this._router.history)
+            
+        }else { //如果是子组件
+            this._root= this.$parent && this.$parent._root
+        }
+        Object.defineProperty(this,'$router',{
+            get(){
+                return this._root._router
+            }
+        });
+        Object.defineProperty(this,'$route',{
+            get(){
+                return this._root._router.history.current
+            }
+        })
+    }
+})
+```
+
+我们利用了Vue提供的`API:defineReactive`,使得this._router.history对象得到监听。
+
+因此当我们第一次渲染**router-view**这个组件的时候，会获取到`this._router.history`这个对象，从而就会被监听到获取`this._router.history`。就会把**router-view**组件的依赖**wacther**收集到`this._router.history`对应的收集器**dep**中，因此`this._router.history`每次改变的时候。`this._router.history`对应的收集器**dep**就会通知**router-view**的组件依赖的**wacther**执行**update()**，从而使得`router-view`重新渲染（**其实这就是vue响应式的内部原理**）
+
+
+
+## 十一、完善router-link组件
+
+我们先看下router-link是怎么使用的。
+
+```javascript
+
+<router-link to="/home">Home</router-link> 
+<router-link to="/about">About</router-link>
+
+```
+
+也就是说父组件间to这个路径传进去，子组件接收就好 因此我们可以这样实现
+
+```javascript
+
+Vue.component('router-link',{
+    props:{
+        to:String
+    },
+    render(h){
+        let mode = this._self._root._router.mode;
+        let to = mode === "hash"?"#"+this.to:this.to
+        return h('a',{attrs:{href:to}},this.$slots.default)
+    }
+})
+
+```
+
+我们把router-link渲染成a标签，当然这时最简单的做法。 通过点击a标签就可以实现url上路径的切换。从而实现视图的重新渲染.
+
+
+
+项目完整代码：
+
+```JavaScript
+
+//myVueRouter.js
+let Vue = null;
+class HistoryRoute {
+    constructor(){
+        this.current = null
+    }
+}
+class VueRouter{
+    constructor(options) {
+        this.mode = options.mode || "hash"
+        this.routes = options.routes || [] //你传递的这个路由是一个数组表
+        this.routesMap = this.createMap(this.routes)
+        this.history = new HistoryRoute();
+        this.init()
+
+    }
+    init(){
+        if (this.mode === "hash"){
+            // 先判断用户打开时有没有hash值，没有的话跳转到#/
+            location.hash? '':location.hash = "/";
+            window.addEventListener("load",()=>{
+                this.history.current = location.hash.slice(1)
+            })
+            window.addEventListener("hashchange",()=>{
+                this.history.current = location.hash.slice(1)
+            })
+        } else{
+            location.pathname? '':location.pathname = "/";
+            window.addEventListener('load',()=>{
+                this.history.current = location.pathname
+            })
+            window.addEventListener("popstate",()=>{
+                this.history.current = location.pathname
+            })
+        }
+    }
+
+    createMap(routes){
+        return routes.reduce((pre,current)=>{
+            pre[current.path] = current.component
+            return pre;
+        },{})
+    }
+
+}
+VueRouter.install = function (v) {
+    Vue = v;
+    Vue.mixin({
+        beforeCreate(){
+            if (this.$options && this.$options.router){ // 如果是根组件
+                this._root = this; //把当前实例挂载到_root上
+                this._router = this.$options.router;
+                Vue.util.defineReactive(this,"xxx",this._router.history)
+            }else { //如果是子组件
+                this._root= this.$parent && this.$parent._root
+            }
+            Object.defineProperty(this,'$router',{
+                get(){
+                    return this._root._router
+                }
+            });
+            Object.defineProperty(this,'$route',{
+                get(){
+                    return this._root._router.history.current
+                }
+            })
+        }
+    })
+    Vue.component('router-link',{
+        props:{
+            to:String
+        },
+        render(h){
+            let mode = this._self._root._router.mode;
+            let to = mode === "hash"?"#"+this.to:this.to
+            return h('a',{attrs:{href:to}},this.$slots.default)
+        }
+    })
+    Vue.component('router-view',{
+        render(h){
+            let current = this._self._root._router.history.current
+            let routeMap = this._self._root._router.routesMap;
+            return h(routeMap[current])
+        }
+    })
+};
+
+export default VueRouter
+```
+
+参考：[手写Vue-router核心原理](https://juejin.cn/post/6854573222231605256#heading-15)
+
+​			[跟着来，你也可以手写vue-router](https://juejin.cn/post/6991640600533532679)
+
