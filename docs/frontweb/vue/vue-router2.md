@@ -20,8 +20,8 @@ tag:
 
 一般来说，浏览器端的路由分为两种：
 
-1. `hash` 路由，特征是` url` 后面会有 # 号，如` baidu.com/#foo/bar/baz`。
-2. `history` 路由，`url` 和普通路径没有差异。如 `baidu.com/foo/bar/baz`。
+	1. hash 路由，特征是` url` 后面会有 # 号，如` baidu.com/#foo/bar/baz`。
+	2. history路由，`url` 和普通路径没有差异。如 `baidu.com/foo/bar/baz`。
 
 我们已经讲过了路由的本质，那么要实现前端路由，需要解决两个核心：
 
