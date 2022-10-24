@@ -85,3 +85,6 @@ OAuth2.0是可以实现SSO的功能，但是OAuth 诞生之初就是为了解决
 ## 4、参考资料
 
 [OAuth2.0授权码模式中为什么一定要有code](https://zq99299.github.io/note-book/oath2/01/02.html)
+[授权码的补充](https://blog.csdn.net/qq_38292691/article/details/124802159)
+[授权码模式中code的意义](https://stackoverflow.com/questions/13387698/why-is-there-an-authorization-code-flow-in-oauth2-when-implicit-flow-works-s/13389335#13389335)
+[授权码模式是让token在服务器和服务器之间传递，不会经过资源拥有者，资源拥有者无需看到token](https://stackoverflow.com/questions/7522831/what-is-the-purpose-of-the-implicit-grant-authorization-type-in-oauth-2?noredirect=1&lq=1)

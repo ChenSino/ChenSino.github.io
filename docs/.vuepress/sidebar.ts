@@ -41,6 +41,13 @@ export default sidebar({
       children: "structure",
     },
     {
+      text: "Gradle",
+      icon: "discover",
+      prefix: "gradle/",
+      collapsable: true,
+      children: "structure",
+    },
+    {
       text: "Java问题定位",
       icon: "java",
       prefix: "locateproblem/",
