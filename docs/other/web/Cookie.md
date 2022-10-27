@@ -43,3 +43,13 @@ path和域差不多，默认情况下的path是/也就是域下所有路径都�
 ![20221027151447](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221027151447.png)
 
 ![20221027151508](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221027151508.png)
+
+## 浏览器请求时会自动携带其所有能看到的cookie发送到后端
+
+![20221027153648](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221027153648.png)
+
+![20221027153801](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221027153801.png)
+
+![20221027153905](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221027153905.png)
+
+![20221027153954](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221027153954.png)
