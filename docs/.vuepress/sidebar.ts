@@ -143,9 +143,12 @@ export default sidebar({
       collapsable: true,
       children: "structure",
     },
-  ],
-  "/other/web/": [
-    "Restful",
-    "BuildWebProject"
+    {
+      text: "web",
+      icon: "share",
+      prefix: "web/",
+      collapsable: true,
+      children: "structure",
+    },
   ]
 });
