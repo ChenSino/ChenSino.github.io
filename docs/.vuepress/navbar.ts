@@ -51,6 +51,7 @@ export default navbar([
     prefix: "/other/",
     // children: ["git/","linux/","database/","tools/","training/","essay/","books/","distributeservice/"]
     children: [
+      { text: "Web", icon: "vue", link: "web/" },
       { text: "Git", icon: "git", link: "git/GitCommands" },
       { text: "Linux", icon: "linux", link: "linux/CommonUsedCMD" },
       { text: "DataBase", icon: "java", link: "database/CPUOverLoad" },

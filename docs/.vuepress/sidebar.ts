@@ -150,5 +150,12 @@ export default sidebar({
       collapsable: true,
       children: "structure",
     },
+    {
+      text: "分布式微服务",
+      icon: "share",
+      prefix: "distributeservice/",
+      collapsable: true,
+      children: "structure",
+    },
   ]
 });
