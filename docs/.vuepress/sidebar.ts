@@ -41,6 +41,13 @@ export default sidebar({
       children: "structure",
     },
     {
+      text: "Gradle",
+      icon: "discover",
+      prefix: "gradle/",
+      collapsable: true,
+      children: "structure",
+    },
+    {
       text: "Java问题定位",
       icon: "java",
       prefix: "locateproblem/",
@@ -136,9 +143,19 @@ export default sidebar({
       collapsable: true,
       children: "structure",
     },
-  ],
-  "/other/web/": [
-    "Restful",
-    "BuildWebProject"
+    {
+      text: "web",
+      icon: "share",
+      prefix: "web/",
+      collapsable: true,
+      children: "structure",
+    },
+    {
+      text: "分布式微服务",
+      icon: "share",
+      prefix: "distributeservice/",
+      collapsable: true,
+      children: "structure",
+    },
   ]
 });

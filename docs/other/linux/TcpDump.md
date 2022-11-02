@@ -41,4 +41,3 @@ strings target.cap>temp.txt
 # port指定要抓包端口，
 sudo tcpdump tcp -i enp3s0f1  -t -s 0 -c 100 and port 6061 -w  ./target.cap
 ```
-
