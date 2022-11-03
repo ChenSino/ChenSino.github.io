@@ -14,6 +14,10 @@ tag:
 
 ![20221103172449](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221103172449.png)
 
+最开始被误导是因为看了[这篇](https://www.baeldung.com/spring-onceperrequestfilter)
+![20221103173249](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221103173249.png)
+看完这篇，我就做实验想复现他说的这个，因为我用的springboot,内嵌的tomcat是9.x版本，对应的servlet是4.0，这个版本servlet不存在它说的问题，所以一直无法复现，导致我理解出现了偏差。后来看了别人博客，才知道怎么回事。
+
 ## 2、参考
 
 [Spring的OncePerRequestFilter过滤器](https://blog.csdn.net/weixin_43944305/article/details/119923969)  
