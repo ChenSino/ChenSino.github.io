@@ -14,6 +14,7 @@ export default navbar([
       {
         text: "Java框架", icon: "java", prefix: "framework/", children: [
           { text: "Spring", link: "spring/" },
+          { text: "Security", link: "security/" },
           { text: "SpringBoot", link: "springboot/" },
           { text: "Mybatis", link: "mybatis/" },
         ]
