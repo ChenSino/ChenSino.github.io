@@ -157,5 +157,12 @@ export default sidebar({
       collapsable: true,
       children: "structure",
     },
+    {
+      text: "OAuth2.0",
+      icon: "share",
+      prefix: "oauth2/",
+      collapsable: true,
+      children: "structure",
+    },
   ]
 });
