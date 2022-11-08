@@ -2,7 +2,6 @@
 title: MybatisPlus多线程数据源切换问题
 date:  2022-07-29
 author: chenkun
-sidebar: 'auto'
 publish: true
 keys:
 category:
