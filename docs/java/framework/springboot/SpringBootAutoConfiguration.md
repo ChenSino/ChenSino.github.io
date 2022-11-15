@@ -2,7 +2,6 @@
 title: springboot自动配置原理
 date: 2019-10-12
 author: chenkun
-sidebar: 'auto'
 publish: true
 keys:
 category:

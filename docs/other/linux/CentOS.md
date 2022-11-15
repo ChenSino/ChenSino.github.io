@@ -2,7 +2,6 @@
 title: RedHat系
 date:  2022-08-10
 author: chenkun
-sidebar: 'auto'
 publish: true
 keys:
 category:

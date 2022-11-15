@@ -2,7 +2,6 @@
 title: BeanPostProcessor介绍
 date: 2019-10-22
 author: chenkun
-sidebar: 'auto'
 publish: true
 keys:
 category:

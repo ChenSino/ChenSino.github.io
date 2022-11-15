@@ -14,6 +14,7 @@ export default navbar([
       {
         text: "Java框架", icon: "java", prefix: "framework/", children: [
           { text: "Spring", link: "spring/" },
+          { text: "Security", link: "security/" },
           { text: "SpringBoot", link: "springboot/" },
           { text: "Mybatis", link: "mybatis/" },
         ]
@@ -61,6 +62,7 @@ export default navbar([
       { text: "随笔杂记", icon: "activity", link: "essay/2022-04-12" },
       { text: "电子书资源", icon: "app", link: "books/ebooks" },
       { text: "分布式微服务", icon: "class", link: "distributeservice/DistributeLock" },
+      { text: "OAuth2.0", icon: "class", link: "oauth2/" },
     ]
   }
 ]);
