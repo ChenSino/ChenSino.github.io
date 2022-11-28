@@ -55,6 +55,7 @@ export default navbar([
       { text: "Web", icon: "vue", link: "web/" },
       { text: "Git", icon: "git", link: "git/GitCommands" },
       { text: "Linux", icon: "linux", link: "linux/CommonUsedCMD" },
+      { text: "Docker", icon: "ubuntu", link: "docker/Docker.md" },
       { text: "DataBase", icon: "java", link: "database/CPUOverLoad" },
       { text: "MarkDown", icon: "markdown", link: "markdown/" },
       { text: "工具软件", icon: "software", link: "tools/IdeaDebug" },

@@ -163,6 +163,12 @@ export default sidebar({
       prefix: "oauth2/",
       collapsable: true,
       children: "structure",
+    },{
+      text: "Docker",
+      icon: "ubuntu",
+      prefix: "docker/",
+      collapsable: true,
+      children: "structure",
     },
   ]
 });
