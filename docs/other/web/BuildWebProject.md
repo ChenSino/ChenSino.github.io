@@ -601,9 +601,105 @@ public class SecurityConfig {
     }
 ```
 
+### 1.9 自定义token认证（前后分离）
 
+#### 1.9.1 新版本security注入AuthenticationManager方式
 
-### 1.9 菜单权限
+```java
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+```
+
+#### 1.9.2 认证逻辑
+
+```java
+@Service
+@Data
+public class LoginServiceImpl implements LoginService {
+    @Autowired
+    IGlobalCache redisTemplate;
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Value("${token.expiration}")
+    private Long expiration;
+
+    @Override
+    public ResponseEntity login(SysUser sysUser) {
+        //构造一个未认证的对象
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(sysUser.getUserName(), sysUser.getPassword());
+        //1. 使用AuthenticationManager认证用户
+        Authentication authenticate = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+        //2. 认证不通过
+        if (!Objects.nonNull(authenticate)) {
+            throw new RuntimeException("认证失败");
+        }
+        //3. 认证通过，生成token,key->token,value->用户信息
+        String token = UUID.fastUUID().toString(true);
+        CustomSecurityUser customSecurityUser = (CustomSecurityUser) authenticate.getPrincipal();
+        //4. token存入redis
+        redisTemplate.set(CacheConst.TOKEN_PREFIX + StrPool.COLON + token,customSecurityUser,expiration);
+        return ResponseEntity.ok(token);
+    }
+}
+```
+
+### 1.9.3 放行登录接口，去掉表单登录
+
+![20221206161556](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221206161556.png)
+
+#### 1.9.4 过滤器校验请求权限
+
+```java
+
+@Component
+public class TokenAuthenticationFilter extends OncePerRequestFilter {
+    @Autowired
+    private IGlobalCache redisTemplate;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        //1. 解析token
+        String token = request.getHeader("X-token");
+        //2. token不存在直接放行，后续的FilterInterceptor会校验权限，没有权限依然无法访问接口
+        if (!StringUtils.hasText(token)) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+        //3. 根据token查询用户信息，目标是设置SecurityContext
+        CustomSecurityUser customSecurityUser = redisTemplate.get(CacheConst.TOKEN_PREFIX + StrPool.COLON + token);
+        if (Objects.nonNull(customSecurityUser)) {
+            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(customSecurityUser.getUsername(), customSecurityUser.getPassword(), null);
+            SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+        }
+
+        filterChain.doFilter(request, response);
+    }
+}
+```
+
+#### 1.9.5 过滤器配置
+
+![20221206161730](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221206161730.png)
+
+#### 1.9.6 思考
+
+> 虽然以上完成了自定义用uuid当token,但是token的设计并不严谨，token的key到底该如何设计，以下两个方法是否合理？
+
+- 方法1：使用前缀加用户名当成key，value存入token
+- 方法2：前缀加token当成key,用户信息当成value
+
+方法1，如果使用用户名做key,那么每个请求都需要客户端携带一个用户名和token，然后后端在过滤器根据用户名从redis查询token,
+对比两个token来做权限验证，这个貌似不太合理，至少我在实际项目开发中没看到过要求前端每次都要传递用户名的。使用这个方法有
+一个优点是很容易做重复登录的限制，只需要根据用户名限制登录就好了，每次登录前检查redis中是否已经有了这个用户的登陆记录，如果
+有，可以提示用户已经登陆，或者挤掉已登录用户，这个根据自己业务来做。
+
+方法2中使用的token当key,用户请求时只需要带上token在头部，但是用token当key,不太方便限制重复登录，需要额外维护一个已经登录用户列表，
+或许有其他更好的方法。
+
+### next 菜单权限
 
 ## 2、前端篇
 
