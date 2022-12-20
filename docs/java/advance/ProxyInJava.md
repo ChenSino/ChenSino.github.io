@@ -32,7 +32,25 @@ A[JAVA中的代理]--> E[静态代理]-->F[AspectJ]
 
 #### 3.1 SpringAOP
 
-SpringAOP只是对Jdk动态代理或者Cglib进行了封装，默认使用的是Jdk动态代理，当代理的类是一个接口时直接用jdk动态代理，当被代理的目标类不是接口，则调用Cglib进行代理。
+SpringAOP并不是新东西，本质就是代理，底层使用的是Jdk动态代理或者Cglib代理，默认使用的是Jdk动态代理（当代理的类是一个接口时直接用jdk动态代理，当被代理的目标类不是接口，则调用Cglib进行代理，因为jdk动态代理只支持接口形式代理）。
+另外我们在Spring中使用的AspectJ，主要是为了使用它的注解类，也就是说引入了Aspectj,我们在spring才能用注解的方式开发AOP，比如注解@Around、@Aspect、@Before、@JoinPoint等都是Aspectj包中的。Spring其实并没有用到Aspectj的
+代理功能，仅仅是用了它这个包中的注解而已。
+
+#### 3.2 CGlib和JDK动态代理切换
+
+```markdown
+AOP底层实现 2中代理方式
+1. JDK 通过实现接口 通过Proxy.newProxyInstance产生代理对象
+2. CGlib通过继承父类使用Enchancer创建新的代理对象
+
+默认情况，AOP使用的是JDK动态代理
+
+如果切换到CGlib
+1. 基于注解AOP开发
+<aop:aspectj-autoproxy proxy-target-class="true" />
+2. 传统的AOP开发
+<aop:config proxy-target-class="true"> </aop>
+```
 
 #### 3.2 AspectJ
 
@@ -51,7 +69,7 @@ SpringAOP只是对Jdk动态代理或者Cglib进行了封装，默认使用的是
 
 #### 4.2 SpringAOP和AspectJ区别
 
-springapo和aspectj区别
+springaop和aspectj区别
 
 | SPRING AOP                                                   | ASPECTJ                                                      |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
