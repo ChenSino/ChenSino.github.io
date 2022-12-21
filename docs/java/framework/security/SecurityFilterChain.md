@@ -10,11 +10,9 @@ tag:
 
 ## 1、配置类
 
-~~~mark
+~~~markdown
 1. 具体不止从何版本开始，Security把WebSecurityConfigurerAdapter标记为废弃，鼓励程序员使用SecurityFilterChain进行配置，如果看过官网Security的架构图对SecurityFilterChain一定不会陌生，此类是Security过滤器的核心，所以用它来配置寓意更为明显。
 ~~~
-
-
 
 ```java
     @Bean
@@ -33,15 +31,9 @@ tag:
     }
 ```
 
-
-
 ## 2、在配置类配置和在Controller方法注解上使用@PreAuthorized有何区别
 
-
-
 ### 2.1 在配置配给资源配置权限
-
-
 
 经过源码跟踪，发现在配置类配置hasRole、hasAnyAuthority等，这是Security过滤器层面的权限校验，比如有如下配置：`http.authorizeRequests().antMatchers("/user/**").hasRole("USER")`，当一个匿名用户访问/user/list时，最终会被Security的
 
@@ -84,14 +76,9 @@ tag:
 >
 > 因为在配置类中配置的权限，校验是在过滤器层面，所以，如果出现异常，在我们定义的全局异常是无法捕获到的，我们定义的全局异常GlobalExceptionHandler是接口层面的，也就是Servlet层面，在过滤器中抛出的异常，是无法延迟到Controller层面进行捕获的。
 
-
-
 ## 3、新版本配置
 
-
-
-```java
-	
+~~~java
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -188,11 +175,9 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
-```
+~~~
 
-
-
-```markdown
+~~~markdown
 1. SecurityFilterChain可以有多个，但是只有一个SecurityFilterChain会被匹配，请求进来后，根据请求的url进行匹配，匹配到以后直接返回，不再和后面的SeecurityFilterChain进行匹配。如果一个请求的url同时匹配上多个SecurityFilterChain,此时就要注意设置@Order了
 
 
@@ -255,7 +240,4 @@ public class SecurityConfig {
                 .and()
                 .build();
     }
-```
-
-
-
+~~~
