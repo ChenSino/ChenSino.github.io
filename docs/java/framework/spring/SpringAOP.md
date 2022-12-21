@@ -142,7 +142,7 @@ public class UserServiceImpl {
 
 ## 3、SpringAOP注解实现
 
-SpringAOP注解实现主要是引入了AspectJ包，AspectJ本身是一个强大的代理框架，使用acj编译器在编译器间生成代理类，是字节码层面的操作，使用SpringAOP用
+SpringAOP注解实现主要是引入了AspectJ包，AspectJ本身是一个强大的代理框架，使用acj编译器在编译器间生成代理类，是使用asm对字节码进行操作，使用SpringAOP用
 注解开发时，要引入AspectJ包，其实Spring仅仅是想使用它的注解类而已，并没有真正使用它的代理功能，SpringAOP底层只用了JDK动态代理或者CGlib动态代理，
 这一点很多人都不知道。
 
