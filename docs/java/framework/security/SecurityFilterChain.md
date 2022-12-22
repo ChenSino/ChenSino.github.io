@@ -11,7 +11,7 @@ tag:
 ## 1、配置类
 
 ~~~markdown
-1. 具体不止从何版本开始，Security把WebSecurityConfigurerAdapter标记为废弃，鼓励程序员使用SecurityFilterChain进行配置，如果看过官网Security的架构图对SecurityFilterChain一定不会陌生，此类是Security过滤器的核心，所以用它来配置寓意更为明显。
+1. 5.7版本后Security把WebSecurityConfigurerAdapter标记为废弃，鼓励程序员使用SecurityFilterChain进行配置，如果看过官网Security的架构图对SecurityFilterChain一定不会陌生，此类是Security过滤器的核心，所以用它来配置寓意更为明显。
 ~~~
 
 ```java
