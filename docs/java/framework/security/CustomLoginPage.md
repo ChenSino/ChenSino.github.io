@@ -7,6 +7,12 @@ category:
 tag:
 ---
 
+:::danger 注意
+本篇博客是用来配置前后不分离的项目，正常情况下现在的项目都是前后分离了，因此本篇内容
+并没有太多学习价值，但是网上大多数教程都特别喜欢讲这一部分内容，就我目前了解到的内容，
+在搭建oauth2授权服务器可能会用到，因为授权服务器需要一个登录页面，这个页面可以单独放到后端，仅仅做个登录没有必要开一个前端项目.
+:::
+
 ## 1、修改自定义的登陆页面以及登陆请求校验
 
 :::note 官方文档
@@ -22,16 +28,16 @@ https://docs.spring.io/spring-security/reference/servlet/authentication/password
 一般情况，无需自定义登陆处理逻辑，只需要修改登陆页面，在登陆页面把action保留原来的login即可
 :::
 
-```java
-	protected void configure(HttpSecurity http) {
-		http.formLogin().loginPage("/token/login").loginProcessingUrl("/token/custom")
-				.successHandler(tenantSavedRequestAwareAuthenticationSuccessHandler())
-				.failureHandler(authenticationFailureHandler()).and().logout()
-				.logoutSuccessHandler(logoutSuccessHandler()).deleteCookies("JSESSIONID").invalidateHttpSession(true)
-				.and().authorizeRequests().antMatchers("/token/**", "/actuator/**", "/mobile/**").permitAll()
-				.anyRequest().authenticated().and().csrf().disable();
-	}
-```
+~~~java
+protected void configure(HttpSecurity http) {
+    http.formLogin().loginPage("/token/login").loginProcessingUrl("/token/custom")
+            .successHandler(tenantSavedRequestAwareAuthenticationSuccessHandler())
+            .failureHandler(authenticationFailureHandler()).and().logout()
+            .logoutSuccessHandler(logoutSuccessHandler()).deleteCookies("JSESSIONID").invalidateHttpSession(true)
+            .and().authorizeRequests().antMatchers("/token/**", "/actuator/**", "/mobile/**").permitAll()
+            .anyRequest().authenticated().and().csrf().disable();
+}
+~~~
 
 ```java
 @Controller
@@ -82,4 +88,19 @@ public class PageController {
 </div>
 ```
 
-## 2、在Security和OAuth组合的项目中，自定义loginProcessingUrl不生效？
+## 2、开启表单认证
+
+1. 如下图，开启表单登录可以Security开启了14个过滤器（忽略TokenAuthenticationFilter这个是我自定义的）
+
+![20221223100309](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221223100309.png)
+![20221223100226](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221223100226.png)
+
+2. 开启表单登录后，当访问一个未认证的接口时，会被重定向到登录页，因为开启表单认证后，默认的AuthenticationEntryPoint实现是LoginUrlAuthenticationEntryPoint，
+![20221223100757](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221223100757.png)
+
+## 3、关闭表单认证
+
+除了我自定义的TokenAuthenticationFilter过滤器外还有11个，与上面相比刚好少了3个和表单相关的过滤器（UsernamePassworkAuthenticationFilter,DefaultLoginPageGeneratingFilter,DefaultLogoutPageGeneratingFilter）
+![20221223100930](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221223100930.png)
+
+并且关闭表单验证后，默认的AuthenticationEntryPoint变成了Http403ForbiddenEntryPoint，当用户未认证时，去访问一个接口就会被此类处理，返回403异常，不会跳转到登录表单。
