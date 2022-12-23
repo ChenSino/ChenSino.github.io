@@ -258,3 +258,5 @@ public class PhoneAuthenticationToken extends AbstractAuthenticationToken {
         return authenticationProvider;
     }
 ~~~
+
+![20221223102912](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221223102912.png)
