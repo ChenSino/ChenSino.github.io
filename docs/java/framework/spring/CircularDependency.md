@@ -46,6 +46,8 @@ public class B{
 
 ### 2.2 依赖注入的过程
 
+核心是利用了setter方法的注入方式解决的循环依赖，使用构造方法注入是无法解决依赖注入的问题。
+
 ~~~markdown
 1. 通过反射调用A的无参构造方法，创建一个A对象；
 2. 调用setter注入B,B b = factory.getBean(B.class)，此时会触发B的bean初始化，
