@@ -148,3 +148,53 @@ SpringAOP注解实现主要是引入了AspectJ包，AspectJ本身是一个强大
 
 注解的本质和xml一样，不过是把解析xml变成解析注解而已。
 
+## 4、 SpringAOP实现原理
+
+![Bean的生命周期](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221223120124.png)
+
+::: danger 结论
+    SpringAOP底层实现的原理是使用的BeanPostProcessor，BeanPostProcessor的核心功能就是可以对一个bean进行再加工，参考上面bean的生命周期可知BeanPostProcessor执行实际是在bean初始化前后，而SpringAOP的原理就是在BeanPostProcessor的后置方法中对bean进行修改，同时把修改后的代理对象替换原对象。
+:::
+
+~~~markdown
+    当配置了AOP后，spring容器会自动配置一个叫做AnnotationAwareAspectJAutoProxyCreator的类，它也是一个BeanPostProcessor，最终会调用后置方法
+    @Override
+	public Object postProcessAfterInitialization(@Nullable Object bean, String beanName) {
+		if (bean != null) {
+			Object cacheKey = getCacheKey(bean.getClass(), beanName);
+			if (this.earlyProxyReferences.remove(cacheKey) != bean) {
+				return wrapIfNecessary(bean, beanName, cacheKey);
+			}
+		}
+		return bean;
+	}
+
+
+    protected Object wrapIfNecessary(Object bean, String beanName, Object cacheKey) {
+		if (StringUtils.hasLength(beanName) && this.targetSourcedBeans.contains(beanName)) {
+			return bean;
+		}
+		if (Boolean.FALSE.equals(this.advisedBeans.get(cacheKey))) {
+			return bean;
+		}
+		if (isInfrastructureClass(bean.getClass()) || shouldSkip(bean.getClass(), beanName)) {
+			this.advisedBeans.put(cacheKey, Boolean.FALSE);
+			return bean;
+		}
+
+		// Create proxy if we have advice.
+		Object[] specificInterceptors = getAdvicesAndAdvisorsForBean(bean.getClass(), beanName, null);
+		if (specificInterceptors != DO_NOT_PROXY) {
+			this.advisedBeans.put(cacheKey, Boolean.TRUE);
+            //返回代理对象
+			Object proxy = createProxy(
+					bean.getClass(), beanName, specificInterceptors, new SingletonTargetSource(bean));
+            //用代理对象替换原生对象
+			this.proxyTypes.put(cacheKey, proxy.getClass());
+			return proxy;
+		}
+
+		this.advisedBeans.put(cacheKey, Boolean.FALSE);
+		return bean;
+	}
+~~~
