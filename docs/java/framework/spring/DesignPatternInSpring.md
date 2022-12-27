@@ -10,35 +10,38 @@ BeanFactory是典型的工厂方法模式，其有多个实现，不同的实现
 
 在spring中使用singleton修饰的bean都是单例模式，`org.springframework.beans.factory.support.DefaultSingletonBeanRegistry#addSingleton`，在spring实例化出真正的对象后，会把这个对象加到容器中
 
-```java
+> 修正，以上说singleton=单例模式，是错误的，singleton指的是容器中该对象的bean只有一个，和单例模式不是一回事，单例模式有：Mybatis的连接工厂、redis的连接工厂等
 
-	/**
-	 * Add the given singleton object to the singleton cache of this factory.
-	 * <p>To be called for eager registration of singletons.
-	 * @param beanName the name of the bean
-	 * @param singletonObject the singleton object
-	 */
-	protected void addSingleton(String beanName, Object singletonObject) {
-		synchronized (this.singletonObjects) {
-			this.singletonObjects.put(beanName, singletonObject);
-			this.singletonFactories.remove(beanName);
-			this.earlySingletonObjects.remove(beanName);
-			this.registeredSingletons.add(beanName);
-		}
-	}
-```
+~~~java
 
-
+/**
+* Add the given singleton object to the singleton cache of this factory.
+* <p>To be called for eager registration of singletons.
+* @param beanName the name of the bean
+* @param singletonObject the singleton object
+*/
+protected void addSingleton(String beanName, Object singletonObject) {
+synchronized (this.singletonObjects) {
+this.singletonObjects.put(beanName, singletonObject);
+this.singletonFactories.remove(beanName);
+this.earlySingletonObjects.remove(beanName);
+this.registeredSingletons.add(beanName);
+}
+}
+~~~
 
 ### 3、观察者模式
 
 spring中的时间event都采用的观察者模式
+![20221226114253](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221226114253.png)
 
 ### 4、适配器模式
 
 SpringMVC
 
 ### 5、代理模式
+
+SpringAOP整个就采用的代理模式
 
 ### 6、模板方法模式
 
@@ -77,3 +80,6 @@ SpringMVC
 	}
 ```
 
+### 8、原型模式
+
+spring中prototype类型的bean采用的原型模式

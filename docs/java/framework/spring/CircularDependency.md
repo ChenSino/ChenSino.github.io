@@ -42,7 +42,7 @@ public class B{
 
 ### 2.1 Bean的生命周期
 
-![Bean的生命周期](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221223120124.png)
+![Bean的生命周期](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221226111134.png)
 
 ### 2.2 依赖注入的过程
 

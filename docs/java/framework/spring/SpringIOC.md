@@ -14,7 +14,6 @@ Spring 最重要的概念是 IOC 和 AOP，本篇文章其实就是要带领大�
 
 希望通过本文可以让读者不惧怕阅读 Spring 源码，也希望大家能反馈表述错误或不合理的地方。
 
-
 ## 引言
 
 先看下最基本的启动 Spring 容器的例子：
@@ -123,7 +122,6 @@ BeanFactory，从名字上也很好理解，生产 bean 的工厂，它负责生
 3. AutowireCapableBeanFactory 这个名字中的 Autowire 大家都非常熟悉，它就是用来自动装配 Bean 用的，但是仔细看上图，ApplicationContext 并没有继承它，不过不用担心，不使用继承，不代表不可以使用组合，如果你看到 ApplicationContext 接口定义中的最后一个方法 getAutowireCapableBeanFactory() 就知道了。
 4. ConfigurableListableBeanFactory 也是一个特殊的接口，看图，特殊之处在于它继承了第二层所有的三个接口，而 ApplicationContext 没有。这点之后会用到。
 5. 请先不用花时间在其他的接口和类上，先理解我说的这几点就可以了。
-
 
 然后，请读者打开编辑器，翻一下 BeanFactory、ListableBeanFactory、HierarchicalBeanFactory、AutowireCapableBeanFactory、ApplicationContext 这几个接口的代码，大概看一下各个接口中的方法，大家心里要有底，限于篇幅，我就不贴代码介绍了。
 
