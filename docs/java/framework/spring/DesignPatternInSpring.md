@@ -83,3 +83,9 @@ SpringAOP整个就采用的代理模式
 ### 8、原型模式
 
 spring中prototype类型的bean采用的原型模式
+
+### 9、建造者模式
+
+各种框架中的builder基本都是建造者模式，一般建造这模式都是通过链式写法来设置字，并且设置完字段后返回Builder本身，最后调用build方法，最终生成一个我们需要的对象。比如SpringSecurity中AuthenticationManagerBuilder，源码如下：
+
+![20221228145658](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221228145658.png)
