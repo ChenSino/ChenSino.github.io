@@ -6,6 +6,10 @@ sticky: 100
 Spring缓存大揭秘
 <!-- more -->
 
+:::danger 注意
+使用springboot测试springcache切记需要在启动类加上@EnableCache
+:::
+
 ### 1、背景
 
 使用springboot项目时看到很多对spring缓存注解的使用，比如@Cacheable、@Evict、@CachePut等，之前一直都是知道个大概，使用方式也就局限于配置好redisTemplate然后直接开始使用，但是一直不明白为什么我配置好redisTemplate就可以用了，甚至不配置redis也能有缓存效果。之前还一直有个疑问，新增数据spring把返回结果缓存后，那么下次如果更新了数据，如何同时更新缓存列表呢？
@@ -13,8 +17,6 @@ Spring缓存大揭秘
 ### 2、spring-cache介绍
 
 springcache不是一个单独的jar包，它位于spring-context的org.springframework.cache包下，spring提供了各种注解来使用缓存，并且提供了多种缓存实现，比如常见的redis,EhCache等。
-
-
 
 ![image-20211014105423666](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20211014105423666-16341800740101.png)
 
@@ -67,6 +69,7 @@ class SimpleCacheConfiguration {
 
 ### 4、springcache的注解使用
 
-##### 4.1 Cacheable注解
+#### 4.1 Cacheable注解
 
 此注解可以用于类或方法上，表示开启注解功能，开启后，方法的返回值会放到缓存里面
+
