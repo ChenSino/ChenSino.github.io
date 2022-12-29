@@ -150,6 +150,8 @@ SpringAOP注解实现主要是引入了AspectJ包，AspectJ本身是一个强大
 
 ## 4、 SpringAOP实现原理
 
+### 4.1 SpringAOP是如何产生代理类的
+
 ![Bean的生命周期](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221223120124.png)
 
 ::: danger 结论
@@ -198,3 +200,31 @@ SpringAOP注解实现主要是引入了AspectJ包，AspectJ本身是一个强大
 		return bean;
 	}
 ~~~
+
+
+### 4.2 源码层面查看SpringAOP是使用JDK动态代理还是CGlib
+
+~~~java
+//org.springframework.aop.framework.DefaultAopProxyFactory#createAopProxy
+    @Override
+public AopProxy createAopProxy(AdvisedSupport config) throws AopConfigException {
+    if (!NativeDetector.inNativeImage() &&
+            (config.isOptimize() || config.isProxyTargetClass() || hasNoUserSuppliedProxyInterfaces(config))) {
+        Class<?> targetClass = config.getTargetClass();
+        if (targetClass == null) {
+            throw new AopConfigException("TargetSource cannot determine target class: " +
+                    "Either an interface or a target is required for proxy creation.");
+        }
+        if (targetClass.isInterface() || Proxy.isProxyClass(targetClass) || ClassUtils.isLambdaClass(targetClass)) {
+            return new JdkDynamicAopProxy(config);
+        }
+        return new ObjenesisCglibAopProxy(config);
+    }
+    else {
+        return new JdkDynamicAopProxy(config);
+    }
+}
+~~~
+
+### 4.3 时序图
+

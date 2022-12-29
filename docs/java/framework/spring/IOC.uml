@@ -1,0 +1,39 @@
+	
+@startuml
+actor       portal
+participant ClassPathXmlApplicationContext 
+participant       AbstractApplicationContext     
+participant       ConfigurableListableBeanFactory     
+participant       AbstractBeanFactory     
+participant       DefaultSingletonBeanRegistry     
+participant       AbstractAutowireCapableBeanFactory     
+
+portal -> ClassPathXmlApplicationContext : new ClassPathXmlApplicationContext("classpath:/applicationContext.xml") 
+ClassPathXmlApplicationContext -> AbstractApplicationContext : refresh()
+AbstractApplicationContext -> AbstractApplicationContext : prepareRefresh()
+activate AbstractApplicationContext
+AbstractApplicationContext -> AbstractApplicationContext : obtainFreshBeanFactory()
+AbstractApplicationContext -> AbstractApplicationContext : prepareBeanFactory()
+AbstractApplicationContext -> AbstractApplicationContext : postProcessBeanFactory()
+AbstractApplicationContext -> AbstractApplicationContext : invokeBeanFactoryPostProcessors()
+AbstractApplicationContext -> AbstractApplicationContext : registerBeanPostProcessors()
+AbstractApplicationContext -> AbstractApplicationContext : finishBeanFactoryInitialization()(把bean定义转换为真正的bean)
+
+AbstractApplicationContext -> ConfigurableListableBeanFactory : preInstantiateSingletons()
+activate ConfigurableListableBeanFactory
+ConfigurableListableBeanFactory -> AbstractBeanFactory : getBean()
+AbstractBeanFactory -> AbstractBeanFactory : doGetBean()
+activate AbstractBeanFactory
+AbstractBeanFactory -> DefaultSingletonBeanRegistry : getSingleton(String beanName, ObjectFactory<?> singletonFactory)
+DefaultSingletonBeanRegistry -> AbstractAutowireCapableBeanFactory : createBean()
+AbstractAutowireCapableBeanFactory -> AbstractAutowireCapableBeanFactory : doCreateBean()
+AbstractAutowireCapableBeanFactory -> AbstractAutowireCapableBeanFactory : createBeanInstance()
+deactivate AbstractBeanFactory
+deactivate ConfigurableListableBeanFactory
+
+AbstractApplicationContext -> AbstractApplicationContext : finishRefresh()
+deactivate AbstractApplicationContext
+
+
+
+@enduml
