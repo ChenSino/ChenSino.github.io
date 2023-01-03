@@ -31,3 +31,14 @@ Security的基本原理就是过滤器，这里不懂的请查看[官方文档](
 用户名密码，然后校验通过会调用`this.sessionStrategy.onAuthentication(authenticationResult, request, response);`跟踪这里面的代码就会找到答案。
 
 ![时序图](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230103113548.png)
+
+## 4、基于Session的认证
+
+了解Security认证原理的应该知道，如果不认证，就直接访问一个受保护的接口，会被重定向到默认登录页面，提示登录，登录成功后会重定向到之前访问的接口。
+Security本身是一系列的过滤器在工作，其特有的Filter我们把他叫做SecurityFilter,第一次走到UsernamePasswordAuthenticationFilter时，认证成功
+后最终会重定向到之前访问的接口，后面的过滤器不会执行了，我之前调试发现第一次登录执行到
+UsernamePasswordAuthenticationFilter后，就直接跳转到接口处理逻辑了，没有继续执行后面的过滤器，跟踪发现UsernamePasswordAuthenticationFilter认证成功后有个方法，吧请求重定向了。
+
+![20230103161747](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230103161747.png)
+
+认证成功会会吧SecurityContext设置到Session中，所以后面在请求时从session获取的认证信息。
