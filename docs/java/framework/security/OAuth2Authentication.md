@@ -1,5 +1,5 @@
 ---
-title: SpringSecurityOAuth流程
+title: Ruoyi使用oauth对接pig
 date:  2023-01-03
 author: chenkun
 keys:
