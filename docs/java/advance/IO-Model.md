@@ -77,6 +77,89 @@ tag:
 3. 线程的切换成本是很高的。操作系统发生线程切换的时候，需要保留线程的上下文，然后执行系统调用。如果线程数过高，可能执行线程切换的时间甚至会大于线程执行的时间，这时候带来的表现往往是系统load偏高、CPU sy使用率特别高（超过20%以上)，导致系统几乎陷入不可用的状态
 4. 容易造成锯齿状的系统负载。因为系统负载是用活动线程数或CPU核心数，一旦线程数量高但外部网络环境不是很稳定，就很容易造成大量请求的结果同时返回，激活大量阻塞线程从而使系统负载压力过大
 
+#### 2.1.1 阻塞IO模型demo
+
+~~~java
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+/**
+ * io模型——阻塞io,每请求一线程模型
+ */
+public class SocketIOMultiThread {  //blocking
+    public static void main(String[] args) {
+        // 服务端开启一个端口进行监听
+        int port = 9999;
+        ServerSocket serverSocket = null;   //服务端
+        try {
+            serverSocket = new ServerSocket(port);  //通过构造函数创建ServerSocket，指定监听端口，如果端口合法且空闲，服务器就会监听成功
+
+            // 通过无限循环监听客户端连接，如果没有客户端接入，则会阻塞在accept操作
+            while (true) {
+                Socket socket;  //客户端
+                System.out.println("Waiting for a new Socket to establish");
+                socket = serverSocket.accept();//阻塞  三次握手
+
+                System.out.println(" a new Socket to established ,port is " + socket.getPort());
+
+//每连接一线程
+                new Thread(() -> {
+                    InputStream in = null;
+                    OutputStream out = null;
+                    try {
+                        in = socket.getInputStream();
+                        byte[] buffer = new byte[1024];
+                        int length;
+                        while ((length = in.read(buffer)) > 0) {//阻塞
+                            out = socket.getOutputStream();
+                            String inputString = new String(buffer, 0, length);
+                            System.out.println("input is:" + inputString);
+                            out.write("success\n".getBytes());
+
+                        }
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    } finally {
+                        if (in != null) {
+                            try {
+                                in.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        if (out != null) {
+                            try {
+                                out.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                }).start();
+
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // 必要的清理活动
+            if (serverSocket != null) {
+                try {
+                    serverSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+}
+~~~
+
 ### 2.2 什么是非阻塞IO
 
 我敢保证如果你已经理解了阻塞IO，那么必定已经知道了什么是非阻塞IO。按照上面的思路，所谓非阻塞IO就是当应用B发起读取数据申请时，如果内核数据没有准备好会即刻告诉应用B，不会让B在这里等待。
@@ -259,3 +342,13 @@ epoll：
 1、Epoll 没有最大并发连接的限制，上限是最大可以打开文件的数目，这个数字一般远大于 2048, 一般来说这个数目和系统内存关系很大 ，具体数目可以 cat /proc/sys/fs/file-max 查看。
 2、效率提升， Epoll 最大的优点就在于它只管你“活跃”的连接 ，而跟连接总数无关，因此在实际的网络环境中， Epoll的效率就会远远高于 select 和 poll 。
 3、内存共享， Epoll 在这点上使用了“共享内存 ”，这个内存拷贝也省略了。
+
+## 10、java中的IO模型
+
+提起IO模型大家都知道在java中有io和nio（java1.4+），包括我在内的很多人起初都认为io就是阻塞io模型，nio就是非阻塞的io模型，其实这是完全错误的观点。
+
+在java中，使用io可以实现[阻塞io模型](阻塞io模型)，也可以实现非阻塞io模型,[非阻塞io模型-残缺版](https://gist.github.com/85f429733200b7c2babddbf008855087)、[非阻塞io模型——新增非阻塞](https://gist.github.com/083fbe957011ae3c96a7573551e26822)，[非阻塞io模型-新增多线程，解决并发请求](https://gist.github.com/fdb70d4ee7b65dd5ee54f4c4df362996)
+
+nio在java中很多人教程喜欢说它即可翻译为non-blocking io也可翻译为new io,在这里我不是要杠精，其实nio在java中是用来和系统内核的io多路复用模型对应的，它是用来实现io多路复用模型的，所以翻译成non-blocking io我认为是非常不合理，导致很多人认为nio就是非阻塞io,这是完全错误的，所以我更倾向于翻译为new io,至少不会对不知情者造成误导。[nio实现io多路复用模型](https://gist.github.com/53ee1e9aba30fd3319ad94394e2613c3)
+
+在[nio实现io多路复用模型](https://gist.github.com/53ee1e9aba30fd3319ad94394e2613c3)的demo中，仅仅使用一个main线程就实现了并发请求处理

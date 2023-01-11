@@ -199,7 +199,7 @@ kde设置proxy有个很大的bug,就是无法全局，搞笑的是通过kde设�
 2. 保存时会报错，大概是没有`/usr/share/konsole`的权限
 3. 添加一下权限就行了
 
-​		给当前用户添加一下权限，`chmod 666 xxx`
+​  给当前用户添加一下权限，`chmod 666 xxx`
 
 ### 3、Manjaro不支持Mysql
 
@@ -272,3 +272,28 @@ Be aware that after switching to a more stable branch you will receive messages 
 If for whatever reason you do wish to also 'downgrade' packages while changing branches add an extra u to the pacman command:
 
 ```sudo pacman -Syyuu```
+
+#### wine安装exe报错
+
+报错内容
+
+~~~shell
+
+Runtime Error (at - 1:0):
+Cannot Import dll:C:\users\xxx\Temp\is-00IEG.tmp\isskin.dll
+~~~
+
+解决方法
+
+~~~markdown
+1. 安装winetricks
+   `sudo pacman -S winetricks`
+2. 用winetricks安装必要的依赖
+  `winetricks vcrun6sp6`
+~~~
+
+参考： 
+
+https://www.linuxquestions.org/questions/red-hat-31/wine-runtime-error-isskin-dll-issue-879119/
+
+https://wiki.winehq.org/Winetricks

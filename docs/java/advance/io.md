@@ -16,6 +16,9 @@ category:
 - [top命令查看CPU状态](https://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316399.html)
 - [NIO详解——美团](https://tech.meituan.com/2016/11/04/nio.html)
 - [Java线程和操作系统的线程之间的关系](https://www.geeksforgeeks.org/difference-between-java-threads-and-os-threads/)
+- [10分钟看懂 Java NIO 底层原理](https://cloud.tencent.com/developer/article/1739347)
+- [pdai](https://pdai.tech/md/java/io/java-io-nio-select-epoll.html)
+- [强烈推荐此博主的博客](https://blog.csdn.net/yinwenjie/category_5819837.html?spm=1001.2014.3001.5515)
 
 ## 2、模型分类
 

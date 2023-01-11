@@ -59,3 +59,7 @@ public class HttptestApplication {
 使用工具查看localhost下的cookie
 ![20221102170819](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221102170819.png)
 
+
+## 二、http协议
+
+### 2.1 http协议是什么
