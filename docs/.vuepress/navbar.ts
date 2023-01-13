@@ -47,6 +47,11 @@ export default navbar([
     link: "/other/web/README.md"
   },
   {
+    text: "C++学习",
+    icon: "app",
+    link: "/cpp/study/README.md"
+  },
+  {
     text: "其他",
     icon: "others",
     prefix: "/other/",

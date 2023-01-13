@@ -92,6 +92,22 @@ export default sidebar({
       children: "structure",
     },
   ],
+  "/cpp/":[
+    {
+      text: "基础语法学习",
+      icon: "app",
+      prefix: "study/",
+      collapsable: true,
+      children: "structure",
+    },
+    {
+      text: "其他",
+      icon: "app",
+      prefix: "other/",
+      collapsable: true,
+      children: "structure",
+    },
+  ],
   "/other/": [
 
     {

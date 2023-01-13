@@ -107,7 +107,8 @@ make: *** [/home/chenkun/IdeaProjects/jdk11u/make/Init.gmk:186：images] 错误 
 
 以上编译报错了，根据搞错大概也看出编译器的版本最大只能支持到11,所以我这里需要安装另一个版本的编译器，这里就体现arch系linux的缺点了，滚动版本太激进会导致有的老软件存在各种版本不兼容。
 
-**解决编译器版本问题：**
+### 2.3 解决编译器gcc版本问题
+
 使用yay安装老版本的gcc,这里我和文档保持一致，文档说目前最新的已测试通过的版本是gcc7,这里我就安装gcc7：
 
 ~~~shell
@@ -155,3 +156,7 @@ sudo cp g++-7 g++
 ~~~
 
 设置默认gcc后，重新执行`bash configure` ，然后`make clean`，然后再`make images`就成功了，编译好的jdk默认在./build/linux-x86_64-normal-server-release/images/jdk
+
+## 3、jdk源码目录结构
+
+[jdk源码目录结构](https://openjdk.org/jeps/8283227)
