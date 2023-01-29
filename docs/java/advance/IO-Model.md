@@ -312,6 +312,8 @@ epoll_wait会去检查就绪链表有无已经就绪的socket，没有就等待�
 
 ## 8、Redis中的IO模型
 
+IO多路复用-epoll
+
 ## 9、Nginx中的IO模型
 
 select：IO多路复用、标准并发模型。在编译 nginx 时，如果所使用的系统平台没有更高效的并发模型，select 模块将被自动编译。configure 脚本的选项：–with-select_module 和 --without-select_module 可被用来强制性地开启或禁止 select 模块的编译
@@ -352,3 +354,5 @@ epoll：
 nio在java中很多人教程喜欢说它即可翻译为non-blocking io也可翻译为new io,在这里我不是要杠精，其实nio在java中是用来和系统内核的io多路复用模型对应的，它是用来实现io多路复用模型的，所以翻译成non-blocking io我认为是非常不合理，导致很多人认为nio就是非阻塞io,这是完全错误的，所以我更倾向于翻译为new io,至少不会对不知情者造成误导。[nio实现io多路复用模型](https://gist.github.com/53ee1e9aba30fd3319ad94394e2613c3)
 
 在[nio实现io多路复用模型](https://gist.github.com/53ee1e9aba30fd3319ad94394e2613c3)的demo中，仅仅使用一个main线程就实现了并发请求处理
+
+## 10、netty中的io模型

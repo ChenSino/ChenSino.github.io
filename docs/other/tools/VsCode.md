@@ -67,6 +67,8 @@ category:
 
 设置片段格式可以使用[在线生成工具](https://snippet-generator.app/)
 
+[vscode中markdown无法使用代码片段](https://www.yuanqiao.pw/post/204)
+
 ### 4. 设置jdk环境
 
 vscode要求`java.jdt.ls.java.home`至少为jdk17，runtime可设置多个，把其中一个设置为默认

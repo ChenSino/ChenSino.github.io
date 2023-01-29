@@ -63,7 +63,7 @@ export default navbar([
       { text: "Docker", icon: "ubuntu", link: "docker/Docker.md" },
       { text: "DataBase", icon: "java", link: "database/CPUOverLoad" },
       { text: "MarkDown", icon: "markdown", link: "markdown/" },
-      { text: "工具软件", icon: "software", link: "tools/IdeaDebug" },
+      { text: "工具软件", icon: "software", link: "tools/idea" },
       { text: "小组分享", icon: "share", link: "training/CloudServiceTraining" },
       { text: "随笔杂记", icon: "activity", link: "essay/2022-04-12" },
       { text: "电子书资源", icon: "app", link: "books/ebooks" },

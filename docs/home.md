@@ -44,6 +44,16 @@ features:
     details: typescript官方文档
     link: https://typescript.bootcss.com/basic-types.html
     
+  - title: 优秀博主-victorfengming
+    icon: typescript
+    details: web开发优质博客
+    link: https://victorfengming.gitee.io/index/gitbook/
+        
+  - title: 优秀博主-pdai
+    icon: typescript
+    details: web开发优质博客
+    link: https://pdai.tech
+
 
 copyright: false
 footer: MIT Licensed | Copyright © 2019-present Mr.Hope
