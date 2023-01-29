@@ -16,7 +16,7 @@ keys:
 ## 2、自定义实现native方法
 
 ~~~markdown
-用c++实现一个动态链接库，适用java调用链接库中的方法
+用c++实现一个动态链接库，使用java调用链接库中的方法
 ~~~
 
 ### 2.1 定义java源文件
@@ -40,7 +40,7 @@ public class TestMain
 }
 ~~~
 
-### 2.2 适用jdk自带工具生成c++头文件
+### 2.2 使用jdk自带工具生成c++头文件
 
 1. 编译源文件，`javac Testmain.java`得到TestMain.class文件
 2. 使用`javac -h . TestMain.java`生成头文件
@@ -70,7 +70,7 @@ JNIEXPORT void JNICALL Java_TestMain_Hello
 g++ Hello.cpp -fpic -shared -o Hello.so
 ~~~
 
-这一不编译，报错如下，
+这一步编译，报错如下，
 
 ~~~shell
 $ g++ Hello.cpp -fpic -shared -o Hello.so
