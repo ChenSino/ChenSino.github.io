@@ -347,11 +347,11 @@ epoll：
 
 ## 10、java中的IO模型
 
-提起IO模型大家都知道在java中有io和nio（java1.4+），包括我在内的很多人起初都认为io就是阻塞io模型，nio就是非阻塞的io模型，其实这是完全错误的观点。
+提起IO模型大家都知道在java中有io和nio（java1.4+），包括我在内的很多人起初都认为io就是阻塞io模型，nio就是非阻塞的io模型，其实这是完全错误的观点。事实上无论在java中无论使用bio还是nio都可以实现非阻塞io模型。
 
 在java中，使用io可以实现[阻塞io模型](阻塞io模型)，也可以实现非阻塞io模型,[非阻塞io模型-残缺版](https://gist.github.com/85f429733200b7c2babddbf008855087)、[非阻塞io模型——新增非阻塞](https://gist.github.com/083fbe957011ae3c96a7573551e26822)，[非阻塞io模型-新增多线程，解决并发请求](https://gist.github.com/fdb70d4ee7b65dd5ee54f4c4df362996)
 
-nio在java中很多人教程喜欢说它即可翻译为non-blocking io也可翻译为new io,在这里我不是要杠精，其实nio在java中是用来和系统内核的io多路复用模型对应的，它是用来实现io多路复用模型的，所以翻译成non-blocking io我认为是非常不合理，导致很多人认为nio就是非阻塞io,这是完全错误的，所以我更倾向于翻译为new io,至少不会对不知情者造成误导。[nio实现io多路复用模型](https://gist.github.com/53ee1e9aba30fd3319ad94394e2613c3)
+nio在java.nio这个包中指的是 new io，而在linux系统内核中nio指的是non-blockingio,所以很多人笼统的说nio既可以翻译为new io 也可以翻译为non-blockingio是非常扯淡的，说明他对io根本不了解。[nio实现io多路复用模型](https://gist.github.com/53ee1e9aba30fd3319ad94394e2613c3)
 
 在[nio实现io多路复用模型](https://gist.github.com/53ee1e9aba30fd3319ad94394e2613c3)的demo中，仅仅使用一个main线程就实现了并发请求处理
 
