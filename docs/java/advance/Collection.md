@@ -1,5 +1,5 @@
 ---
-title: java集合源码分析
+title: java集合
 date: 2019-03-28  
 publish: true
 keys:
