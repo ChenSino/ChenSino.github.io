@@ -177,13 +177,17 @@ public void refresh() throws BeansException, IllegalStateException {
       prepareBeanFactory(beanFactory);
 
       try {
-         // 【这里需要知道 BeanFactoryPostProcessor 这个知识点，Bean 如果实现了此接口，
-         // 那么在容器初始化以后，Spring 会负责调用里面的 postProcessBeanFactory 方法。】
-        
          // 这里是提供给子类的扩展点，到这里的时候，所有的 Bean 都加载、注册完成了，但是都还没有初始化
          // 具体的子类可以在这步的时候添加一些特殊的 BeanFactoryPostProcessor 的实现类或做点什么事
+
+         //此方法要和invokeBeanFactoryPostProcessors进行区分，举例说明：
+         //不使用spring自带的ClassPathXmlApplicationContext,我自定义一个它的实现类MyApplicationContext来当作我的spring容器，并且
+         //重写postProcessBeanFactory方法，则容器启动时会调用我自定义的方法，spring自带的ClassPathXmlApplicationContext没有重写此方法
+
+         // 下面这个postProcessBeanFactory方法是继承自AbstractApplicationContext
          postProcessBeanFactory(beanFactory);
-         // 调用 BeanFactoryPostProcessor 各个实现类的 postProcessBeanFactory(factory) 方法
+         // 调用 BeanFactoryPostProcessor 各个实现类的 postProcessBeanFactory(factory) 方法，而这里调用的postProcessBeanFactory方法是继承自BeanFactoryPostProcessor接口，
+         //说白了上一步自定义的MyApplicationContext是一个容器，而这一步BeanFactoryPostProcessor指的是容器中自定的bean
          invokeBeanFactoryPostProcessors(beanFactory);
 
          // 注册 BeanPostProcessor 的实现类，注意看和 BeanFactoryPostProcessor 的区别
