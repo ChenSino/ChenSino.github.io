@@ -297,3 +297,13 @@ Cannot Import dll:C:\users\xxx\Temp\is-00IEG.tmp\isskin.dll
 https://www.linuxquestions.org/questions/red-hat-31/wine-runtime-error-isskin-dll-issue-879119/
 
 https://wiki.winehq.org/Winetricks
+
+#### 解压缩中文乱码
+
+使用下面命令：
+
+~~~shell
+unzip -O cp936  'xxx.zip'
+~~~
+
+ArchLinux 需要安装 unzip-iconv

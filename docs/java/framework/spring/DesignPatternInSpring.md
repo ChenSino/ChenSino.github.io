@@ -21,12 +21,12 @@ BeanFactory是典型的工厂方法模式，其有多个实现，不同的实现
 * @param singletonObject the singleton object
 */
 protected void addSingleton(String beanName, Object singletonObject) {
-synchronized (this.singletonObjects) {
-this.singletonObjects.put(beanName, singletonObject);
-this.singletonFactories.remove(beanName);
-this.earlySingletonObjects.remove(beanName);
-this.registeredSingletons.add(beanName);
-}
+	synchronized (this.singletonObjects) {
+		this.singletonObjects.put(beanName, singletonObject);
+		this.singletonFactories.remove(beanName);
+		this.earlySingletonObjects.remove(beanName);
+		this.registeredSingletons.add(beanName);
+	}
 }
 ~~~
 
@@ -78,7 +78,11 @@ SpringAOP整个就采用的代理模式
 					mbd.getResourceDescription(), beanName, "Instantiation of bean failed", ex);
 		}
 	}
+
+
 ```
+
+另外BeanDefinitionHolder也是包装了BeanDefinition，也是装饰者设计模式
 
 ### 8、原型模式
 
