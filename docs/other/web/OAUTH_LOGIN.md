@@ -9,7 +9,7 @@ tag:
 ---
 
 :::note  
-本博客介绍前后端分离项目的完整接入oauth的流程
+本博客介绍前后端分离项目的完整接入oauth的流程，本博客使用github来示范，因为github注册oauth应用无须审核，微信审核特别麻烦，并且个人用户无法注册
 :::
 
 ## 1 oauth2
@@ -50,11 +50,20 @@ sequenceDiagram
 
 ## 2 GitHub配置
 
+进入个人设置，开发者设置，注册一个Oauth应用，注意回调地址一定要和后端代码中实际使用的是同一个，在这个界面注册后会产生clientId和secret,在回调的时候需要用到。
+
+![20230428095222](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230428095222.png)
+
 ## 3 前后分离项目前后端交互
 
 ## 4 前端代码
 
-前端使用一个小弹窗来登录github,同时该弹窗还要监听后端发送过来的message进行解码，交互是通过`window.opener.postMessage`api实现的，后端的响应的页面中要使用该api进行传值。
+与普通项目相比，对接oauth项目前端需要使用技术如下：
+
+- window.open弹小窗
+- window.addEventListener监听后端回传的数据
+
+前端使用一个小弹窗来登录github,同时该弹窗还要监听后端发送过来的message进行解码，交互是通过`window.opener.postMessage`api实现的，后端的响应的页面中要使用该api进行传值，主要传递token，用户信息等。
 
 ~~~javascript
 // proxy 配置 
