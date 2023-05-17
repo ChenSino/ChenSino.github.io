@@ -1,5 +1,5 @@
 ---
-title: 使用fdisk工具为系统挂载磁盘
+title: 系统挂载磁盘
 date: 2023-01-27
 author: chenkun
 publish: true

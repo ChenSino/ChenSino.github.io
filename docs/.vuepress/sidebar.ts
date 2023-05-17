@@ -29,10 +29,10 @@ export default sidebar({
       prefix: "framework/",
       collapsable: true,
       children: "structure",
-    }
+    },
   ],
-  "/java/other/":[
-   "JdkVersion",
+  "/java/other/": [
+    "JdkVersion",
     {
       text: "Maven",
       icon: "discover",
@@ -92,7 +92,17 @@ export default sidebar({
       children: "structure",
     },
   ],
-  "/cpp/":[
+
+  "/designpattern/": [
+    {
+      text: "java设计模式",
+      icon: "java",
+      prefix: "",
+      collapsable: true,
+      children: "structure",
+    },
+  ],
+  "/cpp/": [
     {
       text: "基础语法学习",
       icon: "app",
@@ -109,7 +119,6 @@ export default sidebar({
     },
   ],
   "/other/": [
-
     {
       text: "Git",
       icon: "git",
@@ -179,12 +188,13 @@ export default sidebar({
       prefix: "oauth2/",
       collapsable: true,
       children: "structure",
-    },{
+    },
+    {
       text: "Docker",
       icon: "ubuntu",
       prefix: "docker/",
       collapsable: true,
       children: "structure",
     },
-  ]
+  ],
 });

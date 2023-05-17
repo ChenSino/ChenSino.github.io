@@ -1,5 +1,5 @@
 ---
-title: Linux下的抓报工具
+title: tcpdump抓包
 date: 2022-05-07
 author: chenkun
 publish: true
@@ -16,8 +16,6 @@ category:
 ```bash
 sudo tcpdump tcp -i eth1 -t -s 0 -c 100 and dst port ! 22 and src net 192.168.1.0/24 -w ./target.cap
 ```
-
-
 
 (1)tcp: ip icmp arp rarp 和 tcp、udp、icmp这些选项等都要放到第一个参数的位置，用来过滤数据报的类型
 (2)-i enp3s0f1 : 只抓经过接口eth1的包

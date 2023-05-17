@@ -1,5 +1,5 @@
 ---
-title: Linux命令使用小技巧
+title: 常用命令
 date: 2022-03-17
 author: chenkun
 publish: true

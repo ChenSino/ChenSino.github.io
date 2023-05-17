@@ -59,7 +59,22 @@ public class HttptestApplication {
 使用工具查看localhost下的cookie
 ![20221102170819](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221102170819.png)
 
-
 ## 二、http协议
 
 ### 2.1 http协议是什么
+
+## 三、Headers
+
+### 3.1 中文header
+
+无论请求头还是响应头，是不支持中文的，如果要支持中文需要自己编码，比如使用UrlEncode编码，前端获取请求头再解码即可，
+
+```java
+
+ URLEncoder.encode("中文", "UTF-8")
+
+ ```
+
+ ```javascript
+ let chineseStr = decodeURI(header)
+ ```

@@ -1,5 +1,5 @@
 ---
-title: 使用docker安装mysql
+title: docker安装mysql
 date: 2022-10-08
 author: chenkun
 publish: true

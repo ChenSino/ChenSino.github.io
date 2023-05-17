@@ -42,6 +42,11 @@ export default navbar([
     ]
   },
   {
+    text: "设计模式",
+    icon: "java",
+    link: "/designpattern",
+  },
+  {
     text: "前后分离项目搭建",
     icon: "app",
     link: "/other/web/README.md"
