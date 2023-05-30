@@ -228,7 +228,7 @@ public class DynamicProxyTest {
 }
 ```
 
-解析出来的动态生成的代理类，其实是一个同时实现Proxy和我们目标接口Executor的一个代理类，Proxy类中有个属性就是`InvocationHandler`
+解析出来的动态生成的代理类，其实是一个同时继承了Proxy，另外实现了接口Executor的一个代理类，Proxy类中有个属性就是`InvocationHandler`
 
 ```java
 import com.chen.base.proxy.Executor;
@@ -317,6 +317,18 @@ public final class $ExecutorProxy0 extends Proxy implements Executor {
     }
 ```
 
+另外有个简单的生成代理类的方法，只需要设置一个系统属性即可：
+```java
+    public static void main(String[] args) {
+    //配置此系统属性，会自动生成代理类
+        System.setProperty("sun.misc.ProxyGenerator.saveGeneratedFiles","true");
+        //1. 创建一个代理对象，Proxy会自动返回一个代理类，此类是Excutor的子类
+        Executor executor = (Executor) Proxy.newProxyInstance(Executor.class.getClassLoader(), new Class[]{Executor.class}, new LogTimeInvocationHandler(new ExecutorImpl()));
+        //2. 使用代理对象调用
+        int add = executor.add(1, 2);
+    }
+ ```
+ 
 #### 5.2 Cglib动态代理
 
 ##### 5.2.1
