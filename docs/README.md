@@ -6,7 +6,7 @@ title: ChenSino
 heroImage: /logo.svg
 heroText: ChenSino
 heroFullScreen: true
-tagline: 落星星的学习笔记
+tagline: 洛星星的学习笔记
 projects:
   - icon: project
     name: ChenSino
@@ -15,3 +15,5 @@ projects:
 
 footer: Give me a chance,I can surprise the word!
 ---
+
+![JetBrains Logo (Main) logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png)
