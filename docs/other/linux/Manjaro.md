@@ -307,3 +307,22 @@ unzip -O cp936  'xxx.zip'
 ~~~
 
 ArchLinux 需要安装 unzip-iconv
+
+#### vmware使用问题
+
+在manjaro安装了vmware17版本，然后安了一个deepin系统，无法使用虚拟网卡，以为是deepin的问题，然后换其他发行版，同样不行。然后开启了排查之路
+
+尝试路线：
+1. 开始以为是桥接/nat配置问题，然后各种尝试，没卵用
+2. 然后尝试降低vm版本，降低版本后遇到vmnet/vmmon问题
+3. 更换manjaro内核，从6+版本内核降级到5.15,然后安装vm17,安装好以后加载vmnet/vmmon模块，然后启动虚拟网`sudo vmware-networks --start`，居然好了
+4. 为了确认6.0内核是否有问题，我又重启系统，选择6.4的内核，开机后挂载vmnet,发现又和之前一样了，一直挂载不了，基本可以确认vmware和6.0内核还不兼容
+
+总结：
+1. manjro必须使用6.0以下的内核
+2. 安装vm17后，必须手动加载模块
+   `sudo modprobe vmnet`
+   `sudo modprobe vmmon`
+3. 启动虚拟网
+   `sudo vmware-networks --start`
+   
