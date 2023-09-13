@@ -26,7 +26,7 @@ tag:
 
 ## 关系图
 
-![20230804163119](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230804163119.png)
+![20230804165315](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230804165315.png)
 
 总结：
 
@@ -121,11 +121,38 @@ Firewalld 使用 iptables：Firewalld 在底层使用 iptables 工具集来实�
 兼容性：Firewalld 是在 iptables 之上构建的，因此它与 iptables 规则兼容。这意味着可以在 Firewalld 中使用 iptables 的规则，也可以将已经存在的 iptables 规则迁移到 Firewalld 中。
 
 总结起来，Firewalld 是一个更高级和动态的防火墙管理工具，它在底层使用 iptables 工具集来实际处理网络数据包。Firewalld 提供了一些高级功能和灵活性，以满足复杂的网络环境需求，并与 iptables 规则兼容。
+
+# 是否所有的防火墙软件都需要用到iptables？
+不是所有的防火墙软件都需要使用 iptables。iptables 是 Linux 操作系统上一个功能强大的防火墙工具，它提供了对网络数据包进行过滤和控制的能力。一些防火墙软件使用 iptables 作为底层技术来实现防火墙功能，例如 Firewalld、UFW 等。
+
+然而，也有其他防火墙软件不依赖于 iptables。例如，nftables 是一个新一代的 Linux 内核防火墙框架，它取代了传统的 iptables/iptables6 工具集。一些防火墙软件可能使用 nftables 作为底层技术，而不是 iptables。
+
+此外，还有一些商业防火墙软件、硬件防火墙等，并不直接使用 iptables 或 nftables，而是采用自己独立开发的防火墙引擎来实现网络安全功能。
+
+因此，并非所有的防火墙软件都需要使用 iptables，这取决于具体的防火墙实现和技术选型。不同的防火墙软件可能选择不同的底层技术来实现其功能。
+
+# firewalld到底是基于iptables还是nftables？
+Firewalld 是基于 nftables 技术的防火墙管理工具。从 Firewalld 0.6.0 版本开始，默认使用 nftables 作为底层防火墙规则引擎，而不再使用传统的 iptables。这意味着 Firewalld 在处理网络数据包过滤和控制时使用的是 nftables。
+
+Firewalld 使用 nftables 提供的更强大和灵活的规则语言来配置和管理防火墙规则。它支持动态更新规则、定义网络区域、服务和应用程序，以及进行网络地址转换（NAT）、端口转发等操作。
+
+需要注意的是，Firewalld 中仍然可以通过与 iptables 兼容的方式配置规则。它提供了一个兼容层，允许使用 iptables 规则语法在 nftables 上运行，以便逐步过渡到 nftables，并保留使用 iptables 的规则配置。这种兼容层在后台将 iptables 规则转换为 nftables 规则。
+
+总结起来，Firewalld 是基于 nftables 技术的防火墙管理工具，在默认情况下使用 nftables 作为底层防火墙规则引擎。但它仍然兼容 iptables 规则，并提供了过渡和转换机制。
+# ufw能否使用nftables
+是的，从 UFW (Uncomplicated Firewall) 版本 0.35 开始，它开始支持 nftables 作为底层技术来实现防火墙功能。在之前的版本中，UFW 使用的是 iptables。
+
+通过在 UFW 的配置文件中设置 IPV6=yes 和 IPT_BACKEND=nftables，可以启用 nftables 支持。这样，UFW 将使用 nftables 来管理 IPv6 规则，而不再使用 iptables。
 ~~~
 
 ## 结论
 
 1. 如果想用界面操作，直接选择gufw,另外firewall也提供有界面
-2. 命令行操作可以使用ufw，或者wirewall,二选一就行了
-3. 如果你是大神，或者你的要求比较高，那么直接使用iptables
+2. 命令行操作可以使用ufw，或者wirewall,二选一就行了，他俩都是可以操作iptables或者nftables,具体使用哪个要自行配置
+3. 如果你是大神，或者你的要求比较高，那么直接使用iptables或者nftables
 
+## 参考
+
+[iptables详解](https://www.zsythink.net/archives/category/%e8%bf%90%e7%bb%b4%e7%9b%b8%e5%85%b3/iptables)
+
+[ufw](https://help.ubuntu.com/community/UFW)
