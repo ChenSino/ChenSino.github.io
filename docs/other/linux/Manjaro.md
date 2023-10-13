@@ -201,23 +201,23 @@ kde设置proxy有个很大的bug,就是无法全局，搞笑的是通过kde设�
 
 ​  给当前用户添加一下权限，`chmod 666 xxx`
 
-### 3、Manjaro不支持Mysql
+### 4、Manjaro不支持Mysql
 
 > 在Manjaro上使用mysql,经常会遇到libicu不兼容问题，即使解决了，下次系统滚动升级可能又会出现
 
-#### 3.1 使用MariaDB代替mysql
+#### 4.1 使用MariaDB代替mysql
 
 ![image-20220502211444881](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220502211444881.png)
 
-#### 3.2 使用docker安装Mysql
+#### 4.2 使用docker安装Mysql
 
-### 4、Manjaro设置DNS
+### 5、Manjaro设置DNS
 
 > 用双网卡同时上内外网，有时一个域名是内网才能解析的，比如我司的iccm.sonoscape.com，这个是一个内网域名，要走内部DNS才能访问到，
 >
 > 但是公司因该是有两个DNS服务器，一个用来解析外网访问xxx.sonoscape.com，另一个是用来访问内网的xxx.sonoscape.com,
 
-### 4、Manjaro fcitx5中文大括号问题
+### 6、Manjaro fcitx5中文大括号问题
 
 ```shell
 sudo vim /usr/share/fcitx5/punctuation/punc.mb.zh_CN
@@ -230,9 +230,9 @@ sudo vim /usr/share/fcitx5/punctuation/punc.mb.zh_CN
 ] 】
 ```
 
-### 5、分支管理
+### 7、分支管理
 
-#### 概述
+#### 7.1 概述
 
 Template:重要 One of the many features that sets Manjaro apart from other Arch-based distributions is that it uses its own dedicated software branches, rather than relying on those provided by Arch itself. In fact, to ensure continued stability and reliability, Manjaro actually uses three distinct branches:
 
@@ -247,7 +247,7 @@ Remember: Manjaro specific packages such as kernels, kernel modules and Manjaro 
 Unmodifed packages synced from Arch repo are considered stable as they have already been vetted by Archlinux Community.
 :::
 
-#### 切换分支
+#### 7.2切换分支
 
 In order to access a branch, you need to change your pacman-mirrors configuration.
 
@@ -263,7 +263,7 @@ After you changed the branch, rebuild the mirrorlist and update your packages:
 sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
 ```
 
-#### How do I go back after changing to one of the testing branches?
+#### 7.3 How do I go back after changing to one of the testing branches?
 
 Going back to the stable branch is easy. All you have to do is to repeat the above, and use stable as the branch value.
 
@@ -273,7 +273,7 @@ If for whatever reason you do wish to also 'downgrade' packages while changing b
 
 ```sudo pacman -Syyuu```
 
-#### wine安装exe报错
+### 8、wine安装exe报错
 
 报错内容
 
@@ -298,7 +298,7 @@ https://www.linuxquestions.org/questions/red-hat-31/wine-runtime-error-isskin-dl
 
 https://wiki.winehq.org/Winetricks
 
-#### 解压缩中文乱码
+### 9、解压缩中文乱码
 
 使用下面命令：
 
@@ -308,7 +308,7 @@ unzip -O cp936  'xxx.zip'
 
 ArchLinux 需要安装 unzip-iconv
 
-#### vmware使用问题
+### 10、vmware使用问题
 
 在manjaro安装了vmware17版本，然后安了一个deepin系统，无法使用虚拟网卡，以为是deepin的问题，然后换其他发行版，同样不行。然后开启了排查之路
 
@@ -326,3 +326,132 @@ ArchLinux 需要安装 unzip-iconv
 3. 启动虚拟网
    `sudo vmware-networks --start`
    
+:::danger 提示
+以上方法作废，在比较新的linux内核上vmware支持的不够友好，在Manjaro官方是不支持vmware的，如果实在要安装vmware，不要用yay也不要用archlinuxcn中的，
+:::
+
+#### How to install VMware
+
+Enable CPU virtual extensions in your system’s firmware.
+
+To install vmware on Manjaro you will have to resort to a PKGBUILD script.
+
+There is a lot of AUR helpers and they all mimic what you should do manually - the Arch way is usually the best way.
+
+#### Important kernel precaution
+
+The AUR PKGBUILD is created for Archlinux and therefore the kernel headers dependency must be solved manually on Manjaro. Archlinux only have two kernel versions - linux and linux-lts.
+
+Archlinux kernels follow the release schedule on kernel.org 23 and on Manjaro you will need to use the same kernel version.
+
+ 19 June 2023 (Copenhagen)
+
+- Linux 6.3.x (stable)
+- Linux 6.1.x (LTS)
+
+Using other kernels will most likely fail.
+
+#### Building steps
+
+1. Update your system and Install the necessary build tools
+
+`sudo pacman -Syu git base-devel --needed`
+
+2. Then check your kernel version(s) - example - remember to use the same version as Arch
+ 
+ `$ mhwd-kernel -li`
+
+Currently running: 6.3.8-1-MANJARO (linux63)
+The following kernels are installed in your system:
+   * linux61
+   * linux63
+
+3. Then install the headers for your kernel(s) and dkms (use the kernels listed from your system)
+`sudo pacman -Syu $KERNELXYY-headers dkms`
+
+4. Clone the PKGBUILKD script
+`git clone https://aur.archlinux.org/vmware-workstation.git`
+
+expect output like this
+~~~shell
+Cloning into 'vmware-workstation'...
+remote: Enumerating objects: 498, done.
+remote: Counting objects: 100% (498/498), done.
+remote: Compressing objects: 100% (239/239), done.
+remote: Total 498 (delta 307), reused 439 (delta 258), pack-reused 0
+Receiving objects: 100% (498/498), 256.62 KiB | 3.21 MiB/s, done.
+Resolving deltas: 100% (307/307), done.
+~~~
+
+5. Familiarize yourself with the content - it is all text files and you should read them and verify what they are doing.
+`ls ~/vmware-workstation`
+
+6. When you are satisfied - cd into the folder and run makepkg to install dependencies, build and install the package.
+~~~sh
+cd ~/vmware-workstation
+makepkg -is
+~~~
+
+The post install message reads
+
+~~~sh
+==> Before using VMware, you need to reboot or load vmw_vmci and vmmon kernel modules (in a terminal on root: modprobe -a vmw_vmci vmmon)
+==> You may also need to enable some of the following services:
+- vmware-networks: to have network access inside VMs
+- vmware-usbarbitrator: to connect USB devices inside VMs
+These services can be activated during boot by enabling .service units or only when a VM is started by enabling .path units.
+~~~
+
+Choose either of the options - not both
+
+- To start and enable vmware network and usb service at boot
+
+~~~sh
+sudo systemctl enable --now vmware-networks.service
+sudo systemctl enable --now vmware-usbarbitrator.service
+~~~
+
+- To start and enable vmware network and usb on demand
+
+~~~sh
+sudo systemctl enable --now vmware-networks.path
+sudo systemctl enable --now vmware-usbarbitrator.path
+~~~
+
+Either reboot your system or load the kernel modules by hand
+
+`sudo modprobe -a vmw_vmci vmmon`
+Because the resulting build is using dkms - you won’t have to rebuild the kernel modules on system update - dkms will take care of this.
+
+
+
+参考：
+https://forum.manjaro.org/t/root-tip-how-to-installing-vmware-on-manjaro/57596
+
+### 11、vnc
+
+> 在manjaro一直使用的realvnc,这是一个商业软件，使用体验一直不错，不过在某次升级后，无法破解所以放弃了它，后来转用tigervnc,记录以下tigervnc的使用
+
+1. 安装软件
+~~~shell
+##安装以后会自动包含客户端和服务端
+sudo pacman -S tigervnc
+~~~
+
+2. 服务端设置密码
+
+~~~shell
+#根据提示输入
+vncpasswd 
+~~~
+
+3. 启动服务端
+
+~~~shell
+#启动一个服务，监听5901,以此类推vncserver :2 监听5902……
+vncserver :1
+~~~
+
+4. 客户端使用任何一个vnc客户端都可以连接，可以用realvnc,tigervnc，ultravnc等客户端都行，需要注意的是一定要开启键盘鼠标
+
+![](https://i.imgur.com/jUPl184.png)
