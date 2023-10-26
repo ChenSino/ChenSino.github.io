@@ -454,4 +454,4 @@ vncserver :1
 
 4. 客户端使用任何一个vnc客户端都可以连接，可以用realvnc,tigervnc，ultravnc等客户端都行，需要注意的是一定要开启键盘鼠标
 
-![](https://i.imgur.com/jUPl184.png)
+![20231013103250](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20231013103250.png)
