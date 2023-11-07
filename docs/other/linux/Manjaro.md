@@ -215,17 +215,17 @@ kde设置proxy有个很大的bug,就是无法全局，搞笑的是通过kde设�
 
 ​		给当前用户添加一下权限，`chmod 666 xxx`
 
-### 3、Manjaro不支持Mysql
+### 5、Manjaro不支持Mysql
 
 > 在Manjaro上使用mysql,经常会遇到libicu不兼容问题，即使解决了，下次系统滚动升级可能又会出现
 
-#### 3.1 使用MariaDB代替mysql
+#### 5.1 使用MariaDB代替mysql
 
 ![image-20220502211444881](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220502211444881.png)
 
-#### 3.2 使用docker安装Mysql
+#### 5.2 使用docker安装Mysql
 
-### 4、Manjaro设置DNS
+### 6、Manjaro设置DNS
 
 **背景**
 
@@ -233,3 +233,32 @@ kde设置proxy有个很大的bug,就是无法全局，搞笑的是通过kde设�
 >
 > 但是公司因该是有两个DNS服务器，一个用来解析外网访问xxx.sonoscape.com，另一个是用来访问内网的xxx.sonoscape.com,
 
+### 7、Remmina无法rdp连接win7和winserver2012
+
+[解决方法参考](https://askubuntu.com/questions/1415498/error-when-trying-to-connect-to-windows-computer-with-remmina)
+
+Ubuntu 22.04 shipped with OpenSSL 3.0. Openssl3 changed the default security level of tls<1.2 and sha1 to from security level 1 to 0. This means that Windows 7 and Windows Server 2008 (maybe 2012 too?) and older will not work by default.
+
+If you want a quick test before trying to get a new version of Remmina, just run freerdp from the terminal with TLS downgraded:
+
+```shell
+#xfreerdp还有其他参数，可以设置分辨率，缩放等，Ctrl alt enter可以全屏
+xfreerdp /v:hostname_or_ip /u:username /p:password /cert:ignore /tls-seclevel:0
+```
+
+参考方法中说remmina新版本已经更新但是我实测新版本1.4.33设置tls安全等级也无法连接诶。
+
+
+为了避免每次使用命令行连接，可以在桌面建立一个快捷方式，新建文件命名为xxx.desktop,贴入以下内容：
+```
+[Desktop Entry]
+Categories=Utility;
+Comment=生产环境
+Exec=xfreerdp /v:<remote_ip> /u:<username> /p:'<password>' /cert:ignore /tls-seclevel:0 /size:1920x1080 
+Icon=/home/chenkun/Icons/rdp.webp
+Name[zh_CN]=MyWin7
+Name=MyWin7
+Terminal=false
+Type=Application
+Version=1.0
+```
