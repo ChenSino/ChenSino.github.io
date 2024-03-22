@@ -1,7 +1,7 @@
 import { defineUserConfig } from "vuepress";
 import theme from "./theme";
 import { searchPlugin } from "@vuepress/plugin-search";
-// import { componentsPlugin } from "vuepress-plugin-components";
+import { viteBundler } from '@vuepress/bundler-vite'
 
 export default defineUserConfig({
   lang: "zh-CN",
@@ -18,5 +18,8 @@ export default defineUserConfig({
     //   backToTop: true
     // }),
   ],
-
+  bundler: viteBundler({
+    viteOptions: {},
+    vuePluginOptions: {},
+  }),
 });
