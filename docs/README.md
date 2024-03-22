@@ -1,6 +1,6 @@
 ---
 home: true
-layout: Blog
+layout: BlogHome
 icon: home
 title: ChenSino
 heroImage: /logo.svg

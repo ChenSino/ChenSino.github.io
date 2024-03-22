@@ -3,8 +3,6 @@ title: 双网卡问题
 date:  2022-08-26
 author: chenkun
 keys:
-category:
-tag:
 ---
 
 ## 1.1 kde桌面双网卡内外网设置

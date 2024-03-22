@@ -2,8 +2,6 @@
 title: 用服bom交接
 date: 2023-03-14
 isOriginal: true
-category: 
-tag: 
 ---
 
 ## 1、系统设计

@@ -2,7 +2,6 @@
 title: vue3使用emit进行父子组件传值
 date: 2023-04-12
 isOriginal: true
-category: 
 tag: 
   - ts
   - vue3

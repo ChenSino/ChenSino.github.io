@@ -2,8 +2,6 @@
 title: PreAuthorize注解
 date: 2023-05-22
 isOriginal: true
-category: 
-tag: 
 ---
 
 ## 1、使用方式

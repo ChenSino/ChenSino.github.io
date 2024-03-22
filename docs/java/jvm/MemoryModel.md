@@ -1,8 +1,6 @@
 ---
 title: 内存模型
 date: 2023-01-31
-category: 
-tag: 
 ---
 
 > 环境jdk8

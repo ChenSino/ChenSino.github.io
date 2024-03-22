@@ -2,8 +2,6 @@
 title: SpringMVC基本原理
 date: 2023-06-25
 isOriginal: true
-category: 
-tag: 
 ---
 
 ## SpringMVC处理请求的流程

@@ -2,8 +2,6 @@
 title: js能识别最大的正整数
 date: 2023-07-21
 isOriginal: true
-category: 
-tag: 
 ---
 
 ## 背景

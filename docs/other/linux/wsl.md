@@ -4,7 +4,6 @@ date: 2022-07-22
 author: chenkun
 publish: true
 keys:
-category:
 ---
 
 # 一、wsl安装

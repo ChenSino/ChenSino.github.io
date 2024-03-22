@@ -4,8 +4,6 @@ date:  2023-10-26
 author: chenkun
 publish: true
 keys:
-category:
-tag:
 ---
 
 ### 1、在windows设置共享目录

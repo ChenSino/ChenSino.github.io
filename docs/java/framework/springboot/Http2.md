@@ -1,8 +1,6 @@
 ---
 title: springboot开启http2.0
 date: 2023-01-29
-category: 
-tag: 
 ---
 
 ## 1、http2.0优势

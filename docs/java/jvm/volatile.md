@@ -1,8 +1,6 @@
 ---
 title: volatile关键字
 date: 2023-02-01
-category: 
-tag: 
 ---
 
 ## 1、双重检查的单例模式是否真的线程安全？

@@ -4,7 +4,6 @@ date: 2022-10-08
 author: chenkun
 publish: true
 keys:
-category:
 ---
 
 ## 1. 不要用太新的版本

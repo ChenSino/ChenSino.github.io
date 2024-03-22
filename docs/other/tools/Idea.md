@@ -4,7 +4,6 @@ date:  2022-07-29
 author: chenkun
 publish: true
 keys:
-category:
 ---
 
 ## 1、多线程debug遇到的问题

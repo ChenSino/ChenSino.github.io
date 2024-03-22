@@ -4,7 +4,6 @@ date: 2022-03-22
 author: chenkun
 publish: true
 keys:
-category:
 ---
 
 ### 1、降级软件包

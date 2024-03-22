@@ -4,7 +4,6 @@ date: 2022-06-27
 author: chenkun
 publish: true
 keys:
-category:
 ---
 
 ## 1、安装过程省略

@@ -4,8 +4,6 @@ date:  2022-08-10
 author: chenkun
 publish: true
 keys:
-category:
-tag:
 ---
 
 ## 1、安装JDK11

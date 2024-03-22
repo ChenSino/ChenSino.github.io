@@ -4,7 +4,6 @@ date:  2022-07-28
 author: chenkun
 publish: true
 keys:
-category:
 ---
 
 ## 1、一个真实的多模块maven项目

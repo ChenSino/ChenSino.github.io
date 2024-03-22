@@ -6,7 +6,6 @@ keys:
 category:
     - Security
     - OAuth
-tag:
 ---
 
 ## 1、时序图

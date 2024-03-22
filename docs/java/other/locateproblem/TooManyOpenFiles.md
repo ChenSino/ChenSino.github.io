@@ -2,9 +2,7 @@
 title: TooManyOpenFiles
 date:  2022-08-25
 author: chenkun
-keys:
-category:
-tag:
+
   - 问题定位
 ---
 

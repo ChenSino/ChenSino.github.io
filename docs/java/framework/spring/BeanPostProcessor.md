@@ -4,7 +4,6 @@ date: 2019-10-22
 author: chenkun
 publish: true
 keys:
-category:
 ---
 
 <!--more-->

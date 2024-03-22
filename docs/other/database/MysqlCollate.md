@@ -1,7 +1,6 @@
 ---
 title: Mysql中的Collate和charset
 date: 2023-02-17
-category: 
 isOriginal: true
 tag: 
   - mysql

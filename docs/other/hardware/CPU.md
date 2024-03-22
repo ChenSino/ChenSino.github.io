@@ -2,8 +2,6 @@
 title: cpu介绍
 date: 2023-08-09
 isOriginal: true
-category: 
-tag: 
 ---
 
 ## intel cpu型号

@@ -3,8 +3,6 @@ title: git代理
 date:  2022-08-17
 author: chenkun
 keys:
-category:
-tag:
 ---
 
 ## 1、全局代理

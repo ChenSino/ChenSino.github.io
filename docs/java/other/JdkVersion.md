@@ -2,8 +2,6 @@
 title: Jdk版本
 date:  2022-08-17
 author: chenkun
-category:
-tag:
 ---
 
 ::: info 开发者注意

@@ -2,8 +2,6 @@
 title: linux中防火墙
 date: 2023-08-04
 isOriginal: true
-category: 
-tag: 
 ---
 
 

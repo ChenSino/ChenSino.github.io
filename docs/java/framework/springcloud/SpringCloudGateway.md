@@ -2,8 +2,6 @@
 title: 网关路由失效
 date: 2023-06-20
 isOriginal: true
-category: 
-tag: 
 ---
 
 ## 问题描述

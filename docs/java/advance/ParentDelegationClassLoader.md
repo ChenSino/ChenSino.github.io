@@ -5,7 +5,6 @@ author: chenkun
 publish: true
 sticky: 1
 keys:
-category:
 ---
 为什么说spi打破了双亲委派机制？
 <!--more-->

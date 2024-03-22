@@ -4,7 +4,6 @@ date: 2022-05-07
 author: chenkun
 publish: true
 keys:
-category:
 ---
 简要介绍Linux抓报
 <!--more-->

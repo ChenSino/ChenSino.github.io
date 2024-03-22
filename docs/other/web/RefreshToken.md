@@ -2,8 +2,6 @@
 title: refresh_token
 date: 2023-05-08
 isOriginal: true
-category: 
-tag: 
 ---
 
 ## 1、 refresh_token介绍

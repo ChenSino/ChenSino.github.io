@@ -2,8 +2,6 @@
 title: 自定义validator分组检验
 date: 2023-05-06
 isOriginal: true
-category: 
-tag: 
 ---
 
 ## 自定义校验

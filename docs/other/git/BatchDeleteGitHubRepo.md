@@ -2,8 +2,6 @@
 title: 批量删除github仓库
 date: 2023-02-22
 isOriginal: true
-category: 
-tag: 
 ---
 
 ## 背景

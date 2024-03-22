@@ -2,8 +2,6 @@
 title: I/O模型
 date:  2022-08-07
 keys:
-tag:
-category:
 ---
 
 ## 1、参考

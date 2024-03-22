@@ -4,7 +4,6 @@ date:  2022-07-28
 author: chenkun
 publish: true
 keys:
-category:
 ---
 
 ## 1. maven的放弃之路

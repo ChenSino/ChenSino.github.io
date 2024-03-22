@@ -2,8 +2,6 @@
 title: Linux下加装wifi模块
 date:  2022-08-28
 keys:
-tag:
-category:
 ---
 
 ## 1、需求场景

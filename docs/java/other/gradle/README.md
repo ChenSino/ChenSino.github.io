@@ -4,7 +4,6 @@ date:  2022-10-18
 author: chenkun
 publish: true
 keys:
-category:
 ---
 
 ## 1. Gradle的放弃之路
