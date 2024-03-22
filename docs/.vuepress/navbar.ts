@@ -57,6 +57,11 @@ export default navbar([
     link: "/cpp/study/README.md"
   },
   {
+    text: "家庭服务器",
+    icon: "",
+    link: "/cpp/study/README.md"
+  },
+  {
     text: "其他",
     icon: "others",
     prefix: "/other/",
