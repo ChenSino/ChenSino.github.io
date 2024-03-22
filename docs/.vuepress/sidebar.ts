@@ -93,15 +93,7 @@ export default sidebar({
     },
   ],
 
-  "/designpattern/": [
-    {
-      text: "java设计模式",
-      icon: "java",
-      prefix: "",
-      collapsible: true,
-      children: "structure",
-    },
-  ],
+  "/designpattern/": "structure",
   "/cpp/": [
     {
       text: "基础语法学习",
@@ -118,6 +110,7 @@ export default sidebar({
       children: "structure",
     },
   ],
+  "/myserver/":  "structure",
   "/other/": [
     {
       text: "Git",

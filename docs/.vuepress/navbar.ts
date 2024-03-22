@@ -44,7 +44,7 @@ export default navbar([
   {
     text: "设计模式",
     icon: "java",
-    link: "/designpattern",
+    link: "/designpattern/",
   },
   {
     text: "前后分离项目搭建",
@@ -58,8 +58,8 @@ export default navbar([
   },
   {
     text: "家庭服务器",
-    icon: "",
-    link: "/cpp/study/README.md"
+    icon: "app",
+    link: "/myserver/README.md"
   },
   {
     text: "其他",
