@@ -6,7 +6,7 @@ export default defineUserConfig({
   lang: "zh-CN",
   title: "ChenSino",
   description: "ChenSino's Blog",
-  base: "/",
+  base: "/blog/",
   theme,
   plugins: [
 
