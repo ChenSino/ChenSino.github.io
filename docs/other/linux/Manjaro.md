@@ -454,3 +454,15 @@ vncserver :1
 4. 客户端使用任何一个vnc客户端都可以连接，可以用realvnc,tigervnc，ultravnc等客户端都行，需要注意的是一定要开启键盘鼠标
 
 ![20231013103250](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20231013103250.png)
+
+### 12、Remmina远程windows字体发虚
+
+> 使用remmina远程windows，字体发虚，尤其chrome浏览器，在视觉效果自定义中选择“平滑屏幕字体边缘”重新打开chrome发现就好了，但是断开remmina重新连接发现
+> “平滑屏幕字体边缘”又被去掉了勾选。
+
+![20240416112834](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240416112834.png)
+
+解决方法：
+在remmina设置——高级——画质，选择最好（最慢）就可以了
+
+![20240416112927](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240416112927.png)
