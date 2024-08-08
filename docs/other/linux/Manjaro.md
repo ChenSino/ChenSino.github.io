@@ -466,3 +466,14 @@ vncserver :1
 在remmina设置——高级——画质，选择最好（最慢）就可以了
 
 ![20240416112927](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240416112927.png)
+
+### 13、manjaro-kde下idea新版本UI问题
+
+新版本IDEA的UI在manjaro-kde下显示没有使用KDE桌面设置的样式，
+![20240808112352](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240808112352.png)
+
+解决方案如下：
+![20240808112509](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240808112509.png)
+
+设置后重启idea，效果如下，终于和我设置的样式一致了：
+![20240808112611](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240808112611.png)
