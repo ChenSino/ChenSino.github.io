@@ -34,12 +34,7 @@ export default hopeTheme({
 
   displayFooter: true,
 
-  themeColor: {
-    blue: "#2196f3",
-    red: "#f26d6d",
-    green: "#3eaf7c",
-    orange: "#fb9b5f",
-  },
+  themeColor: true,
 
   pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime"],
 
@@ -47,7 +42,7 @@ export default hopeTheme({
     name:"ChenSino",
     avatar:"https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220802180305.png",
     roundAvatar: true,
-    description: "洛星星的爸爸，芳狗子的老公",
+    description: "洛星星的爸爸",
     intro: "https://chensino.github.io/",
     medias: {
       Baidu: "https://example.com",
@@ -73,7 +68,7 @@ export default hopeTheme({
         },
     },
     blog: {
-    
+
     },
     // 如果你不需要评论，可以直接删除 comment 配置，
     // 以下配置仅供体验，如果你需要评论，请自行配置并使用自己的环境，详见文档。
@@ -92,7 +87,7 @@ export default hopeTheme({
 
     },
     mdEnhance: {
-     
+
     },
-  },
+  }
 });

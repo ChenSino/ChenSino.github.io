@@ -39,6 +39,7 @@ export default navbar([
       { text: "ES5", icon: "javascript", link: "es5/" },
       { text: "ES6", icon: "javascript", link: "es6/" },
       { text: "TypeScript", icon: "javascript", link: "typeScript/" },
+      { text: "NodeJS", icon: "nodejs", link: "nodejs/" },
     ]
   },
   {
