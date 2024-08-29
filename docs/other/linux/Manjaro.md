@@ -477,3 +477,13 @@ vncserver :1
 
 设置后重启idea，效果如下，终于和我设置的样式一致了：
 ![20240808112611](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240808112611.png)
+
+### 12、GTK3主题设置
+
+gtk开发的软件在kde桌面下，默认的窗口样式不好看，设置好全局主题后对GTK软件是不生效的，需要单独设置GTK3主题，在kde桌面下，右键点击桌面，选择设置，选择主题，选择GTK3主题，有的主题会专门提供GTK，
+设置方法如下：
+![20240815143416](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240815143416.png)
+
+下载对应主题的gtk包，然后选择应用，当然有的主题作者没有提供gtk包，那就随便选择一个其他主题的gtk包就行了，
+![20240815143437](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240815143437.png)
+

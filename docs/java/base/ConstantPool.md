@@ -8,7 +8,11 @@ tag:
 ---
 ### 1. Integer常量池默认的范围
 
-范围：[-128,127]，Integer内部有个缓存池，最小值-128是固定的，最大的值127是可以调整的，看源码知道，最大值是和integerCacheHighPropValue有关，这个值是可以通过```java.lang.Integer.IntegerCache.high```属性指定，实际测试```System.setProperty("java.lang.Integer.IntegerCache.high","300")```不生效，使用-XX:AutoBoxCacheMax=300可以。
+范围：[-128,127]，Integer内部有个缓存池，最小值-128是固定的，最大的值127是可以调整的，看源码知道，
+最大值是和integerCacheHighPropValue有关，这个值是可以通过```java.lang.Integer.IntegerCache.high```
+属性指定，实际测试```System.setProperty("java.lang.Integer.IntegerCache.high","300")```不生效，
+因为他是jvm参数应该在启动时设置vm参数，`-Djava.lang.Integer.IntegerCache.high=300`
+使用-XX:AutoBoxCacheMax=300也可以。
 
 ```java
 private static class IntegerCache {
