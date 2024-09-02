@@ -11,4 +11,5 @@ tag:
  分析集合数据结构，HashMap、ArrayList、LinkedList扩容原理等
  <!--more-->
 
-## 1、HashMap
+## 1、Collection
+
