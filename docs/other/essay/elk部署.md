@@ -103,16 +103,29 @@ docker compose up
 elasticsearch地址：<http://localhost:9200>
 kibana地址：<http://localhost:5601>
 
-### 3. 安装IK中文分词器
+### 3. 初始化密码
 
-#### 3.1 安装
+> elastic通过docker启动后，需要进入容器设置默认的密码，会分别给elastic，logstash，kibana等提供对应账号，以及默认密码，设置方式如下：
+~~~shell
+#进入容器
+docker exec -it <容器名字> /bin/bash
+# 设置默认密码
+./bin/elasticsearch-setup-passwords interactive
+~~~
+
+如下图，会分别设置多个默认密码，对应不同系统使用
+![20240919164025](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240919164025.png)
+
+### 4. 安装IK中文分词器
+
+#### 4.1 安装
 
 1. 下载ik分词器插件
     下载地址：<https://github.com/infinilabs/analysis-ik/releases/download/v8.11.3/elasticsearch-analysis-ik-8.11.3.zip>
 2. 将ik分词器插件解压到`config/es/plugins`目录下，改为目录改名字为ik
 3. 重启容器`docker restart elasticsearch`
 
-#### 3.2 测试分词
+#### 4.2 测试分词
 
 打开kibana，进入控制台：
 
@@ -196,7 +209,7 @@ GET /_analyze
 }
 ```
 
-#### 3.4 ik分词器扩展
+#### 4.4 ik分词器扩展
 
 1. 在IKAnalyzer.cfg.xml配置文件内容添加：
 
@@ -214,9 +227,9 @@ GET /_analyze
 
 2. 分别添加词典文件：ext.dic stopword.dic
 
-### 4. 安装拼音分词器
+### 5. 安装拼音分词器
 
-#### 4.1 安装
+#### 5.1 安装
 
 1. 下载拼音分词器插件<https://github.com/infinilabs/analysis-pinyin/releases/download/v8.11.3/elasticsearch-analysis-pinyin-8.11.3.zip>
 2. 复制到`config/es/plugins`目录下，改名为`analysis-pinyin`
