@@ -105,16 +105,21 @@ kibana地址：<http://localhost:5601>
 
 ### 3. 初始化密码
 
-> elastic通过docker启动后，需要进入容器设置默认的密码，会分别给elastic，logstash，kibana等提供对应账号，以及默认密码，设置方式如下：
-~~~shell
+> elastic通过docker启动后，需要进入容器设置默认的密码，会分别给elastic，
+> logstash，kibana等提供对应账号，以及默认密码，设置方式如下：
+
+```shell
 #进入容器
 docker exec -it <容器名字> /bin/bash
 # 设置默认密码
 ./bin/elasticsearch-setup-passwords interactive
-~~~
+```
 
 如下图，会分别设置多个默认密码，对应不同系统使用
 ![20240919164025](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240919164025.png)
+
+密码设置参考
+<https://blog.csdn.net/ju_362204801/article/details/125426228>
 
 ### 4. 安装IK中文分词器
 
@@ -235,7 +240,7 @@ GET /_analyze
 2. 复制到`config/es/plugins`目录下，改名为`analysis-pinyin`
 3. 重启容器`docker restart elasticsearch`
 
-#### 4.2 测试分词
+#### 5.2 测试分词
 
 ~~~json
 //新建索引库设置自定义分词器
