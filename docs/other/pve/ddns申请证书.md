@@ -60,17 +60,17 @@ export KEY="/root/.ssh/chensino"
 export DYNV6_TOKEN="xxxx"
 
 最后使用命令:
-acme.sh --issue --dns dns_dynv6 -d example.dynv6.net
+acme.sh --issue --dns dns_dynv6 -d chensino.dynv6.net
 ~~~
 
-执行`acme.sh --issue --dns dns_dynv6 -d example.dynv6.net`有报错，
+执行`acme.sh --issue --dns dns_dynv6 -d chensino.dynv6.net`有报错，
 
 ![20240930113754](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240930113754.png)
 
 根据他的提示执行`acme.sh --register-account -m  462488588@qq.com`即可
 ![20240930113831](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240930113831.png)
 
-再次执行`acme.sh --issue --dns dns_dynv6 -d example.dynv6.net`就可以了
+再次执行`acme.sh --issue --dns dns_dynv6 -d chensino.dynv6.net`就可以了
 ![20240930113903](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240930113903.png)
 
 证书生成路径：
@@ -105,3 +105,11 @@ mv chensino.dynv6.net.key pve-ssl.key
 ~~~shell
  systemctl restart pveproxy
  ~~~
+
+ ## 4. 自动续签
+
+ 这种免费的证书时间很短，3个月，到期需要续签
+
+ TODO 自动续签
+
+ //一键脚本
