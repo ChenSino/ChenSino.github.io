@@ -11,7 +11,7 @@ jdk8中用元空间取代了原来的方法区，元空间是没有上限，只�
 
 以下进行测试，测试之前，需要了解一个知识点，两个class相同的前提是同一个类加载器加载的同一个类，这样得到的才是同一个Class.
 
-```java
+~~~java
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +33,10 @@ public class Main {
     }
 
 }
-```
+~~~
 
 自定义类加载器
-```java
+~~~java
 
 public class MyClassLoader extends ClassLoader {
 
@@ -76,11 +76,11 @@ public class MyClassLoader extends ClassLoader {
         return baos.toByteArray();
     }
 }
-```
+~~~
 
 即将被加载的外部类，编译后放到/home/chenkun/Desktop下，名字TestSocket.class，故意定义多个字段，让类被加载到内存占用更多的空间，方便观察测试。
 
-```java
+~~~java
 public class TestSocket {
 
 private String name;
@@ -111,7 +111,7 @@ private String name5554ad;
 
 }
 
-```
+~~~
 
 启动主程序，使用visualvm监视，可以看到Metaspace一直在线性增长
 

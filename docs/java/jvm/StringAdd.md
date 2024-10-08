@@ -12,7 +12,7 @@ tag:
 
 #### 1、先看问题，以下结果是什么？
 
-```java
+~~~java
 String s1 = "Hello";
 String s2 = "Hello";
 String s3 = "Hel" + "lo";
@@ -28,23 +28,23 @@ System.out.println(s1 == s4);
 System.out.println(s1 == s9);  
 System.out.println(s4 == s5); 
 System.out.println(s1 == s6); 
-```
+~~~
 
 
 
 #### 2、从字符串拼接学习字节码分析
 
-```java
+~~~java
 public class JvmTest {
     public void test() {
         String s4 = new String("hel") + "lo";
     }
 }
-```
+~~~
 
 先反汇编，到class文件所在目录打开控制台执行`javap -c 类名`
 
-```shell
+~~~shell
 $ javap -c JvmTest
 警告: 二进制文件JvmTest包含com.chen.base.jvm.JvmTest
 Compiled from "JvmTest.java"
@@ -71,7 +71,7 @@ public class com.chen.base.jvm.JvmTest {
       27: astore_1
       28: return
 }
-```
+~~~
 
 接下来一个指令一个指令的分析，为什么`new String("hel") + "lo";`创建了两个对象。
 
@@ -95,7 +95,7 @@ public class com.chen.base.jvm.JvmTest {
 
 问题：
 
-```java
+~~~java
 String s1 = "Hello";
 String s2 = "Hello";
 String s3 = "Hel" + "lo";
@@ -111,7 +111,7 @@ System.out.println(s1 == s4);
 System.out.println(s1 == s9);  
 System.out.println(s4 == s5); 
 System.out.println(s1 == s6); 
-```
+~~~
 
 为什么s1 == s3是true,s1 == s9 是false？
 
@@ -119,17 +119,17 @@ System.out.println(s1 == s6);
 
 算鸟还是i自己看一下字节码文件，写一个测试类
 
-```java
+~~~java
 public class JvmTest {
     public void test() {
         String s3 = "hel" + "lo";
     }
 }
-```
+~~~
 
-反汇编，发现确实没有new新对象，是因为纯字符串相加在编译期间已经被优化了```String s3 = "hel" + "lo";```优化后就是```String s3 = "hello"```
+反汇编，发现确实没有new新对象，是因为纯字符串相加在编译期间已经被优化了~~~String s3 = "hel" + "lo";~~~优化后就是~~~String s3 = "hello"~~~
 
-```shell
+~~~shell
 $ javap -c JvmTest
 警告: 二进制文件JvmTest包含com.chen.base.jvm.JvmTest
 Compiled from "JvmTest.java"
@@ -147,7 +147,7 @@ public class com.chen.base.jvm.JvmTest {
        3: return
 }
 
-```
+~~~
 
 为了验证以上说的不是信口开河，我们找到JvmTest.class文件，用十六进制编辑器打开，如下，可以清楚的看到有一个拼接好的字符窜hello
 

@@ -24,22 +24,22 @@ jvm参数`-Xms20m -Xmx20m -Xmn10m -XX:+PrintGCDetails -XX:SurvivorRatio=8 -XX:Pr
 
 #### 1.1 第一次测试，直接创建一个512kb的数组，调用回收
 
-```java
+~~~java
   public static void main(String[] args) throws InterruptedException {
         byte[] KB_512 = new byte[1 * 1024 * 512];
         System.gc();
     }
-```
+~~~
 **结果：**
 
-```shell
+~~~shell
 
 GC (System.gc()) [PSYoungGen: 2229K->992K(9216K)] 2229K->1008K(19456K), 0.0027934 secs] [Times: user=0.01 sys=0.00, real=0.01 secs]
-```
+~~~
 
-```shell
+~~~shell
 [GC (System.gc()) [PSYoungGen: 2229K->992K(9216K)] 2229K->1000K(19456K), 0.0014906 secs] [Times: user=0.01 sys=0.00, real=0.00 secs] 
-```
+~~~
 
 
 
@@ -47,23 +47,23 @@ GC (System.gc()) [PSYoungGen: 2229K->992K(9216K)] 2229K->1008K(19456K), 0.002793
 
 #### 1.2 第二次测试，把KB_512设置null
 
-```java
+~~~java
   public static void main(String[] args) throws InterruptedException {
         byte[] KB_512 = new byte[1 * 1024 * 512];
         KB_512 = null;
         System.gc();
     }
-```
+~~~
 
 **结果：**
 
-```shell
+~~~shell
 [GC (System.gc()) [PSYoungGen: 2063K->416K(9216K)] 2063K->424K(19456K), 0.0016337 secs] [Times: user=0.00 sys=0.00, real=0.01 secs] 
-```
+~~~
 
-```shell
+~~~shell
 [GC (System.gc()) [PSYoungGen: 1899K->480K(9216K)] 1899K->488K(19456K), 0.0027343 secs] [Times: user=0.01 sys=0.00, real=0.00 secs] 
-```
+~~~
 
 > 测试多次，发现新生代从2063K->416K （每次测试有一点误差，差别不大），确实比不设置null回收更多
 
@@ -71,7 +71,7 @@ GC (System.gc()) [PSYoungGen: 2229K->992K(9216K)] 2229K->1008K(19456K), 0.002793
 
 #### 1.3 第三次测试，把本地变量放到代码快
 
-```java
+~~~java
    public static void main(String[] args) throws InterruptedException {
         {
             byte[] KB_512 = new byte[1 * 1024 * 512];
@@ -79,17 +79,17 @@ GC (System.gc()) [PSYoungGen: 2229K->992K(9216K)] 2229K->1008K(19456K), 0.002793
         byte[] temp = new byte[0];
         System.gc();
     }
-```
+~~~
 
 **结果：**
 
-```shell
+~~~shell
 [GC (System.gc()) [PSYoungGen: 1899K->464K(9216K)] 1899K->472K(19456K), 0.0041090 secs] [Times: user=0.01 sys=0.00, real=0.00 secs] 
-```
+~~~
 
-```shell
+~~~shell
 GC (System.gc()) [PSYoungGen: 1899K->480K(9216K)] 1899K->488K(19456K), 0.0031194 secs] [Times: user=0.01 sys=0.00, real=0.01 secs] 
-```
+~~~
 
 > 测试结果和第二次大致一样
 
@@ -101,7 +101,7 @@ GC (System.gc()) [PSYoungGen: 1899K->480K(9216K)] 1899K->488K(19456K), 0.0031194
 
    另外补充一点：栈内存是不用回收的，用完自动释放，所以一般情况下我们不用特意去把用完的对象设置为null。那这种适合在什么时候用呢？比如在方法中我们有一个大对象，这个大对象占用内大内存，在大对象用完后，其后面还有很多耗时的业务代码，正常情况下这个大对象回收要等到耗时的业务代码执行完后才会释放内存，如果想提前释放，可以考虑把他的引用设置为`null`。
 
-   ```java
+   ~~~java
     public static void main(String[] args) throws InterruptedException {
            Object bigObject = new Object();
         	//模拟使用bigObject
@@ -112,7 +112,7 @@ GC (System.gc()) [PSYoungGen: 1899K->480K(9216K)] 1899K->488K(19456K), 0.0031194
            //模拟一些耗时代码
            xxxxxx
        }
-   ```
+   ~~~
 
 2. 栈帧中的局部变量表中的槽位是可以重用的，如果一个局部变量过了其作用域，那么在其作用域之后申明的新的局部变量就很有可能会复用过期局部变量的槽位，从而达到节省资源的目的。
 

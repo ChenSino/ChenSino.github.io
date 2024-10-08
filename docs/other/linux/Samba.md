@@ -14,7 +14,7 @@ keys:
 
 配置目录在` /etc/samba`，修改`smb.conf`在最后加一组[test]，同时修改[global]在里面加上`ntlm auth = yes`，最终加完如下
 
-```conf
+~~~conf
 # See smb.conf.example for a more detailed config file or
 # read the smb.conf manpage.
 # Run 'testparm' to verify the config is correct after
@@ -53,14 +53,14 @@ keys:
         writable = yes  
         browseable = yes
         guest ok = yes
-```
+~~~
 
 ### 2.2 创建samba用户
 
-```shell
+~~~shell
 useadd test  #添加系统用户
 smbpaswd -a test  #给新加的系统用户设置samba密码，这个密码和系统密码不是一回事
-```
+~~~
 
 ### 2.3 windows连接samba
 

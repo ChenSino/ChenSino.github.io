@@ -38,7 +38,7 @@ HTTP 304 Not Modified 说明无需再次传输请求的内容，也就是说可�
 添加一个cookie,然后重定向到百度。可以看到如下代码我有设置返回值，但是其实毫无意义，在return之前就被redirect到了百度。同时，在Response Headers中可以看到有
 `Cookie: test=aaaaaa`，并且打开`localhost`能看到在下面有对应的cookie
 
-```java
+~~~java
 @Controller
 @RequestMapping("hello")
 public class HttptestApplication {
@@ -52,7 +52,7 @@ public class HttptestApplication {
     }
 }
 
-```
+~~~
 
 ![20221102170142](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221102170142.png)
 
@@ -69,12 +69,12 @@ public class HttptestApplication {
 
 无论请求头还是响应头，是不支持中文的，如果要支持中文需要自己编码，比如使用UrlEncode编码，前端获取请求头再解码即可，
 
-```java
+~~~java
 
  URLEncoder.encode("中文", "UTF-8")
 
- ```
+ ~~~
 
- ```javascript
+ ~~~javascript
  let chineseStr = decodeURI(header)
- ```
+ ~~~

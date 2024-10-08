@@ -11,12 +11,12 @@ sticky: 1
 
 ### 1、代理的分类
 
-```mermaid
+~~~mermaid
 graph LR;
 A[JAVA中的代理]-->B[动态代理]-->C[jdk动态代理]
 B[动态代理]-->D[cglib动态代理]
 A[JAVA中的代理]--> E[静态代理]-->F[AspectJ]
-```
+~~~
 
 ### 2、各种代理的区别
 
@@ -38,7 +38,7 @@ SpringAOP并不是新东西，本质就是代理，底层使用的是Jdk动态�
 
 #### 3.2 CGlib和JDK动态代理切换
 
-```markdown
+~~~markdown
 AOP底层实现 2中代理方式
 1. JDK 通过实现接口 通过Proxy.newProxyInstance产生代理对象
 2. CGlib通过继承父类使用Enchancer创建新的代理对象
@@ -50,7 +50,7 @@ AOP底层实现 2中代理方式
 <aop:aspectj-autoproxy proxy-target-class="true" />
 2. 传统的AOP开发
 <aop:config proxy-target-class="true"> </aop>
-```
+~~~
 
 #### 3.2 AspectJ
 
@@ -91,7 +91,7 @@ springaop和aspectj区别
 
  1. jdk动态代理的入口`java.lang.reflect.Proxy`
 
-    ```java
+    ~~~java
     //java.lang.reflect.Proxy#newProxyInstance
     /*Params:
             loader – the class loader to define the proxy class
@@ -99,7 +99,7 @@ springaop和aspectj区别
             h – the invocation handler to dispatch method invocations to 
     */
     public static Object newProxyInstance(ClassLoader loader,Class<?>[] interfaces,InvocationHandler h)
-    ```
+    ~~~
 
     loader： 类加载器，用来加载代理目标的
 
@@ -111,7 +111,7 @@ springaop和aspectj区别
 
 2. 创建代理对象传参loader和class都好说，那么InvocationHandler怎么获得呢？
 
-   ```java
+   ~~~java
    public interface InvocationHandler {
        /**
        *Params:
@@ -122,20 +122,20 @@ springaop和aspectj区别
        public Object invoke(Object proxy, Method method, Object[] args)
            throws Throwable;
    }
-   ```
+   ~~~
 
    > 看源码可知，这是一个只包含invoke方法的接口类，使用第一步创建的代理对象，调用方法时会回调InvocationHandler中的invoke，，在invoke中我们可以修改原来的方法逻辑，比如在原方法前后打印一些东西。实际使用中我们需要自定义一个类来实现InvocationHandler，重写invoke
 
 ##### 5.1.2 jdk动态代理demo
 
-```java
+~~~java
 //创建一个接口，使用代理的方式在add方法执行前后打印点东西
 public interface Executor {
     int add(int x, int y);
 }
-```
+~~~
 
-```java
+~~~java
 //接口实现类
 public class ExecutorImpl implements Executor {
     @Override
@@ -144,9 +144,9 @@ public class ExecutorImpl implements Executor {
         return x + y;
     }
 }
-```
+~~~
 
-```java
+~~~java
 //InvocationHandler实现类，在此对被代理的对象的方法进行增强
 public class LogTimeInvocationHandler implements InvocationHandler {
     /**
@@ -169,9 +169,9 @@ public class LogTimeInvocationHandler implements InvocationHandler {
         return result;
     }
 }
-```
+~~~
 
-```java
+~~~java
 //主函数类，包含执行代理方法，以及打印代理方法
 public class DynamicProxyTest {
     public static void main(String[] args) {
@@ -226,11 +226,11 @@ public class DynamicProxyTest {
         props.put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
     }
 }
-```
+~~~
 
 解析出来的动态生成的代理类，其实是一个同时继承了Proxy，另外实现了接口Executor的一个代理类，Proxy类中有个属性就是`InvocationHandler`
 
-```java
+~~~java
 import com.chen.base.proxy.Executor;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -301,11 +301,11 @@ public final class $ExecutorProxy0 extends Proxy implements Executor {
     }
 }
 
-```
+~~~
 
 自动生成的代理类中有个add方法，此方法回调了InvocationHandler的invoke方法，因此可以对原方法进行增强
 
-```java
+~~~java
  public final int add(int var1, int var2) throws  {
         try {
             return (Integer)super.h.invoke(this, m3, new Object[]{var1, var2});
@@ -315,10 +315,10 @@ public final class $ExecutorProxy0 extends Proxy implements Executor {
             throw new UndeclaredThrowableException(var5);
         }
     }
-```
+~~~
 
 另外有个简单的生成代理类的方法，只需要设置一个系统属性即可：
-```java
+~~~java
     public static void main(String[] args) {
     //配置此系统属性，会自动生成代理类
         System.setProperty("sun.misc.ProxyGenerator.saveGeneratedFiles","true");
@@ -327,7 +327,7 @@ public final class $ExecutorProxy0 extends Proxy implements Executor {
         //2. 使用代理对象调用
         int add = executor.add(1, 2);
     }
- ```
+ ~~~
  
 #### 5.2 Cglib动态代理
 
@@ -335,7 +335,7 @@ public final class $ExecutorProxy0 extends Proxy implements Executor {
 
 使用cglib需要添加依赖包
 
-```xml
+~~~xml
 <!-- https://mvnrepository.com/artifact/cglib/cglib -->
 <dependency>
     <groupId>cglib</groupId>
@@ -343,11 +343,11 @@ public final class $ExecutorProxy0 extends Proxy implements Executor {
     <version>3.3.0</version>
 </dependency>
 
-```
+~~~
 
 ##### 5.2.2 cglib代理demo
 
-```java
+~~~java
 public class CGLibDemo {
 
     static class Car {
@@ -393,7 +393,7 @@ public class CGLibDemo {
     }
 
 }
-```
+~~~
 
 #### 5.3 、SpringAOP 在springboot项目中使用
 
@@ -403,15 +403,15 @@ SpringAOP和AspectJ不是竞争关系，事实SpringAOP在项目中使用一般�
 
 ##### 5.3.2 SpringAop的demo
 
-```xml
+~~~xml
 <!--导入依赖--> 	 
 <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-```
+~~~
 
-```java
+~~~java
 //在所有com.chen.controller包下的所有类，所有方法都应用增强
 @Aspect
 @Component
@@ -443,9 +443,9 @@ public class MyAdvice {
         System.out.println("after");
     }
 }
-```
+~~~
 
-```java
+~~~java
 @RestController
 @RequestMapping("/")
 public class HelloController {
@@ -455,18 +455,18 @@ public class HelloController {
         return "user...";
     }
 }
-```
+~~~
 
 输出结果：
 
-```shell
+~~~shell
 before
 beforeAdvice...
 执行目标方法。。。。
 afterAdvice...
 after
 
-```
+~~~
 
 #### 5.4 AspectJ
 

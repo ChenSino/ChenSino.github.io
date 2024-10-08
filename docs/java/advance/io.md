@@ -71,7 +71,7 @@ keys:
 
 在一个线程和多个线程分别操作相同次数的业务逻辑，比较耗时
 
-```java
+~~~java
 
 public class DemoApplication {
        public static void main(String[] args) {
@@ -150,16 +150,16 @@ public class DemoApplication {
               public abstract void Start();
        }
 }
-```
+~~~
 
 执行结果：
 
-```shell
+~~~shell
 multi thread exce time: 5149s
 counter: 100000000
 serial exec time: 956s
 counter: 100000000
-```
+~~~
 
 ### 4.5 NIO
 

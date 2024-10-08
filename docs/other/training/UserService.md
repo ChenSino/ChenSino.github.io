@@ -100,7 +100,7 @@ https://pig4cloud.com/data/doc
 
 **生产环境**
 
-```markdown
+~~~markdown
 后端部署路径:`/home/central_control_system_back`
 
 后端日志：`/home/central_control_system_back/logs`
@@ -108,13 +108,13 @@ https://pig4cloud.com/data/doc
 前端路径：`/home/central_control_system_front/dist`
 
 前端nginx配置路径：`/usr/local/webserver/nginx/conf/site-enable/ccs.conf`
-```
+~~~
 
 
 
 **部署**
 
-```markdown
+~~~markdown
 1. 部署前配置hosts
 	127.0.0.1 ccs-register ccs-gateway ccs-redis ccs-mysql ccm-mysql device-mysql
 2. 前端启动nginx即可访问
@@ -125,7 +125,7 @@ https://pig4cloud.com/data/doc
 4. 目前测试环境针对核心业务模块ccs-data做了jenkins自动化部署，提交代码会自动触发，具体可以查看jenkins流水线
 	后端：http://10.10.102.105:8899/jenkins/user/chenxk/my-views/view/%E9%99%88%E5%85%88%E6%98%86/job/ccs_back/
 	前端：http://10.10.102.105:8899/jenkins/user/chenxk/my-views/view/%E9%99%88%E5%85%88%E6%98%86/job/ccs_front/
-```
+~~~
 
 ## 2、用服bom
 
@@ -163,7 +163,7 @@ https://pig4cloud.com/data/doc
 
 #### 2.3.2 部署
 
-```markdown
+~~~markdown
 1. 前端
 	部署路径：`/home/sono_bom_web/dist`
 	nginx配置： `/usr/local/webserver/nginx/conf/nginx.conf`
@@ -173,7 +173,7 @@ https://pig4cloud.com/data/doc
 	日志路径：`/home/sono_bom/logs`
 	启动脚本： `/home/sono_bom/startBom.sh`
 	
-```
+~~~
 
 ## 3.预算编辑工具
 
@@ -217,9 +217,9 @@ http://10.10.102.85:6024/swagger-ui.html#/
 
 数据库备份使用的crontab,具体请查看脚本
 
-```shell
+~~~shell
 $ crontab -l
 0 3 * * * sh /home/data/mysqlbackup/bom/bombackup.sh
 0 0 * * * sh /home/data/mysqlbackup/ccs/ccsbackup.sh
-```
+~~~
 

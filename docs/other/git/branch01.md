@@ -14,9 +14,9 @@ tag:
 
 可以查看远程分支名，查看要切换的远程分支是否存在。
 
-```bash
+~~~bash
 git branch -a
-```
+~~~
 
 
 
@@ -24,9 +24,9 @@ git branch -a
 
 查看本地是否已经有了要切换的分支，如果有，可以直接git checkout 分支名来切换分支。
 
-```bash
+~~~bash
 git branch 
-```
+~~~
 
 
 
@@ -34,15 +34,15 @@ git branch
 
 比如我把远程dev分支拉下来。
 
-```bash
+~~~bash
 git fetch origin dev
-```
+~~~
 
 
 
 ### 4，新建本地dev分支，并关联远程dev分支
 
-```
+~~~
 git checkout -b dev origin/dev
-```
+~~~
 

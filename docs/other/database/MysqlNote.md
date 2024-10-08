@@ -18,17 +18,17 @@ keys:
 
 1.  `com.mysql.cj.jdbc.StatementImpl#executeBatch`
 
-```java
+~~~java
   @Override
     public int[] executeBatch() throws SQLException {
         //注意此处打开executeBatchInternal()源码要进入ClientPreparedStatement的executeBatchInternal方法,别进入StatementImpl的executeBatchInternal方法
         return Util.truncateAndConvertToInt(executeBatchInternal()源码要进入());
     }
-```
+~~~
 
 2. `com.mysql.cj.jdbc.ClientPreparedStatement#executeBatchInternal`
 
-```java
+~~~java
 protected long[] executeBatchInternal() throws SQLException {
         synchronized (checkClosed().getConnectionMutex()) {
 
@@ -72,7 +72,7 @@ protected long[] executeBatchInternal() throws SQLException {
             }
         }
     }
-```
+~~~
 
 3. `com.mysql.cj.jdbc.ClientPreparedStatement#executeBatchSerially`
 

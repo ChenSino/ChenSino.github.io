@@ -26,12 +26,12 @@ isOriginal: true
 
 先创建好文件，配置问yml中
 
-```yml
+~~~yml
 spring:
   servlet:
     multipart:
       location: xxxx
-```
+~~~
 
 ### 方法三
 

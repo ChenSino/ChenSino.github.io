@@ -34,7 +34,7 @@ springcache不是一个单独的jar包，它位于spring-context的org.springfra
 
 1. SimpleCacheConfiguration是一个springboot的配置类，类中会实例化一个ConcurrentMapCacheManager的Bean,
 
-```java
+~~~java
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnMissingBean(CacheManager.class)
 @Conditional(CacheCondition.class)
@@ -52,18 +52,18 @@ class SimpleCacheConfiguration {
 	}
 
 }
-```
+~~~
 
 2. ConcurrentMapCacheManager会创建一个Cache对象（具体实现其实是ConcurrentMapCache），创建ConcurrentMapCache时传递的是一个ConcurrentHashMap，所以底层默认保存对象的其实就是一个Map而已
 
-   ```java
+   ~~~java
    	//源码位置org.springframework.cache.CacheManager
    
    	protected Cache createConcurrentMapCache(String name) {
    		SerializationDelegate actualSerialization = (isStoreByValue() ? this.serialization : null);
    		return new ConcurrentMapCache(name, new ConcurrentHashMap<>(256), isAllowNullValues(), actualSerialization);
    	}
-   ```
+   ~~~
 
    
 

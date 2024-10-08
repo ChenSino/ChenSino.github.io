@@ -10,7 +10,7 @@ tag:
 ---
 ## 一、善用手册
 
-```shell
+~~~shell
 $ git --help
 用法：git [--version] [--help] [-C <路径>] [-c <名称>=<取值>]
            [--exec-path[=<路径>]] [--html-path] [--man-path] [--info-path]
@@ -58,7 +58,7 @@ $ git --help
 帮助。
 有关系统的概述，查看 'git help git'。
 
-```
+~~~
 
 一般情况在每个子命令下使用--help能查看更详细的文档，例如`git pull --help`，或者在linux环境使用`man git pull`，其他命令使用一样方式查看
 
@@ -70,19 +70,19 @@ $ git --help
 
 #### 2.1.1使用`git branch -a`可以查看到本地分支和远程分支，以本项目为例结果如下
 
-```bash
+~~~bash
 * main
   remotes/origin/HEAD -> origin/main
   remotes/origin/gh-pages
   remotes/origin/main
-```
+~~~
 
 其中分支remotes/origin/HEAD最让人奇怪，可以看到它有个HEAD，代表此分支是代表远程服务器上的默认操作分支，类似我们在本地操作某分支时，HEAD总是指向当前正在操作的分支，远程默认分支一般是master（或者main），如果把远程服务器上的默认分支改为dev，则看到的就是 `remotes/origin/HEAD -> origin/dev`，并且无论你在本地怎么样操作，它都不会发生变化。远程一定要有个默认分支，当使用git clone xx命令时，实际上就clone的默认分支。
 #### 2.1.2 `git branch -vv`
 
-```bash
+~~~bash
 main 8805a71a [origin/main: behind 3] 提交git
-```
+~~~
 
 以上结果比代表本地的main分支，对应origin/main，至于origin/main是什么意思，它实际上是代表远程分支在本地的的一个映射。这个分支是不可操作的，只能通过诸如fetch、pull、push等命令与远端进行交互，从而来改变此分支的HEAD指向。当我们操作main分支后，commit后实际上是把内容提交到了本地main分支，当执行push后，远端和origin/main的HEAD才会发生变化
 
@@ -92,12 +92,12 @@ main 8805a71a [origin/main: behind 3] 提交git
 > **使用场景：**
 > 
 > 适用于修改了一个版本库中的文件，想还原
-```shell
+~~~shell
 #在老版本git是git checkout -- <file>...
 git restore <file>...
-```
+~~~
 使用git status会有提示
-```shell
+~~~shell
 # root @ localhost in /home/chenkun/ChenSino.github.io on git:main x [10:45:12] 
 $ git status
 位于分支 main
@@ -113,15 +113,15 @@ $ git status
         docs/git/GitCommands.md
 
 修改尚未加入提交（使用 "git add" 和/或 "git commit -a"）
-```
+~~~
 
 ---
 ### 2.3、使用`git reflog`在各个commit中穿梭
 > **使用场景：**  
 > 使用了`git reset`命令重置了git指针，比如使用`git reset --hard HEAD^`还原到上一个版本后，想再还原到最新的一次提交，再使用`git log`是看不到最新的commit log的，但使用`git reflog`可以看到所有log
-```bash
+~~~bash
 git reflog <commitid>
-```
+~~~
 
 ---
 ### 2.4、`git rm`
@@ -146,14 +146,14 @@ git reflog <commitid>
 2. 在远程仓库已经建好一个库
 3. 把本地的库和远程建立连接
 
-```bash
+~~~bash
 # 把本地仓库和远程仓库进行关联，origin可以随便取，代表给远程仓库起了一个名字，因为一个仓库可能关联多个远程仓库，比如你的项目想同时发布到github和gitee以及gitlab，那么就需要给远程仓库起个别名，push的时候加上别名，推送到指定的远程仓库
 git remote add gitlab <remote-url>
 #把<当前>分支的内容推送到别名为gitlab的远程master分支，并且进行关联
 git push -u gitlab master
 #把<当前>分支的内容推送到别名为gitlab的远程dev分支，并且进行关联
 git push -u gitlab dev
-```
+~~~
 
 > **温馨提示：**  
 > 为了免密码操作，设置远程url时需要使用ssh地址，比如`ssh://git@gitlab.sonoscape.com:1122/chenxk/gitstudyproject.git`这种。然后把自己的公钥复制到对应的远程仓库秘钥管理，即可进行免密码操作。
@@ -162,16 +162,16 @@ git push -u gitlab dev
 
 ---
 ### 2、查看本地和远程分支关联关系
-```shell
+~~~shell
 git branch -vv
 
 * dev    21a759b [gitlab/dev] 更新Git1.md
   master 21a759b [github/master: 领先 3] 更新Git1.md
-```
+~~~
 
 ---
 ### 3、解除和远程仓库关联
-```shell
+~~~shell
 #1.查看关联的远程仓库
 $ git remote -v
 origin  https://github.com/ChenSino/gitstudyproject.git (fetch)
@@ -182,7 +182,7 @@ sonoscape       ssh://git@gitlab.sonoscape.com:1122/chenxk/gitstudyproject.git (
 
 #2. 解除关联
 git remote rm origin
-```
+~~~
 
 ### 4、git pull
 **冲突**  
@@ -199,7 +199,7 @@ git remote rm origin
 >git pull 相当于git fetch + git merge
 
 当执行`git pull`本地和远程有冲突时会有以下提示，一下提示你指定git pull的默认行为，也可以直接git pull后加--rebase、--no-rebase、--ff-only取代默认行为，后续场景测试都是用的默认` git config pull.rebase false `
-```$ git pull
+~~~$ git pull
 提示：您有偏离的分支，需要指定如何调和它们。您可以在执行下一次
 提示：pull 操作之前执行下面一条命令来抑制本消息：
 提示：
@@ -212,9 +212,9 @@ git remote rm origin
 提示：或者 --ff-only 参数覆盖缺省设置。
 fatal: 需要指定如何调和偏离的分支。
 
-```
+~~~
 查看当前git默认行为可以用`git config -l`结果如下
-```conf
+~~~conf
 user.name=chenkun
 user.email=chenkun@xxx.net
 core.repositoryformatversion=0
@@ -226,7 +226,7 @@ remote.gitlab.fetch=+refs/heads/*:refs/remotes/gitlab/*
 branch.dev.remote=gitlab
 branch.dev.merge=refs/heads/dev
 pull.rebase=false
-```
+~~~
 
 > **场景1**  
 > 本地修改了一个文件A，远程修改了文件B，此时pull是可以成功的  
@@ -236,7 +236,7 @@ pull.rebase=false
 > 执行两次git pull结果如下，第一次有一串remote日志代表从远程拉取，第二次则没有拉取了，因为第一次已经把最新的代码拉到暂存区了，侧面印证了git pull包含了git fetch
 
 
-```shell$ git pull
+~~~shell$ git pull
 remote: Enumerating objects: 5, done.
 remote: Counting objects: 100% (5/5), done.
 remote: Compressing objects: 100% (2/2), done.
@@ -257,7 +257,7 @@ error: 您对下列文件的本地修改将被合并操作覆盖：
 请在合并前提交或贮藏您的修改。
 正在终止
 
-```
+~~~
 
 > **场景3**  
 > 本地修改了文件A，远程也修改了文件A并且本地和远程修改的不是同一行代码 ，并且本地修改A后已经commit，执行git pull是可以直接成功的，pull的时候会自动快速合并，即fast forword模式可以自动判断是否冲突，并且会自动产生一个提交记录，提示类似如下日志
@@ -268,7 +268,7 @@ error: 您对下列文件的本地修改将被合并操作覆盖：
 > **场景4**  
 >  本地修改了文件A，远程也修改了文件A，远程如果有删除行、新增行、或远程和本地都修改了同一行，则fast forword模式就没那么智能了，需要人工判断解决冲突，从日志看test.add文件冲突了
 
-```shell
+~~~shell
 $ git pull
 remote: Enumerating objects: 5, done.
 remote: Counting objects: 100% (5/5), done.
@@ -280,9 +280,9 @@ remote: Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
 自动合并 test.add
 冲突（内容）：合并冲突于 test.add
 自动合并失败，修正冲突然后提交修正的结果。
-```
+~~~
 打开冲突文件如下，此时需要手动编辑后再add、commit、push即可
-```shell
+~~~shell
 gaaaaaaaaagaa edit first lineaaaaaaaaaaaaaaa
 gaaaaaaagaa edit first lineaaaaaaaaaaaaaaaaa
 asgdsg
@@ -293,7 +293,7 @@ asgedit last lineaaaaaaaaaaaaaaaaaaaa
 >>>>>>> be452dc49163e6f8e950d8cd43ad2d79c491be3b
 
 =======
-```
+~~~
 
 **总结**
 
@@ -305,10 +305,10 @@ asgedit last lineaaaaaaaaaaaaaaaaaaaa
 
 > 本地有多次commit还没push，此时可以把多次commit记录改成一次，-i 指的是交互式进行(interactive)
 
-```shell
+~~~shell
 #一下命令可以对当前分支的前n个commit进行进一步处理，
 git rebase -i HEAD~n
-```
+~~~
 
 #### 5.2 合并分支
 
@@ -320,7 +320,7 @@ git rebase -i HEAD~n
 
 ![](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/202207141557178.png)
 
-```shell
+~~~shell
 #完成操作流程如下
 #1. 切换到dev分支
 git switch dev
@@ -380,5 +380,5 @@ git merge dev
 
 
 
-```
+~~~
 

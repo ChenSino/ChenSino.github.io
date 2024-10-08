@@ -32,10 +32,10 @@ ARP(Address Resolation Protocol)地址解析协议
 
 完整的osi七层模型，在tcp/ip中被简化为了4层模型，其中应用层、表示层、会话层被压缩成了一个应用层，数据链路层、物理层被压缩为数据链路层。
 
-```mermaid
+~~~mermaid
 flowchart LR
     应用层 --> 传输控制层 --> 网络层 --> 链路层
-```
+~~~
 
 ### 2.1 应用层
 
@@ -53,12 +53,12 @@ tcp负责建立连接，断开连接，控制数据包大小等，建立连接�
 
 具体的交互可以使用抓包工具wireshark查看，或者使用tcpdump命令行工具。
 
-```shell
+~~~shell
 # 先打开监听
 sudo tcpdump -nn -i <网卡> port 80
 # 访问baidu，端口80
 curl https://www.baidu.com
-```
+~~~
 
 [S]： SYN --------发送建立连接请求标志
 [.]:  ACK-----点代表ACK
@@ -67,7 +67,7 @@ curl https://www.baidu.com
 如下前三行就是三次握手过程，注意看握手成功后，每次客户端给服务端发消息，服务端都会给客户端回复一个[.]，代表确认，这就是为什么说tcp是可靠的连接，反过来也一样，服务端给客户端响应消息，客户端也会回复 一个[.]，
 注意看，服务端给客户端发消息时，分了好几次，这就是控制数据包，不是说一次性把所有的数据都返回到客户端，这个大小是受到网卡控制的，体现了tcp对数据包大小的“控制”，
 
-```shell
+~~~shell
 #客户端发送连接SYN
 11:13:07.566166 IP 192.168.189.36.48460 > 14.215.177.38.80: Flags [S], seq 889820627, win 64240, options [mss 1460,sackOK,TS val 412117082 ecr 0,nop,wscale 7], length 0
 #服务端回复SYN+ACK
@@ -90,21 +90,21 @@ curl https://www.baidu.com
 11:13:08.788214 IP 14.215.177.38.80 > 192.168.189.36.48460: Flags [.], ack 79, win 908, length 0
 11:13:08.788215 IP 14.215.177.38.80 > 192.168.189.36.48460: Flags [F.], seq 2782, ack 79, win 908, length 0
 11:13:08.788268 IP 192.168.189.36.48460 > 14.215.177.38.80: Flags [.], ack 2783, win 501, length 0
-```
+~~~
 
 ### 2.3 网络层
 
 > 关键词：路由表、下一跳
 
-```shell
+~~~shell
 #查看路由表
 route -n
-```
+~~~
 
 传输控制层建立好连接后，对收据也拆好包后，应该把数据包丢给谁呢？
 当数据包准备好以后，要从路由表中找到下一跳的位置，如下是我的路由表，我们来举例说明网络层的工作原理。
 
-```shell
+~~~shell
 $ route -n
 Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
@@ -115,7 +115,7 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 192.168.92.0    0.0.0.0         255.255.255.0   U     100    0        0 enp4s0
 192.168.93.1    0.0.0.0         255.255.255.255 UH    100    0        0 enp4s0
 192.168.189.0   0.0.0.0         255.255.255.0   U     600    0        0 wlp5s0
-```
+~~~
 
 #### 2.3.1 实例1,访问内网走enp4s0网卡
 
@@ -139,27 +139,27 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 
 > 关键词：arp广播
 
-```shell
+~~~shell
 ## 查看arp缓存
 arp -a
 
 ## 抓arp类型的包
 sudo tcpdump -nn -i <网卡> arp
-```
+~~~
 
 实战抓取wlp5s0网卡上的arp广播
 
-```shell
+~~~shell
 ## 1.  开启抓包
 sudo tcpdump -nn  -i wlp5s0 arp
 
 ## 2. 使用另一个windows电脑也连接到我的手机热点，随便ping一个wlp5s0网卡能处理的ip,
 ping 192.168.189.55
-```
+~~~
 
 此时在看抓包的日志打印如下：
 
-```shell
+~~~shell
 $ sudo tcpdump -nn  -i wlp5s0 arp      
 [sudo] chenkun 的密码：tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
 listening on wlp5s0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
@@ -168,14 +168,14 @@ listening on wlp5s0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 11:49:42.824331 ARP, Request who-has 192.168.189.55 tell 192.168.189.36, length 28
 11:49:43.837669 ARP, Request who-has 192.168.189.55 tell 192.168.189.36, length 28
 11:49:43.837669 ARP, Request who-has 192.168.189.55 tell 192.168.189.36, length 28
-```
+~~~
 
 接上面的2.3.2章节最后，数据如何准确发到192.168.189.137上？
 为了实验清晰，我上面还特意用了另一个电脑（和抓包电脑区别开来），但是抓包电脑依然能获取到广播来的日志，说明了网关是无差别的给所有连接到此网段的电脑都发了消息，谁有这个ip,则谁把自己的mac地址返回去。
 上面实验是我ping了一个不存在的ip,所以没有正常返回，如果ping一个存在的ip正常返回如下，会响应一个mac地址给请求方，在实际网络环境中，一般情况不可能让你直连服务器，会有很多层路由器，所以一层一层的返回
 mac地址，就形成了一个链，所以这就是链路层名字的 由来。
 
-```shell
+~~~shell
 $ sudo tcpdump -nn  -i wlp5s0 arp 
 tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
 listening on wlp5s0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
@@ -184,7 +184,7 @@ listening on wlp5s0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 12:02:01.497715 ARP, Request who-has 192.168.189.36 tell 192.168.189.137, length 28
 12:02:01.497733 ARP, Reply 192.168.189.36 is-at 00:93:37:25:27:0e, length 28
 
-```
+~~~
 
 ## 3、参考资料
 

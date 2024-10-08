@@ -32,7 +32,7 @@ tag:
 ## 二，setTimeout & setInterval
 对于延时函数内部的回调函数的this指向全局对象window（当然我们可以通过bind方法改变其内部函数的this指向.
 
-```javascript
+~~~javascript
 function Person() {  
     this.age = 0;  
     setTimeout(function() {
@@ -40,13 +40,13 @@ function Person() {
     }, 3000);
 }
 var p = new Person(); //3秒后返回 window 对象
-```
+~~~
 
 
 
 通过bind绑定
 
-```javascript
+~~~javascript
 function Person() {  
     this.age = 0;  
     setTimeout((function() {
@@ -54,7 +54,7 @@ function Person() {
     }).bind(this), 3000);  //通过bind改变this的指向
 }
 var p = new Person();//3秒后返回构造函数新生成的对象 Person{...}
-```
+~~~
 
 
 ## 三，箭头函数中的this
@@ -64,7 +64,7 @@ var p = new Person();//3秒后返回构造函数新生成的对象 Person{...}
 考虑到 this 是词法层面上的，严格模式中与 this 相关的规则都将被忽略。（可以忽略是否在严格模式下的影响）
 因为箭头函数可以捕获其所在上下文的this值 所以
 
-```javascript
+~~~javascript
 function Person() {
     this.age = 0;
     setTimeout(() => {
@@ -73,13 +73,13 @@ function Person() {
     }, 3000);
 }
 var p = new Person();
-```
+~~~
 
 
 
   如果将箭头函数当做一个方法使用会怎样呢？
 
-```javascript
+~~~javascript
 var obj = {
   i: 10,
   b: () => console.log(this.i, this),
@@ -89,7 +89,7 @@ var obj = {
 }
 obj.b();  // undefined window{...}
 obj.c();  // 10 Object {...}
-```
+~~~
 
 
 
@@ -99,7 +99,7 @@ obj.c();  // 10 Object {...}
 
 1、this指向window还是实例？
 
-```javascript
+~~~javascript
 methods: {
         getJoke() {
             console.log( axios.get("https://autumnfish.cn/api/joke") ); // Promise {<pending>} 对象
@@ -110,11 +110,11 @@ methods: {
             }) 
         }
     }
-```
+~~~
 
 this指向实例：
 
-```javascript
+~~~javascript
  methods: {
         getJoke() {
             axios.get("https://autumnfish.cn/api/joke").then( response => {
@@ -124,7 +124,7 @@ this指向实例：
             }) 
         }
     }
-```
+~~~
 
 **总结：**
 

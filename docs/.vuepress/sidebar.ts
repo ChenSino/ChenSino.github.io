@@ -196,5 +196,12 @@ export default sidebar({
       collapsible: true,
       children: "structure",
     },
+    {
+      text: "PVE",
+      icon: "class",
+      prefix: "pve/",
+      collapsible: true,
+      children: "structure",
+    },
   ],
 });

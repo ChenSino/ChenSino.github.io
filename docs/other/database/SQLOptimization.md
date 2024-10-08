@@ -16,13 +16,13 @@ category:
 
 ### 1、改造后的语句如下
 
-```shell
+~~~shell
 SELECT xxx   FROM
 	ccsx_weibao.install_record ir
 	LEFT JOIN ccsx_weibao.install_record_accessory ira ON ira.host_id = ir.id
 	LEFT JOIN ccsx.sys_file f ON f.business_type = 1 
 	AND f.business_id = ir.id 	LIMIT 0,1000;
-```
+~~~
 
 install_record表中有8000数据，accessory表20000数据，sys_file 表240000数据，执行sql直接卡死
 
@@ -30,9 +30,9 @@ install_record表中有8000数据，accessory表20000数据，sys_file 表240000
 
 数据量其实很小，执行慢的原因是没有索引，使用`explain`分析sql
 
-```bash
+~~~bash
 explain xxx
-```
+~~~
 
 ![image-20220428164618054](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220428164618054.png)
 

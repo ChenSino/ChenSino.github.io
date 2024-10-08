@@ -16,11 +16,11 @@ tag:
 
 `data` 选项是特例，需要注意 - 在 `Vue.extend()` 中它必须是函数。
 
-```javascript
+~~~javascript
 <div id="mount-point"></div>
-```
+~~~
 
-```javascript
+~~~javascript
 // 创建构造器
 var Profile = Vue.extend({
   template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>',
@@ -34,7 +34,7 @@ var Profile = Vue.extend({
 })
 // 创建 Profile 实例，并挂载到一个元素上。
 new Profile().$mount('#mount-point')
-```
+~~~
 
 
 
@@ -50,7 +50,7 @@ new Profile().$mount('#mount-point')
 
 **2.1 创建Dialog.vue组件**
 
-```vue
+~~~vue
 <template>
     <div v-if="show" ref="modal" class="ek-modal_wrap">
         <div class="ek-modal-content">
@@ -176,13 +176,13 @@ new Profile().$mount('#mount-point')
         }
     }
 </style>
-```
+~~~
 
 
 
 **2.2 创建一个dialog.js**
 
-```javascript
+~~~javascript
 /**
  Created by zxf on 2022/6/13
  */
@@ -206,22 +206,22 @@ function showDailog (options) {
 // 将逻辑函数进行导出和暴露
 export default showDailog
 
-```
+~~~
 
 **2.3 在main.js中挂载到全局**
 
-```javascript
+~~~javascript
 import jcDialog from '@/components/jcDialog.js'
 Vue.prototype.$showDialog = jcDialog;
-```
+~~~
 
 **2.4 调用**
 
-```javascript
+~~~javascript
 this.$showDialog({
     title: '测试弹窗',
     confirmText: '确定',
     cancelVisible: false
 });
-```
+~~~
 

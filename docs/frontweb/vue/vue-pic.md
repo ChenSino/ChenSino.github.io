@@ -12,12 +12,12 @@ tag:
 
 ### 一，在vue中静态导入相对路径
 
-```html
+~~~html
 <img src="../../assets/1.png" />
 <!-- 或者如下 -->
 <img src="@/assets/1.png" />
 
-```
+~~~
 
 
 
@@ -25,12 +25,12 @@ tag:
 
 **注意：绝对路径方式导入的图片需要存储在 public 文件夹下**
 
-```html
+~~~html
 <img src="images/1.png" />
 <!-- 或者如下 -->
 <img src="/images/1.png" />
 
-```
+~~~
 
 为什么绝对路径导入的图片需要放在public文件夹下？
 
@@ -42,7 +42,7 @@ tag:
 
 3.1  `require` 写在html中 
 
-```vue
+~~~vue
 <img :src="require('../../assets/' + imageUrl)" />
 
 <script>
@@ -55,11 +55,11 @@ export default {
     }
 }
 </script>
-```
+~~~
 
 3.2  `require` 写在html中 
 
-```vue
+~~~vue
 <img :src="imageUrl" />
 
 <script>
@@ -73,7 +73,7 @@ export default {
     }
 }
 </script>
-```
+~~~
 
 **注意：在vue3中不能使用require因为，vite不支持require.在vue2中webapack帮我们做了处理，所以才可以使用.**
 
@@ -81,7 +81,7 @@ export default {
 
 在网上看到了一种解决办法：(亲测可用)
 
-```vue
+~~~vue
 <template>
     <img :src="imgUrl" alt="">
 </template>
@@ -106,11 +106,11 @@ export default {
     }
 </script>
 
-```
+~~~
 
 demo2 循环利用返回值请求本地图片
 
-```vue
+~~~vue
 <template>
     <img  v-for="item in imgList" :src="getAssetsImages(item.url)" alt="">
 </template>
@@ -136,5 +136,5 @@ demo2 循环利用返回值请求本地图片
     }
 </script>
 
-```
+~~~
 

@@ -13,7 +13,7 @@ category:
 1. 5.7版本后Security把WebSecurityConfigurerAdapter标记为废弃，鼓励程序员使用SecurityFilterChain进行配置，如果看过官网Security的架构图对SecurityFilterChain一定不会陌生，此类是Security过滤器的核心，所以用它来配置寓意更为明显。
 ~~~
 
-```java
+~~~java
     @Bean
     @Order(3)
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -28,7 +28,7 @@ category:
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
-```
+~~~
 
 ## 2、在配置类配置和在Controller方法注解上使用@PreAuthorized有何区别
 
@@ -38,7 +38,7 @@ category:
 
 安全校验的过滤器FilterSecurityInterceptor拦截，抛出AccessDeniedException,最终会抛出到ExceptionTranslationFilter中，交给AccessDenyHandler进行处理，默认的AccessDenyHandler会直接响应一个403到前端。
 
-```java
+~~~java
 @Override
 	public void handle(HttpServletRequest request, HttpServletResponse response,
 			AccessDeniedException accessDeniedException) throws IOException, ServletException {
@@ -61,7 +61,7 @@ category:
 		}
 		request.getRequestDispatcher(this.errorPage).forward(request, response);
 	}
-```
+~~~
 
 
 

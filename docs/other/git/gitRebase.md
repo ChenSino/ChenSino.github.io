@@ -16,9 +16,9 @@ tag:
 
 1. #### **找到想要合并的commit, 使用rebase -i**
 
-   ```
+   ~~~
    git rebase -i bd0d758(第一次提交的commitId)
-   ```
+   ~~~
 
    > 注意 git rebase -i [startPonit] [endPoint]
    >
@@ -103,15 +103,15 @@ git 分支就显示如下图所示
 
 **1,切换当前分支为dev**
 
-```` bash
+~~~` bash
 git switch  dev
-````
+~~~`
 
 **2，给dev变基到master (如果有冲突需解决冲突)**
 
-``` bash
+~~~ bash
 git rebase master
-```
+~~~
 
 ![image-20220724220033035](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220724220033035.png)
 
@@ -119,10 +119,10 @@ git rebase master
 
 **3，提示解决冲突，去冲突文件解决冲突。解决冲突后，执行命令**
 
-``` bash
+~~~ bash
 git add '冲突文件'
 git rebase --continue
-```
+~~~
 执行完`git rebase --continue` 进入以下界面
 ![image-20220724220336167](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220724220336167.png)
 
@@ -141,10 +141,10 @@ git rebase --continue
 
 **4，合并dev代码到master上**
 
-``` bash
+~~~ bash
 git switch master
 git merge dev
-```
+~~~
 此时master分支与dev分支在同一个提交节点了。
 
 ![image-20220724221734501](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220724221734501.png)

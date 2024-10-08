@@ -16,12 +16,12 @@ Promise 有三种状态：
 
 Promise 实例可以使用 then、catch 和 finally 方法实现异步操作的链式调用：
 
-```js
+~~~js
 promise.then(onResolved, onRejected)
        .then(onFulfilled, onRejected)
        .catch(onRejected)
        .finally(onFinally);
-```
+~~~
 
 其中：
 
@@ -38,7 +38,7 @@ Promise 也提供了一些静态方法，如：
 
 下面是一个通过 Promise 实现异步操作的示例代码：
 
-```js
+~~~js
 function loadData() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -57,7 +57,7 @@ loadData().then((data) => {
 }).catch((error) => {
    console.error('发生了错误:', error);
 });
-```
+~~~
 
 在这个例子中，loadData() 函数返回了一个 Promise 对象，并使用 resolve(data) 和 reject(error) 方法来改变 Promise 对象的状态。在 then() 方法中，可以接收到 resolve 传递的数据或者在 catch() 方法中接收到 reject 传递的错误信息。
 
@@ -69,12 +69,12 @@ loadData().then((data) => {
 
 在一个完成的写法里面如下：
 
-```js
+~~~js
 promise.then(onResolved, onRejected)
        .then(onFulfilled, onRejected)
        .catch(onRejected)
        .finally(onFinally);
-```
+~~~
 
 当遇到错误时，如果有onRejected参数，则onRejected回掉函数会处理异常，catch可能就不会执行了，当然如果你在onRejected有错误，catch依然会捕获。
 
@@ -102,7 +102,7 @@ promise.then(onResolved, onRejected)
 
 使用 then：
 
-```js
+~~~js
 promise.then((result) => {
   // 处理异步操作成功的结果
   console.log(result);
@@ -110,11 +110,11 @@ promise.then((result) => {
   // 处理异步操作失败的结果
   console.error(error);
 });
-```
+~~~
 
 使用 await：
 
-```js
+~~~js
 async function fetchData() {
   try {
     const result = await promise;
@@ -128,7 +128,7 @@ async function fetchData() {
 
 fetchData();
 
-```
+~~~
 
 在上述示例中，使用 `then` 方法时，需要通过回调函数来处理异步操作的结果。而使用 `await` 时，可以将异步操作的结果直接赋给一个变量，并在 `try/catch` 语句中处理成功或失败的情况。
 

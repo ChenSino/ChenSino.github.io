@@ -15,7 +15,7 @@ tag:
 
 1,html部分
 
-```html
+~~~html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,11 +51,11 @@ tag:
 </body>
 </html>
 
-```
+~~~
 
 2，typeScript
 
-```typescript
+~~~typescript
 
 const url: string = 'https://api.thecatapi.com/v1/images/search';
 const button: HTMLButtonElement | null = document.querySelector('button');
@@ -132,6 +132,6 @@ button?.addEventListener<'click'>('click', getData);
 tableBody?.addEventListener<'click'>('click', (ev: MouseEvent) => {
     WebDisplay.deleteData(<HTMLAnchorElement>ev.target);
 });
-```
+~~~
 
 项目来源：[b站技术蛋老师](https://www.bilibili.com/video/BV12P411E79E/?spm_id_from=333.337.search-card.all.click)

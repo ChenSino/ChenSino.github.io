@@ -31,9 +31,9 @@ WSL2 默认采用了一个 NAT 网络，这对于大多数情况而言都是没�
 
 桥接网卡输入以下代码：
 
-```PowerShell
+~~~PowerShell
 Set-VMSwitch WSL -NetAdapterName <你的网卡名字>
-```
+~~~
 
 将wsl虚拟网络和主机有线网络桥接起来。
 
@@ -41,11 +41,11 @@ Set-VMSwitch WSL -NetAdapterName <你的网卡名字>
 
 接下来进入 WSL 配置 IP 地址和网关，假设WSL的有线网络为eth0，网关为 192.168.1.1，IP 设置为 192.168.1.64/24：
 
-```PowerShell
+~~~PowerShell
 ip addr del $(ip addr show eth0 | grep 'inet\b' | awk '{print $2}' | head -n 1) dev eth0
 ip addr add 192.168.1.64/24 broadcast 192.168.1.255 dev eth0
 ip route add 0.0.0.0/0 via 192.168.1.1 dev eth0
-```
+~~~
 
 接下来更新名称解析服务器地址，执行 nano /etc/resolv.conf，修改其中内容为 nameserver 192.168.1.1，
 
@@ -53,9 +53,9 @@ ip route add 0.0.0.0/0 via 192.168.1.1 dev eth0
 
 在windows中管理员方式打开powershell，执行以下指令：
 
-```PowerShell
+~~~PowerShell
 Set-VMSwitch WSL -SwitchType Internal
-```
+~~~
 
 然后执行 wsl --shutdown 重启wsl，即可恢复原有的虚拟内部网络。
 

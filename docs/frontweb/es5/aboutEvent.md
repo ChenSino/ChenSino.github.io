@@ -14,18 +14,18 @@ tag:
 
 1，通过 HTML 元素指定事件属性来绑定 
 
-```javascript
+~~~javascript
 <button onclick ="clickFu()">点我吧</button>
 <script>
    function clickFu(){
        alert(3333)
    }
 </script>
-```
+~~~
 
 2,通过DOM对象指定的属性来绑定
 
-```javascript
+~~~javascript
 <div>
     <button id="btn">点我吧</button>
 </div>
@@ -35,7 +35,7 @@ tag:
        console.log('333')
    }
 </script>
-```
+~~~
 
 3,监听注册方式
 
@@ -48,12 +48,12 @@ tag:
 > （2） listener ：必须，一个实现了 EventListener 接口的对象，或者是一个函数；
 > （3） useCapture ：可选，表示是冒泡还是捕获。值为 true 表示捕获，否则表示冒泡 。
 
-```javascript
+~~~javascript
 var btn = document.querySelector('#btn');
    btn.addEventListener('click',function(){
        console.log('3333')
    })
-```
+~~~
 
 区别： 如果使用传统方式进行注册，当对同一个对象添加相同事件时，后面的事件会覆盖掉前面的事件 
 
@@ -85,7 +85,7 @@ var btn = document.querySelector('#btn');
 
 
 
-```javascript
+~~~javascript
 div>
     <button id="btn1">点我吧1</button>
     <button id="btn2">点我吧2</button>
@@ -123,7 +123,7 @@ div>
    btn2.removeEventListener('click',fn)
 
 </script>
-```
+~~~
 
 ## 三，事件流
 
@@ -133,7 +133,7 @@ div>
 
 这就是事件冒泡，事件会向这个对象的父级传播，从里到外，直至它被处理。
 
-```html
+~~~html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -175,7 +175,7 @@ div>
 
 </script>
 </html>
-```
+~~~
 
 事件流又称为事件传播，描述的是从页面接收事件的顺序。当事件发生时会在元素节点之间按照 特定 的顺序传播，这个传播过程就叫 DOM 事件流 。
 
@@ -197,7 +197,7 @@ div>
 （1）要想进行捕获，只能使用事件监听注册方式，不能使用事件传统注册方式；
 		（2）需要把监听注册方法的第三个参数设置为 true
 
-```html
+~~~html
 <body>
 <button id="btn1">点我吧</button>
 </body>
@@ -219,7 +219,7 @@ div>
     //html，body，div
 
 </script>
-```
+~~~
 
 ## 四，事件委托
 
@@ -227,7 +227,7 @@ div>
 
 事件委托 会把⼀个或者⼀组元素的事件委托到它的⽗层或者更外层元素上，真正绑定事件的是外层元 素，⽽不是⽬标元素。当事件响应到⽬标元素上时，会通过事件冒泡机制从⽽触发它的外层元素的绑定事件上，然后在外层元 素上去执⾏函数。
 
-```html
+~~~html
 <ul id="box">
     <li>1</li>
     <li>2</li>
@@ -253,7 +253,7 @@ div>
      }
  }
 
-```
+~~~
 
 
 从上面的代码可以发现，当把事件绑定在 ul 上时，减少了一个循环。这样就可以提高程序性能。而把事件绑定在 ul 上的方式就是事件委托。
@@ -269,7 +269,7 @@ div>
 
 5.2 阻止链接的默认行为
 
-```html
+~~~html
 <div>
     <a href="javascript:void(0)">链接1</a>
     <a href="javascript:;">链接2</a>
@@ -282,11 +282,11 @@ div>
         event.preventDefault()
     }
 </script>
-```
+~~~
 
 6.2 阻止提交按钮提交表单的默认行为
 
-```html
+~~~html
  <form action="https://www.baidu.com/" method="post">
        <input type="text" name="s">
        <input type="submit" value="提供">
@@ -299,5 +299,5 @@ div>
         event.preventDefault()
     })
 </script>
-```
+~~~
 

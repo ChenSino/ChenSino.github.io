@@ -24,7 +24,7 @@ isOriginal: true
 
 winsw也差不多，不过他要配置一个xml文件
 
-```xml
+~~~xml
 
 <!-- 这里的根元素必须是service节点 -->
 <service>
@@ -44,20 +44,20 @@ winsw也差不多，不过他要配置一个xml文件
 <logmode>none</logmode>
 </service>
 
-```
+~~~
 
 然后安装服务：
 
-```sh
+~~~sh
 
 <!--项目名.exe install-->
 HomeinnWorkOrder.exe install
 
-```
+~~~
 
 删除服务：
 
-```
+~~~
 <!--项目名.exe uninstall-->
 HomeinnWorkOrder.exe uninstall
-```
+~~~

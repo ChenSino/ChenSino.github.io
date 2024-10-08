@@ -15,7 +15,7 @@ maven中的import是解决maven只能单个继承的问题，有时候我们的m
 
 scope=import只能用在dependencyManagement并且type必须为pom,作用就是把另一个项目中dependencyManagement内容直接复制到本项目。以下就是一个最经典的使用方式，把springboot的版本管理直接引入本项目，在idea工具中可以直接点开看看里面管理了很多依赖，对每个依赖设置了version,以后在子项目引入依赖就不要version了。不仅仅springboot家族本身项目可以这样引入，包括其他依赖，只要在spring-boot-dependencies定义了的都可以无需版本引入，我在实际项目开发时有一次导入jedis就遇到过依赖问题，起初我是手动指定jedis版本，一直报错class undefine,后来去掉版本号，直接用spring-boot-dependencies中的就解决了问题。
 
-```xml
+~~~xml
 <dependencyManagement>
     <dependencies>
         <dependency>
@@ -27,13 +27,13 @@ scope=import只能用在dependencyManagement并且type必须为pom,作用就是�
         </dependency>
     </dependencies>
 </dependencyManagement>
-```
+~~~
 
 ## 3.使用parent
 
 使用parent也能实现类似上面import的功能，但是parent只能有一个，所以以上方式是对parent的补充，类似java单继承多实现
 
-```xml
+~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -58,4 +58,4 @@ scope=import只能用在dependencyManagement并且type必须为pom,作用就是�
         </plugins>
     </build>
 </project>
-```
+~~~

@@ -19,7 +19,7 @@ category:
 1. 使用`htop`查看资源消耗，按照CPU使用率降序排列，发现都是mysqld进程占用CPU很高
 2. 进入mysql命令行使用`show processlist;`查看当前正在执行的命令，经过多次执行`show processlist`发现有几条固定的sql一直在执行，并且每次传递的参数害不一样
 
-```shell
+~~~shell
 mysql> show processlist;
 +--------+------+-------------------+--------------------------+---------+------+--------------+-----------------------------------------------------------------------------------------------+
 | Id     | User | Host              | db                       | Command | Time | State        | Info                                                                                          |
@@ -43,13 +43,13 @@ mysql> show processlist;
                 FROM ccsx_data.v_install_record vir
                 WHERE vir.id = 19042 |
 
-```
+~~~
 
   经过第2步的执行，猜测有人在for循环中调用了查询，每次传递了不同的参数
 
 3. 为了确定我的分析正确性，复制`show processlist`结果中的sql，到项目代码查询，最终跟踪到如下代码，确实在循环中使用了查询，fuck！
 
-   ```java
+   ~~~java
    	@Override
    	public List<InstallRecordVO> getInstalls(List<Integer> ids) {
    		List<InstallRecordVO> installRecords = new ArrayList<>();
@@ -66,21 +66,21 @@ mysql> show processlist;
    		}
    		return installRecords;
    	}
-   ```
+   ~~~
    
 4. 光有以上代码还不能完全确定，这个循环在线上一直在执行，所以我决定使用arthas来进一步确定，于是我把arths attach到生产环境的项目上使用`trace`分别跟踪循环中的三个查询，看看是否正在执行，结果三个全在执行，印证了循环一直在执行，所以cpu问题就出现在这里了。
 
-```shell
+~~~shell
 trace com.sonoscape.ccs.data.mapper.InstallRecordMapper queryById  -n 5 --skipJDKMethod false 
-```
+~~~
 
-```shell
+~~~shell
 trace com.sonoscape.ccs.data.mapper.InstallRecordAccessoryMapper queryByHostId  -n 5 --skipJDKMethod false 
-```
+~~~
 
-```shell
+~~~shell
 trace com.sonoscape.ccs.data.mapper.SysFileMapper queryByBusinessInfo  -n 5 --skipJDKMethod false 
-```
+~~~
 
 5. 最后我找到这部分代码负责人，他的ids参数本应该是个过滤后的，理论上不会太多，结果因为调用函数不严谨导致查询出ids实际上是全表的，吐
 

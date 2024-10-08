@@ -10,7 +10,7 @@ keys:
 
 > 有两个库，ccsx_data、ccsx_weibao，默认库是ccsx_data，我在代码中使用了>mybatis-pulus的`@DS()`注解，想切换到ccsx_weibao这个库，但是切换一直失败，代码如下：
 
-```java
+~~~java
 	@DS("ccsx_weibao")
 	public IPage<InstallRecordVO> queryByPage(Page page, InstallRecordSearchVO installRecordSearchVO, DataScope dataScope) {
 		Wrapper<InstallRecordSearchVO> wrapper = QueryWrapperUtil.getWrapper(installRecordSearchVO);
@@ -24,11 +24,11 @@ keys:
 		}
 		return installRecordVOIPage;
 	}
-```
+~~~
 
 ## 2、问题产生的原因
 原因是MybatisPlus多数据源切换使用的是ThreadLocal来保存的，ThreadLocal中存放的是一个栈，具体可以查看源码`com.baomidou.dynamic.datasource.toolkit.DynamicDataSourceContextHolder`，注释写的很详细
-```java
+~~~java
 import org.springframework.core.NamedThreadLocal;
 import org.springframework.util.StringUtils;
 
@@ -108,7 +108,7 @@ public final class DynamicDataSourceContextHolder {
         LOOKUP_KEY_HOLDER.remove();
     }
 }
-```
+~~~
 
 使用`@DS`注解注解只能保证数据源在当前线程生效，而我们在代码使用了`parallelStream`，这个方法本质使用的是`ForkJoinPool`，是多线程操作，所以在新的线程里面使用ThreadLocal肯定获取不到数据源了，于是就使用默认数据源所以报错。
 
@@ -119,7 +119,7 @@ public final class DynamicDataSourceContextHolder {
 
 ## 4、MybatisPlus多线程数据源切换的源码分析
 测试代码：
-```java
+~~~java
 	@DS("ccsx_data")
 	public Map<String, Object> getLifeCycleInfoByDeptId(Integer sysHospitalDeptId) {
 		Map<ThreadLocal, Object> threadLocalMap = ThreadLocalUtil.getThreadLocalMap();
@@ -127,5 +127,5 @@ public final class DynamicDataSourceContextHolder {
 		DynamicDataSourceContextHolder.clear();
         //略
     }
-```
+~~~
 使用 [ThreadLocalUtil.getThreadLocalMap()](https://chensino.github.io/docs/java/advance/ThreadLocal.html)获取所有的线程的ThreadLocalMap，debug模式查看每一行执行过后数据源的变化

@@ -13,7 +13,7 @@ keys:
 加密：是新建用户时调用加密方法，把密文写入数据库或者内存；
 解密：登陆时，根据用户名从系统查找对应密文A，然后在把登陆时用户传递过来的明文密码使用相同加密方式加密得到密文B，把A和B对比。（这里体现了密文不可反向解密，只能正向加密，再做对比）
 
-```java
+~~~java
 public interface PasswordEncoder {
 
 	/**
@@ -45,7 +45,7 @@ public interface PasswordEncoder {
 	}
 
 }
-```
+~~~
 
 ## 2、HttpSecurity和WebSecurity区别
 
@@ -61,7 +61,7 @@ Spring Security 中，到底该怎么样给资源额外放行？
 
 第一种就是在 configure(WebSecurity web) 方法中配置放行，像下面这样：
 
-```java
+~~~java
 @Override
 public void configure(WebSecurity web) throws Exception {
     web.ignoring().antMatchers(
@@ -73,11 +73,11 @@ public void configure(WebSecurity web) throws Exception {
     "/favicon.ico", 
     "/verifyCode");
 }
-```
+~~~
 
 第二种方式是在 configure(HttpSecurity http) 方法中进行配置：
 
-```java
+~~~java
 @Override
 public void configure(HttpSecurity http) throws Exception {
     http
@@ -87,7 +87,7 @@ public void configure(HttpSecurity http) throws Exception {
     .anyRequest()
     .authenticated()
 }
-```
+~~~
 
 两种方式最大的区别在于，第一种方式是不走 Spring Security 过滤器链，而第二种方式走 Spring Security 过滤器链，在过滤器链中，给请求放行。
 
@@ -102,7 +102,7 @@ public void configure(HttpSecurity http) throws Exception {
 
 ## 3、SpringSecurity中User实体中Lock和enabled区别
 
-```java
+~~~java
 public class User implements UserDetails, CredentialsContainer {
 
 	private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
@@ -124,7 +124,7 @@ public class User implements UserDetails, CredentialsContainer {
 	//账号因为一些原因被管理员禁用，如果把enabled设置为true，security默认会提示用户已失效
 	private final boolean enabled;
 }
-```
+~~~
 
 ## 4、开启方法级别的权限控制
 

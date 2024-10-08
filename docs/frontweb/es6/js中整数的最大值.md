@@ -20,17 +20,17 @@ isOriginal: true
 
 将ID转换为字符串：将19位的ID转换为字符串形式，在浏览器中显示时可以保留完整的位数。例如，使用Java的String.valueOf方法将ID转换为字符串：
 
-```java
+~~~java
 String idString = String.valueOf(id);
-```
+~~~
 
 将转换后的ID传递给前端：将转换后的ID作为数据传递到前端，确保在浏览器中显示的是字符串形式的完整ID。
 
 在前端展示时进行格式化：在前端页面中使用适当的方式对19位的ID进行格式化，以便正确显示。例如，可以使用JavaScript的toLocaleString方法将ID格式化为带有千位分隔符的字符串：
 
-```javascript
+~~~javascript
 var formattedId = id.toLocaleString();
-```
+~~~
 
 这样，浏览器就能够正确地显示19位的ID。
 
@@ -44,9 +44,9 @@ var formattedId = id.toLocaleString();
 
 以下是一个示例，展示了 Number.MAX_SAFE_INTEGER 的值：
 
-```javascript
+~~~javascript
 console.log(Number.MAX_SAFE_INTEGER); // 输出 9007199254740991
-```
+~~~
 
 请注意，不同的浏览器可能会在处理超出 Number.MAX_SAFE_INTEGER 的大数字时表现不同，因此建议在开发过程中仔细考虑数字范围和精度的问题，并结合实际情况选择合适的处理方式。
 
@@ -57,12 +57,12 @@ console.log(Number.MAX_SAFE_INTEGER); // 输出 9007199254740991
 2. 转化为字符串
 3. 序列化处理【推荐】
 
-```java
+~~~java
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer customizer() {
         return (builder) -> {
             builder.serializerByType(Long.class, ToStringSerializer.instance);
         };
     }
-```
+~~~
 

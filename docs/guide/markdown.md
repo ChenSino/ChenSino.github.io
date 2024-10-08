@@ -50,7 +50,7 @@ VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来
 
 @tab TS
 
-```ts
+~~~ts
 import { hopeTheme } from "vuepress-theme-hope";
 
 export default {
@@ -62,11 +62,11 @@ export default {
     },
   }),
 };
-```
+~~~
 
 @tab JS
 
-```js
+~~~js
 const { hopeTheme } = require("vuepress-theme-hope");
 
 module.exports = {
@@ -78,7 +78,7 @@ module.exports = {
     },
   }),
 };
-```
+~~~
 
 :::
 
@@ -96,9 +96,9 @@ module.exports = {
 
 信息容器，包含 `代码` 与 [链接](#markdown)。
 
-```js
+~~~js
 const a = 1;
-```
+~~~
 
 :::
 
@@ -128,7 +128,7 @@ const a = 1;
 
 :::: details 代码
 
-```md
+~~~md
 ::: v-pre
 
 安全的在 Markdown 中使用 {{ variable }}。
@@ -164,7 +164,7 @@ const a = 1;
 详情容器
 
 :::
-```
+~~~
 
 ::::
 
@@ -176,21 +176,21 @@ const a = 1;
 
 @tab pnpm
 
-```bash
+~~~bash
 pnpm add -D vuepress-theme-hope
-```
+~~~
 
 @tab yarn
 
-```bash
+~~~bash
 yarn add -D vuepress-theme-hope
-```
+~~~
 
 @tab:active npm
 
-```bash
+~~~bash
 npm i -D vuepress-theme-hope
-```
+~~~
 
 :::
 
@@ -249,7 +249,7 @@ npm i -D vuepress-theme-hope
 
 ::: chart 一个散点图案例
 
-```json
+~~~json
 {
   "type": "scatter",
   "data": {
@@ -275,7 +275,7 @@ npm i -D vuepress-theme-hope
     }
   }
 }
-```
+~~~
 
 :::
 
@@ -285,7 +285,7 @@ npm i -D vuepress-theme-hope
 
 ::: echarts 一个折线图案例
 
-```json
+~~~json
 {
   "xAxis": {
     "type": "category",
@@ -301,7 +301,7 @@ npm i -D vuepress-theme-hope
     }
   ]
 }
-```
+~~~
 
 :::
 
@@ -309,20 +309,20 @@ npm i -D vuepress-theme-hope
 
 #### 流程图
 
-```flow
+~~~flow
 cond=>condition: 是否执行操作?
 process=>operation: 操作
 e=>end: 结束
 
 cond(yes)->process->e
 cond(no)->e
-```
+~~~
 
 - [查看详情](https://vuepress-theme-hope.github.io/v2/zh/guide/markdown/flowchart.html)
 
 #### Mermaid
 
-```mermaid
+~~~mermaid
 flowchart TB
     c1-->a2
     subgraph one
@@ -337,7 +337,7 @@ flowchart TB
     one --> two
     three --> two
     two --> c2
-```
+~~~
 
 - [查看详情](https://vuepress-theme-hope.github.io/v2/zh/guide/markdown/mermaid.html)
 
@@ -360,22 +360,22 @@ $$
 
 ::: normal-demo 一个普通 Demo
 
-```html
+~~~html
 <h1>VuePress Theme Hope</h1>
 <p><span id="very">非常</span>强大!</p>
-```
+~~~
 
-```js
+~~~js
 document.querySelector("#very").addEventListener("click", () => {
   alert("非常强大");
 });
-```
+~~~
 
-```css
+~~~css
 span {
   color: red;
 }
-```
+~~~
 
 :::
 
@@ -410,9 +410,9 @@ span {
 
 ## 幻灯片 3.1
 
-```js
+~~~js
 const a = 1;
-```
+~~~
 
 --
 

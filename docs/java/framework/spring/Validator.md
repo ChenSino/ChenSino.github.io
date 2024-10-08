@@ -6,7 +6,7 @@ isOriginal: true
 
 ## 自定义校验
 
-```java
+~~~java
 
 import com.chensino.core.api.dto.UserLoginDTO;
 import com.chensino.core.api.validate.group.PhoneLogin;
@@ -58,13 +58,13 @@ public class UserLoginDTOValidator implements Validator {
         }
     }
 }
-```
+~~~
 
 ## 调用
 
 自定义validator，可以在任意位置使用，不用非要在controller层。
 
-```java
+~~~java
 @Component
 @RequiredArgsConstructor
 @Slf4j
@@ -103,4 +103,4 @@ public class LoginByPhoneStrategy implements LoginStrategy {
         }
     }
 }
-```
+~~~

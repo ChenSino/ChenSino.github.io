@@ -15,7 +15,7 @@ tag:
 
 1,定义api.type.ts （定义后台接口返回的类型）
 
-```typescript
+~~~typescript
 
 interface ApiFormat<T> {
   /** 状态码 */
@@ -50,13 +50,13 @@ export type Search = ApiFormat<{
   }[]
 }>
     
-```
+~~~
 
 2，重新定义，我们前端需要的数据类型。type.ts
 
 （比如后台接口返回的是pagetotal总页数，我们前端需要的是total总条数） 所以我们可以重新定义我们前端需要的数据结构.
 
-```typescript
+~~~typescript
 /**
  * 分页
  */
@@ -87,11 +87,11 @@ export interface ComicPageList {
 export type SearchComicReturn = Page<ComicPageList[]>
 
 
-```
+~~~
 
 3, 定义请求接口 .index.ts（这里想要返回的数据类型为 SearchComicReturn，而不是ApiType.Search类型）
 
-```typescript
+~~~typescript
 
 /**
  * 请求 - get
@@ -101,9 +101,9 @@ export type SearchComicReturn = Page<ComicPageList[]>
 export function getax<T>(url: string) {
   return instance.get<T>(url)
 }
-```
+~~~
 
-```typescript
+~~~typescript
 
 import * as FnReturns from './type'
 import * as ApiType from './api.type'
@@ -142,4 +142,4 @@ export async function searchComic(param: {
   }
 }
 
-```
+~~~

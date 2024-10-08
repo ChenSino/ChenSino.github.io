@@ -45,10 +45,10 @@ Idea升级后无法启动，查看日志报错明显的是jdk版本不兼容，�
 
 ![20221202112129](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221202112129.png)
 
-```bash
+~~~bash
  cat ~/.config/JetBrains/IntelliJIdea2022.3/idea.jdk                                      
 /usr/lib/jvm/java-17-openjdk
-```
+~~~
 
 ## 3、idea中git操作
 

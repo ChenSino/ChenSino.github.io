@@ -265,7 +265,7 @@ sono_bom_web
 
 ### 4.3 基本crud
 
-```shel
+~~~shel
 curl 'http://localhost:8000/api/bomCs' \
   -H 'Accept: application/json, text/plain, */*' \
   -H 'Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7' \
@@ -281,16 +281,16 @@ curl 'http://localhost:8000/api/bomCs' \
   --data-raw '{"uuid":"","code":"","productType":"超声","parts":"维修组件类","material":"板卡6320","enMaterial":"banka","newPn":"12036","olderPn":"35q0245.5488","olderVersion":"","usageStatus":1,"series":{"id":62},"compatibility":"兼容板卡1@0&兼容板卡2@0","enCompatibility":"compatible card1@0","chinaRecycleAttribute":"国内返回总部","foreignRecycleAttribute":"国际分公司报废","pricingAttribute":"消耗不收费","unit":"1","customerPrice":"333","secondaryPrice":"33","agentPrice":"33","chinaBottomPrice":"3","foreignBottomPrice":"33","standardPrice":"33","engineerPrice":"33","areaBottomPrice":"33","pricingComment":"定价合理","remark":"备注3333","enRemark":"remarkllll","createUser":"","createDate":"","attribute1":"","attribute2":"3","attribute3":"","attribute4":"","attribute5":"","attribute6":""}' \
   --compressed \
   --insecure
-```
+~~~
 
-```markdown
+~~~markdown
 新增注意事项：
 	新增数据插入到数据库以后，同时要在历史记录表中插入记录，标记“新增”，同时插入操作人员、操作时间等
 修改：
 	修改数据需要把修改后的数据写入历史记录表
 删除：
 	删除数据前，需要把原数据插入历史记录表，再删除
-```
+~~~
 
 
 
@@ -298,16 +298,16 @@ curl 'http://localhost:8000/api/bomCs' \
 
 ### 4.4 批量导入（新增/修改）
 
-```markdown
+~~~markdown
 流程：
 	1. 解析excel
 	2. 判断模板，当模板中有“唯一编码”字段，则代表是批量修改操作，否则为批量新增。
 	3. 新增和更新不同逻辑单独处理
-```
+~~~
 
 
 
-```java
+~~~java
  	@Override
     @CacheEvict(allEntries = true)
     @Transactional(rollbackFor = Exception.class)
@@ -400,7 +400,7 @@ curl 'http://localhost:8000/api/bomCs' \
             throw new RuntimeException(eMessage);
         }
     }
-```
+~~~
 
 
 
@@ -412,14 +412,14 @@ curl 'http://localhost:8000/api/bomCs' \
 
 #### 4.5.2 关键代码
 
-```markdown
+~~~markdown
 数据权限指的是机型系列的权限，查询的、导出接口都需要加上对应的数据权限，没有对应数据权限的用户不应该看到或者导出相应的数据。
 	1. 执行查询前先查询当前用户信息
 	2. 获取用户关联的角色，角色关联的机型权限
 	3. 在查询条件加上条件过滤机型（主要使用mysql的in关键字进行过滤）
-```
+~~~
 
-```java
+~~~java
    @Override
     public List<BomCsDTO> queryAll(BomCsQueryCriteria criteria) {
         //1. 当请求未携带过滤条件
@@ -444,11 +444,11 @@ curl 'http://localhost:8000/api/bomCs' \
         return bomCsMapper.toDto(bomcss);
     }
 
-```
+~~~
 
 
 
-```java
+~~~java
  public Set<Long> getSeriesIds() {
 
         UserDTO user = userService.findByName(SecurityUtils.getUsername());
@@ -477,9 +477,9 @@ curl 'http://localhost:8000/api/bomCs' \
         }
         return seriesIds;
     }
-```
+~~~
 
-```java
+~~~java
     public List<Long> getSeriesChildren(List<Series> seriesList) {
         List<Long> seriesIds = seriesList.parallelStream().filter(item -> item.getEnabled()).map(Series::getId).collect(Collectors.toList());
         //机型的层级有2级，查询所有机型备用，避免递归或者嵌套循环中c数据库
@@ -496,7 +496,7 @@ curl 'http://localhost:8000/api/bomCs' \
         }
         return seriesIds;
     }
-```
+~~~
 
 
 

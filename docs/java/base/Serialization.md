@@ -23,14 +23,14 @@ category:
 
 序列化时，把虚拟机内存中的对象保存到文件，反序列化时再把文件中的对象还原到内存中去
 
-注意如果序列化Student时，Teacher类没有被序列化则会抛出异常``` java.io.NotSerializableException: com.chen.Teacher```
+注意如果序列化Student时，Teacher类没有被序列化则会抛出异常~~~ java.io.NotSerializableException: com.chen.Teacher~~~
 
 如果想不抛出异常有两种方法：
 
 1. 老老实实把Teacher类也实现Serializable接口
 2. 在Student类中把Teacher字段用transient修饰，则反序列化后看到的teacher是null这是和第一种方法不一样的地方
 
-```java
+~~~java
 //学生类实现序列化就接口，并且学生有一个老师属性字段
 
 public class Student implements Serializable {
@@ -72,9 +72,9 @@ public class Student implements Serializable {
     }
 }
 
-```
+~~~
 
-```java
+~~~java
 //老师类也要实现Serializable，如果不实现的话，当序列话Student类时会抛出异常java.io.NotSerializableException: com.chen.Teacher
 
 public class Teacher  implements  Serializable{
@@ -113,9 +113,9 @@ public class Teacher  implements  Serializable{
     }
 }
 
-```
+~~~
 
-```java
+~~~java
 //客户端验证
 
 public class Client {
@@ -161,7 +161,7 @@ public class Client {
     }
 }
 
-```
+~~~
 
 ##### 2.3 序列化把对象保存到数据库，反序列化把数据库中的数据还原到内存
 

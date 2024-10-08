@@ -23,15 +23,15 @@ npm和cnpm只是下载的地址不同，npm是从国外下载东西，cnpm是从
 
 npm默认的仓库地址为：
 
-```bash
+~~~bash
 http://registry.npmjs.org
-```
+~~~
 
 查看当前npm仓库地址命令：
 
-```
+~~~
 npm config get registry
-```
+~~~
 
 <br/>
 <br/>
@@ -45,9 +45,9 @@ npm config get registry
 **第一种：**
 <p style="color:orange">直接安装cnpm 安装淘宝提供的cnpm，并更改服务器地址为淘宝的国内地址，</p> 
 
-```
+~~~
 npm install -g cnpm --registry=https://registry.npm.taobao.org
-```
+~~~
 
 这个命令行做了两件事：
 
@@ -65,15 +65,15 @@ cnpm命令为：`cnpm install uniq --save`。
 
 替换npm仓库地址为淘宝镜像地址（推荐） 命令：
 
-```
+~~~
 npm config set registry https://registry.npm.taobao.org
-```
+~~~
 
  查看是否更改成功：
 
-```
+~~~
 npm config get registry
-```
+~~~
 
 以后安装时，依然用npm命令，但是实际是从淘宝国内服务器下载的
 

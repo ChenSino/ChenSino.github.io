@@ -13,7 +13,7 @@ keys:
 
 ## 2 安装
 
-```bash
+~~~bash
 # 1. 下载镜像
 docker pull mysql:8.0.23
 # 2. 启动
@@ -24,18 +24,18 @@ docker run -p 3306:3306 --name mysql \
 -v /usr/local/docker/mysql/data:/var/lib/mysql \
 -e MYSQL_ROOT_PASSWORD=root \
 -d mysql:8.0.23
-```
+~~~
 
 ## 3 报错
 
 在本机命令行无法使用`mysql -uroot -proot`直接连到mysql报错如下：
 
-```shell
+~~~shell
 ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
-```
+~~~
 
 但是使用别的机器(`mysql -h 192.168.92.31 -uroot -proot`)居然可以连接上，在本机添加本机地址也可以连接上
 
-```shell
+~~~shell
 mysql -h 127.0.0.1 -uroot -proot
-```
+~~~

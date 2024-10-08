@@ -49,7 +49,7 @@ SpringAOP整个就采用的代理模式
 
 在IOC容器中，反射创建了实例对象以后，会对其进行包装。参考`org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#instantiateBean`
 
-```java
+~~~java
 
 	/**
 	 * Instantiate the given bean using its default constructor.
@@ -80,7 +80,7 @@ SpringAOP整个就采用的代理模式
 	}
 
 
-```
+~~~
 
 另外BeanDefinitionHolder也是包装了BeanDefinition，也是装饰者设计模式
 

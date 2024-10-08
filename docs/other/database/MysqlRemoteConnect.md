@@ -29,10 +29,10 @@ flush privileges;
 
 #### 三、查看系统用户
 
-```shell
+~~~shell
 use mysql;
 select user,host from user;
-```
+~~~
 
 #### 四、放开服务器对应端口
 

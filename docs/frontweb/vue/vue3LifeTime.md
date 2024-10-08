@@ -47,18 +47,18 @@ tag:
 
 **注意 ：mounted 不会保证所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，可以在 mounted 内部使用 vm.$nextTick：**
 
-```javascript
+~~~javascript
 mounted: function () {
   this.$nextTick(function () {
     // Code that will run only after the
     // entire view has been rendered
   })
 }
-```
+~~~
 
 - beforeMount与mounted`实例②`：
 
-  ```vue
+  ~~~vue
   <div id="box">
       <div ref='demo'>demo</div>
   </div>
@@ -79,7 +79,7 @@ mounted: function () {
       })
   </script>
   
-  ```
+  ~~~
 
   以上实例，更加有力的说明：
   beforeMount执行在真实的dom节点挂载之前，此时没有节点，所以拿不到节点。mounted执行时真实的dom节点已经挂载到页面上了，所以能拿到节点。
@@ -101,7 +101,7 @@ mounted: function () {
 
 **注意 ：updated 不会保证所有的子组件也都一起被重绘。如果你希望等到整个视图都重绘完毕，可以在 updated 里使用 vm.$nextTick：**
 
-```javascript
+~~~javascript
 updated: function () {
   this.$nextTick(function () {
     // Code that will run only after the
@@ -109,7 +109,7 @@ updated: function () {
   })
 }
 
-```
+~~~
 
 
 
@@ -133,7 +133,7 @@ updated: function () {
 
 （`this.$destroy()`可以销毁组件）
 
-```vue
+~~~vue
 <div id="box">
   <Com></Com>
 </div>
@@ -168,7 +168,7 @@ updated: function () {
   });
 </script>
 
-```
+~~~
 
 **组件进行销毁的时候,是先销毁的是父组件,然后销毁子组件**
 
@@ -186,7 +186,7 @@ updated: function () {
 - 被 keep-alive缓存的组件停用时调用。
 - 该钩子在服务器端渲染期间不被调用。
 
-```vue
+~~~vue
 <div id="box">
     <keep-alive>
         <component :is="cName"></component>
@@ -218,7 +218,7 @@ updated: function () {
     })
 </script>
 
-```
+~~~
 
 ### 1.11 errorCaptured
 

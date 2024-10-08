@@ -11,7 +11,7 @@ isOriginal: true
 请求路径为：`http://gateway:port/mcs/test`
 配置如下
 
-```yml
+~~~yml
 spring:
   cloud:
     gateway:
@@ -30,7 +30,7 @@ spring:
             - Path=/mcs/**
           filters:
             - StripPrefix=1
-```
+~~~
 
 ## 原因
 

@@ -17,7 +17,7 @@ category:
 
 目录结构如下，需要事先准备一个redis.conf放到项目suc/redis/conf，另外需要创建目录suc/redis/data
 
-```shell
+~~~shell
 suc
 ├── redis
 │   ├── conf
@@ -25,9 +25,9 @@ suc
 │   └── data
 ├── docker-compose.yml
 
-```
+~~~
 
-```yaml
+~~~yaml
 version: '3'
 services:
   suc-redis:
@@ -42,4 +42,4 @@ services:
       - 6379:6379
     networks:
       - custom
-```
+~~~

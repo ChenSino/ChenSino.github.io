@@ -54,12 +54,12 @@ CName记录是Canonical Name的简称，通常称别名指向，CNAME记录可�
 NS(Name Server）记录是域名服务器记录，用来指定该域名由哪个DNS服务器来进行解析。比如指定`sonoscape.com`的子域名具体由哪个服务器进行解析（参考后续dig指令）
 
 ns记录查询使用指令：
-```shell
+~~~shell
 $ dig ns com
 $ dig ns sonoscape.com
-```
+~~~
 示例：
-```shell
+~~~shell
 $ dig ns sonoscape.com.
 
 ; <<>> DiG 9.11.4-P2-RedHat-9.11.4-26.P2.el7_9.5 <<>> ns sonoscape.com.
@@ -82,10 +82,10 @@ sonoscape.com.          3600    IN      NS      ns2.icp100.net.
 ;; WHEN: Tue Jul 12 11:13:32 CST 2022
 ;; MSG SIZE  rcvd: 88
 
-```
+~~~
 ## 1.4 DNS分析实战
 分析使用dig命令，如下`dig +trace h.sonoscape.com`，分析`h.sonoscape.com`域名解析过程
-```shell
+~~~shell
 $ dig +trace h.sonoscape.com
 
 ; <<>> DiG 9.11.4-P2-RedHat-9.11.4-26.P2.el7_9.5 <<>> +trace h.sonoscape.com
@@ -134,7 +134,7 @@ I5JNTE8RF3S2GOJTLECHDOFMFO04OOPJ.com. 86400 IN RRSIG NSEC3 8 2 86400 20220718044
 h.sonoscape.com.        3600    IN      A       159.138.45.48
 ;; Received 60 bytes from 46.165.246.211#53(ns1.icp100.net) in 328 ms
 
-```
+~~~
 # 二、CDN
 ## 2.1 什么是CDN
 [CDN介绍](https://chensino.github.io/docs/other/essay/CDN.html)
@@ -150,7 +150,7 @@ A记录变成h.sonoscape.com的CNAME，[前面介绍了cname具体作用](## 1.2
 
 ## 2.4 CNAME为什么不直接解析到ip，而是域名
 
-```mermaid
+~~~mermaid
 graph LR
 SmartSystem(智能调度系统ai.com)-->|解析出A记录| 192.168.2.100
 192.168.2.100--> |华南资源服务器|192.168.1.66
@@ -159,7 +159,7 @@ SmartSystem(智能调度系统ai.com)-->|解析出A记录| 192.168.2.100
 h.sonoscape.com-->h.sonoscape.com.8faf9429.c.cdnhwc1.com-->SmartSystem
 tencent.com-->tencnet.com.8faf9429.c.cdnhwc1.com-->SmartSystem
 jd.com-->jd.com.8faf9429.c.cdnhwc1.com-->SmartSystem
-```
+~~~
 上图中有开立、腾讯、京东使用了华为的CDN的加速服务，则华为的角色是服务提供商，对外提供cname以及智能调度系统，分别给三家公司分配了cname，如果cname直接绑定IP，若是某天华为智能调度系统换了ip，那么他的客户们的服务就也要全部改ip，这是不合理的，不可能要求每个客户都去改ip。cname解析到域名就不存在这个问题，华为调度系统换机器时，只需要把调度系统ai.com绑定到新的ip即可，用户的服务不受影响。
 
 # 三、对象存储
@@ -229,7 +229,7 @@ minio是基于S3协议的开源存储系统，需要自己搭建服务，优点�
 使用dig命令可以查到此域名绑定了多个ip，在实际请求时，谁先返回就先把它缓存下来使用，
 cname一开始产生的原因是当时计算机计算能力太差，用cname类似做一个集群负载均衡，发展到现在cname早已脱离了最初的使用场景。
 
-```shell
+~~~shell
 $ dig obs.sonoscapecloud.com
 
 ; <<>> DiG 9.11.4-P2-RedHat-9.11.4-26.P2.el7_9.5 <<>> obs.sonoscapecloud.com
@@ -256,12 +256,12 @@ hcdnd101.gslb.c.cdnhwc2.com. 29 IN      A       120.52.95.244
 ;; WHEN: Tue Jul 12 11:41:46 CST 2022
 ;; MSG SIZE  rcvd: 209
 
-```
+~~~
 ## 4.2 请求一个地址，加www和不加是否有区别？
 
 分析一下我司的域名，`www.sonoscape.com`,`sonoscape.com`，直接访问这两个域名打开都是我司官网，那么它是否也用了cname？
 
-```shell
+~~~shell
 $ dig sonoscape.com
 
 ; <<>> DiG 9.11.4-P2-RedHat-9.11.4-26.P2.el7_9.5 <<>> sonoscape.com
@@ -283,9 +283,9 @@ sonoscape.com.          3115    IN      A       47.242.63.134
 ;; WHEN: Tue Jul 12 14:20:07 CST 2022
 ;; MSG SIZE  rcvd: 58
 
-```
+~~~
 
-```shell
+~~~shell
 $ dig www.sonoscape.com
 
 ; <<>> DiG 9.11.4-P2-RedHat-9.11.4-26.P2.el7_9.5 <<>> www.sonoscape.com
@@ -307,7 +307,7 @@ www.sonoscape.com.      3079    IN      A       47.242.63.134
 ;; WHEN: Tue Jul 12 14:20:30 CST 2022
 ;; MSG SIZE  rcvd: 62
 
-```
+~~~
 
 分别使用`dig`命令查看，得到结果显示这两个域名都是A记录，并且指向同一IP，说明我司并未采用CNAME，直接使用的是把两个域名绑定到` 47.242.63.134`。
 

@@ -28,7 +28,7 @@ tag:
 我当前拉取的远端版本为 B，此时修改了代码，并在本地仓库 commit 一次，但并未 push 到远端仓库。
 		另一位开发者在 B 的基础上，同样 commit 了一次并 push 到远端仓库。那么这个时候，我再 push 自己的代码就会发生错误。
 
-``` bash
+~~~ bash
 To github.com:xxx/xxx.git
 ! [rejected]        master -> master (fetch first)
 error: failed to push some refs to 'git@github.com:xxx/xxx.git'
@@ -37,7 +37,7 @@ hint: not have locally. This is usually caused by another repository pushing
 hint: to the same ref. You may want to first integrate the remote changes
 hint: (e.g., 'git pull ...') before pushing again.
 
-```
+~~~
 
 这个时候我们会选择，先 pull（如果有冲突需要先解决冲突，再 push。push 成功，但是此时我们查看 log 就会发现除了我们自己提交的那条日志之外，会多出一条 “Merge branch ‘master’ of …”。
 

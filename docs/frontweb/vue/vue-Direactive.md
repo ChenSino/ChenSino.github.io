@@ -27,7 +27,7 @@ vue中重用代码,3种方式：
 
  2.1  局部注册
 
-```vue
+~~~vue
 
 const focus = {
   mounted: (el) => el.focus()
@@ -40,11 +40,11 @@ export default {
 }
 <input v-focus />
 
-```
+~~~
 
 2.2 全局注册
 
-```javascript
+~~~javascript
 
 const app = createApp({})
 // 使 v-focus 在所有组件中都可用
@@ -52,13 +52,13 @@ app.directive('focus', {
   /* ... */
 })
 
-```
+~~~
 
 ##  三，指令钩子
 
 一个指令的定义对象可以提供几种钩子函数 (都是可选的)：
 
-```javascript
+~~~javascript
 
 const myDirective = {
   // 在绑定元素的 attribute 前
@@ -82,7 +82,7 @@ const myDirective = {
   unmounted(el, binding, vnode, prevVnode) {}
 }
 
-```
+~~~
 
 ##  四，钩子函数的参数
 
@@ -109,7 +109,7 @@ const myDirective = {
 
 2，对比用户登录时，后台返回的按钮权限，有就显示，没有就不显示
 
-```javascript
+~~~javascript
 
 //后台返回的权限
 
@@ -121,9 +121,9 @@ Pages.ProjectCreation.Import: "true"
 Pages.ProjectCreation.Query: "true"
 Pages.ProjectCreation.Revise: "true"
 
-```
+~~~
 
-```html
+~~~html
 
 //在工程列表页列出所有按钮--再根据自定义指令控制是否显示
 
@@ -134,9 +134,9 @@ Pages.ProjectCreation.Revise: "true"
 <button v-auth="'Import'">上传</button>
 <button v-auth="'Download'">下载</button>
 
-```
+~~~
 
-```javascript
+~~~javascript
 
 // src/authDirective.ts 
 /*
@@ -158,5 +158,5 @@ export function authDirective(app: App) {
             }     
     });  
 }
-```
+~~~
 

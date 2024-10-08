@@ -86,7 +86,7 @@ SPI（Service provide interface），直译过来是服务提供接口，在这�
 
 #### 2.3.1 定义规范（sun公司定义的jdbc规范在java.sql包）
 
-```xml
+~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -103,16 +103,16 @@ SPI（Service provide interface），直译过来是服务提供接口，在这�
     </properties>
 
 </project>
-```
+~~~
 
-```java
+~~~java
 //定义驱动规范，各数据库厂商自行实现
 public interface Driver {
     String getDriver();
 }
-```
+~~~
 
-```java
+~~~java
 public class DriverManager {
     //使用厂商是实现的驱动连接他的数据库
     public void connect(){
@@ -127,11 +127,11 @@ public class DriverManager {
     }
 }
 
-```
+~~~
 
 #### 2.3.2 厂商实现
 
-```xml
+~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -154,9 +154,9 @@ public class DriverManager {
         </dependency>
     </dependencies>
 </project>
-```
+~~~
 
-```java
+~~~java
 public class MysqlDriver implements Driver {
     @Override
     public String getDriver() {
@@ -164,13 +164,13 @@ public class MysqlDriver implements Driver {
     }
 }
 
-```
+~~~
 
 按照SPI规范配置好具体实现类
 
 ![image-20220331151619068](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220331151619068.png)
 
-```java
+~~~java
 public class Client {
     //客户端使用
     public static void main(String[] args) {
@@ -178,7 +178,7 @@ public class Client {
     }
 }
 
-```
+~~~
 
 输出：
 
@@ -190,10 +190,10 @@ public class Client {
 
 Thread context class loader存在的目的主要是为了解决parent delegation机制下无法干净的解决的问题。假如有下述委派链：
 
-```mermaid
+~~~mermaid
 graph LR;
 A[Custom ClassLoader]-->B[Application classloader]-->C[Extension classloader]--> d[Bootstrap class loader]
-```
+~~~
 
 那么委派链左边的ClassLoader就可以很自然的使用右边的ClassLoader所加载的类。
 
@@ -236,7 +236,7 @@ jdbc4.0规范说了，可以自动加载驱动，就是因为用了这个SPI，�
 
 现在很多新手刚使用jdbc时，随笔一搜《jdbc连接过程xxx》基本上出来的结果第一步都是让你`Class.forName("com.mysql.jdbc.Driver")`，其时压根不用写这一行，直接`DriverManager.getConnection("jdbc:mysqlxxxx")`就可以了（前提是你的jdk1.6+，mysql驱动5.1.6+，现在很少有jdk1.6以下的了吧）
 
-```java
+~~~java
 public static void main(String[] args) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -252,7 +252,7 @@ public static void main(String[] args) {
             e.printStackTrace();
         }
     }
-```
+~~~
 
 真正的打破双亲委派是在jdbc4.0+，并且mysql驱动在5.1.6+才会使用SPI打破双亲委派
 
@@ -266,12 +266,12 @@ public static void main(String[] args) {
 
 linux 、jdk8（jdbc4.2）、mysql驱动：5.1.6
 
-```java
+~~~java
     public static void main(String[] args) throws SQLException {
         //测试代码就这一行，jvm参数：-verbose:class 
         Connection connection = DriverManager.getConnection("jdbc:mysql:///abc123", "root", "123");
     }
-```
+~~~
 
 1. 记得打上断点开启debug之路，第一次进入断点输出的类加载信息如下，可以看到我们的Client类被加载了，看完了日志后清理，防止太多看起来烟花缭乱
 

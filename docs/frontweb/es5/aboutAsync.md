@@ -17,7 +17,7 @@ async函数是使用async关键字声明的函数。  并且其中允许使用aw
 
 async函数的书写方式如下：
 
-```javascript
+~~~javascript
 // 函数声明
 async function foo() {}
 
@@ -46,11 +46,11 @@ storage.getAvatar('jake').then(…);
 // 箭头函数
 const foo = async () => {};
 
-```
+~~~
 
 1.1   一个不含await表达式的async函数是会同步运行的。没有**await** 的情况下执行 async 函数，它会立即执行，返回  一个 Promise 对象，并且绝不会阻塞后面的语句。
 
-```javascript
+~~~javascript
 async function testAsync(){
    let a = 5;
    console.log('async内部')
@@ -60,11 +60,11 @@ async function testAsync(){
  
  //由于没有await，此时async函数同步执行  打印结果顺序  async内部--async外部
 
-```
+~~~
 
 如果函数体内有一个await表达式，async函数就一定会异步执行。
 
-```javascript
+~~~javascript
   async function test(){
       console.log(222)
     let a = await 5;
@@ -84,7 +84,7 @@ function test2(){
 333,
 444
 */
-```
+~~~
 
 ## 二，async函数的返回值	
 
@@ -92,7 +92,7 @@ function test2(){
 
 2.1  如果在函数中 return 一个直接量，async 会把这个直接量通过 Promise.resolve() 封装成 Promise 对象。当 async 函数没有返回值时，返回 Promise.resolve(undefined)
 
-```javascript
+~~~javascript
 async function foo() {
    return 1
 }
@@ -100,9 +100,9 @@ async function foo() {
 function foo() {
    return Promise.resolve(1)
 }
-```
+~~~
 
-```javascript
+~~~javascript
  //定义一个普通函数，返回一个字符串
  function test() {
      return "hello async";
@@ -117,11 +117,11 @@ function foo() {
  const result2 = testAsync();
  console.log(result2); //输出一个Promise对象 Promise {<fulfilled>: 'hello async'}
 
-```
+~~~
 
 async较好的用法-sync通常用于声明一个处理异步任务且返回了Promise对象的函数
 
-```javascript
+~~~javascript
 
  async function testAsync(){
      //返回一个Promise对象
@@ -133,24 +133,24 @@ async较好的用法-sync通常用于声明一个处理异步任务且返回了P
      })
  }
 
-```
+~~~
 
 2.2  async内部return语句的返回值，会成为then方法回调函数的参数。(因为async函数返回的是promise对象)
 
-```javascript
+~~~javascript
  async function testAsync() {
      return "hello async";
  }
 testAsync().then(res=>{
 	console.log(res)   //"hello async"
 });
-```
+~~~
 
 2.3   await关键字只能使用在被async声明的函数内，**用于修饰一个Promise对象**，使得该Promise对象处理的异步任务在当前协程上按顺序同步执行。
 
 定义一个使用async修饰的函数，处理异步任务
 
-```javascript
+~~~javascript
  async function testAsync(){
      return new Promise((resolve, reject)=>{
          setTimeout(function () {
@@ -159,9 +159,9 @@ testAsync().then(res=>{
      })
  }
 
-```
+~~~
 
-```javascript
+~~~javascript
  //定义一个函数，直接调用testAsync函数
  function testAwait(){
      console.log('testAsync调用前')
@@ -177,9 +177,9 @@ testAsync().then(res=>{
  testAsync
  //尽管代码按顺序写，但不按顺序执行，因为testAsync()是异步函数
 
-```
+~~~
 
-```javascript
+~~~javascript
 //定义一个函数（使用async声明该函数）用await修饰调用testAsync函数
  async function testAwait(){
      console.log('testAsync调用前')
@@ -196,7 +196,7 @@ testAsync().then(res=>{
  ​
  //使用了await关键字修饰，使得代码按照顺序执行，即同步执行
 
-```
+~~~
 
 ## 三， await命令
 
@@ -206,7 +206,7 @@ testAsync().then(res=>{
 
 （1）当跟的是`Promise`时，值是执行成功的返回值。
 
-```javascript
+~~~javascript
 async function fn(){
 	let a = await Promise.resolve(1)   a=1
 	let b = await Promise.resolve(2) b=2
@@ -214,11 +214,11 @@ async function fn(){
 }
 fn().then(v=>v) v =3
 
-```
+~~~
 
 （2）如果是其他数据时，返回值就是数据本身会返回的值，**该啥值是啥值**。
 
-```javascript
+~~~javascript
 function k(){}
 async function fn(){
 	let a = await k   //a就是函数k
@@ -228,7 +228,7 @@ async function fn(){
 }
 fn().then(v=>v) v =3
 
-```
+~~~
 
 ## 五，错误处理
 
@@ -237,7 +237,7 @@ async函数的错误处理方式有很多，正常来说，有3种方式。如�
 
 `throw new Error` 下面的状态不会执行，`async`函数返回`Promise`的状态变   	为失败，执行`.catch`方法.
 
-```javascript
+~~~javascript
 async function f() {
   await new Promise(function (resolve, reject) {
     throw new Error('出错了');
@@ -250,13 +250,13 @@ f()
 .catch(e => console.log(e))
 // Error：出错了
 
-```
+~~~
 
 上面代码中，async函数f执行后，await后面的 Promise 对象会抛出一个错误对象，导致catch方法的回调函数被调用，它的参数就是抛出的错误对象。
 
 当然，上边的写法我们不建议在项目中书写，我们可以把它写到try…catch…中的，这样就能防止错误，并且在代码正确的情况也能正常执行。
 
-```javascript
+~~~javascript
 async function f() {
   try {
     await new Promise(function (resolve, reject) {
@@ -271,13 +271,13 @@ async function f() {
  fn().then(res=>{
     console.log(res)
  })    
-```
+~~~
 
 如果有多个await命令，可以统一放在try…catch结构中。
 
 当`await`其中一个`Promse`执行失败，那么接下来的`await`不会继续执行， `async`函数返回`Promise`的状态变为失败，执行`.catch`方法
 
-```javascript
+~~~javascript
 async function main() {
   try {
     const val1 = await firstStep();
@@ -291,7 +291,7 @@ async function main() {
   }
 }
 
-```
+~~~
 
 ## 六，总结
 

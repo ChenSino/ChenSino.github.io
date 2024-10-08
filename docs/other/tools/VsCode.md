@@ -34,7 +34,7 @@ keys:
 1. 给vscode设置以管理员方式运行，
 2. 在配置文件加入以下配置，把git的path改成自己的
 
-```json
+~~~json
   "terminal.integrated.defaultProfile.windows": "GitBash",
     "terminal.integrated.profiles.windows": {
         "PowerShell": {
@@ -56,7 +56,7 @@ keys:
             "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
         }
     },
-```
+~~~
 
 ![2](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/202207151115182.png)
 
@@ -72,7 +72,7 @@ keys:
 
 vscode要求`java.jdt.ls.java.home`至少为jdk17，runtime可设置多个，把其中一个设置为默认
 
-```json
+~~~json
 "java.jdt.ls.java.home": "D:\\Program Files\\jdk-17",
     "java.configuration.runtimes": [
         {
@@ -91,4 +91,4 @@ vscode要求`java.jdt.ls.java.home`至少为jdk17，runtime可设置多个，把
             "default": false
         }
     ]
-```
+~~~

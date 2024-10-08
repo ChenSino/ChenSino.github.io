@@ -25,7 +25,7 @@ tag:
 
 使用`curl`的-w选项，其手册如下：
 
-```bash
+~~~bash
 -w, --write-out <format>
               Defines  what  to  display  on  stdout after a completed and successful operation. The format is a string that may contain plain text mixed with any number of variables. The string can be
               specified as "string", to get read from a particular file you specify it "@filename" and to tell curl to read the format from stdin you write "@-".
@@ -102,12 +102,12 @@ tag:
               url_effective  The URL that was fetched last. This is most meaningful if you've told curl to follow location: headers.
 
        If this option is used several times, the last one will be used.
-```
+~~~
 
 它能够按照指定的格式打印某些信息，里面可以使用某些特定的变量，而且支持 \n、\t和 \r 转义字符。提供的变量很多，比如 status_code、local_port、size_download 等等，这篇文章我们只关注和请求时间有关的变量（以 time_ 开头的变量）。
 先往文本文件 curl-format.txt 写入下面的内容
 
-```shell
+~~~shell
 ➜  ~ cat curl-format.txt
     time_namelookup:  %{time_namelookup}\n
        time_connect:  %{time_connect}\n
@@ -117,7 +117,7 @@ tag:
  time_starttransfer:  %{time_starttransfer}\n
                     ----------\n
          time_total:  %{time_total}\n
-```
+~~~
 
 那么这些变量都是什么意思呢？我解释一下：
 
@@ -130,7 +130,7 @@ time_starttransfer：从请求开始到第一个字节将要传输的时间
 time_total：这次请求花费的全部时间
 我们先看看一个简单的请求，没有重定向，也没有 SSL 协议的时间：
 
-```shell
+~~~shell
 ➜  ~ curl -w "@curl-format.txt" -o /dev/null -s -L "http://cizixs.com"
     time_namelookup:  0.012
        time_connect:  0.227
@@ -140,7 +140,7 @@ time_total：这次请求花费的全部时间
  time_starttransfer:  0.443
                     ----------
          time_total:  0.867
-```
+~~~
 
 可以看到这次请求各个步骤的时间都打印出来了，每个数字的单位都是秒（seconds），这样可以分析哪一步比较耗时，方便定位问题。这个命令各个参数的意义：
 
@@ -155,7 +155,7 @@ TCP 连接时间：pretransfter(227) - namelookup(12) = 215ms
 内容传输时间：total(867) - starttransfer(443) = 424ms
 来个比较复杂的，访问某度首页，带有中间有重定向和 SSL 协议：
 
-```shell
+~~~shell
 ➜  ~ curl -w "@curl-format.txt" -o /dev/null -s -L "https://baidu.com"
     time_namelookup:  0.012
        time_connect:  0.018
@@ -165,5 +165,5 @@ TCP 连接时间：pretransfter(227) - namelookup(12) = 215ms
  time_starttransfer:  0.027
                     ----------
          time_total:  0.384
-```
+~~~
 可以看到 time_appconnect 和 time_redirect 都不是 0 了，其中 SSL 协议处理时间为 328-18=310ms。而且 pretransfer 和 starttransfer 的时间都缩短了，这是重定向之后请求的时间。

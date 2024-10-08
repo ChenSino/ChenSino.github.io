@@ -8,7 +8,7 @@ keys:
 
 ## 1、一个真实的多模块maven项目
 
-```bash
+~~~bash
 $ tree -d -L 2
 .———————————————————————————————————最顶级pom所在目录
 ├── ccs-auth
@@ -52,7 +52,7 @@ $ tree -d -L 2
     ├── ccs-weibao-api
     └── ccs-weibao-biz
 
-```
+~~~
 
 说明：  
 通用模块common是一个多模块聚合的，其中有个common-bom是专门负责管理整个项目jar包版本。其他的data和weibao等是业务模块，业务模块一般分为两个子模块聚合在一起，分别是api和biz

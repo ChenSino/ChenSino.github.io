@@ -57,22 +57,22 @@ commonJS 是语言层面的规范，当前主要用于Node.js.
 
 **导出**
 
-```javascript
+~~~javascript
 
 module.exports.foo = function(){ ... } // 只能输出一个
 或 可以输出多个
 exports.a = 1
 exports.foo = function(){ ... }
 
-```
+~~~
 
 exports 和 module.exports 都能导出模块数据，
 
 **导入**
 
-```javascript
+~~~javascript
 const foo = require("./xxx") // 如果没有写文件名后缀，会自动按照 .js、.json、.node的顺序补齐查找
-```
+~~~
 
 **加载过程如下：**
 
@@ -99,28 +99,28 @@ const foo = require("./xxx") // 如果没有写文件名后缀，会自动按照
 - 第二个参数必须是一个数组，定义了该模块依赖的模块列表
 - 第三个参数是模块初始化要执行的函数或对象。如果是函数，只会被执行一次，如果是对象，那这个对象应该作为模块的输出值
 
-```javascript
+~~~javascript
 
 define("myModule"， ["require", "exports", "beta"],  function(require, exports, beta){
     exports.foo = function(){
         return beat.foo()
     }
 })
-```
+~~~
 
 就是创建了一个名为 myModule 的模块，该模块依赖 require、exports 和 beta 三个模块，并导出 foo 函数
 
 导出
 
-```javascript
+~~~javascript
 module.exports = { ... }
-```
+~~~
 
 导入
 
-```JavaScript
+~~~JavaScript
 const foo = require("./xxx")
-```
+~~~
 
 
 
@@ -139,13 +139,13 @@ CMD 规范最大的特点就是懒加载，不需要在定义模块的时候声�
 
 用法和require.js差不多，通过定义一个全局函数 define 来实现，不过只能接受一个参数，可以是函数或者对象。如果是对象，模块导出的就是对象，如果是函数，那这个函数会被传入三个参数
 
-```javascript
+~~~javascript
 
 define( function(require, exports, module){
     ...
 })
 
-```
+~~~
 
 三个参数分别是：
 
@@ -158,7 +158,7 @@ define( function(require, exports, module){
 
 看个栗子
 
-```javascript
+~~~javascript
 
 define( function(require, export, module){
     const add = require("math").add
@@ -167,7 +167,7 @@ define( function(require, export, module){
     }
     module.id = "increment"
 })
-```
+~~~
 
 就是定义一个名为 increment 的模块，引用 math 模块里的 add 方法，经过处理后，再导出 increment 函数
 
@@ -183,7 +183,7 @@ UMD 没有专门的规范，而是集合了上面说的三个规范于一身，�
 
 看实现代码
 
-```javascript
+~~~javascript
 
 (function(root, factory){
     if(typeof define === "function" && define.amd){
@@ -196,7 +196,7 @@ UMD 没有专门的规范，而是集合了上面说的三个规范于一身，�
 }(this, ($) => {
     return { ... }
 }))
-```
+~~~
 
 判断过程是这样的
 
@@ -228,7 +228,7 @@ CommonJS 和 AMD 都是在运行时确定依赖关系，也就是运行时加载
 
 静态分析是啥？什么是静态引入？什么是动态引入？
 
-```javascript
+~~~javascript
 
 // CommonJS / AMD 中动态引入的写法
 const foo = require( `all/${["f","o","o"].join("")}` )
@@ -240,7 +240,7 @@ const foo = xx.get( require("foo") )
 import foo from "xxxx/xxx"
 import { foo1, foo2 } from "xxxx/xxx"
 
-```
+~~~
 
 结论：动态==可以拼接，静态==不准拼接，哈哈哈 ~~~ ，不是 === 哈，简单理解一下，原理就不拓展了.
 
@@ -248,7 +248,7 @@ import { foo1, foo2 } from "xxxx/xxx"
 
 ES6 Module 的用法，看下代码
 
-```javascript
+~~~javascript
 
 // 方式一 可以输出多个
 export const a = 1
@@ -265,11 +265,11 @@ export default {
 // 注意
 export { a as b }  // as 的意思就是重命名
 
-```
+~~~
 
 还有 export default 会导出默认输出，用 vue 的应该特别熟悉，就是不需要知道模块中输出的名字，在导入的时候再自定义名字
 
-```javascript
+~~~javascript
 
 // 导出
 export default function(){ ... }
@@ -290,13 +290,13 @@ myModule.foo()
 // 模块的继承
 import * from "./xxx" // 在当前模块里这样引入别的模块，就把 xxx 模块里导出的全部继承过来了
                           
-```
+~~~
 
 ### 6.1 在浏览器中使用 ES 模块化
 
 只需要在 script 标签中添加 `type="module"` 属性就行，目前各大浏览器较新版本都已支持，如果是不支持的浏览器通过添加 `nomodule` 属性来执行其他方案.
 
-```javascript
+~~~javascript
 
 <script type="module">
     import module1 from "./xxx"
@@ -305,7 +305,7 @@ import * from "./xxx" // 在当前模块里这样引入别的模块，就把 xxx
     alert("您的浏览器暂不支持 ES 模块，请先升级浏览器版本")
 </script>
 
-```
+~~~
 
 ### 6.2 在 Node.js 中使用 ES 模块化
 
@@ -315,28 +315,28 @@ Node.js 从 9.0 版本开始支持 ES 模块
 
 可以在执行脚本需要启动时加上 **--experimental-modules**，需要文件后缀名必须为 .mjs
 
-```javascript
+~~~javascript
 node --experimental-modules module1.mjs
 
 //使用
 import module1 from "./xxx"
-```
+~~~
 
 或者也可以安装 **babel-cli** 和 **babel-preset-env**，配置 .babelrc 文件后，执行
 
-```ABAP
+~~~ABAP
 
 ./node_modules/.bin/babel-node
 
-```
+~~~
 
 或
 
-```bash
+~~~bash
 
 npx babel-node
 
-```
+~~~
 
 ### 其他
 

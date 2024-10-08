@@ -8,7 +8,7 @@ isOriginal: true
 
 ### 1. 目录结构
 
-```shell
+~~~shell
 elk
 ├── config
 │   ├── es
@@ -26,11 +26,11 @@ elk
 │       ├── data
 └── logs
     └── logstash
-```
+~~~
 
 ### 2. docker-compose
 
-```yaml
+~~~yaml
 version: "3"
 services:
    elasticsearch: 
@@ -93,12 +93,12 @@ networks:
       config:
         - subnet: 172.15.0.0/16
           gateway: 172.15.0.1
-```
+~~~
 
-```shell
+~~~shell
 #启动命令
 docker compose up
-```
+~~~
 
 elasticsearch地址：<http://localhost:9200>
 kibana地址：<http://localhost:5601>
@@ -108,12 +108,12 @@ kibana地址：<http://localhost:5601>
 > elastic通过docker启动后，需要进入容器设置默认的密码，会分别给elastic，
 > logstash，kibana等提供对应账号，以及默认密码，设置方式如下：
 
-```shell
+~~~shell
 #进入容器
 docker exec -it <容器名字> /bin/bash
 # 设置默认密码
 ./bin/elasticsearch-setup-passwords interactive
-```
+~~~
 
 如下图，会分别设置多个默认密码，对应不同系统使用
 ![20240919164025](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240919164025.png)
@@ -134,17 +134,17 @@ docker exec -it <容器名字> /bin/bash
 
 打开kibana，进入控制台：
 
-```shell
+~~~shell
 GET /_analyze
 {
   "analyzer": "ik_max_word",
   "text": "开立生物医疗信息科技有限公司"
 }
-```
+~~~
 
 结果：
 
-```json
+~~~json
 {
   "tokens": [
     {
@@ -212,13 +212,13 @@ GET /_analyze
     }
   ]
 }
-```
+~~~
 
 #### 4.4 ik分词器扩展
 
 1. 在IKAnalyzer.cfg.xml配置文件内容添加：
 
-```xml
+~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
@@ -228,7 +228,7 @@ GET /_analyze
          <!--用户可以在这里配置自己的扩展停止词字典  *** 添加停用词词典-->
         <entry key="ext_stopwords">stopword.dic</entry>
 </properties>
-```
+~~~
 
 2. 分别添加词典文件：ext.dic stopword.dic
 

@@ -27,15 +27,15 @@ JSONP实现跨域请求的具体实现就是动态创建script标签，利用“
 
 #### 1，服务端JSONP格式数据
 
-```text
+~~~text
 如客户想访问 : https://www.runoob.com/try/ajax/jsonp.php?jsoncallback=callbackFunction。
 
 假设客户期望返回数据：["customername1","customername2"]。
 
 真正返回到客户端的数据显示为: callbackFunction(["customername1","customername2"])。
-```
+~~~
 
-```php
+~~~php
 <?php
 header('Content-type: application/json');
 //获取回调函数名
@@ -46,11 +46,11 @@ $json_data = '["customername1","customername2"]';
 echo $jsoncallback . "(" . $json_data . ")";
 ?>
 
-```
+~~~
 
 #### 2，客户端接收
 
-```html
+~~~html
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +73,7 @@ echo $jsoncallback . "(" . $json_data . ")";
 </script>
 </body>
 </html>
-```
+~~~
 
 #### 2.2，用jQuery中$.getJSON()实现JSONP
 
@@ -82,7 +82,7 @@ echo $jsoncallback . "(" . $json_data . ")";
 
   注：下面代码中路径后是jsoncallback=？，因为服务端的代码中获取回调函数的参数名为jsoncallback
 
-```html
+~~~html
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,7 +97,7 @@ $.getJSON("https://www.runoob.com/try/ajax/jsonp.php?jsoncallback=?",function(da
 </body>
 </html>
 
-```
+~~~
 
 #### 2.3 用jQuery中$.ajax()实现JSONP
 
@@ -109,7 +109,7 @@ $.ajax()方法同样可以实现JSONP跨域请求，我们主要来看看它的�
 1. - jsonp：获得jsonp回调函数名的参数名（跟服务端保持一致）
 1. - success：请求成功后的回调函数。
 
-```javascript
+~~~javascript
 $.ajax({
         url: "https://www.runoob.com/try/ajax/jsonp.php",
         type: "get",
@@ -119,7 +119,7 @@ $.ajax({
             console.log(data); //["customername1","customername2"]
         }
     })
-```
+~~~
 
 ### 四,总结
 

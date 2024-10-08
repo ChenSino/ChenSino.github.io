@@ -35,17 +35,17 @@ BeanDefinition里包含信息如下：
 
 第一次测试：在xml随便配一个bean，bean标签有个lazyInit，默认是false
 
-```xml
+~~~xml
   <bean id="address" class="com.chen.bean.Address">
         <property name="addressName" value="startName"/>
     </bean>
-```
+~~~
 
 第二次测试：在实例化之前通过扩展点的功能把lazyInit改为true
 
 实现方式：
 
-```java
+~~~java
 @Component
 public class MyBeanFactoryPostProccessor implements BeanFactoryPostProcessor {
     @Override
@@ -56,18 +56,18 @@ public class MyBeanFactoryPostProccessor implements BeanFactoryPostProcessor {
         address.setLazyInit(true);
     }
 }
-```
+~~~
 
 入口函数，注意此处我没有调用applicationContext.getBean("address")，如果我们主动去获取address就不能达到测试效果，主动调用的话会导致address这个bean的lazyInit失效
 
-```java
+~~~java
    @Test
     public void test1() {
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext-dog.xml");
 
     }
-```
+~~~
 
 
 
@@ -79,7 +79,7 @@ public class MyBeanFactoryPostProccessor implements BeanFactoryPostProcessor {
 
 创建一个bean，并且让其实现BeanPostProcessor接口，该接口的作用就是在容器实例化出一个bean（真实的对象，要和BeanDefinition区分）后，会自动调用以下两个前置和后置函数，通过观察可以发现在2.1的测试中，第一次打印除了beanName是address的，第二次没打印出来，说明第二次没有实例化address
 
-```java
+~~~java
 @Component
 public class MyBeanPostProccessor implements BeanPostProcessor {
     @Override
@@ -94,13 +94,13 @@ public class MyBeanPostProccessor implements BeanPostProcessor {
         return bean;
     }
 }
-```
+~~~
 
 ##### 2.2.2 BeanPostProcessor扩展点的其它作用
 
 BeanPostProcessor这个扩展点可以在容器创建一个对象后继续修改这个对象的属性值，比如你在xml中配置address后，给他的addressName字段设置了一个值，然后你是可以在BeanPostProcessor接口中去修改这个addressName这个字段的，并且修改了以后，你通过容器的getBean方法获取的对象是你修改后的。修改下MyBeanPostProccessor
 
-```java
+~~~java
 @Component
 public class MyBeanPostProccessor implements BeanPostProcessor {
     @Override
@@ -121,7 +121,7 @@ public class MyBeanPostProccessor implements BeanPostProcessor {
         return bean;
     }
 }
-```
+~~~
 
 通过以上代码修改address对象的属性后，再通过getBean方法获取对象，会发现对象的值是我们修改后的，而非xml中定义的那个值
 

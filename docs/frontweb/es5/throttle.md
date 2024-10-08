@@ -25,7 +25,7 @@ tag:
 
 代码一:
 
-```javascript
+~~~javascript
 function throttle(fn,delay=100){
 //首先设定一个变量，在没有执行我们的定时器时为null
 let timer = null;
@@ -38,11 +38,11 @@ return function(){
 	},delay);
 	}
 }
-```
+~~~
 
 代码二:
 
-```javascript
+~~~javascript
 function throttle2(fn,delay=100){
 	let last = 0;
 	return function(){
@@ -53,7 +53,7 @@ function throttle2(fn,delay=100){
 		}
 	}
 }
-```
+~~~
 
 
 ## 
@@ -84,7 +84,7 @@ function throttle2(fn,delay=100){
 
 代码一
 
-```javascript
+~~~javascript
 function debounce(fn,delay=200){
 	let timer = null;
 	return function(){
@@ -95,7 +95,7 @@ function debounce(fn,delay=200){
 		},delay);
 	}
 }
-```
+~~~
 
 
 

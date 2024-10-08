@@ -16,7 +16,7 @@ category:
 
 1. 进入arths,attach进入项目
 
-```bash
+~~~bash
 $ as.sh
 Arthas script version: 3.5.5
 [INFO] JAVA_HOME: /usr/local/jdk1.8.0_72
@@ -27,7 +27,7 @@ Found existing java process, please choose one and input the serial number of th
   [2]: 47802 ccs-data-biz.jar
 2
 
-```
+~~~
 
 2. 根据线上log定位到异常大致的位置
 
@@ -47,9 +47,9 @@ createPDF方法空指针，那首先肯定想到的是参数htmlStr是null
 
 6. 使用arthas的watch命令，追踪参数、返回值、异常信息
 
-```bash
+~~~bash
 watch freemarker.template.Template process '{params,returnObj,throwExp}'  -n 5  -x 3 '1==1'
-```
+~~~
 
 追踪发现
 

@@ -17,10 +17,10 @@ tag:
 
 ### 确定是否是因为代理问题
 
-```shell
+~~~shell
 ## 查看git所有配置，检查是否使用了代理
 git config --list
-```
+~~~
 
 检查浏览器是否使用了代理，例如下图中就是典型的浏览器走了本地代理，否则正常的应该是解析到远程github的ip
 
@@ -33,7 +33,7 @@ git config --list
 
 如果是因为代理的问题导致无法clone,那么根据情况设置或者取消代理即可
 
-```shell
+~~~shell
 #设置代理，把代理服务器修改成自己的
 git config --global https.proxy http://127.0.0.1:1080
 git config --global https.proxy https://127.0.0.1:1080
@@ -48,4 +48,4 @@ git config --global http.https://github.com.proxy <你的代理服务器>
 #取消代理
 git config --global --unset http.https://github.com.proxy
 
-```
+~~~

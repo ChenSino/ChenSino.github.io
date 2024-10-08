@@ -19,7 +19,7 @@ lru(latest recently used)最近最少使用，在缓存中可以使用LRU算法�
 
 > 在java中LinkedHashMap已经实现了LRU算法，在使用时只需要继承此类，然后重写`removeEldestEntry`方法即可
 
-```java
+~~~java
 public class MyLRU<K, V> extends LinkedHashMap<K, V> {
 
     private int cacheCount;
@@ -37,13 +37,13 @@ public class MyLRU<K, V> extends LinkedHashMap<K, V> {
     }
 }
 
-```
+~~~
 
 以上定义一个map,指定其缓存容量为3,size超过3时，会自动移除，下面进行测试
 
 ### 第一次测试
 
-```java
+~~~java
     public static void main(String[] args) {
         MyLRU<String, String> my = new MyLRU<>(3);
         my.put("aa", "11");
@@ -57,21 +57,21 @@ public class MyLRU<K, V> extends LinkedHashMap<K, V> {
         }
 
     }
-```
+~~~
 
 输出：
 
-```shell
+~~~shell
 bb:22
 ccc:33
 dd:44
-```
+~~~
 
 发现最早放进的aa被删除了
 
 ### 第二次测试
 
-```java
+~~~java
     public static void main(String[] args) {
         MyLRU<String, String> my = new MyLRU<>(3);
         my.put("aa", "11");
@@ -87,15 +87,15 @@ dd:44
         }
 
     }
-```
+~~~
 
 输出：
 
-```shell
+~~~shell
 ccc:33
 aa:11
 dd:44
 
-```
+~~~
 
 发现当使用一次aa后，这次被删除的是bb,说明当刚加入aa,bb,cc时的排序是aa-bb-cc,当我们使用一次aa,则aa被放到头部，变成了bb-cc-aa,当在加入dd时，需要移除尾部的bb,就变成了cc-aa-dd

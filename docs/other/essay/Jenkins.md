@@ -34,7 +34,7 @@ Jenkins(**2020年及以后版本，2.260以上**)安装后，插件下载时失�
 5. 重启jenkins
 6. 重新更新插件
 
-```java
+~~~java
 /*
  * Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
  *
@@ -237,7 +237,7 @@ public class InstallCert {
     }
 
 }
-```
+~~~
 
 
 
@@ -302,7 +302,7 @@ url就是jenkins中提示的那个，更换`JENKINS_URL`后就是`http://10.10.1
 
 执行脚本demo
 
-```shell
+~~~shell
 #!/bin/bash
 JAVA_OPTS=''
 JAR_FILE='/home/ccs/ccs-data-biz.jar'
@@ -332,7 +332,7 @@ if [ -f $JAR_FILE ];then
     nohup java -jar -server -Xms1000m -Xmx1000m ${JAR_FILE}|tee ${CCS_DATA_LOG}|sed -e '/send-msg->/Q' &
 fi
 exit 0
-```
+~~~
 
 关键是后面这个启动命令`nohup java -jar -server -Xms1000m -Xmx1000m ${JAR_FILE}|tee ${CCS_DATA_LOG}|sed -e '/send-msg->/Q' &`
 

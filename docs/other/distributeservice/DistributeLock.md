@@ -30,11 +30,11 @@ date: 2017-03-18
 
 1. 采用redis 的SETNX(SET IF NOT EXIST)，key和value我们可以随意指定，若key不存在此操作成功返回1,如果key已存在则set失败返回0。正常情况第一个抢占锁的服务设置肯定是返回1的，如果此时其他服务（JVM进程）再次来set相同的key就返回0,代表抢锁失败。
 
-   ```SHELL
+   ~~~SHELL
    SETNX lock_source_key lock_value # 加锁
    do something #获取锁以后的业务处理代码
    DEL lock_source_key #业务处理完以后释放锁
-   ```
+   ~~~
 
    
 
@@ -42,22 +42,22 @@ date: 2017-03-18
 
 2. 在1的基础上升级一下，给key加一个过期时间，如果出现意外情况，key到期以后可以自动释放
 
-   ```shell
+   ~~~shell
    SETNX lock_source_key lock_value # 加锁
    EXPIRE lock_source_key 10 #假设过期时间是10s
    do something #获取锁以后的业务处理代码
    DEL lock_source_key #业务处理完以后释放锁
-   ```
+   ~~~
 
 > 经过以上升级后依然会存在问题，细心的读者可能已经发现，因为SETNX 和 EXPIRE是两步分开的操作，所以仍然会存在安全问题，因为redis的原子性指的是一个操作，这两是分开的两个操作，并不是原子的。比如，当服务SETNX成功后，在EXPIRE 这个操作执行前又挂了，那就又回到第1个那样的场景，导致抢到锁，但是却一直不释放锁。
 
 3. 在2的基础上再次升级，为了解决 SETNX 和 EXPIRE 两个操作非原子性的问题，可以使用 Redis 的 SET 指令的扩展参数，使得 SETNX 和 EXPIRE 这两个操作可以原子执行
 
-   ```shell
+   ~~~shell
    SET lock_source_key lock_value NX EX 10 #加锁
    do something
    DEL lock_source_key #释放锁
-   ```
+   ~~~
 
    - NX 表示只有当 lock_resource_id 对应的 key 值不存在的时候才能 SET 成功。保证了只有第一个请求的客户端才能获得锁，而其它客户端在锁被释放之前都无法获得锁。
    - EX 10 表示这个锁 10 秒钟后会自动过期，业务可以根据实际情况设置这个时间的大小。
@@ -70,22 +70,22 @@ date: 2017-03-18
 
 具体实现就是在加锁时将 value 设置为一个唯一的随机数（或者线程 ID ），释放锁时先判断随机数是否一致，然后再执行释放操作，确保不会错误地释放其它线程持有的锁，除非是锁过期了被服务器自动释放，整个过程如下：
 
-```shell
+~~~shell
 # 先产生一个随机数，可以用uuid等
 SET lock_source_key random_value NX EX 10 #加锁
 do something
 if random_value == get(lock_source_key)   #释放锁前，先判断当前服务是否是锁的持有者
 DEL lock_source_key #释放锁
-```
+~~~
 
 但判断 value 和删除 key 是两个独立的操作，并不是原子性的，所以这个地方需要使用 Lua 脚本进行处理，因为 Lua 脚本可以保证连续多个指令的原子性执行。
 
-```shell
+~~~shell
 if redis.call("get",KEYS[1] == ARGV[1]) then  #java代码中调用lua脚本判断
 	return redis.call("DEL",KEYS[1])          #如果判断相等则用lua调用del释放锁
 else
 	return 0;                                 #如果当前服务不是锁拥有者直接返回0,即不释放锁，因为此时锁的所有者不是当前服务
-```
+~~~
 
 基于 Redis 单节点的分布式锁基本完成了，但是**这并不是一个完美的方案**，只是相对完全一点，因为它并没有完全解决当前线程执行超时锁被提前释放后，其它线程乘虚而入的问题。要完美解决此问题需要**使用 Redisson 的分布式锁**，具体实现比较复杂以后补充。
 

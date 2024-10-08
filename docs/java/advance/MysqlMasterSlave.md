@@ -16,24 +16,24 @@ tag:
 
 1. 创建容器
 
-   ```shell
+   ~~~shell
    docker run --name mysql_master -p 3001:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:latest
-   ```
+   ~~~
 
    这一步创建容器的目的是查看那以及获取mysql配置文件，然后把它的配置文件copy到宿主机，这样方便直接在宿主机修改mysql配置，如果不事先把mysql配置文件获取出来，直接用docker的-v去挂载的话会有问题，无法达到把docker容器配置映射到宿主机的目的（可能是我的方式不对）
 
 2. 把容器内mysql配置copy到宿主机，配置文件在/etc/mysql，直接把整个目录copy到宿主机
 
-   ```shell
+   ~~~shell
    docker cp 容器ID@:/etc/mysql /home/user/master #master 库的配置，路径可以自由在指定
    docker cp 容器ID@:/etc/mysql /home/user/slave  #slave库配置
-   ```
+   ~~~
 
 3. 分别修改master和slave的配置文件my.cnf，在mysqld下增加以下内容
 
    master配置
 
-   ```shell
+   ~~~shell
    [mysqld]
    ## 设置server_id，一般设置为IP最后一位，直接写ip会报错，同一局域网内注意要唯一
    server_id=100  
@@ -50,11 +50,11 @@ tag:
    ## 跳过主从复制中遇到的所有错误或指定类型的错误，避免slave端复制中断。
    ## 如：1062错误是指一些主键重复，1032错误是因为主从数据库数据不一致
    slave_skip_errors=1062  
-   ```
+   ~~~
 
    slave配置
 
-   ```shell
+   ~~~shell
    [mysqld]
    ## 设置server_id，一般设置为IP最后一位，直接写ip会报错，同一局域网内注意要唯一
    server_id=101  
@@ -77,26 +77,26 @@ tag:
    log_slave_updates=1  
    ## 防止改变数据(除了特殊的线程)
    read_only=1  
-   ```
+   ~~~
 
 4. 删除刚启动的容器，当然不删除也无所谓，我们启动它主要是获取里面的mysql配置，好方便映射出来
 
-   ```shell
+   ~~~shell
    docker ps #查看容器id
    docker rm -f mysql容器id
-   ```
+   ~~~
 
 5. 启动master
 
-   ```/home/chenkun/DockerConfigs/mysql-cluster/master/mysql```是第二步设置的
+   ~~~/home/chenkun/DockerConfigs/mysql-cluster/master/mysql~~~是第二步设置的
 
-   ```shell
+   ~~~shell
    docker run --name mysql_master -p 3001:3306 -e MYSQL_ROOT_PASSWORD=root -v /home/chenkun/DockerConfigs/mysql-cluster/master/mysql:/etc/mysql -d mysql:latest
-   ```
+   ~~~
 
 6. 查看master的状态，这一步查询结果后续第9步slave会用到
 
-   ```shell
+   ~~~shell
    $ mysql -h 127.0.0.1 -P 3001 -uroot -proot
    
    mysql> show master status;
@@ -106,50 +106,50 @@ tag:
    | edu-mysql-bin.000003 |      396 |              | mysql            |                   |
    +----------------------+----------+--------------+------------------+-------------------+
    1 row in set (0.00 sec)
-   ```
+   ~~~
 
 7. 在master添加一个账户，并给用户授权，目的是给slave用来从master同步数据用的（创建用户建议用navicat，因为要选择插件为mysql_native_password）
 
-   ```shell
+   ~~~shell
    #如果非要使用命令行创建用户使用以下命令（推荐使用navicat）
    mysql>CREATE USER 'slave'@'%' IDENTIFIED BY 'root';
    mysql>user mysql
    mysql>update user set plugin='mysql_native_password' where user = slave;
-   ```
+   ~~~
    
-   ```shell
+   ~~~shell
    mysql> GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'slave'@'%';   # 授权给slave
-   ```
+   ~~~
 
 8. 启动slave
 
-   ```shell
+   ~~~shell
    # 映射到宿主机3002端口，挂载其对应的配置目录
    docker run --name mysql_slave -p 3002:3306 -e MYSQL_ROOT_PASSWORD=root -v /home/chenkun/DockerConfigs/mysql-cluster/slave/mysql:/etc/mysql -d mysql:latest
-   ```
+   ~~~
 
 9. 查看宿主机的ip,设置和master的关联（注意此处不能用localhost以及127.0.0.1，在容器中使用localhost指向的是容器而不是宿主机）
 
-   ```shell
+   ~~~shell
    docker inspect 容器id #在返回结果找ip,172.17.x.x
-   ```
+   ~~~
 
    172.17.0.2是master容器的ip,slave是第7步在master建立的用户，root是密码  ，edu-mysql-bin.000003和master_log_pos是第6步查询的解雇哦
 
-   ```shell
+   ~~~shell
    ##记得先进入先进入slave库，在mysql命令行执行以下
    mysql> change master to master_host='172.17.0.2', master_user='slave', master_password='root', master_port=3306, master_log_file='edu-mysql-bin.000003', master_log_pos=156, master_connect_retry=30; 
-   ```
+   ~~~
 
 10. 启动slave
 
-    ```shell
+    ~~~shell
     mysql>start slave;
-    ```
+    ~~~
 
 11. 查看slave状态，13、14行为yes就ok了，如果连接失败在47行Slave_SQL_Running_State会报失败原因
 
-```shell
+~~~shell
 mysql> show slave status\G;
 *************************** 1. row ***************************
                Slave_IO_State: Waiting for source to send event
@@ -213,7 +213,7 @@ Master_SSL_Verify_Server_Cert: No
         Get_master_public_key: 0
             Network_Namespace:
 1 row in set, 1 warning (0.01 sec)
-```
+~~~
 
 12. 测试主从同步
 
@@ -229,17 +229,17 @@ Master_SSL_Verify_Server_Cert: No
 
 mybatis-plus实现多数据源特别简单，只需要引入多数据源的包，再到springboot配置文件配置一下就ok了
 
-```xml
+~~~xml
 <dependency>
   <groupId>com.baomidou</groupId>
   <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
   <version>${version}</version>
 </dependency>
-```
+~~~
 
 
 
-```yml
+~~~yml
 spring:
   application:
     name: mybatisplus
@@ -261,13 +261,13 @@ spring:
           username: queryUser
           password: 123456
           driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-```
+~~~
 
 ##### 2.3 数据库设置
 
 1. 在master库使用脚本创建一个数据库，会自动同步到slave
 
-```sql
+~~~sql
 CREATE TABLE `user` (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
   `name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '姓名',
@@ -276,14 +276,14 @@ CREATE TABLE `user` (
   `grade` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1443412902525784067 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-```
+~~~
 
 2. 用管理员主那个胡登陆到slave库创建一个用户，给其设置只查询权限（和之前slave帐号是两回事）防止在slave库写入数据
 
-   ```shell
+   ~~~shell
    mysql> CREATE USER 'queryUser'@'host' IDENTIFIED BY '123456';  # 添加用户
    mysql> GRANT SElECT ON *.* TO 'queryUser'@'%';					# 设置查询权限
-   ```
+   ~~~
 
 ##### 2.4 测试通过java读写分离是否成功
 
@@ -293,7 +293,7 @@ CREATE TABLE `user` (
 
 3. 分别查询两个库，看看是否得到的不一样的结果。这一步用@DS("slave_1")切换到从库，**注意不要在单元测试中使用@DS,不会生效的**
 
-   ```java
+   ~~~java
        @GetMapping("/slave-list")
        @DS("slave_1")
        public List<User> userListSlave() {
@@ -304,13 +304,13 @@ CREATE TABLE `user` (
        public List<User> userListMaster() {
            return userService.list();
        }
-   ```
+   ~~~
 
 4. 对比请求结果，发现两次查询的name不一样，说明成功了
 
    http://192.168.92.31:8080/slave-list 访问结果
 
-   ```json
+   ~~~json
    [
        {
            "id": 1443412093146714113,
@@ -320,11 +320,11 @@ CREATE TABLE `user` (
            "grade": "SECONDARY"
        }
    ]
-   ```
+   ~~~
 
    http://192.168.92.31:8080/master-list 访问结果
 
-```json
+~~~json
 [
     {
         "id": 1443412093146714113,
@@ -335,7 +335,7 @@ CREATE TABLE `user` (
     }
 ]
 
-```
+~~~
 
 ##### 2.5 、测试代码地址
 

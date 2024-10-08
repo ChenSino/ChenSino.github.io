@@ -12,7 +12,7 @@ date: 2022-03-18
 
 ##### 2.1 自定义注解SysLog 
 
-```java
+~~~java
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -25,7 +25,7 @@ public @interface SysLog {
 	String value();
 
 }
-```
+~~~
 
 ##### 2.2 日志实体类
 
@@ -33,7 +33,7 @@ public @interface SysLog {
 
 @ApiModel是swagger中的
 
-```java
+~~~java
 @Data
 @ApiModel(value = "日志")
 public class SysLog implements Serializable {
@@ -135,13 +135,13 @@ public class SysLog implements Serializable {
 	private String delFlag;
 
 }
-```
+~~~
 
 
 
 ##### 2.2 AOP拦截
 
-```java
+~~~java
 @Slf4j
 @Aspect
 @AllArgsConstructor
@@ -170,11 +170,11 @@ public class SysLogAspect {
 
 }
 
-```
+~~~
 
 ##### 2.3 通过事件调用远程日志
 
-```java
+~~~java
 @Slf4j
 @AllArgsConstructor
 public class SysLogListener {
@@ -191,5 +191,5 @@ public class SysLogListener {
 
 }
 
-```
+~~~
 

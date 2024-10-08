@@ -11,7 +11,7 @@ tag:
 
 ## ts在表单中的应用
 
-```vue
+~~~vue
       <el-form ref="ruleFormRef" :model="ruleForm" status-icon :rules="rules" label-width="70px">
         <h2>后台管理系统</h2>
         <el-form-item label="用户名:" prop="username">
@@ -27,9 +27,9 @@ tag:
           <el-button class="login-btn" @click="resetForm(ruleFormRef)">重置</el-button>
         </el-form-item>
       </el-form>
-```
+~~~
 
-```javascript
+~~~javascript
 
 import { LoginData } from "@/type/login";
 import { FormInstance } from "element-plus";
@@ -95,11 +95,11 @@ const resetForm = (formEl: FormInstance | undefined) => {
 }
 
 
-```
+~~~
 
 在上面这个例子中，对reactive中数据进行类型显示注解，这个博主用的方式，新建了一个types文件login.ts
 
-```typescript
+~~~typescript
 /**
  * 表单数据接口
  */
@@ -114,20 +114,20 @@ export class LoginData {
         password: ""
     }
 }
-```
+~~~
 
 然后
 
-```javascript
+~~~javascript
  
  import { LoginData } from "@/type/login";
  const data = reactive(new LoginData()); 
  
-```
+~~~
 
 二，使用泛型来注解reactive中的数据类型
 
-```typescript
+~~~typescript
 
 interface DomainItem {
   key: number
@@ -143,5 +143,5 @@ const dynamicValidateForm = reactive<{
   ],
   email: '',
 })
-```
+~~~
 

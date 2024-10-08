@@ -9,7 +9,7 @@ keys:
 
 ### 1、在类中本地变量引用自身类，会引发的问题
 
-```java
+~~~java
 public class BaseFormBean {
     private BaseFormBean baseBean = new BaseFormBean();
     {
@@ -25,13 +25,13 @@ public class BaseFormBean {
         new BaseFormBean();
     }
 }
-```
+~~~
 
 
 
 此问题用于研究对象初始化的过程，以上程序运行结果如下：
 
-```shell
+~~~shell
 Exception in thread "main" java.lang.StackOverflowError
 	at com.chen.bean.BaseFormBean.<init>(BaseFormBean.java:4)
 	at com.chen.bean.BaseFormBean.<init>(BaseFormBean.java:4)
@@ -39,11 +39,11 @@ Exception in thread "main" java.lang.StackOverflowError
 	at com.chen.bean.BaseFormBean.<init>(BaseFormBean.java:4)
 	at com.chen.bean.BaseFormBean.<init>(BaseFormBean.java:4)
 	at com.chen.bean.BaseFormBean.<init>(BaseFormBean.java:4)
-```
+~~~
 
-代码抛出的是栈溢出，和我第一想法不太一样，一般想的是程序会不停的new 自身对象，最终会导致OOM堆溢出，认为是这样说明对对象初始化原理掌握的还不够。要想搞明白此问题，需要反汇编查看jvm的指令到底是按照什么顺序执行的，采用```javap -c BaseFormBean```反汇编，结果如下：
+代码抛出的是栈溢出，和我第一想法不太一样，一般想的是程序会不停的new 自身对象，最终会导致OOM堆溢出，认为是这样说明对对象初始化原理掌握的还不够。要想搞明白此问题，需要反汇编查看jvm的指令到底是按照什么顺序执行的，采用~~~javap -c BaseFormBean~~~反汇编，结果如下：
 
-```shell
+~~~shell
 # javap -c BaseFormBean.class
 Compiled from "BaseFormBean.java"
 public class com.chen.bean.BaseFormBean {
@@ -73,7 +73,7 @@ public class com.chen.bean.BaseFormBean {
        7: pop
        8: return
 }
-```
+~~~
 
 构造方法的汇编代码解析（需要对照JVM指令集手册查看指令代表的含义）
 
@@ -86,9 +86,9 @@ public class com.chen.bean.BaseFormBean {
 
 **注意：**
 
-上面的非静态代码块也不会执行，原因是其放的位置是在```private BaseFormBean baseBean = new BaseFormBean();```后面，如果把它放到前面，它依然会执行的。
+上面的非静态代码块也不会执行，原因是其放的位置是在~~~private BaseFormBean baseBean = new BaseFormBean();~~~后面，如果把它放到前面，它依然会执行的。
 
-```java
+~~~java
 
 public class BaseFormBean {
 
@@ -107,11 +107,11 @@ public class BaseFormBean {
         new BaseFormBean();
     }
 }
-```
+~~~
 
 执行结果：
 
-```shell
+~~~shell
 执行非静态代码块
 执行非静态代码块
 执行非静态代码块
@@ -131,5 +131,5 @@ Exception in thread "main" java.lang.StackOverflowError
 	at com.chen.bean.BaseFormBean.<init>(BaseFormBean.java:9)
 	at com.chen.bean.BaseFormBean.<init>(BaseFormBean.java:9)
 	at com.chen.bean.BaseFormBean.<init>(BaseFormBean.java:9)
-```
+~~~
 

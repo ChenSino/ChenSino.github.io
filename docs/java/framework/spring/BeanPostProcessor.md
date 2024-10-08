@@ -12,7 +12,7 @@ keys:
 
 打开源码里面有两个方法，分别是postProcessBeforeInitialization和postProcessAfterInitialization。
 
-```java
+~~~java
 
 public interface BeanPostProcessor {
 	@Nullable
@@ -26,13 +26,13 @@ public interface BeanPostProcessor {
 	}
 
 }
-```
+~~~
 
 #### 1.1 postProcessBeforeInitialization方法和postProcessAfterInitialization方法调用时机
 
 通过方法名字看，它的执行时间是在对象初始化之前，**这个初始化指的是bean对象的initMethod方法**，也就是说postProcessBeforeInitialization只保证在自定义的initMethod之前执行。
 
-```java
+~~~java
 //org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory的initializeBean方法
 //注意此方法是在容器初始化后，实例化bean会自动调用，需要使用ApplicationContext容器才会自动初始化bean对象，BeanFacotry容器不会自动初始化对象，
 //BeanFacotry只初始化容器，并且定义BeanDefinition，只有调用getBean才会触发对象初始化
@@ -69,16 +69,16 @@ protected Object initializeBean(final String beanName, final Object bean, @Nulla
 
 		return wrappedBean;
 	}
-```
+~~~
 
 一开始我以为这个所谓的初始化之前和初始化之后值得是bean对象填充属性值的前后，比如下面初始化一个bean,填充对象name 和age,我一开始以为是先通过反射创建了一个空的（指的是name为null,age为0,并不是说对象是null）sonoBean对象，然后调用postProcessBeforeInitialization，**这个理解是错误的**，通过以上源码可以看出实际上是值得调用initMethod之前。
 
-```xml
+~~~xml
     <bean id="sonoscape" class="com.chen.ioc.bean.SonoBean" scope="singleton" init-method="init">
         <property name="age" value="3"></property>
         <property name="name" value="tom"></property>
     </bean>
-```
+~~~
 
 ### 2. 再看看BeanPostProcessor能做什么，有什么使用场景
 
@@ -92,7 +92,7 @@ protected Object initializeBean(final String beanName, final Object bean, @Nulla
 
   **总的来说BeanPostProcessor就是用来修改bean对象，可以通过实现接口或者注解的方式来实现修改对象，达到我们想要的效果**
 
-```java
+~~~java
 @Slf4j
 public class MyBeanPostProcessor implements BeanPostProcessor {
     public MyBeanPostProcessor() {
@@ -118,9 +118,9 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
         return BeanPostProcessor.super.postProcessAfterInitialization(bean, beanName);
     }
 }
-```
+~~~
 
-```java
+~~~java
 
 //Bean对象
 @Custom(name = "zhangsan111", age = 22)
@@ -136,9 +136,9 @@ public class SonoBean {
         log.warn("sono bean init..");
     }
 }
-```
+~~~
 
-```java
+~~~java
 //自定义注解
 
 @Target(ElementType.TYPE)
@@ -152,14 +152,14 @@ public @interface Custom {
 
     int age() default -1;
 }
-```
+~~~
 
-```xml
+~~~xml
   <bean id="sonoscape" class="com.chen.ioc.bean.SonoBean" scope="singleton" init-method="getAge">
         <property name="age" value="3"></property>
         <property name="name" value="tom"></property>
     </bean>
-```
+~~~
 
 postProcessAfterInitialization是在initMethod后执行，就不做过多分析了
 
@@ -167,7 +167,7 @@ postProcessAfterInitialization是在initMethod后执行，就不做过多分析�
 
 ![image-20211018150608365](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20211018150608365.png)
 
-```java
+~~~java
 //org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods   
 //InitializingBean的方法，是在invokeInitMethod方法中检查执行的，并且放在最前，所以它的afterPropertiesSet方法是在init-method之前。
 //就是因为使用InitializingBean对代码有入侵性，所以spring才提供的initMethod方法，所以实际开发中我们只需要使用init-method指定初始化方法即可，不推荐使用InitializingBean
@@ -205,4 +205,4 @@ protected void invokeInitMethods(String beanName, final Object bean, @Nullable R
 			}
 		}
 	}
-```
+~~~

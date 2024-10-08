@@ -15,7 +15,7 @@ spring-security-oauth2已经被废弃，采用Security5.7 之后就用spring-sec
 
 下面写个demo测试在filter中直接响应，新建一个springboot的web项目，添加一个filter，这个过滤器仅仅用来测试，所有请求都给他返回一个“hello world"，我们请求任意路径发现确实如此，根本没有进入Controller，我甚至都没定义Controller，打破了我的惯性思维，潜意识认为只要有请求，最终都要进入Controller,谬矣。
 
-```java
+~~~java
 @Component
 public class CustomFilter extends OncePerRequestFilter {
     @Override
@@ -23,5 +23,5 @@ public class CustomFilter extends OncePerRequestFilter {
         response.getWriter().write("hello world");
     }
 }
-```
+~~~
 ![20230509201658](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230509201658.png)

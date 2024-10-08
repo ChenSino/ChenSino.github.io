@@ -35,15 +35,15 @@ https://paper.pigx.vip/
 
 
 
-```mermaid
+~~~mermaid
 graph TD;
     A-->B;
     A-->C;
     B-->D;
     C-->D
-```
+~~~
 
-```mermaid
+~~~mermaid
 sequenceDiagram
     participant Alice
     participant Bob
@@ -55,4 +55,4 @@ sequenceDiagram
     John-->>Alice: Great!
     John->>Bob: How about you?
     Bob-->>John: Jolly good!
-```
+~~~

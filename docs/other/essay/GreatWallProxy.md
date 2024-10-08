@@ -8,16 +8,16 @@ keys:
 
 1. 前台启动
 
-```bash
+~~~bash
 # 启动
 sudo v2ray -config /etc/v2ray/config.json
-```
+~~~
 
 2. 后台启动
 
-```bash
+~~~bash
  sudo systemctl start v2ray
-```
+~~~
 
 
 
@@ -33,7 +33,7 @@ sudo v2ray -config /etc/v2ray/config.json
 
 ### 2、Manjaro使用v2raya
 
-```shell
+~~~shell
 #启动
 sudo systemctl start v2raya.service
 # web管理界面
@@ -41,7 +41,7 @@ http://127.0.0.1:2017/
 #忘记web管理密码
 sudo systemctl stop v2raya.service
 sudo v2raya --reset-password
-```
+~~~
 
 
 
@@ -51,7 +51,7 @@ sudo v2raya --reset-password
 
 参考文档：https://qv2ray.net/lang/zh/hacking/manuallybuild.html#_0-%E6%9E%84%E5%BB%BA%E4%BE%9D%E8%B5%96
 
-```bash
+~~~bash
 # 1. 下载指定的tag,并且使用--recursive下载依赖包
 git clone --recursive --branch v2.7.0  https://github.com/Qv2ray/Qv2ray.git
 # 2. 创建一个build目录防止污染原来的文件
@@ -66,7 +66,7 @@ cmake --build .
 sudo cmake --install .
 # 6. 复制编译好的二进制文件qv2ray到/usr/local/bin
 sudo cp qv2ray /usr/local/bin
-```
+~~~
 
 ### 4、代理工具的关系
 

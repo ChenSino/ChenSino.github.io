@@ -26,16 +26,16 @@ keys:
    按照老套路分析，先百度了一下logrotate是什么，参考，说白了就是个日志切割，和java里面的差不多。就是防止单文件日志过大，按照一定的规则切割成多个日志，或者删除，比如设置超过一个月直接删除，或者超过10M直接删除等等。
 2. 查看logrotate是什么时候启动，以及启动后的状态。首先我们知道它是一个systemctl启动的service服务。那就到/lib/systemd/system下看一下ll |grep rotate
 
-```shell
+~~~shell
  ll|grep rota
 -rw-r--r-- 1 root root  870  1月  8  2021 logrotate.service
 -rw-r--r-- 1 root root  191  1月  8  2021 logrotate.timer
-```
+~~~
 
 可以看到和[这个问题](https://blog.csdn.net/chen462488588/article/details/118737574?spm=1001.2014.3001.5501)一模一样的套路。
 3. 到 logrotate.service查看它实际上执行的是什么命令
 
-```shell
+~~~shell
 $ cat logrotate.service     
 [Unit]
 Description=Rotate log files
@@ -71,13 +71,13 @@ ProtectKernelTunables=true
 ProtectSystem=full
 RestrictNamespaces=true
 RestrictRealtime=true
-```
+~~~
 
 可以看到`ExecStart=/usr/sbin/logrotate /etc/logrotate.conf`
 执行的是这个命令，那就好办了，手动以debug模式执行一下此命令
 4. 查看执行结果
 
-```shell
+~~~shell
 $ sudo logrotate --debug /etc/logrotate.conf                              
 [sudo] chenkun 的密码：
 WARNING: logrotate in debug mode does nothing except printing debug messages!  Consider using verbose mode (-v) instead if this is not what you want.
@@ -155,7 +155,7 @@ considering log /var/log/btmp
   Now: 2021-07-15 09:24
   Last rotated at 2021-07-01 19:33
   log does not need rotating (log has been rotated at 2021-07-01 19:33, which is less than a month ago)
-```
+~~~
 
 5. 在日志中找error
    ![image-20220322171948840](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220322171948840.png)
@@ -218,16 +218,16 @@ kde设置proxy有个很大的bug,就是无法全局，搞笑的是通过kde设�
 
 ### 6、Manjaro fcitx5中文大括号问题
 
-```shell
+~~~shell
 sudo vim /usr/share/fcitx5/punctuation/punc.mb.zh_CN
-```
+~~~
 
 修改对应的行符号就可以了
 
-```bash
+~~~bash
 [ 【
 ] 】
-```
+~~~
 
 ### 7、分支管理
 
@@ -252,15 +252,15 @@ In order to access a branch, you need to change your pacman-mirrors configuratio
 
 You should substitute the value colored in green (for illustrative purposes only) to one of the following: stable, testing or unstable.
 
-```shell
+~~~shell
 sudo pacman-mirrors --api --set-branch {branch}
-```
+~~~
 
 After you changed the branch, rebuild the mirrorlist and update your packages:
 
-```shell
+~~~shell
 sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu
-```
+~~~
 
 #### 7.3 How do I go back after changing to one of the testing branches?
 
@@ -270,7 +270,7 @@ Be aware that after switching to a more stable branch you will receive messages 
 
 If for whatever reason you do wish to also 'downgrade' packages while changing branches add an extra u to the pacman command:
 
-```sudo pacman -Syyuu```
+~~~sudo pacman -Syyuu~~~
 
 ### 8、wine安装exe报错
 

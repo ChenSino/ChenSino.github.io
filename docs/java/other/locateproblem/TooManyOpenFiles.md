@@ -10,7 +10,7 @@ author: chenkun
 
 ### 线上异常
 
-```shell
+~~~shell
 java.io.IOException: Too many open files
         at sun.nio.ch.ServerSocketChannelImpl.accept0(Native Method)
         at sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:422)
@@ -19,7 +19,7 @@ java.io.IOException: Too many open files
         at org.apache.tomcat.util.net.NioEndpoint.serverSocketAccept(NioEndpoint.java:70)
         at org.apache.tomcat.util.net.Acceptor.run(Acceptor.java:95)
         at java.lang.Thread.run(Thread.java:748)
-```
+~~~
 
 ### 问题原因分析
 
@@ -32,7 +32,7 @@ Linux中每个进程、每个用户打开的文件数量是有限制的，查看
 - `lsof -p <pid>`：查看某个进程打开的文件
 - `lsof -p <pid> | wc -l`：查看某个进程打开的文件数量
 
-```shell
+~~~shell
 # root @ sono-bom in /home/sono_bom/logs [18:16:44] 
 $ ulimit -a
 -t: cpu time (seconds)              unlimited
@@ -51,12 +51,12 @@ $ ulimit -a
 -e: max nice                        0
 -r: max rt priority                 0
 -N 15:                              unlimited
-```
+~~~
 
-```shell
+~~~shell
 $ ulimit -n
 65535
-```
+~~~
 
 根据`ulimit -n`得知系统设置的最大打开文件为65535,然后通过`lsof|wc -l`发现，打开的文件已经超过65535,所以报错`Too many files open`是正常的。
 接下来使用`jps -lv`查看报错的java服务进程id，再使用`lsof -p <pid>`查看打开的文件都有哪些，通过查看发现有一个文件ip2region.db被打开几万次，然后

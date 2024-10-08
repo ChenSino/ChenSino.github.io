@@ -21,7 +21,7 @@ jwt用户认证流程如下，因jwt的token是无状态的，所以每次请求
 
 ![Jwt认证](https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2020.cnblogs.com%2Fnews%2F2169646%2F202101%2F2169646-20210118002912071-1277173978.jpg&refer=http%3A%2F%2Fimg2020.cnblogs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1669274568&t=4074fa30a1f60ddac4f3a668c38b0353)
 
-```java
+~~~java
 @Slf4j
 @Component
 public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
@@ -64,7 +64,7 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
         chain.doFilter(request, response);
     }
 }
-```
+~~~
 
 ## 2、为什么相同用户每次登陆得到的jwt token不一样？
 

@@ -14,9 +14,9 @@ tag:
 
 所谓同源是指：当浏览器向后端发送请求时其请求的协议、域名、端口要和当前服务完全一致。比如前端项目的服务位于`http://localhost:8080`，则其发送的所有请求必须是`http://localhost:8080/xxx/xxx`这种格式，否则就会被同源策略拦截。
 
-```
+~~~
 http://www.test.com:8000/　　协议（http）、主域名（test）、子域名（www）、端口号（8000）
-```
+~~~
 
 ### **二，什么是跨域**
 
@@ -76,7 +76,7 @@ http://dx.wh.com:9000/api/TokenAuth/GetCodeImage
 
 请求的地址必须是/api/TokenAuth/GetCodeImage，而不是http://localhost:9001/api/TokenAuth/GetCodeImage，（下面的几种方式也是同样的）因为代理会检查请求开头是否为/api，如果以http开头，则检查不匹配，则不走代理.
 
-```javascript
+~~~javascript
 devServer: {
     proxy: {
         '/api': {
@@ -89,7 +89,7 @@ devServer: {
         }
     }
 }
-```
+~~~
 
 
 
@@ -101,7 +101,7 @@ devServer: {
 
 **请求的url如下：**
 
-```javascript
+~~~javascript
 export function getVerifyCodes(params: object) {
     return request({
         url: '/api/TokenAuth/GetCodeImage',
@@ -109,7 +109,7 @@ export function getVerifyCodes(params: object) {
         params: params
     })
 }
-```
+~~~
 
 那么发出的请求地址就是 http://dx.wh.com:9000/api/TokenAuth/GetCodeImage。这样相当于直接去请求服务器，并不会通过本地的 http://localhost:9001 服务器去代理转发所以并不会走代理，跨域无法解决。
 
@@ -121,7 +121,7 @@ export function getVerifyCodes(params: object) {
 
 把请求的url写成/api/allin/policy/getProductInfo
 
-```javascript
+~~~javascript
  devServer: {
      proxy: {
          '/api': {
@@ -137,13 +137,13 @@ export function getVerifyCodes(params: object) {
  }
 相当于遇见/api才做代理，但真实的请求中没有/api，
 所以在pathRewrite中把’/api’去掉, 这样既有了标识, 又能在请求接口中把/api去掉
-```
+~~~
 
 **第三种代理方式**
 
  把请求的url写成/allin/getProductInfo。这里请求时我没有写/policy，目的是在拦截跨域是我再加上
 
-```javascript
+~~~javascript
 devServer: {
     proxy: {
         '/allin': {
@@ -158,7 +158,7 @@ devServer: {
     }
 }
 
-```
+~~~
 
  相当于遇见/allin则替换成/allin/policy，注意/policy后边没有/，这样拼接成功才会是http://www.test.com/allin/policy/getProductInfo
 
@@ -168,7 +168,7 @@ devServer: {
 
 把请求的url写成/allin/getProductInfo。这里请求时我没有写/policy，目的是在拦截跨域是我再加上
 
-```javascript
+~~~javascript
 devServer: {
      proxy: {
          '/allin': {
@@ -182,7 +182,7 @@ devServer: {
          }
      }
  }
-```
+~~~
 
 这里/allin相当于http://www.test.com/allin/policy
 

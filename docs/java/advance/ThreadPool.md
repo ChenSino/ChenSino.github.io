@@ -20,7 +20,7 @@ tag:
 
 ## 1、先上测试代码
 
-```java
+~~~java
     public static void main(String[] args) throws InterruptedException {
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         executorService.submit(() -> {
@@ -34,7 +34,7 @@ tag:
 
         Thread.sleep(2000000);
     }
-```
+~~~
 
 测试结果：
 
@@ -44,7 +44,7 @@ tag:
 
 ## 2、 源码解析
 
-```java
+~~~java
     /**
      * Submits a Runnable task for execution and returns a Future
      * representing that task. The Future's {@code get} method will
@@ -57,7 +57,7 @@ tag:
      * @throws NullPointerException if the task is null
      */
     Future<?> submit(Runnable task);
-```
+~~~
 
 注释中有说明，
 
@@ -68,7 +68,7 @@ tag:
 
 修改代码，在后面调用`Future.get()`看看
 
-```java
+~~~java
    public static void main(String[] args) throws InterruptedException, ExecutionException {
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         Future<?> future1 = executorService.submit(() -> {
@@ -91,7 +91,7 @@ tag:
 
 
     }
-```
+~~~
 
 
 
@@ -113,14 +113,14 @@ tag:
 
 ### 2.2 测试带返回值的多线程任务
 
-```java
+~~~java
    public static void main(String[] args) throws ExecutionException, InterruptedException {
         ExecutorService executorService = Executors.newFixedThreadPool(2);
        //lambda写法，此处传入的是一个Caller匿名实现类
         String s = executorService.submit(() -> "ok hello").get();
         System.out.println(s);
     }
-```
+~~~
 
 ![image-20220329153946950](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220329153946950.png)
 
@@ -185,7 +185,7 @@ handler：任务过多（缓存队列已满，并且已扩展到maximumPoolSize�
 
 自定义线程工厂，线程名随便起，我这里直接用时间戳
 
-```java
+~~~java
 public class MyThreadFactory implements ThreadFactory {
     @Override
     public Thread newThread(Runnable r) {
@@ -194,7 +194,7 @@ public class MyThreadFactory implements ThreadFactory {
     }
 }
 
-```
+~~~
 
 第一次测试参数：
 
@@ -211,7 +211,7 @@ public class MyThreadFactory implements ThreadFactory {
 
 
 
-```java
+~~~java
  public static void main(String[] args) throws InterruptedException {
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 4, 100L, TimeUnit.SECONDS, new LinkedBlockingQueue<>(1), new MyThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
      //为了方便描述把此任务叫做A任务，以下分别为B\C\D
@@ -250,15 +250,15 @@ public class MyThreadFactory implements ThreadFactory {
         });
 
     }
-```
+~~~
 
 测试结果
-```shell
+~~~shell
 xxxxxxx30832344860303=============AAAAAAAAAAAAaa
 xxxxxxx30832345605562===========CCCCCCCC
 xxxxxxx30832345942575=========DDDDD
 xxxxxxx30832344860303===========BBBBBBBBBB
-```
+~~~
 
 可以看到一共启动了3个线程，线程执行过程分析：
 
@@ -278,7 +278,7 @@ xxxxxxx30832344860303===========BBBBBBBBBB
 
 在第一次测试基础上在加2个任务，测试拒绝策略，为什么加一个不行？自行思考一下
 
-```
+~~~
     public static void main(String[] args) throws InterruptedException {
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 4, 100L, TimeUnit.SECONDS, new LinkedBlockingQueue<>(1), new MyThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
         threadPoolExecutor.execute(() -> {
@@ -331,11 +331,11 @@ xxxxxxx30832344860303===========BBBBBBBBBB
             }
         });
     }
-```
+~~~
 
 测试结果：
 
-```shell
+~~~shell
 xxxxxxx31891613408362=============AAAAAAAAAAAAaa
 xxxxxxx31891614159432===========CCCCCCCC
 xxxxxxx31891614545186=========DDDDD
@@ -347,42 +347,42 @@ Exception in thread "main" java.util.concurrent.RejectedExecutionException: Task
 	at com.chen.base.thread.ThreadFactoryClient.main(ThreadFactoryClient.java:56)
 xxxxxxx31891613408362===========BBBBBBBBBB
 
-```
+~~~
 
 可以看到触发了设置的拒绝策略，任务超出时直接抛出异常
 
 #### 3.2.3 几种线程池的实现
 
-```java
+~~~java
 //缓存池，初始化0个线程，使用SynchronousQueue队列每次来了新任务马上起一个新的线程，而不是缓存下来，最大可以起Integer.MAX_VALUE个线程（内存够用前提下）  
 public static ExecutorService newCachedThreadPool() {
         return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
                                       60L, TimeUnit.SECONDS,
                                       new SynchronousQueue<Runnable>());
     }
-```
+~~~
 
 
 
-```java
+~~~java
 //单个线程池，相当于把固定池的线程数设置成1个  public static ExecutorService newSingleThreadExecutor() {
         return new FinalizableDelegatedExecutorService
             (new ThreadPoolExecutor(1, 1,
                                     0L, TimeUnit.MILLISECONDS,
                                     new LinkedBlockingQueue<Runnable>()));
     }
-```
+~~~
 
 
 
-```java
+~~~java
 //固定线程数的线程池，注意他的初始化线程数和最大线程数是一样，一旦任务超过线程数就开始无限缓存，等线程处理完其他任务后再从无界队列中取任务来处理  
 public static ExecutorService newFixedThreadPool(int nThreads) {
         return new ThreadPoolExecutor(nThreads, nThreads,
                                       0L, TimeUnit.MILLISECONDS,
                                       new LinkedBlockingQueue<Runnable>());
     }
-```
+~~~
 
 #### 3.2.3 线程池中任务执行流程
 
@@ -392,7 +392,7 @@ public static ExecutorService newFixedThreadPool(int nThreads) {
 
 线程池中提交任务的两种方法：`submit`、`execute`，submit方法的参数可以是`Runnable`、`Caller`，execute的参数类型只有`Runnable`，submit提交的方法可以获取返回值，要想获取返回值需要传递Caller类型
 
-```java
+~~~java
 //java.util.concurrent.ThreadPoolExecutor#execute
 public void execute(Runnable command) {
         if (command == null)
@@ -433,9 +433,9 @@ public void execute(Runnable command) {
         else if (!addWorker(command, false))
             reject(command);
     }
-```
+~~~
 
-```java
+~~~java
 
 //继承自AbstractExecutorService
 //java.util.concurrent.AbstractExecutorService#submit(java.util.concurrent.Callable<T>)
@@ -446,11 +446,11 @@ public void execute(Runnable command) {
         return ftask;
     }
 
-```
+~~~
 
 
 
-```java
+~~~java
 //继承自AbstractExecutorService
 //java.util.concurrent.AbstractExecutorService#submit(java.lang.Runnable)
     public Future<?> submit(Runnable task) {
@@ -459,13 +459,13 @@ public void execute(Runnable command) {
         execute(ftask);
         return ftask;
     }
-```
+~~~
 
 #### 3.2.1 使用execute时的异常处理
 
 使用execute提交有异常会正常的抛出，当然也可以自定义异常处理器
 
-```java
+~~~java
 public class MyThreadFactory implements ThreadFactory {
     @Override
     public Thread newThread(Runnable r) {
@@ -478,11 +478,11 @@ public class MyThreadFactory implements ThreadFactory {
     }
 }
 
-```
+~~~
 
 
 
-```java
+~~~java
     public static void main(String[] args) {
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 11, 100L, TimeUnit.SECONDS, new LinkedBlockingQueue<>(2), new MyThreadFactory());
         try {
@@ -495,13 +495,13 @@ public class MyThreadFactory implements ThreadFactory {
             System.out.println(e);
         }
     }
-```
+~~~
 
 #### 3.2.2 使用submit时的异常处理
 
 submit会返回一个future,需要主动调用这个future的get方法才会触发异常，如果正常执行传递的runnable类型，则返回null,如果是caller类型参数，会返回相应的值
 
-```java
+~~~java
 public class MyThreadFactory implements ThreadFactory {
     @Override
     public Thread newThread(Runnable r) {
@@ -514,11 +514,11 @@ public class MyThreadFactory implements ThreadFactory {
     }
 }
 
-```
+~~~
 
 
 
-```java
+~~~java
 
  public static void main(String[] args) {
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 11, 100L, TimeUnit.SECONDS, new LinkedBlockingQueue<>(2), new MyThreadFactory());
@@ -533,7 +533,7 @@ public class MyThreadFactory implements ThreadFactory {
             System.out.println(e);
         }
     }
-```
+~~~
 
 ### 3.4 补充说明
 
@@ -543,16 +543,16 @@ public class MyThreadFactory implements ThreadFactory {
 
 [在前面有说明](#3.2.1 构造方法)，在举例罗嗦一边，代码如下，第一个任务进来，直接启动一个线程，也就是corePoolSize设置的那个线程，第二个任务进来直接缓存到`LinkedBlockingQueue`中，第三个线程进来，发现`LinkedBlockingQueue`已经满了（因为示例代码缓存长度是1）直接再启动一个线程，这个占用的是maxmumPoolSize设置的线程，第4个、第5个任务进来和第三个一样，再各自启动一个线程，此时池中一共有4个线程了，再有任务进来就会触发拒绝策略，此处不做描述了。当池子中的数量超过了corePoolSize设置的数量是，这个keepAliveTime参数就起作用了，假如任务都执行完了，4个线程都是空闲（idle），则先空闲满keepAliveTime这么长时间的线程就会被回收，最后剩下corePoolSize个时不再回收，这corePoolSize个线程一直缓存在池子中。
 
-```java
+~~~java
 
  new ThreadPoolExecutor(1, 4, 200, TimeUnit.SECONDS, new LinkedBlockingQueue<>(1), new MyThreadFactory());
-```
+~~~
 
 
 
 测试代码如下，我设置`keepAliveTime`是10s,
 
-```java
+~~~java
   public static void main(String[] args) {
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 4, 10, TimeUnit.SECONDS, new LinkedBlockingQueue<>(1), new MyThreadFactory());
         for (int i = 0; i < 5; i++) {
@@ -571,7 +571,7 @@ public class MyThreadFactory implements ThreadFactory {
                 System.out.println(e);
             }
         }
-```
+~~~
 
 测试结果，发现刚开始有4个线程，
 

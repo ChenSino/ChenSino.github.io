@@ -13,7 +13,7 @@ keys:
 
 1. springboot程序的入口是在启动类，该类有个关键注解SpringBootApplication
 
-   ```java
+   ~~~java
    @Target(ElementType.TYPE)
    @Retention(RetentionPolicy.RUNTIME)
    @Documented
@@ -25,13 +25,13 @@ keys:
    public @interface SpringBootApplication {
        //略……
    }Destruction 
-   ```
+   ~~~
 
    
 
 2. 打开SpringBootApplication注解，上面有个关键注解EnableAutoConfiguration
 
-   ```java
+   ~~~java
    @Target(ElementType.TYPE)
    @Retention(RetentionPolicy.RUNTIME)
    @Documented
@@ -41,7 +41,7 @@ keys:
    public @interface EnableAutoConfiguration {
        //……
    }
-   ```
+   ~~~
 
    
 
@@ -49,7 +49,7 @@ keys:
 
    @Import作用创建一个AutoConfigurationImportSelector的bean对象，并且加入IoC容器
 
-   ```java
+   ~~~java
    	//org.springframework.boot.autoconfigure.AutoConfigurationImportSelector
    //此处只贴了关键方法
    protected List<String> getCandidateConfigurations(AnnotationMetadata metadata, AnnotationAttributes attributes) {
@@ -59,7 +59,7 @@ keys:
    				+ "are using a custom packaging, make sure that file is correct.");
    		return configurations;
    	}
-   ```
+   ~~~
 
    
 
@@ -67,7 +67,7 @@ keys:
 
 configurations，此configurations列表其实就是要被自动花配置的类。SpringFactoriesLoader的两个重要方法如下：
 
-```java
+~~~java
 //org.springframework.core.io.support.SpringFactoriesLoader
 //只贴了两个关键方法
 	public static final String FACTORIES_RESOURCE_LOCATION = "META-INF/spring.factories";
@@ -109,14 +109,14 @@ configurations，此configurations列表其实就是要被自动花配置的类�
 					FACTORIES_RESOURCE_LOCATION + "]", ex);
 		}
 	}
-```
+~~~
 
 5. 举例分析，我们在spring.factories中可以看到org.springframework.boot.autoconfigure.EnableAutoConfiguration后有一个org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration，说明springboot希望redis能够自动化配置。接着我们打开RedisAutoConfiguration源码查看。此处我故意没复制源码，用的截图，可以看到截图直接有报错，编译错误，错误的原因是我们还没添加spring-boot-starter-data-redis的依赖。**这里有个问题，为什么明明代码都报错，Cannot resolve symbol xxx（未找到类），但是我们的项目依然可以启动？不信你建立一个简单的springboot项目，只添加web依赖，手动打开RedisAutoConfiguration，发现是报红错的，但是你启动项目，发现没任何问题，why？？**这个问题后面再解答，先接着看自动配置的问题。
 
 
 6. 先把RedisAutoConfiguration源码复制出来方便我写注释，上面用截图主要是让大家看到报错
 
-   ```java
+   ~~~java
    @Configuration(proxyBeanMethods = false)
    @ConditionalOnClass(RedisOperations.class)
    @EnableConfigurationProperties(RedisProperties.class)
@@ -142,11 +142,11 @@ configurations，此configurations列表其实就是要被自动花配置的类�
    	}
    
    }
-   ```
+   ~~~
 
-   看源码可知RedisAutoConfiguration上有一个Configuration和ConditionalOnClass注解，先分析这两个。首先Configuration注解，代表这是个Java config配置类，和spring配置bean的xml文件是一个作用，都是用来实例化bean的，**但是注意还有个@ConditionalOnClass(RedisOperations.class)注解，这个注解的作用是当RedisOperations.class这个类被找到后才会生效，如果没找到此类，那么整个RedisAutoConfiguration就不会生效。**所以当我们引入了redis的依赖，springboot首先会通过RedisAutoConfiguration的方法redisTemplate给我们设置一个默认的redis配置，当然这个方法上也有个注解```	@ConditionalOnMissingBean(name = "redisTemplate")```，就是当我们没有手动配redisTemplate这个bean它才会调用这个默认的方法，注入一个redisTemplate到IoC容器，所以一般情况我们都是手动配置这个redisTemplate，方便我们设置序列化器，如下：
+   看源码可知RedisAutoConfiguration上有一个Configuration和ConditionalOnClass注解，先分析这两个。首先Configuration注解，代表这是个Java config配置类，和spring配置bean的xml文件是一个作用，都是用来实例化bean的，**但是注意还有个@ConditionalOnClass(RedisOperations.class)注解，这个注解的作用是当RedisOperations.class这个类被找到后才会生效，如果没找到此类，那么整个RedisAutoConfiguration就不会生效。**所以当我们引入了redis的依赖，springboot首先会通过RedisAutoConfiguration的方法redisTemplate给我们设置一个默认的redis配置，当然这个方法上也有个注解~~~	@ConditionalOnMissingBean(name = "redisTemplate")~~~，就是当我们没有手动配redisTemplate这个bean它才会调用这个默认的方法，注入一个redisTemplate到IoC容器，所以一般情况我们都是手动配置这个redisTemplate，方便我们设置序列化器，如下：
 
-   ```java
+   ~~~java
    @Configuration
    public class RedisConfig {
    
@@ -178,16 +178,16 @@ configurations，此configurations列表其实就是要被自动花配置的类�
            return template;
        }
    }
-   ```
+   ~~~
 
    
 
    RedisAutoConfiguration上还有一下两个注解，作用是从配置文件读取redis相关的信息，ip、端口、密码等
 
-   ```
+   ~~~
    @EnableConfigurationProperties(RedisProperties.class)
    @Import({ LettuceConnectionConfiguration.class, JedisConnectionConfiguration.class })
-   ```
+   ~~~
 
 #### 2. 补充扩展（解释为什么引用的包都报红错了，项目还能启动）
 
@@ -204,7 +204,7 @@ configurations，此configurations列表其实就是要被自动花配置的类�
 > 相比于其他流行的 Java 字节码操纵工具，ASM 更小更快。ASM 具有类似于 BCEL 或者 SERP 的功能，而只有 33k 大小，而后者分别有 350k 和 150k。同时，同样类转换的负载，如果 ASM 是 60% 的话，BCEL 需要 700%，而 SERP 需要 1100% 或者更多。
 >
 
-```java
+~~~java
 //重点看注释，简单翻译一下：
 //value()可以安全在指定在一个被@Configuration注释的类上，比如我们的RedisAutoConfiguretion，因为注解元数据是用ASM解析的，并且其解析是在
 //类加载之前就进行了……
@@ -245,7 +245,7 @@ public @interface ConditionalOnClass {
 
 }
 
-```
+~~~
 
 
 
@@ -266,34 +266,34 @@ ConditionalOnClass类图如下，它继承了condition接口
 
 spring-boot-autoconfigure.jar这个包中的RedisAutoConfiguration都报红色错误了，那么spring官方是怎么打包出来spring-boot-autoconfigure.jar的？？怎么给我们提供了一个报错的包呢
 
-```
+~~~
 答：因为springboot包中引入了redis的包，不过在pomx中使用的是optional,optional的作用就是当前项目（spring-boot-autoconfigure.）编译class时会使用此包，但是打jar包时不会把他包含进来，并且如果项目依赖spring-boot-autoconfigure，也不会自动import被optional修饰的包，因此我们项目如果不显示指定spring-boot-starter-data-redis依赖就会报红，至于报红为啥项目还能启动深层原理下一节再看源码分析。
 		<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
             <optional>true</optional>
         </dependency>
-```
+~~~
 
 #### 4. @ConditionalOnClass的原理
 
 我们到自己的springboot项目中先引入redis依赖，方便看RedisAutoConfiguration源码
 
-```xml
+~~~xml
      <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-```
+~~~
 
 通过前几章，我们知道在spring-boot-autoconfigure.jar中的META-INF/spring.factories中配置了RedisAutoConfiguration的自动配置
 
-```properties
+~~~properties
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration打开RedisAutoConfiguration的源码，可以看到它有一个@ConditionalOnClass(RedisOperations.class)注解
-```
+~~~
 
-```java
+~~~java
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnClass(RedisOperations.class)
 @EnableConfigurationProperties(RedisProperties.class)
@@ -319,7 +319,7 @@ public class RedisAutoConfiguration {
 	}
 
 }
-```
+~~~
 
 
 

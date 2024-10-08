@@ -37,7 +37,7 @@ protected void configure(HttpSecurity http) {
 }
 ~~~
 
-```java
+~~~java
 @Controller
 @RequestMapping("token")
 public class PageController {
@@ -56,11 +56,11 @@ public class PageController {
         response.sendRedirect("https://www.baidu.com");
     }
 }
-```
+~~~
 
 ### 1.2 自定义登陆页面
 
-```html
+~~~html
 
 <body class="sign_body">
 <div class="container form-margin-top">
@@ -84,7 +84,7 @@ public class PageController {
         </#if>
     </form>
 </div>
-```
+~~~
 
 ## 2、开启表单认证
 

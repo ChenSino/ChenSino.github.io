@@ -27,15 +27,15 @@ performant npm ，意味“高性能的 npm”。pnpm由npm/yarn衍生而来，�
 
 全局安装
 
-```
+~~~
 
 npm install pnpm -g
 
-```
+~~~
 
 安装完成后若出现pnpm : 无法加载文件 C:\Users\hp\AppData\Roaming\npm\pnpm.ps1，因为在此系统上禁止运行脚本
 
-```bash
+~~~bash
 
 在系统中搜索框输入 Windos PowerShell
 
@@ -50,11 +50,11 @@ npm install pnpm -g
 ps：不只是pnpm命令，包括cnpm、yarn等这些命令，如果执行时，报这样的错误，都可以通过此方法解决。
 	前提是，如果是用npm命令来安装这些cli命令工具，必须安装到全局环境中，才能生效。
 
-```
+~~~
 
 设置源
 
-```bash
+~~~bash
 # 查看源
 pnpm config get registry
 
@@ -62,11 +62,11 @@ pnpm config get registry
 
 pnpm config set registry http://registry.npm.taobao.org
 
-```
+~~~
 
 使用
 
-```bash
+~~~bash
 
 # 下载包(XXX)
 pnpm install XXX
@@ -90,6 +90,6 @@ pnpm upgrade XXX --global
 # 设置存储路径
 pnpm config set store-dir /path/to/.pnpm-store
 
-```
+~~~
 
 [pnpm官方网站](https://www.pnpm.cn/motivation)

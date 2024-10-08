@@ -12,15 +12,15 @@ tag:
 
 ### 一，安装
 
-```bash
+~~~bash
 npm install vue-router@4
-```
+~~~
 
 ### 二，基本用法
 
 2.1 在项目中新建`router/index.js`
 
-```ts
+~~~ts
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import About from '@/components/About.vue'
 import Home from '@/components/Home.vue'
@@ -47,11 +47,11 @@ const routes = [
   export default router
   
 
-```
+~~~
 
 2.2 挂载到`main.js`上
 
-```ts
+~~~ts
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from '@/router'
@@ -59,11 +59,11 @@ import router from '@/router'
 const app = createApp(App)
 app.use(router)
 app.mount('#app')
-```
+~~~
 
 2.3 在组件中使用
 
-```vue
+~~~vue
 <template>
   <div>
     <router-link to="/">Go to Home</router-link>
@@ -73,13 +73,13 @@ app.mount('#app')
     <router-view/>
   </div>
 </template>
-```
+~~~
 
 ### 三，路由的访问
 
 通过`app.use(router)`,我们可以在任意组件中以`this.$router` 的形式访问它。并且以 `this.$route `的形式访问当前路由。
 
-```ts
+~~~ts
 export default {
   computed: {
     username() {
@@ -98,11 +98,11 @@ export default {
   },
 }
 
-```
+~~~
 
 要在setup函数中访问路由，我们则需要调用`useRouter` 或 `useRoute`
 
-```vue
+~~~vue
 <template>
     <div>
         user
@@ -121,6 +121,6 @@ export default {
     })
 </script>
 
-```
+~~~
 
 更多关于在组合式` API`中使用`vue-router`请参考[官网](https://router.vuejs.org/zh/guide/advanced/composition-api.html)

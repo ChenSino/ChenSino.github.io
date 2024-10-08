@@ -20,7 +20,7 @@ tag:
 
   理解：nextTick()，是将回调函数延迟在下一次dom更新数据后调用，简单的理解是:当你通过数据更新了页面后，想获	取更新后的DOM，就需要使用到nextTick.
 
-```javascript
+~~~javascript
 <template>
   <div class="hello">
     <div>
@@ -47,11 +47,11 @@ export default {
 }
 </script>
  
-```
+~~~
 
 ​       使用this.$nextTick()
 
-```javascript
+~~~javascript
   methods:{
     testClick:function(){
       let that=this;
@@ -61,7 +61,7 @@ export default {
       });
     }
   }
-```
+~~~
 
 
 
@@ -73,14 +73,14 @@ export default {
 
 **注意: mounted 不会承诺所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，也可以vm.$nextTick 替换掉 mounted.**
 
-```javascript
+~~~javascript
 mounted: function () {
   this.$nextTick(function () {
     // Code that will run only after the
     // entire view has been rendered
   })
 }
-```
+~~~
 
 ​	**2、当项目中你想在改变DOM元素的数据后基于新的dom做点什么,对新DOM一系列的js操作都需要放进Vue.nextTick()的回调函数中；通俗的理解是：更改数据后当你想立即使用js操作新的视图的时候需要使用它.**
 

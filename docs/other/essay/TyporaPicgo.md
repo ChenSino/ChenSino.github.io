@@ -19,7 +19,7 @@ date: 2020-03-09
 
 我的电脑环境如下，
 
-```shell
+~~~shell
 								  OS: Manjaro 21.2.4 Qonos
  ██████████████████  ████████     Kernel: x86_64 Linux 5.15.25-1-MANJARO
  ██████████████████  ████████     Uptime: 5h 26m
@@ -35,7 +35,7 @@ date: 2020-03-09
  ████████  ████████  ████████     GPU: NVIDIA GeForce GTX 960M
                                   RAM: 8315MiB / 15428MiB
 
-```
+~~~
 
 #### 1.1 、第一步
 
@@ -49,17 +49,17 @@ date: 2020-03-09
 
 安装picgo 主程序
 
-```shell
+~~~shell
 npm install picgo -g # yarn global add picgo 
-```
+~~~
 
 #### 1.3 、第三步
 
 安装gitee插件
 
-```shell
+~~~shell
 picgo install gitee-uploader
-```
+~~~
 
 #### 1.4、 第四步
 
@@ -69,7 +69,7 @@ picgo install gitee-uploader
 
 用如下配置覆盖原来的，同时记得把带有注释信息的部分修改成自己的
 
-```json
+~~~json
 {
   "picBed": {
     "uploader": "gitee",
@@ -89,7 +89,7 @@ picgo install gitee-uploader
     "lastSync": "2022-03-09 02:50:05"
   }
 }
-```
+~~~
 
 #### 1.5 、 第五步
 

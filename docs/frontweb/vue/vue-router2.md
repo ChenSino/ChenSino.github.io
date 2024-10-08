@@ -64,7 +64,7 @@ hash 是 URL 中 hash (#) 及后面的那部分，常用作锚点在页面内进
 
 #### 4.1基于hash实现
 
-```html
+~~~html
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -97,7 +97,7 @@ hash 是 URL 中 hash (#) 及后面的那部分，常用作锚点在页面内进
 </html>
 
 
-```
+~~~
 
 解释下上面代码，其实很简单：
 
@@ -107,7 +107,7 @@ hash 是 URL 中 hash (#) 及后面的那部分，常用作锚点在页面内进
 
 #### 4.2  基于 history 实现
 
-```html
+~~~html
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -138,7 +138,7 @@ hash 是 URL 中 hash (#) 及后面的那部分，常用作锚点在页面内进
 
 </script>
 </html>
-```
+~~~
 
 解释下上面代码，其实也差不多：
 
@@ -160,7 +160,7 @@ hash 是 URL 中 hash (#) 及后面的那部分，常用作锚点在页面内进
 
 这里是一个vue-router的基本使用。
 
-```vue
+~~~vue
 //APP.vue
 
 <template>
@@ -173,9 +173,9 @@ hash 是 URL 中 hash (#) 及后面的那部分，常用作锚点在页面内进
   </div>
 </template>
 
-```
+~~~
 
-```javascript
+~~~javascript
 //router/index.js
 
 import Vue from 'vue'
@@ -201,7 +201,7 @@ const router = new VueRouter({
 })
 export default router
 
-```
+~~~
 
 现在我们决定创建自己的`Vue-router`,于是创建`myVueRouter.js`.
 
@@ -221,28 +221,28 @@ export default router
 
    所以我们可以初步假设
 
-   ```
+   ~~~
    class VueRouter{
        
    }
-   ```
+   ~~~
 
 2. 我们还使用了`Vue.use()`,而`Vue.use`的一个原则就是执行对象的install这个方法,所以，我们可以再一步 假设`VueRouter`有有`install`这个方法。
 
-   ```
+   ~~~
    class VueRouter{
    
    }
    VueRouter.install = function () {
        
    }
-   ```
+   ~~~
 
    到这里，你能大概地将`VueRouter`写出来吗？
 
    很简单，就是将上面的`VueRouter`导出，如下就是`myVueRouter.js`
 
-   ```vue
+   ~~~vue
    
    class VueRouter{
    
@@ -253,7 +253,7 @@ export default router
    
    export default VueRouter
    
-   ```
+   ~~~
 
    
 
@@ -275,7 +275,7 @@ export default router
 
 实现：
 
-```javascript
+~~~javascript
 
 Vue.use = function(plugin){
 	const installedPlugins = (this._installedPlugins || (this._installedPlugins = []));
@@ -294,7 +294,7 @@ Vue.use = function(plugin){
 	return this;
 }
 
-```
+~~~
 
 1. ​	在`Vue.js`上新增了use方法，并接收一个参数`plugin`。
 
@@ -312,7 +312,7 @@ Vue.use = function(plugin){
 
    第三点讲到，我们把`Vue`作为`install`的第一个参数，所以我们可以把`Vue`保存起来.
 
-   ```javascript
+   ~~~javascript
    
    let vue = null;
    class VueRouter{
@@ -324,11 +324,11 @@ Vue.use = function(plugin){
    
    export default VueRouter
    
-   ```
+   ~~~
 
    然后再通过传进来的`Vue`创建两个组件`router-link`和`router-view`
 
-   ```javascript
+   ~~~javascript
    //myVueRouter.js
    let Vue = null;
    class VueRouter{
@@ -352,7 +352,7 @@ Vue.use = function(plugin){
    };
    
    export default VueRouter
-   ```
+   ~~~
 
    我们执行下项目，如果没报错，说明我们的假设没毛病。
 
@@ -369,7 +369,7 @@ install 一般是给每个`vue`实例添加东西的，在这里就是给每个�
 
 `$router`是`VueRouter`的实例对象，`$route`是当前路由对象，也就是说`$route`是`$router`的一个属性 注意每个组件添加的`$route`是是同一个，`$router`也是同一个，所有组件共享的。
 
-```javascript
+~~~javascript
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -381,7 +381,7 @@ new Vue({
   render: function (h) { return h(App) }
 }).$mount('#app')
 
-```
+~~~
 
 我们可以发现这里只是将`router` ，也就是./router导出的store实例，作为`Vue `参数的一部分。
 
@@ -389,7 +389,7 @@ new Vue({
 
 因此，install方法我们可以这样完善.
 
-```javascript
+~~~javascript
 //myVueRouter.js
 let Vue = null;
 class VueRouter{
@@ -429,7 +429,7 @@ VueRouter.install = function (v) {
 
 export default VueRouter
 
-```
+~~~
 
 代码解释：
 
@@ -441,7 +441,7 @@ export default VueRouter
 
 然后我们通过
 
-```javascript
+~~~javascript
 
 Object.defineProperty(this,'$router',{
   get(){
@@ -449,7 +449,7 @@ Object.defineProperty(this,'$router',{
   }
 })
 
-```
+~~~
 
 将`$router`挂载到组件实例上。
 
@@ -461,16 +461,16 @@ Object.defineProperty(this,'$router',{
 
 我们先看看我们`new VueRouter`类时传进了什么参数。
 
-```javascript
+~~~javascript
 const router = new VueRouter({
   mode:"history",
   routes
 })
-```
+~~~
 
 可见，传入了一个为数组的路由表`routes`，还有一个代表 当前是什么模式的`mode`。因此我们可以先这样实现`VueRouter`.
 
-```javascript
+~~~javascript
 
 class VueRouter{
     constructor(options) {
@@ -478,13 +478,13 @@ class VueRouter{
         this.routes = options.routes || [] //你传递的这个路由是一个数组表
     }
 }
-```
+~~~
 
 先接收了这两个参数。
 
 但是我们直接处理`routes`是十分不方便的，所以我们先要转换成`key：value`的格式
 
-```javascript
+~~~javascript
 //myVueRouter.js
 let Vue = null;
 class VueRouter{
@@ -501,11 +501,11 @@ class VueRouter{
         },{})
     }
 }
-```
+~~~
 
 通过`createMap`我们将
 
-```javascript
+~~~javascript
 const routes = [
   {
     path: '/home',
@@ -517,7 +517,7 @@ const routes = [
     name: 'About',
     component: About
   }
-```
+~~~
 
 转换成
 
@@ -525,7 +525,7 @@ const routes = [
 
 路由中需要存放当前的路径，来表示当前的路径状态 为了方便管理，可以用一个对象来表示.
 
-```javascript
+~~~javascript
 //myVueRouter.js
 let Vue = null;
 //新增代码
@@ -552,13 +552,13 @@ class VueRouter{
     }
 
 }
-```
+~~~
 
 但是我们现在发现这个`current`也就是 当前路径还是null，所以我们需要进行初始化。
 
 初始化的时候判断是是`hash`模式还是 `history`模式。，然后将当前路径的值保存到`current`里.
 
-```javascript
+~~~javascript
 //myVueRouter.js
 
 let Vue = null;
@@ -607,7 +607,7 @@ class VueRouter{
     }
 }
 
-```
+~~~
 
 ## 九，完善$route
 
@@ -615,7 +615,7 @@ class VueRouter{
 
 很简单，跟实现`$router`一样
 
-```javascript
+~~~javascript
 
 VueRouter.install = function (v) {
     Vue = v;
@@ -652,13 +652,13 @@ VueRouter.install = function (v) {
     })
 };
 
-```
+~~~
 
 ## 十，完善router-view组件
 
 现在我们已经保存了当前路径，也就是说现在我们可以获得当前路径，然后再根据当前路径从路由表中获取对应的组件进行渲染。
 
-```javascript
+~~~javascript
 
 Vue.component('router-view',{
     render(h){
@@ -668,7 +668,7 @@ Vue.component('router-view',{
     }
 })
 
-```
+~~~
 
 代码解释：
 
@@ -676,7 +676,7 @@ render函数里的this指向的是一个Proxy代理对象，代理Vue组件，�
 
 现在已经实现了router-view组件的渲染，但是有一个问题，就是你改变路径，视图是没有重新渲染的，所以需要将_router.history进行响应式化。
 
-```javascript
+~~~javascript
 
 Vue.mixin({
     beforeCreate(){
@@ -702,7 +702,7 @@ Vue.mixin({
         })
     }
 })
-```
+~~~
 
 我们利用了Vue提供的`API:defineReactive`,使得this._router.history对象得到监听。
 
@@ -714,16 +714,16 @@ Vue.mixin({
 
 我们先看下router-link是怎么使用的。
 
-```javascript
+~~~javascript
 
 <router-link to="/home">Home</router-link> 
 <router-link to="/about">About</router-link>
 
-```
+~~~
 
 也就是说父组件间to这个路径传进去，子组件接收就好 因此我们可以这样实现
 
-```javascript
+~~~javascript
 
 Vue.component('router-link',{
     props:{
@@ -736,7 +736,7 @@ Vue.component('router-link',{
     }
 })
 
-```
+~~~
 
 我们把router-link渲染成a标签，当然这时最简单的做法。 通过点击a标签就可以实现url上路径的切换。从而实现视图的重新渲染.
 
@@ -744,7 +744,7 @@ Vue.component('router-link',{
 
 项目完整代码：
 
-```JavaScript
+~~~JavaScript
 
 //myVueRouter.js
 let Vue = null;
@@ -834,7 +834,7 @@ VueRouter.install = function (v) {
 };
 
 export default VueRouter
-```
+~~~
 
 参考：[手写Vue-router核心原理](https://juejin.cn/post/6854573222231605256#heading-15)
 

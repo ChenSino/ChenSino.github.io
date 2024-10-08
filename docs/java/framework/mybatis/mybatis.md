@@ -46,7 +46,7 @@ mybatis缓存有一级缓存也叫SelSession缓存，是强制打开的，也就
 
 前面说了一级缓存是针对同一个SelSession，如果用SqlSession去执行同一个查询两次，会发现只有一次打印出了sql，说明一级缓存生效了
 
-```java
+~~~java
  @Test
     public void pageQuery() throws IOException {
         String resource = "mybatis-config.xml";
@@ -61,13 +61,13 @@ mybatis缓存有一级缓存也叫SelSession缓存，是强制打开的，也就
         System.out.println(orders1.size());
         sqlSession.close();
     }
-```
+~~~
 
 ![image-20210926204622261](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20210926204622261-16326603908611.png)
 
 针对以上代码，如果再新创建一个SqlSession,叫sqlSession2,在第一次和第二次查询的中间用sqlSession2去删除一条记录，然后再查询，这时第二查询的数据是第一次缓存的，这就导致了第二次查询结果不准确。
 
-```java
+~~~java
 	 @Test
     public void pageQuery() throws IOException {
         String resource = "mybatis-config.xml";
@@ -86,7 +86,7 @@ mybatis缓存有一级缓存也叫SelSession缓存，是强制打开的，也就
         sqlSession.close();
         sqlSession2.close();
     }
-```
+~~~
 
 删除后，第二次查询的结果应该比第一次少一个，但是实际去却没少，如下图
 
@@ -94,14 +94,14 @@ mybatis缓存有一级缓存也叫SelSession缓存，是强制打开的，也就
 
 在实际项目中SqlSession 并没有太大作用，显得很鸡肋，测试如下：
 
-```java
+~~~java
 		sysHospitalService.selectByDeptId(1);
 		sysHospitalService.selectByDeptId(1);
-```
+~~~
 
-在测试方法中调用同一个查询两次，日志如下，会发现创建了两个sqlsession,第1行和第18行，```SELECT  *  FROM sys_hospital ``` 执行了两次。所以实际项目一般不会使用同一个sqlsession去查两次，所以一级缓存其实并没有什么卵用。
+在测试方法中调用同一个查询两次，日志如下，会发现创建了两个sqlsession,第1行和第18行，~~~SELECT  *  FROM sys_hospital ~~~ 执行了两次。所以实际项目一般不会使用同一个sqlsession去查两次，所以一级缓存其实并没有什么卵用。
 
-```
+~~~
 Creating a new SqlSession
 SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1346a6fe] was not registered for synchronization because synchronization is not active
 JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@30e3042] will not be managed by Spring
@@ -137,7 +137,7 @@ parser sql: SELECT * FROM sys_hospital WHERE (dept_id = ?) AND tenant_id = 1
 <==      Total: 5
 Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@82f93f6]
 
-```
+~~~
 
 #### 2、mybatis-plus扩展自定义查询
 
@@ -155,7 +155,7 @@ pig项目中有个`serviceStockInstallRecordMapper.selectListByScope(queryWrappe
 
 方法参数中有个DataScope，顾名思义这是根据权限查询数据范围，查看一下源码，是一个Map类型，可以看到有部门id,医院id,创建人id等一些限制查询范围的字段。
 
-```java
+~~~java
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class DataScope extends HashMap {
@@ -199,7 +199,7 @@ public class DataScope extends HashMap {
 	private DataScopeFuncEnum func = DataScopeFuncEnum.ALL;
 
 }
-```
+~~~
 
 2. 利用idea的检索快捷键（Alt+F7）查找DataScope调用情况
 
@@ -209,7 +209,7 @@ public class DataScope extends HashMap {
 
 核心代码是重写了Interceptor的intercept方法，在此方法中#18行调用了一个findDataScopeObject方法，此方法先判断查找参数是有有个DataScope对象，如果没有，则直接进行普通的sql查询，如果有则需要根据DataScope来限制查询数据的范围，#36行调用calcScope计算当前请求用户所拥有的具体权限
 
-```java
+~~~java
 //com.sonoscape.ccs.common.data.datascope.DataScopeInterceptor#intercept
 
 public Object intercept(Invocation invocation) {
@@ -380,13 +380,13 @@ public Object intercept(Invocation invocation) {
 		metaObject.setValue("delegate.boundSql.sql", originalSql);
 		return invocation.proceed();
 	}
-```
+~~~
 
 
 
 ​	查看`calcScope`源码，可以看到先获取security中的用户，自然就可以得到用户的对应的角色权限，然后把对应权限设置到集合deptList、userIds、hospitalList中，查询在`com.sonoscape.ccs.common.data.datascope.DataScopeInterceptor#intercept`会触发过滤
 
-```java
+~~~java
 //com.sonoscape.ccs.common.data.datascope.CcsDefaultDatascopeHandle#calcScope
 
     	public Boolean calcScope(List<Integer> deptList, List<String> userIds, List<Integer> hospitalList) {
@@ -452,7 +452,7 @@ public Object intercept(Invocation invocation) {
 
 		return false;
 	}
-```
+~~~
 
 ##### 2.3 
 

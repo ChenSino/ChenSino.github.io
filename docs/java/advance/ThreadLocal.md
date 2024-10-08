@@ -14,7 +14,7 @@ keys:
 
 > 一个线程是可能有多个ThreadLocal的，所以源码中字段使用的复数形式`threadLocals`  
 
-```java
+~~~java
 public class ThreadLocalUtil {
 
     public static Map<ThreadLocal, Object> getThreadLocalMap(){
@@ -84,4 +84,4 @@ public class ThreadLocalUtil {
         }
     }
 }
-```
+~~~

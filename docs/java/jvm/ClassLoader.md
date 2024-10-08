@@ -7,7 +7,7 @@ date: 2023-01-31
 
 自定义类加载器比较简单，只需要继承ClassLoader重写findClass方法即可，因为原ClassLoader中并未实现findClass方法，在方法体中直接抛出了ClassNotFoundException
 
-```java
+~~~java
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -56,4 +56,4 @@ public class MyClassLoader extends ClassLoader {
     }
 
 }
-```
+~~~

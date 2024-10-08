@@ -115,10 +115,10 @@ protected HandlerExecutionChain getHandler(HttpServletRequest request) throws Ex
 
 对应代码如下，从HandlerExecutionChain对象（mappedHandler）中通过getHandler方法获取对应HandlerAdapter对象
 
-```java
+~~~java
 // Determine handler adapter for the current request.
     HandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());
-```
+~~~
 
 HandlerAdapter有以下几个
 

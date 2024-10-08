@@ -7,7 +7,7 @@ category:
 
 ## 1、系统划分
 
-```mermaid
+~~~mermaid
 graph LR
     ccs((中控))
     ccs--> applet[小程序]-->|登录|ccm[ccm系统]
@@ -17,11 +17,11 @@ graph LR
     	back-->|首页看板|ccm
      ccs-->front[前端]
     	front-->cdn[CDN加速]
-```
+~~~
 
 ## 2、具体业务划分
 
-```mermaid
+~~~mermaid
 graph LR
 all((功能))-->system((系统功能))
     system-->role[角色管理]
@@ -57,7 +57,7 @@ all((功能))-->core((核心业务))
 
   core-->lifecycle[设备生命周期]
   core-->approval[审批]
-```
+~~~
 
 ## 3、内外网系统交互
 
@@ -83,7 +83,7 @@ all((功能))-->core((核心业务))
 1. 中控云服务器部署FRPS（h.sonocape.com），启动端口7000
 2. 内网服务器部署FRPC(10.10.100.68)，监听端口7000，同时在服务端启动一个1006端口，映射到本地3306数据库
 
-```shell
+~~~shell
 [common]
 # 内网穿透服务器监听的IP地址，默认 127.0.0.1
 bind_addr = 0.0.0.0
@@ -96,9 +96,9 @@ dashboard_port = 7500
 dashboard_user = xx
 dashboard_pwd = xx
 
-```
+~~~
 
-```shell
+~~~shell
 [common]
 tls_enable = true
 server_addr = 159.138.45.48
@@ -111,7 +111,7 @@ local_ip = 127.0.0.1
 local_port = 3306
 remote_port = 1006
 
-```
+~~~
 
 ![image-20220330120441985](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220330120441985.png)
 

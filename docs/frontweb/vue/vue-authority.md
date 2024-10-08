@@ -15,7 +15,7 @@ tag:
 
 接口权限目前一般采用通用的形式来验证(用户是否登录系统)，没有的话一般返回401，跳转到登录页面重新进行登录 ,登录成功后拿到`token`，将`token`存起来，通过`axios`请求拦截器进行拦截，每次请求的时候头部携带`token`。
 
-```javascript
+~~~javascript
 
 axios.interceptors.request.use(config => {
     config.headers['token'] = cookie.get('token')
@@ -27,7 +27,7 @@ axios.interceptors.response.use(res=>{},{response}=>{
     }
 })
 
-```
+~~~
 
 ###  **二，菜单权限**
 
@@ -49,7 +49,7 @@ axios.interceptors.response.use(res=>{},{response}=>{
 
 
 
-```javascript
+~~~javascript
 
 {
         path: '/path', 
@@ -61,7 +61,7 @@ axios.interceptors.response.use(res=>{},{response}=>{
         }
     } 
     
-```
+~~~
 
 这种方式的菜单是根据我们匹配出来的路由表生成，并渲染的（当然，结构需要保持一致）。
 
@@ -76,7 +76,7 @@ axios.interceptors.response.use(res=>{},{response}=>{
 
 用户登录后向后端请求可访问的路由表，从而动态生成可访问页面，操作和原来是相同的，将后端返回的路由通过`addRoutes`动态挂载之前，这里多了一步将后端返回路由表中组件名称和本地的组件映射步骤：
 
-```javascript
+~~~javascript
  
     1. 前端统一定义路由组件
      const Home = () => import("../pages/Home.vue");
@@ -100,9 +100,9 @@ axios.interceptors.response.use(res=>{},{response}=>{
     }
 ]
 
-```
+~~~
 
-```javascript
+~~~javascript
 
 //前端的映射表map
 //服务端返回的map类似于
@@ -120,7 +120,7 @@ function mapComponent(serviceMap){
 }
 mapComponent(serviceMap)
 
-```
+~~~
 
 ### 三，按钮权限
 
