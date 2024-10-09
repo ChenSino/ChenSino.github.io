@@ -115,6 +115,18 @@ mv chensino.dynv6.net.key pve-ssl.key
 
  这种免费的证书时间很短，acme.sh会帮我们自动创建一个crontab定时任务更新证书
 
-##  pve的webui界面自带的acme插件（我没研究透，还不会）
+##  pve的webui界面自带的acme插件
 
 <https://gist.github.com/tavinus/15ea64c50ac5fb7cea918e7786c94a95>
+
+1. 数据中心——ACME，添加账户chensino
+![20241009155933](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20241009155933.png)
+
+2. 数据中心——ACME，添加质询插件，名字还是chenisno，API数据是dynv6中生成的token，格式如下
+
+![20241009160021](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20241009160021.png)
+
+3. 到对应的pve节点（我的节点叫chensino）——凭证，添加凭证，质询类型DNS，插件选择之前创建的
+![20241009160140](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20241009160140.png)
+
+4. pve节点——凭证，选择域名，点击立即预定凭证
