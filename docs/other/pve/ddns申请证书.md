@@ -130,3 +130,9 @@ mv chensino.dynv6.net.key pve-ssl.key
 ![20241009160140](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20241009160140.png)
 
 4. pve节点——凭证，选择域名，点击立即预定凭证
+
+:::note 注意
+若报错找不到了对应的key什么的，需要事先创建好，名字要对应上，比如报错叫dynv6的key没有，那么就要到～/.ssh下生成对应的名字的key，生成方法请参考之前的
+:::
+
+![20241009160816](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20241009160816.png)
