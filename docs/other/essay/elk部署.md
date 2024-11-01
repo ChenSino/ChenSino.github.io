@@ -116,7 +116,7 @@ docker exec -it <容器名字> /bin/bash
 ~~~
 
 如下图，会分别设置多个默认密码，对应不同系统使用
-![20240919164025](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240919164025.png)
+![20240919164025](http://ddns.chensina.cn:29000/afatpig/blog/20240919164025.png)
 
 密码设置参考
 <https://blog.csdn.net/ju_362204801/article/details/125426228>

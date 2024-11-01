@@ -24,7 +24,7 @@ isOriginal: true
 
 ## 关系图
 
-![20230804165315](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230804165315.png)
+![20230804165315](http://ddns.chensina.cn:29000/afatpig/blog/20230804165315.png)
 
 总结：
 

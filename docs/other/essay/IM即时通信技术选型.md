@@ -42,7 +42,7 @@ WebRTC 是一个很好的选择。但如果要构建一个大规模的、需要�
 
 ## 3. IM通信的难点
 
-![20240829105122](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240829105122.png)
+![20240829105122](http://ddns.chensina.cn:29000/afatpig/blog/20240829105122.png)
 
 ### 3.1 消息传递可靠性问题
 
@@ -51,7 +51,7 @@ WebRTC 是一个很好的选择。但如果要构建一个大规模的、需要�
 
 ### 3.2 消息重复问题
 
-![20240829115908](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240829115908.png)
+![20240829115908](http://ddns.chensina.cn:29000/afatpig/blog/20240829115908.png)
 由于网络的不可靠性，如果在如上图的环节5(ack)丢包，则会出现服务端认为消息发送成功，但是客户端认为消息发送失败的问题。当客户端重试后，如果不进行处理，
 则会在数据库出现2条相同的消息。
 
@@ -98,11 +98,11 @@ M应用需要在不同的网络环境下（如Wi-Fi、4G/5G、宽带等）保持
 ### 3.6 技术栈问题
 
 音视频通话都是基于C语言或者C++开发的，超出了java技术范围。
-![20240830103446](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240830103446.png)
+![20240830103446](http://ddns.chensina.cn:29000/afatpig/blog/20240830103446.png)
 
 ## 4. 技术选型目标
 
-![20240812175557](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240812175557.png)
+![20240812175557](http://ddns.chensina.cn:29000/afatpig/blog/20240812175557.png)
 
 1）业务目标：满足需求分析篇章中的各类需求场景；  
 2）技术目标：支持扩容，前期最大要能支持万级别用户同时在线聊天；  
@@ -208,7 +208,7 @@ CIM采用业内主流开源技术构建，易于扩展和使用，并完美支�
 
 1. 按照平台SDK收费，uni-app（h5,android,ios）
 
-![20240813112230](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240813112230.png)
+![20240813112230](http://ddns.chensina.cn:29000/afatpig/blog/20240813112230.png)
 
 ### 4.4 V-IM
 
@@ -217,7 +217,7 @@ GIT地址:<https://gitee.com/alyouge/V-IM>
 #### 4.4.1 简介
 
 开源与企业版功能点对比
-![20240813112349](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240813112349.png)
+![20240813112349](http://ddns.chensina.cn:29000/afatpig/blog/20240813112349.png)
 
 企业版优势
 
@@ -245,8 +245,8 @@ bug修复优先级最高。
 
 GIT地址：<https://gitee.com/jackjiang/MobileIMSDK>
 
-![20240830103527](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240830103527.png)
-![20240830103538](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240830103538.png)
+![20240830103527](http://ddns.chensina.cn:29000/afatpig/blog/20240830103527.png)
+![20240830103538](http://ddns.chensina.cn:29000/afatpig/blog/20240830103538.png)
 
 #### 4.5.1 简介
 
@@ -258,7 +258,7 @@ GIT地址：<https://gitee.com/jackjiang/MobileIMSDK>
 可与姊妹工程 MobileIMSDK-Web 无缝互通实现网页端聊天或推送等；
 可应用于跨设备、跨网络的聊天APP、企业OA、消息推送等各种场景。
 
-![20240813114025](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240813114025.png)
+![20240813114025](http://ddns.chensina.cn:29000/afatpig/blog/20240813114025.png)
 
 #### 4.5.2 优势
 
@@ -267,8 +267,8 @@ GIT地址：<https://gitee.com/jackjiang/MobileIMSDK>
 3. 文档详细，收费版提供详细的代码注释  
 4. 覆盖所有平台，所有平台客户端都提供源码，若需要定制可参考他的源码
 
-![20240830090211](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240830090211.png)
-![20240830090249](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240830090249.png)
+![20240830090211](http://ddns.chensina.cn:29000/afatpig/blog/20240830090211.png)
+![20240830090249](http://ddns.chensina.cn:29000/afatpig/blog/20240830090249.png)
 
 #### 4.5.3 劣势
 
@@ -277,7 +277,7 @@ GIT地址：<https://gitee.com/jackjiang/MobileIMSDK>
 
 #### 4.5.4 费用
 
-![20240821173051](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240821173051.png)
+![20240821173051](http://ddns.chensina.cn:29000/afatpig/blog/20240821173051.png)
 
 ### 4.6 野火IM/im-server
 
@@ -317,16 +317,16 @@ GIT地址：<https://gitee.com/wfchat/im-server>
 
 #### 4.6.4 体验
 
-![20240830090803](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240830090803.png)
+![20240830090803](http://ddns.chensina.cn:29000/afatpig/blog/20240830090803.png)
 
 
 #### 4.6.5 收费
 
-![20240830091017](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240830091017.png)
+![20240830091017](http://ddns.chensina.cn:29000/afatpig/blog/20240830091017.png)
 
-![20240830091029](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240830091029.png)
+![20240830091029](http://ddns.chensina.cn:29000/afatpig/blog/20240830091029.png)
 
-![20240830091040](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240830091040.png)
+![20240830091040](http://ddns.chensina.cn:29000/afatpig/blog/20240830091040.png)
 
 ## 5. 总结
 

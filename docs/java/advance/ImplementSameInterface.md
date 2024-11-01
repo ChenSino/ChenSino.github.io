@@ -10,12 +10,12 @@ tag:
 
 今天看Securfity的源码，其中`org.springframework.security.config.annotation.web.builders.HttpSecurity`类的UML看着很奇怪，如下图所示，命名其父类和父接口都实现过SecurityBuilder,为什么自己要再次实现呢？
 
-![20230105160622](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230105160622.png)
+![20230105160622](http://ddns.chensina.cn:29000/afatpig/blog/20230105160622.png)
 
 ## 2、探索
 
 我一开始注意力被泛型吸引了，想着是不是因为用了不同的泛型类的原因，为此我还专门去复习了一下泛型的东西。后来确定和泛型没关系，然后百度了一下，找到了以下网友的博客，为此我还专门写demo验证了他的博客内容，发现确实如此。
-![20230105161007](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230105161007.png)
+![20230105161007](http://ddns.chensina.cn:29000/afatpig/blog/20230105161007.png)
 
 ### 2.1 demo验证
 
@@ -78,7 +78,7 @@ I am male
 ----------------后置分割线----------------
 ~~~
 
-![20230105161843](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230105161843.png)
+![20230105161843](http://ddns.chensina.cn:29000/afatpig/blog/20230105161843.png)
 
 ~~~shell
 #第二次测试，让Male也实现Animal接口，再执行测试代码，则male也可以获取到了Animal
@@ -90,7 +90,7 @@ org.example.Animal
 ----------------后置分割线----------------
 ~~~
 
-![20230105161911](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230105161911.png)
+![20230105161911](http://ddns.chensina.cn:29000/afatpig/blog/20230105161911.png)
 
 ### 2.2  回到security源码验证
 

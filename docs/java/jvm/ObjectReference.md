@@ -26,7 +26,7 @@ SoftReference，软引用代码比较简单，直接调用其构造函数即可�
     }
 ~~~
 如下日志可以看到最终老年代有26%的内存占用，差不多刚好5m,就是大对象，说明当内存足够时，软件用的对象不会被回收。
-![20230131112235](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230131112235.png)
+![20230131112235](http://ddns.chensina.cn:29000/afatpig/blog/20230131112235.png)
 
 继续测试，当内存不够时，软引用对象会被回收掉
 ~~~java
@@ -43,7 +43,7 @@ SoftReference，软引用代码比较简单，直接调用其构造函数即可�
     }
 ~~~
 下图可以清晰看到，最终老年代有75%占用，差不多刚好15m,就是后来创建的大对象，说明之前那个被回收了
-![20230131112554](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230131112554.png)
+![20230131112554](http://ddns.chensina.cn:29000/afatpig/blog/20230131112554.png)
 
 ## 3、弱引用
 

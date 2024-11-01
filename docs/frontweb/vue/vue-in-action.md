@@ -17,11 +17,11 @@ vue create vue2-admin
 
 这里搭建好的脚手架是采用`vue2+webpack`,并且预装了`vueRouter`、`vuex`、`scss`、`eslint`.
 
-![image-20220809105240533](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220809105240533.png)
+![image-20220809105240533](http://ddns.chensina.cn:29000/afatpig/blog/image-20220809105240533.png)
 
 生成的文件夹如下所示：
 
-![image-20220809105924589](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220809105924589.png)
+![image-20220809105924589](http://ddns.chensina.cn:29000/afatpig/blog/image-20220809105924589.png)
 
 `vue-cli` 脚手架搭建完成后，项目中是没有 `vue.config.js` 文件，需要手动创建。
 

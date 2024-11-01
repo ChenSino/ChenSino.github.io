@@ -34,28 +34,28 @@ path和域差不多，默认情况下的path是/也就是域下所有路径都�
 
 ### 域名可以看到当前域以及父域名下的cookie，看不到其子域名下的cookie
 
-![20221027151137](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221027151137.png)
+![20221027151137](http://ddns.chensina.cn:29000/afatpig/blog/20221027151137.png)
 
-![20221027151245](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221027151245.png)
+![20221027151245](http://ddns.chensina.cn:29000/afatpig/blog/20221027151245.png)
 
 ### 设置了path,要同时满足url中有指定path才能看到
 
-![20221027151447](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221027151447.png)
+![20221027151447](http://ddns.chensina.cn:29000/afatpig/blog/20221027151447.png)
 
-![20221027151508](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221027151508.png)
+![20221027151508](http://ddns.chensina.cn:29000/afatpig/blog/20221027151508.png)
 
 ## 浏览器请求时会自动携带其所有能看到的cookie发送到后端
 
-![20221027153648](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221027153648.png)
+![20221027153648](http://ddns.chensina.cn:29000/afatpig/blog/20221027153648.png)
 
-![20221027153801](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221027153801.png)
+![20221027153801](http://ddns.chensina.cn:29000/afatpig/blog/20221027153801.png)
 
-![20221027153905](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221027153905.png)
+![20221027153905](http://ddns.chensina.cn:29000/afatpig/blog/20221027153905.png)
 
-![20221027153954](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221027153954.png)
+![20221027153954](http://ddns.chensina.cn:29000/afatpig/blog/20221027153954.png)
 
 ## java中Session和Cookie交互
 
 以上图中可以看到，每次请求在请求头都会携带一个名字为JSESSIONID的COOKIE这个cookie的值是一个sessionId,也就是当前客户端和服务器交互的一个凭证，
 客户端吧sessionid给了服务端，服务端就能找到对应session,有了session后，可以从session中获取到对应信息，比如用户信息。
-![20221027161215](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221027161215.png)
+![20221027161215](http://ddns.chensina.cn:29000/afatpig/blog/20221027161215.png)

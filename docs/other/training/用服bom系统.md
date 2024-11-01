@@ -8,15 +8,15 @@ isOriginal: true
 
 ### 1.1 基础架构
 
-![image-20230307143918331](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20230307143918331.png)
+![image-20230307143918331](http://ddns.chensina.cn:29000/afatpig/blog/image-20230307143918331.png)
 
 ### 1.2 技术栈
 
-![image-20230307143944099](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20230307143944099.png)
+![image-20230307143944099](http://ddns.chensina.cn:29000/afatpig/blog/image-20230307143944099.png)
 
 ### 1.3 主要功能
 
-![image-20230307144009926](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20230307144009926.png)
+![image-20230307144009926](http://ddns.chensina.cn:29000/afatpig/blog/image-20230307144009926.png)
 
 
 
@@ -173,17 +173,17 @@ sono_bom_web
 
 常规界面使用vue-i18n实现，存在数据库中的字段放在前端翻译。在前端中建立一个map,其中key为后端返回的中文字段，value则从前端根据i18n动态获取
 
-![image-20230313171838694](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20230313171838694.png)
+![image-20230313171838694](http://ddns.chensina.cn:29000/afatpig/blog/image-20230313171838694.png)
 
-![image-20230313172323514](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20230313172323514.png)
+![image-20230313172323514](http://ddns.chensina.cn:29000/afatpig/blog/image-20230313172323514.png)
 
-![image-20230313172415312](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20230313172415312.png)
+![image-20230313172415312](http://ddns.chensina.cn:29000/afatpig/blog/image-20230313172415312.png)
 
 ### 4.2 登录接口      
 
 #### 4.2.1 请求流程
 
-![image-20230313181857894](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20230313181857894.png) 
+![image-20230313181857894](http://ddns.chensina.cn:29000/afatpig/blog/image-20230313181857894.png) 
 
 #### 4.2.2 构建请求                                                        
 
@@ -408,7 +408,7 @@ curl 'http://localhost:8000/api/bomCs' \
 
 #### 4.5.1 流程图
 
-![image-20230307144357501](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20230307144357501.png)
+![image-20230307144357501](http://ddns.chensina.cn:29000/afatpig/blog/image-20230307144357501.png)
 
 #### 4.5.2 关键代码
 

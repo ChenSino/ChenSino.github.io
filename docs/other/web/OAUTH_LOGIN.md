@@ -52,7 +52,7 @@ sequenceDiagram
 
 进入个人设置，开发者设置，注册一个Oauth应用，注意回调地址一定要和后端代码中实际使用的是同一个，在这个界面注册后会产生clientId和secret,在回调的时候需要用到。
 
-![20230428095222](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230428095222.png)
+![20230428095222](http://ddns.chensina.cn:29000/afatpig/blog/20230428095222.png)
 
 ## 3 前后分离项目前后端交互
 
@@ -248,6 +248,6 @@ public class OauthLoginController {
 
 这里前后交互数据其实是通过一个中转页面github.ftl实现的，这里中转时遇到了数据格式问题，后端通过freemarker模板回应的数据，被前端监听后解析总有双引号问题，所以这通过base64中转一下，后端base64编码，前端base64解码。
 
-![20230427182157](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230427182157.png)
+![20230427182157](http://ddns.chensina.cn:29000/afatpig/blog/20230427182157.png)
 
-![20230427182214](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230427182214.png)
+![20230427182214](http://ddns.chensina.cn:29000/afatpig/blog/20230427182214.png)

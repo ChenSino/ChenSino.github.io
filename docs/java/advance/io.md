@@ -20,7 +20,7 @@ keys:
 
 ## 2、模型分类
 
-![IO模型分类](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220808093204.png)
+![IO模型分类](http://ddns.chensina.cn:29000/afatpig/blog/20220808093204.png)
 
 |IO模型||
 |-----------|----------|

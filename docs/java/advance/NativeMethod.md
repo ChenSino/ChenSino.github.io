@@ -85,7 +85,7 @@ TestMain.h:2:10: 致命错误：jni.h：没有那个文件或目录
 修改TestMain.h头文件路径。将 #include <jin.h> 修改为 #include "/usr/lib/jvm/java-11-openjdk/include/jni.h"，到你的jdk安装目录去找对应的文件
 
 修改后重新执行编译`g++ Hello.cpp -fpic -shared -o Hello.so`，依然报错，这次报错是jni_md.h找不到，这里不用想肯定是jni.h中引用了jni_md.h,然后在jni.h中路径不对，如下图所示。
-![20230111165112](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230111165112.png)
+![20230111165112](http://ddns.chensina.cn:29000/afatpig/blog/20230111165112.png)
 
 ~~~shell
 In file included from TestMain.h:2,

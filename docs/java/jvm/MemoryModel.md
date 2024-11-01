@@ -115,4 +115,4 @@ private String name5554ad;
 
 启动主程序，使用visualvm监视，可以看到Metaspace一直在线性增长
 
-![20230131181628](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230131181628.png)
+![20230131181628](http://ddns.chensina.cn:29000/afatpig/blog/20230131181628.png)

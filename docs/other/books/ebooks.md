@@ -8,8 +8,8 @@ category:
 
 ### 1、springboot
 
-[SpringBoot基本原理-黑马程序员](https://afatpig.oss-cn-chengdu.aliyuncs.com/ebooks/Springboot.pdf)
+[SpringBoot基本原理-黑马程序员](http://ddns.chensina.cn:29000/afatpig/ebooks/Springboot.pdf)
 
 ### 2、Nacos原理
 
-[阿里巴巴官方出品](https://afatpig.oss-cn-chengdu.aliyuncs.com/ebooks/NACOS.pdf)
+[阿里巴巴官方出品](http://ddns.chensina.cn:29000/afatpig/ebooks/NACOS.pdf)

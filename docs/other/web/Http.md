@@ -25,10 +25,10 @@ HTTP 304 Not Modified 说明无需再次传输请求的内容，也就是说可�
 这样就知道此文件是已修改过的，需要重新响应给浏览器修改后的内容。
 :::
 比如以下请求，浏览器会自动携带If-Modified-Since请求头，然后拿这个时间和服务器上文件修改时间对比，如果服务器上的时间比这个新，就会返回200,否则返回304。
-![20221101150553](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221101150553.png)
+![20221101150553](http://ddns.chensina.cn:29000/afatpig/blog/20221101150553.png)
 
 另外浏览器有个Disable cache选择项，勾选此项代表不允许浏览器自动携带If-Modified-Sinc请求头，也就无法使用本地缓存了。当使用Ctrl+F5刷新页面时也是同样的道理，不携带If-Modified-Sinc请求头。
-![20221101150938](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221101150938.png)
+![20221101150938](http://ddns.chensina.cn:29000/afatpig/blog/20221101150938.png)
 
 ## 二、http请求
 
@@ -54,10 +54,10 @@ public class HttptestApplication {
 
 ~~~
 
-![20221102170142](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221102170142.png)
+![20221102170142](http://ddns.chensina.cn:29000/afatpig/blog/20221102170142.png)
 
 使用工具查看localhost下的cookie
-![20221102170819](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221102170819.png)
+![20221102170819](http://ddns.chensina.cn:29000/afatpig/blog/20221102170819.png)
 
 ## 二、http协议
 

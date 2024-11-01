@@ -17,8 +17,8 @@ category:
    查看JSESSIONID发现变了，变成87957B71A3CEA4FA375CFFACA6AD425D
 ~~~
 
-![图一](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230103111735.png)
-![图二](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230103111820.png)
+![图一](http://ddns.chensina.cn:29000/afatpig/blog/20230103111735.png)
+![图二](http://ddns.chensina.cn:29000/afatpig/blog/20230103111820.png)
 
 ## 2、sessionid变化的原因
 
@@ -29,7 +29,7 @@ category:
 Security的基本原理就是过滤器，这里不懂的请查看[官方文档](https://docs.spring.io/spring-security/reference/servlet/architecture.html)。当输入用户名和密码后，最终经过一系列的过滤器会到达`UsernamePasswordAuthenticationFilter`,此类会校验
 用户名密码，然后校验通过会调用`this.sessionStrategy.onAuthentication(authenticationResult, request, response);`跟踪这里面的代码就会找到答案。
 
-![时序图](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230103113548.png)
+![时序图](http://ddns.chensina.cn:29000/afatpig/blog/20230103113548.png)
 
 ## 4、基于Session的认证
 
@@ -38,6 +38,6 @@ Security本身是一系列的过滤器在工作，其特有的Filter我们把他
 后最终会重定向到之前访问的接口，后面的过滤器不会执行了，我之前调试发现第一次登录执行到
 UsernamePasswordAuthenticationFilter后，就直接跳转到接口处理逻辑了，没有继续执行后面的过滤器，跟踪发现UsernamePasswordAuthenticationFilter认证成功后有个方法，吧请求重定向了。
 
-![20230103161747](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230103161747.png)
+![20230103161747](http://ddns.chensina.cn:29000/afatpig/blog/20230103161747.png)
 
 认证成功会会吧SecurityContext设置到Session中，所以后面在请求时从session获取的认证信息。

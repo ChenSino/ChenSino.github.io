@@ -70,16 +70,16 @@ acme.sh --issue --dns dns_dynv6 -d chensino.dynv6.net
 
 执行`acme.sh --issue --dns dns_dynv6 -d chensino.dynv6.net`有报错，
 
-![20240930113754](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240930113754.png)
+![20240930113754](http://ddns.chensina.cn:29000/afatpig/blog/20240930113754.png)
 
 根据他的提示执行`acme.sh --register-account -m  462488588@qq.com`即可
-![20240930113831](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240930113831.png)
+![20240930113831](http://ddns.chensina.cn:29000/afatpig/blog/20240930113831.png)
 
 再次执行`acme.sh --issue --dns dns_dynv6 -d chensino.dynv6.net`就可以了
-![20240930113903](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240930113903.png)
+![20240930113903](http://ddns.chensina.cn:29000/afatpig/blog/20240930113903.png)
 
 证书生成路径：
-![20240930114008](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240930114008.png)
+![20240930114008](http://ddns.chensina.cn:29000/afatpig/blog/20240930114008.png)
 
 ## 3.给pve的web管理配置证书
 
@@ -120,14 +120,14 @@ mv chensino.dynv6.net.key pve-ssl.key
 <https://gist.github.com/tavinus/15ea64c50ac5fb7cea918e7786c94a95>
 
 1. 数据中心——ACME，添加账户chensino
-![20241009155933](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20241009155933.png)
+![20241009155933](http://ddns.chensina.cn:29000/afatpig/blog/20241009155933.png)
 
 2. 数据中心——ACME，添加质询插件，名字还是chenisno，API数据是dynv6中生成的token，格式如下
 
-![20241009160021](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20241009160021.png)
+![20241009160021](http://ddns.chensina.cn:29000/afatpig/blog/20241009160021.png)
 
 3. 到对应的pve节点（我的节点叫chensino）——凭证，添加凭证，质询类型DNS，插件选择之前创建的
-![20241009160140](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20241009160140.png)
+![20241009160140](http://ddns.chensina.cn:29000/afatpig/blog/20241009160140.png)
 
 4. pve节点——凭证，选择域名，点击立即预定凭证
 
@@ -135,4 +135,4 @@ mv chensino.dynv6.net.key pve-ssl.key
 若报错找不到了对应的key什么的，需要事先创建好，名字要对应上，比如报错叫dynv6的key没有，那么就要到～/.ssh下生成对应的名字的key，生成方法请参考之前的
 :::
 
-![20241009160816](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20241009160816.png)
+![20241009160816](http://ddns.chensina.cn:29000/afatpig/blog/20241009160816.png)
