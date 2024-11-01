@@ -19,7 +19,7 @@ tag:
 ### 1.1 构造curl命令
 
 浏览器提供了快速构建各种curl请求的方式，直接复制，有需要再编辑即可
-![构造curl](http://ddns.chensina.cn:29000/afatpig/blog/20220812173254.png)
+![构造curl](https://ddns.chensina.cn:29000/afatpig/blog/20220812173254.png)
 
 ### 1.2、分析耗时
 

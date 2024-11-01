@@ -13,7 +13,7 @@ category:
 
 ## 2、Security中负责权限校验的类结构图
 
-![Security中权限类](http://ddns.chensina.cn:29000/afatpig/blog/20221220222603.png)
+![Security中权限类](https://ddns.chensina.cn:29000/afatpig/blog/20221220222603.png)
 
 如上图，可以看到最底层有两个类，分别是`FilterSecurityInterceptor` 和`MethodSecurityInterceptor`，这两个类都是AbstractSecurityInterceptor的子类。  
 其中FilterSecurityInterceptor还实现了Filter接口，它是一个SecurityFilter，是众多SecurityFilterChain过滤器中的一个，它处理认证问题，当用户访问未认证接口

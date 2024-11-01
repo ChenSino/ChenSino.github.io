@@ -33,7 +33,7 @@ protected void addSingleton(String beanName, Object singletonObject) {
 ### 3、观察者模式
 
 spring中的时间event都采用的观察者模式
-![20221226114253](http://ddns.chensina.cn:29000/afatpig/blog/20221226114253.png)
+![20221226114253](https://ddns.chensina.cn:29000/afatpig/blog/20221226114253.png)
 
 ### 4、适配器模式
 
@@ -92,4 +92,4 @@ spring中prototype类型的bean采用的原型模式
 
 各种框架中的builder基本都是建造者模式，一般建造这模式都是通过链式写法来设置字，并且设置完字段后返回Builder本身，最后调用build方法，最终生成一个我们需要的对象。比如SpringSecurity中AuthenticationManagerBuilder，源码如下：
 
-![20221228145658](http://ddns.chensina.cn:29000/afatpig/blog/20221228145658.png)
+![20221228145658](https://ddns.chensina.cn:29000/afatpig/blog/20221228145658.png)

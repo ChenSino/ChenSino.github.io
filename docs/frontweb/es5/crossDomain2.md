@@ -127,4 +127,4 @@ $.ajax({
 
 2，jsonp是一种方式或者说非强制性协议，如同ajax一样，它也不一定非要用json格式来传递数据，如果你愿意，字符串都行，只不过这样不利于用jsonp提供公开服务。
 
-![jsonp图片](http://ddns.chensina.cn:29000/afatpig/blog/1045378-20220426095036509-990636020.jpg)
+![jsonp图片](https://ddns.chensina.cn:29000/afatpig/blog/1045378-20220426095036509-990636020.jpg)

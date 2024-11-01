@@ -16,7 +16,7 @@ pve有3个层级防火墙：
 2. 节点防火墙（主机防火墙）
 3. 虚拟机防火墙
 
-![20240929173211](http://ddns.chensina.cn:29000/afatpig/blog/20240929173211.png)
+![20240929173211](https://ddns.chensina.cn:29000/afatpig/blog/20240929173211.png)
 
 #### 1.1 数据中心防火墙
 
@@ -65,26 +65,26 @@ pve的防火墙配置文件在下面路径
 
 1、 开启数据中心防火墙（必须开，否则所有防火墙就不生效）
 
-![20240929174029](http://ddns.chensina.cn:29000/afatpig/blog/20240929174029.png)
+![20240929174029](https://ddns.chensina.cn:29000/afatpig/blog/20240929174029.png)
 
 2、设置别名
 
 在数据中心设置一个别名，方便在其他地方引用，当然也可以在虚拟机防火墙设置也行，这里我犯了一个严重错误导致浪费很长时间。我的目的是想让所有192.168内网都放行，结果我写成192.168.0.0/24，这个放行的其实是192.168.0.1到192.168.0.255，正确写法应该是192.168.1.0/24
 
-![20240929174255](http://ddns.chensina.cn:29000/afatpig/blog/20240929174255.png)
+![20240929174255](https://ddns.chensina.cn:29000/afatpig/blog/20240929174255.png)
 
 3、在主机防火墙引入上一步设置的别名
 
-![20240929174733](http://ddns.chensina.cn:29000/afatpig/blog/20240929174733.png)
+![20240929174733](https://ddns.chensina.cn:29000/afatpig/blog/20240929174733.png)
 
 4、开启主机防火墙
 
-![20240929174802](http://ddns.chensina.cn:29000/afatpig/blog/20240929174802.png)
+![20240929174802](https://ddns.chensina.cn:29000/afatpig/blog/20240929174802.png)
 
 #### 3.2 开启虚拟机级别防火墙
 
 1、2步同上，3、4步也差不多，不过要点到对应的虚拟机再设置。
 
-![20240929174925](http://ddns.chensina.cn:29000/afatpig/blog/20240929174925.png)
+![20240929174925](https://ddns.chensina.cn:29000/afatpig/blog/20240929174925.png)
 
-![20240929174938](http://ddns.chensina.cn:29000/afatpig/blog/20240929174938.png)
+![20240929174938](https://ddns.chensina.cn:29000/afatpig/blog/20240929174938.png)

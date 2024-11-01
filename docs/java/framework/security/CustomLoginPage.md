@@ -90,15 +90,15 @@ public class PageController {
 
 1. 如下图，开启表单登录可以Security开启了14个过滤器（忽略TokenAuthenticationFilter这个是我自定义的）
 
-![20221223100309](http://ddns.chensina.cn:29000/afatpig/blog/20221223100309.png)
-![20221223100226](http://ddns.chensina.cn:29000/afatpig/blog/20221223100226.png)
+![20221223100309](https://ddns.chensina.cn:29000/afatpig/blog/20221223100309.png)
+![20221223100226](https://ddns.chensina.cn:29000/afatpig/blog/20221223100226.png)
 
 2. 开启表单登录后，当访问一个未认证的接口时，会被重定向到登录页，因为开启表单认证后，默认的AuthenticationEntryPoint实现是LoginUrlAuthenticationEntryPoint，
-![20221223100757](http://ddns.chensina.cn:29000/afatpig/blog/20221223100757.png)
+![20221223100757](https://ddns.chensina.cn:29000/afatpig/blog/20221223100757.png)
 
 ## 3、关闭表单认证
 
 除了我自定义的TokenAuthenticationFilter过滤器外还有11个，与上面相比刚好少了3个和表单相关的过滤器（UsernamePassworkAuthenticationFilter,DefaultLoginPageGeneratingFilter,DefaultLogoutPageGeneratingFilter）
-![20221223100930](http://ddns.chensina.cn:29000/afatpig/blog/20221223100930.png)
+![20221223100930](https://ddns.chensina.cn:29000/afatpig/blog/20221223100930.png)
 
 并且关闭表单验证后，默认的AuthenticationEntryPoint变成了Http403ForbiddenEntryPoint，当用户未认证时，去访问一个接口就会被此类处理，返回403异常，不会跳转到登录表单。

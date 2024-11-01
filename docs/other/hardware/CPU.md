@@ -10,11 +10,11 @@ isOriginal: true
 
 ### cpu型号命名
 
-![20230809094135](http://ddns.chensina.cn:29000/afatpig/blog/20230809094135.png)
+![20230809094135](https://ddns.chensina.cn:29000/afatpig/blog/20230809094135.png)
 
-![20230809094205](http://ddns.chensina.cn:29000/afatpig/blog/20230809094205.png)
+![20230809094205](https://ddns.chensina.cn:29000/afatpig/blog/20230809094205.png)
 
-![20230809094220](http://ddns.chensina.cn:29000/afatpig/blog/20230809094220.png)
+![20230809094220](https://ddns.chensina.cn:29000/afatpig/blog/20230809094220.png)
 
 ### cpu 后缀
 

@@ -31,7 +31,7 @@ isOriginal: true
 | 中控web前端     | 1. 管理员对系统进行管理<br />2. 领导对员工工单进行查看和管理<br />3. 简单报表统计 |                                          |
 | 中控后端        | 业务逻辑处理                                                 |                                          |
 
-![1.2-1](http://ddns.chensina.cn:29000/afatpig/blog/image-20230216095845968.png)
+![1.2-1](https://ddns.chensina.cn:29000/afatpig/blog/image-20230216095845968.png)
 
 
 
@@ -70,7 +70,7 @@ https://pig4cloud.com/data/doc
 | http://10.10.102.106:18888/ 测试环境 | admin | 123456        |                                                              |
 | http://domain:9999/swagger-ui.html |       |               | 1. 用户帐号+密文，需自行加密获得密文；2.客户端id和密钥为test/test,具体请参考数据库中oauth的客户端信息表 |
 
-![image-20230216141620566](http://ddns.chensina.cn:29000/afatpig/blog/image-20230216141620566.png)
+![image-20230216141620566](https://ddns.chensina.cn:29000/afatpig/blog/image-20230216141620566.png)
 
 **中间件帐号**
 

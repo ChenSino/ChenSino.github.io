@@ -9,4 +9,4 @@ tags:
 
 ## 二叉树进化图
 
-![树结构大道](http://ddns.chensina.cn:29000/afatpig/blog/16181908373514.jpg)
+![树结构大道](https://ddns.chensina.cn:29000/afatpig/blog/16181908373514.jpg)

@@ -151,4 +151,4 @@ public class com.chen.base.jvm.JvmTest {
 
 为了验证以上说的不是信口开河，我们找到JvmTest.class文件，用十六进制编辑器打开，如下，可以清楚的看到有一个拼接好的字符窜hello
 
-![在这里插入图片描述](http://ddns.chensina.cn:29000/afatpig/blog/7357c73b3cda41c0bd78dc7f0304b048.png)
+![在这里插入图片描述](https://ddns.chensina.cn:29000/afatpig/blog/7357c73b3cda41c0bd78dc7f0304b048.png)

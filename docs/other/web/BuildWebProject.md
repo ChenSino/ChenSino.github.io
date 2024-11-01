@@ -29,10 +29,10 @@ tag:
 > 分模块后，如何读取到其他模块中的bean，比如全局异常处理放在了common模块，在业务模块依赖了common，如何让common中的全局异常拦截生效？  
 > 首先要明白无法common模块的component在core-biz不生效的原因是在biz模块默认扫描的component的包范围是启动类所在的包，也就是`com.chensino.core`，而全局异常类所在的包是`com.chensino.common.security.exception`，根本没有被扫描到。  
 
-![1](http://ddns.chensina.cn:29000/afatpig/blog/20220728165959.png)
+![1](https://ddns.chensina.cn:29000/afatpig/blog/20220728165959.png)
 
 解决方法有三种  
-[参考此处文档](http://ddns.chensina.cn:29000/afatpig/ebooks/Springboot.pdf)
+[参考此处文档](https://ddns.chensina.cn:29000/afatpig/ebooks/Springboot.pdf)
 
 1. 把扫描范围搞大一点  
 
@@ -72,12 +72,12 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.chensino.common.security.exception.GlobalExceptionHandlerResolver
 ~~~
 
-![1](http://ddns.chensina.cn:29000/afatpig/blog/20220728171332.png)
+![1](https://ddns.chensina.cn:29000/afatpig/blog/20220728171332.png)
 
 4. 使用`@import`注解(会把import的实体加入ioc)  
 
 import作用  
-![2](http://ddns.chensina.cn:29000/afatpig/blog/20220728171753.png)  
+![2](https://ddns.chensina.cn:29000/afatpig/blog/20220728171753.png)  
 
 ~~~java
 @SpringBootApplication
@@ -94,7 +94,7 @@ public class App {
 5. 对`@import`进行封装  
 
 在原common模块加上注解`EnableGlobalExceptionHandlerConfiguration`，在注解中import全局异常处理类
-![](http://ddns.chensina.cn:29000/afatpig/blog/20220728172557.png)  
+![](https://ddns.chensina.cn:29000/afatpig/blog/20220728172557.png)  
 在启动类加上注解`EnableGlobalExceptionHandlerConfiguration`
 
 ~~~java
@@ -147,7 +147,7 @@ git reset --hard 1c4d8022ba4b34187a1627534e05ec69399fc4a9
 ~~~
 
 springboot作为开箱即用的框架，默认使用slfj+logback日志框架
-![](http://ddns.chensina.cn:29000/afatpig/blog/20220728180403.png)  
+![](https://ddns.chensina.cn:29000/afatpig/blog/20220728180403.png)  
 即使不添加logback.xml配置，springboot也会默认输出console上的日志，生产环境肯定还是需要把日志写入到文件的，所以先添加一下logback.xml配置，这个模板可以直接用，要改的就是日志存储位置以及包名
 
 ~~~xml
@@ -285,7 +285,7 @@ public class App {
 
 其他的service、mapper.xml、entity推荐使用idea插件连接数据库自动生成，插件名字是MybatisX-Generator，下载好后连接数据库，在对应表上右键选择MybatisX-Generator，再填写相应信息即可自动生成相应的文件
 
-![20220901150908](http://ddns.chensina.cn:29000/afatpig/blog/20220901150908.png)
+![20220901150908](https://ddns.chensina.cn:29000/afatpig/blog/20220901150908.png)
 
 spy.properties配置：
 
@@ -381,7 +381,7 @@ Caused by: java.io.FileNotFoundException: class path resource [.class] cannot be
 	... 27 common frames omitted
 ~~~
 根据idea的提示，直接在报错位置打断点会看到如下异常
-![20220901174408](http://ddns.chensina.cn:29000/afatpig/blog/20220901174408.png)
+![20220901174408](https://ddns.chensina.cn:29000/afatpig/blog/20220901174408.png)
 
 ##### 坑2
 
@@ -433,7 +433,7 @@ Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8
 2. 在方法上添加注解`@ApiOperation(value = "根据id查询-value")`
 
 注意，Controller上注解中的tags是一个逻辑分组，比如如果把两个不同的Contrller都用同样的tags,则这两个不同Controller中的接口会被放到一个分组下，一般情况下我们只需要按照上面配置即可，没必要高的过于复杂
-![20220902135942](http://ddns.chensina.cn:29000/afatpig/blog/20220902135942.png)
+![20220902135942](https://ddns.chensina.cn:29000/afatpig/blog/20220902135942.png)
 
 #### 1.6.4 访问入口
 
@@ -454,7 +454,7 @@ Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8
 
 引入依赖后直接启动项目在控制台会生成随机密码，用户名：user 密码：xx登陆。此时swagger也需要用户名和密码才能访问
 
-![20220902155557](http://ddns.chensina.cn:29000/afatpig/blog/20220902155557.png)
+![20220902155557](https://ddns.chensina.cn:29000/afatpig/blog/20220902155557.png)
 
 #### 1.7.3 security对接数据库，从数据库读取角色和权限
 
@@ -648,7 +648,7 @@ public class LoginServiceImpl implements LoginService {
 
 ### 1.9.3 放行登录接口，去掉表单登录
 
-![20221206161556](http://ddns.chensina.cn:29000/afatpig/blog/20221206161556.png)
+![20221206161556](https://ddns.chensina.cn:29000/afatpig/blog/20221206161556.png)
 
 #### 1.9.4 过滤器校验请求权限
 
@@ -682,7 +682,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 
 #### 1.9.5 过滤器配置
 
-![20221206161730](http://ddns.chensina.cn:29000/afatpig/blog/20221206161730.png)
+![20221206161730](https://ddns.chensina.cn:29000/afatpig/blog/20221206161730.png)
 
 #### 1.9.6 思考
 

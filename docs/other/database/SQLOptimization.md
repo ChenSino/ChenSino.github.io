@@ -34,6 +34,6 @@ install_record表中有8000数据，accessory表20000数据，sys_file 表240000
 explain xxx
 ~~~
 
-![image-20220428164618054](http://ddns.chensina.cn:29000/afatpig/blog/image-20220428164618054.png)
+![image-20220428164618054](https://ddns.chensina.cn:29000/afatpig/blog/image-20220428164618054.png)
 
 可以看到key那一列，只有两个PRIMARY被索引，所以所有用于关联字段加上索引即可，此处给`business_id`、`host_id`加上索引就ok了

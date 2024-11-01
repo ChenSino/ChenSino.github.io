@@ -258,4 +258,4 @@ public class PhoneAuthenticationToken extends AbstractAuthenticationToken {
     }
 ~~~
 
-![20221223102912](http://ddns.chensina.cn:29000/afatpig/blog/20221223102912.png)
+![20221223102912](https://ddns.chensina.cn:29000/afatpig/blog/20221223102912.png)

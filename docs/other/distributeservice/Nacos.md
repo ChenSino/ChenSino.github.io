@@ -16,7 +16,7 @@ keys:
 >
 > 如下图，我给dev环境设置了两个Group，CCS代表中控系统，BOM代表bom系统。
 
-![image-20220602103505994](http://ddns.chensina.cn:29000/afatpig/blog/image-20220602103505994.png)
+![image-20220602103505994](https://ddns.chensina.cn:29000/afatpig/blog/image-20220602103505994.png)
 
 **Group**
 

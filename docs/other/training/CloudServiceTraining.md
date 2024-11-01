@@ -139,7 +139,7 @@ h.sonoscape.com.        3600    IN      A       159.138.45.48
 ## 2.1 什么是CDN
 [CDN介绍](https://chensino.github.io/docs/other/essay/CDN.html)
 ## 2.2 CDN原理
-![CDN原理](http://ddns.chensina.cn:29000/afatpig/blog/zh-cn_image_0000001129063959.png)
+![CDN原理](https://ddns.chensina.cn:29000/afatpig/blog/zh-cn_image_0000001129063959.png)
 ## 2.3 CDN是如何使用CNAME
 [前面章节介绍了CDN原理图](# 2.2 cdn原理)
 cdn本质就是就近获取资源，节省时间，具体如何获取到就近的资源服务器，就是通过CDN智能调度系统。比如中控系统服务器A记录
@@ -172,7 +172,7 @@ Amazon 是最早提供对象存储服务 的厂商，制定文件存储相关的
 
 Amazon Simple Storage Service (Amazon S3) 是一种对象存储服务，提供行业领先的可扩展性、数据可用性、安全性和性能。各种规模和行业的客户可以为几乎任何使用案例存储和保护任意数量的数据，例如数据湖、云原生应用程序和移动应用程序。通过经济高效的存储类和易于使用的管理功能，您可以优化成本、组织数据并配置精细调整过的访问控制，从而满足特定的业务、组织和合规性要求。
 
-![](http://ddns.chensina.cn:29000/afatpig/blog/20220712143807.png)
+![](https://ddns.chensina.cn:29000/afatpig/blog/20220712143807.png)
 
 **华为对象存储**
 
@@ -206,7 +206,7 @@ minio是基于S3协议的开源存储系统，需要自己搭建服务，优点�
 
 [华为云OBS的sdk](https://support.huaweicloud.com/sdkreference-obs/obs_02_0001.html)
 
-![](http://ddns.chensina.cn:29000/afatpig/blog/20220712144509.png)
+![](https://ddns.chensina.cn:29000/afatpig/blog/20220712144509.png)
 
 ## 3.3 S3协议sdk
 
@@ -216,15 +216,15 @@ minio是基于S3协议的开源存储系统，需要自己搭建服务，优点�
 
 **OBS端配置**
 
-![](http://ddns.chensina.cn:29000/afatpig/blog/202207121516906.png)
+![](https://ddns.chensina.cn:29000/afatpig/blog/202207121516906.png)
 
-![](http://ddns.chensina.cn:29000/afatpig/blog/202207121516071.png)
+![](https://ddns.chensina.cn:29000/afatpig/blog/202207121516071.png)
 
 # 四、回到问题
 ## 4.1 一个域名能解析多少个IP？
 理论上，一个域名是可以对应多个IP的，而在用户访问过程中，指向某一个具体IP，并不会同时访问多个IP，但不同用户在不同地点访问同一个域名，可能会访问到不同的IP地址，但表象仍旧是这个域名。
 
-![](http://ddns.chensina.cn:29000/afatpig/blog/202207130932412.png)
+![](https://ddns.chensina.cn:29000/afatpig/blog/202207130932412.png)
 
 使用dig命令可以查到此域名绑定了多个ip，在实际请求时，谁先返回就先把它缓存下来使用，
 cname一开始产生的原因是当时计算机计算能力太差，用cname类似做一个集群负载均衡，发展到现在cname早已脱离了最初的使用场景。

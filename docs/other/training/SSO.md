@@ -49,13 +49,13 @@ SSO只是一个规范，具体的实现有多种途径，类似Jdbc定义了java
 ### 2.2 分布式 Session 实现单点登录
 
 分布式 Session 实现单点登录原理是将用户认证信息保存于 Session 中，即以 Session 内存储的值为用户凭证，一般采用 Cache 中间件实现（如 Redis）。用户再次登录时，应用服务端获取分布式 Session 来校验用户信息。如图所示：
-![20221011175808](http://ddns.chensina.cn:29000/afatpig/blog/20221011175808.png)
+![20221011175808](https://ddns.chensina.cn:29000/afatpig/blog/20221011175808.png)
 一般情况下都是基于 Redis 实现 Session 共享，将 Session 存储于 Redis 上，然后将整个系统的全局 Cookie Domain 设置于顶级域名上，这样 SessionID 就能在各个子系统间共享。
 这种方式也有一个问题，共享 Session 无法处理跨顶级域名。
 
 ### 2.3 统一认证授权方式实现单点登录
 
-![20221011175916](http://ddns.chensina.cn:29000/afatpig/blog/20221011175916.png)
+![20221011175916](https://ddns.chensina.cn:29000/afatpig/blog/20221011175916.png)
 
 由图可知，通过统一认证授权方式实现单点登录，需要有一个独立的认证系统。
 
@@ -74,7 +74,7 @@ JWT （JSON Web Token）是一个开放标准（RFC7519），它是一个含签�
 DataSimba（奇点云数据中台产品）结合 JWT 与分布式 session，实现多域多空间单点登录。通过 JWT 生成和校验令牌，将刷新令牌存储在 redis 中，网关统一校验令牌，校验通过后将用户信息设置在请求头中，应用在拦截器中获取到用户信息后即可验证通过。
 
 不同域中的 DataSimba 共用一套密钥并且实时同步用户信息，通过 JWT 生成和校验令牌，用户登录其中一个域后，前端获取 JWT 加密串并存储在 Local Storage 中，当用户切换到其他域时前端传入加密串，后端网关校验，由此实现免登录访问其他域资源，如下图所示：
-![20221011180112](http://ddns.chensina.cn:29000/afatpig/blog/20221011180112.png)
+![20221011180112](https://ddns.chensina.cn:29000/afatpig/blog/20221011180112.png)
 
 ### 3.2 使用 OAuth2.0 实现单点登录
 

@@ -6,7 +6,7 @@ isOriginal: true
 
 ## SpringMVC处理请求的流程
 
-![20230625180034](http://ddns.chensina.cn:29000/afatpig/blog/20230625180034.png)
+![20230625180034](https://ddns.chensina.cn:29000/afatpig/blog/20230625180034.png)
 
 ## 前端控制器源码
 
@@ -80,7 +80,7 @@ protected void doDispatch(HttpServletRequest request, HttpServletResponse respon
 
 下图可以看到前端控制器本质也就是一个Servlet
 
-![20230625180443](http://ddns.chensina.cn:29000/afatpig/blog/20230625180443.png)
+![20230625180443](https://ddns.chensina.cn:29000/afatpig/blog/20230625180443.png)
 
 ### 步骤2. 根据请求获取HandlerMethod
 
@@ -93,7 +93,7 @@ protected void doDispatch(HttpServletRequest request, HttpServletResponse respon
 
 在getHandler方法里面如下，这一步是根据request请求对象获取HandlerMethod,然后包装在HandlerExecutionChain对象里，这里有个`handlerMappings`，是因为在SpringMVC中有多种请求处理的逻辑，比如`RequestMappingHandlerMapping`是专门负责处理被`@RequestMapping`注解的处理器，这个是我们平时最常用的那种方式。其他的HandlerMapping，比如BeanNameUrlHandlerMapping负责处理和Controller同名的请求，使用这种，需要继承Controller接口，重写里面的方法，具体的使用方式自行百度。
 再比如`WebMvcEndpointHandlerMapping`是springboot提供的actator监控服务，它自带了一点监控端点，当引入了actuator监控时就可以看它负责处理以下url：
-![20230626093758](http://ddns.chensina.cn:29000/afatpig/blog/20230626093758.png)
+![20230626093758](https://ddns.chensina.cn:29000/afatpig/blog/20230626093758.png)
 
 所以这里总结以下，HandlerMapping是有多个，不同的实现负责处理不同的url,RequestMappingHandlerMapping负责处理有@RequestMapping注解的url,WebMvcEndpointHandlerMapping处理监控请求，`mappedHandler = getHandler(processedRequest);`这个方法就是从SpringMVC众多HandlerMapping中选择适配的HandlerMapping,然后通过这个HandlerMapping和request中的url获取HandlerMethod,封装在HandlerExecutionChain对象中，HandlerMethod可以去看它的注释，它就是包含了一些映射信息，比如这个请求以后会被哪个bean处理，被这个bean的哪个方法处理，以及请求参数等
 
@@ -122,7 +122,7 @@ protected HandlerExecutionChain getHandler(HttpServletRequest request) throws Ex
 
 HandlerAdapter有以下几个
 
-![20230625194052](http://ddns.chensina.cn:29000/afatpig/blog/20230625194052.png)
+![20230625194052](https://ddns.chensina.cn:29000/afatpig/blog/20230625194052.png)
 
 ## 步骤4 通过HandlerAdapter真正调用业务处理逻辑
 
@@ -130,9 +130,9 @@ HandlerAdapter有以下几个
 
 处理完了要返回ModelAndView,如果适配到RequestMappingHandlerAdapter就有机会返回ModelAndView对象，其他的适配器一般都是返回null
 
-![20230625195520](http://ddns.chensina.cn:29000/afatpig/blog/20230625195520.png)
+![20230625195520](https://ddns.chensina.cn:29000/afatpig/blog/20230625195520.png)
 
-![20230625195531](http://ddns.chensina.cn:29000/afatpig/blog/20230625195531.png)
+![20230625195531](https://ddns.chensina.cn:29000/afatpig/blog/20230625195531.png)
 
 ## 步骤5 渲染页面
 
