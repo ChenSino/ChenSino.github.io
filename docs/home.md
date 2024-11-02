@@ -56,5 +56,5 @@ features:
 
 
 copyright: false
-footer: MIT Licensed | Copyright © 2019-present Mr.Hope
+footer: 鄂ICP备2024079959号-1
 ---

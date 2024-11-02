@@ -30,7 +30,9 @@ export default hopeTheme({
   // sidebar
   sidebar: sidebar,
 
-  footer: "除了自渡，其他人爱莫能助",
+  footer: "鄂ICP备2024079959号-1",
+
+  copyright: '',
 
   displayFooter: true,
 
@@ -40,10 +42,10 @@ export default hopeTheme({
 
   blog: {
     name:"ChenSino",
-    avatar:"https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20220802180305.png",
+    avatar:"https://ddns.chensina.cn:29000/afatpig/blog/20220802180305.png",
     roundAvatar: true,
     description: "洛星星的爸爸",
-    intro: "https://chensino.github.io/",
+    intro: "https://chensina.cn/",
     medias: {
       Baidu: "https://example.com",
       Weibo: "https://example.com",
