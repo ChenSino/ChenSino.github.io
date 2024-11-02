@@ -90,10 +90,10 @@ public class Main {
 ~~~
 
 当proxy-target-class="false"，可以看到使用的是jdk动态代理
-![20221221092013](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221221092013.png)
+![20221221092013](https://ddns.chensina.cn:29000/afatpig/blog/20221221092013.png)
 
 当proxy-target-class="true"，可以看到使用的是CGlib动态代理
-![20221221092114](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221221092114.png)
+![20221221092114](https://ddns.chensina.cn:29000/afatpig/blog/20221221092114.png)
 
 ### 2.2 演示2（无接口实现）
 
@@ -138,7 +138,7 @@ public class UserServiceImpl {
 结果proxy-target-class的值无论是true还是false,都使用的是CGlib代理，其实也好理解，因为JDK动态代理只支持带接口实现的类增强，而CGlib还可以增强
 普通的类。
 
-![20221221092444](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221221092444.png)
+![20221221092444](https://ddns.chensina.cn:29000/afatpig/blog/20221221092444.png)
 
 ## 3、SpringAOP注解实现
 
@@ -152,7 +152,7 @@ SpringAOP注解实现主要是引入了AspectJ包，AspectJ本身是一个强大
 
 ### 4.1 SpringAOP是如何产生代理类的
 
-![Bean的生命周期](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221223120124.png)
+![Bean的生命周期](https://ddns.chensina.cn:29000/afatpig/blog/20221223120124.png)
 
 ::: danger 结论
     SpringAOP底层实现的原理是使用的BeanPostProcessor，BeanPostProcessor的核心功能就是可以对一个bean进行再加工，参考上面bean的生命周期可知BeanPostProcessor执行实际是在bean初始化前后，而SpringAOP的原理就是在BeanPostProcessor的后置方法中对bean进行修改，同时把修改后的代理对象替换原对象。

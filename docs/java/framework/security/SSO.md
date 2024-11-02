@@ -42,7 +42,7 @@ CAS Server: 作为统一认证的CAS服务器
 单纯的单点登录，其实无需授权中心有一套自己的用户和权限，单点登录是只管登录，登录后从业务系统自行获取自己的权限，所以从这个角度来说sso也有它自己的优势，它不像oauth那样还要维护一套用户权限系统，如果仅仅作单点登录不用权限的话用cas显然更有优势。
 
 以下图片是各种实现的对比图[来自知乎](https://zhuanlan.zhihu.com/p/267845330)，我并不赞同他的观点，仅作参考
-![20230104171826](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230104171826.png)
+![20230104171826](https://ddns.chensina.cn:29000/afatpig/blog/20230104171826.png)
 
 以下对比来自[sa-token官网](https://sa-token.cc/doc.html#/fun/sso-vs-oauth2)
 

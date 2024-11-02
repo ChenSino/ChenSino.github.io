@@ -24,10 +24,10 @@ git config --list
 
 检查浏览器是否使用了代理，例如下图中就是典型的浏览器走了本地代理，否则正常的应该是解析到远程github的ip
 
-![20221104113900](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221104113900.png)
+![20221104113900](https://ddns.chensina.cn:29000/afatpig/blog/20221104113900.png)
 
 下图就是未使用代理（当然不能排除他使用了透明代理的可能）
-![20221104114031](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20221104114031.png)
+![20221104114031](https://ddns.chensina.cn:29000/afatpig/blog/20221104114031.png)
 
 ### 解决问题
 

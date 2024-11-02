@@ -78,7 +78,7 @@ protected long[] executeBatchInternal() throws SQLException {
 
 打开源码可看到注释写的很清楚了,是逐条插入
 
-![image-20220607182512020](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220607182512020.png)
+![image-20220607182512020](https://ddns.chensina.cn:29000/afatpig/blog/image-20220607182512020.png)
 
 **结论:**
 

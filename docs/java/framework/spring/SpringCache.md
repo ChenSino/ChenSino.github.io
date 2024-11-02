@@ -18,15 +18,15 @@ Spring缓存大揭秘
 
 springcache不是一个单独的jar包，它位于spring-context的org.springframework.cache包下，spring提供了各种注解来使用缓存，并且提供了多种缓存实现，比如常见的redis,EhCache等。
 
-![image-20211014105423666](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20211014105423666-16341800740101.png)
+![image-20211014105423666](https://ddns.chensina.cn:29000/afatpig/blog/image-20211014105423666-16341800740101.png)
 
 ### 3、springcache的实现
 
 如果不引入redis等第三方包，则spring默认采用的是ConcurrentMapCache来管理缓存，它里面有个ConcurrentMap（具体实现是ConcurrentHashMap，在ConcurrentMapCacheManager类中传入的），**如果引入第三方比如redis,则会自动使用redis**
 
-![image-20211014105857365](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20211014105857365-16341803387362.png)
+![image-20211014105857365](https://ddns.chensina.cn:29000/afatpig/blog/image-20211014105857365-16341803387362.png)
 
-![image-20211014110150052](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20211014110150052-16341805111993.png)
+![image-20211014110150052](https://ddns.chensina.cn:29000/afatpig/blog/image-20211014110150052-16341805111993.png)
 
 在上图中可以看到ConcurrentMapCacheManager创建了一个ConcurrentHashMap对象，用来初始化ConcurrentMapCache，**所以由此我们可以知道spring默认缓存实际上是一个Map对象，占用的是JVM内存，一旦创建后就永不消失，因为它不像redis有过期时间，所以使用默认缓存要慎重，注意OOM**
 

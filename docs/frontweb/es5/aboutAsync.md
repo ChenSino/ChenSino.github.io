@@ -295,4 +295,4 @@ async function main() {
 
 ## 六，总结
 
-![image-20220712101429059](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220712101429059.png)
+![image-20220712101429059](https://ddns.chensina.cn:29000/afatpig/blog/image-20220712101429059.png)

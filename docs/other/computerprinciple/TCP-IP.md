@@ -24,9 +24,9 @@ FTP(File Transfer Protocol)文件传输协议
 
 ARP(Address Resolation Protocol)地址解析协议 
 
-![20230130104228](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230130104228.png)
+![20230130104228](https://ddns.chensina.cn:29000/afatpig/blog/20230130104228.png)
 
-![20230130103942](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230130103942.png)
+![20230130103942](https://ddns.chensina.cn:29000/afatpig/blog/20230130103942.png)
 
 ## 2、TCP/IP
 

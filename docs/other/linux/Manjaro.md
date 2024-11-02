@@ -16,7 +16,7 @@ keys:
 设置忽略升级的包
 第二步会让你选择更新的时候是否要忽略更新，选择y的话，它会在/etc/pacman.conf添加一个忽略，如果不想湖绿，把下面的IgnorePkg注释即可
 
-![image-20220322171440300](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220322171440300.png)
+![image-20220322171440300](https://ddns.chensina.cn:29000/afatpig/blog/image-20220322171440300.png)
 
 ### 2、开机报错failed to start rotate log files
 
@@ -158,14 +158,14 @@ considering log /var/log/btmp
 ~~~
 
 5. 在日志中找error
-   ![image-20220322171948840](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220322171948840.png)
+   ![image-20220322171948840](https://ddns.chensina.cn:29000/afatpig/blog/image-20220322171948840.png)
 6. 报错很明显了是mysqlroute的日志切割失败了。
 7. logrotate其实是被很多程序都使用了，其配置文件在/etc/logrotate.d下
-   ![image-20220322172023905](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220322172023905.png)
+   ![image-20220322172023905](https://ddns.chensina.cn:29000/afatpig/blog/image-20220322172023905.png)
 
 可以看到nginx ，mysqlrouter，Samba等都用了logrotate，并且他们都有自己的配置，根据上面我们已经知道了是mysqlrouter配置有问题，我们只需要打开nginx的配置和mysqlrouter对比就知道了。经过比我我的mysqlrouter的配置文件在var前面少了一个/ 加上就好了
 
-![image-20220322172038617](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220322172038617.png)
+![image-20220322172038617](https://ddns.chensina.cn:29000/afatpig/blog/image-20220322172038617.png)
 
 ### linux下输入法无法输入中文中括号问题
 
@@ -179,21 +179,21 @@ kde设置proxy有个很大的bug,就是无法全局，搞笑的是通过kde设�
 
 解决办法就是挂梯子，下载后手动安装，
 
-![image-20220418155819498](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220418155819498.png)
+![image-20220418155819498](https://ddns.chensina.cn:29000/afatpig/blog/image-20220418155819498.png)
 
-![image-20220418155847045](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220418155847045.png)
+![image-20220418155847045](https://ddns.chensina.cn:29000/afatpig/blog/image-20220418155847045.png)
 
-![image-20220418155927678](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220418155927678.png)
+![image-20220418155927678](https://ddns.chensina.cn:29000/afatpig/blog/image-20220418155927678.png)
 
-![image-20220418155956979](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220418155956979.png)
+![image-20220418155956979](https://ddns.chensina.cn:29000/afatpig/blog/image-20220418155956979.png)
 
 ### 4、设置yakuake提示没有权限修改文件
 
 1. 修改yakuake的文字大小
 
-![image-20220419110311199](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220419110311199.png)
+![image-20220419110311199](https://ddns.chensina.cn:29000/afatpig/blog/image-20220419110311199.png)
 
-![image-20220419110401735](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220419110401735.png)
+![image-20220419110401735](https://ddns.chensina.cn:29000/afatpig/blog/image-20220419110401735.png)
 
 2. 保存时会报错，大概是没有`/usr/share/konsole`的权限
 3. 添加一下权限就行了
@@ -206,7 +206,7 @@ kde设置proxy有个很大的bug,就是无法全局，搞笑的是通过kde设�
 
 #### 4.1 使用MariaDB代替mysql
 
-![image-20220502211444881](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220502211444881.png)
+![image-20220502211444881](https://ddns.chensina.cn:29000/afatpig/blog/image-20220502211444881.png)
 
 #### 4.2 使用docker安装Mysql
 
@@ -453,37 +453,37 @@ vncserver :1
 
 4. 客户端使用任何一个vnc客户端都可以连接，可以用realvnc,tigervnc，ultravnc等客户端都行，需要注意的是一定要开启键盘鼠标
 
-![20231013103250](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20231013103250.png)
+![20231013103250](https://ddns.chensina.cn:29000/afatpig/blog/20231013103250.png)
 
 ### 12、Remmina远程windows字体发虚
 
 > 使用remmina远程windows，字体发虚，尤其chrome浏览器，在视觉效果自定义中选择“平滑屏幕字体边缘”重新打开chrome发现就好了，但是断开remmina重新连接发现
 > “平滑屏幕字体边缘”又被去掉了勾选。
 
-![20240416112834](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240416112834.png)
+![20240416112834](https://ddns.chensina.cn:29000/afatpig/blog/20240416112834.png)
 
 解决方法：
 在remmina设置——高级——画质，选择最好（最慢）就可以了
 
-![20240416112927](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240416112927.png)
+![20240416112927](https://ddns.chensina.cn:29000/afatpig/blog/20240416112927.png)
 
 ### 13、manjaro-kde下idea新版本UI问题
 
 新版本IDEA的UI在manjaro-kde下显示没有使用KDE桌面设置的样式，
-![20240808112352](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240808112352.png)
+![20240808112352](https://ddns.chensina.cn:29000/afatpig/blog/20240808112352.png)
 
 解决方案如下：
-![20240808112509](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240808112509.png)
+![20240808112509](https://ddns.chensina.cn:29000/afatpig/blog/20240808112509.png)
 
 设置后重启idea，效果如下，终于和我设置的样式一致了：
-![20240808112611](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240808112611.png)
+![20240808112611](https://ddns.chensina.cn:29000/afatpig/blog/20240808112611.png)
 
 ### 12、GTK3主题设置
 
 gtk开发的软件在kde桌面下，默认的窗口样式不好看，设置好全局主题后对GTK软件是不生效的，需要单独设置GTK3主题，在kde桌面下，右键点击桌面，选择设置，选择主题，选择GTK3主题，有的主题会专门提供GTK，
 设置方法如下：
-![20240815143416](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240815143416.png)
+![20240815143416](https://ddns.chensina.cn:29000/afatpig/blog/20240815143416.png)
 
 下载对应主题的gtk包，然后选择应用，当然有的主题作者没有提供gtk包，那就随便选择一个其他主题的gtk包就行了，
-![20240815143437](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20240815143437.png)
+![20240815143437](https://ddns.chensina.cn:29000/afatpig/blog/20240815143437.png)
 

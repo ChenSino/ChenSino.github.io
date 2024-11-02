@@ -18,7 +18,7 @@ date: 2023-02-09
 
 ## 6 reactor线程模型
 
-reactor线程模型可参考[Scalable IO in java](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/nio.pdf)，该书作者也是java.nio的作者
+reactor线程模型可参考[Scalable IO in java](https://ddns.chensina.cn:29000/afatpig/blog/nio.pdf)，该书作者也是java.nio的作者
 
 ::: danger 注意
 注意reactor线程模型并不是5种io模型之一，它是一种经典的事件驱动的线程模型，它是基于IO多路复用模型衍生出来的：
@@ -43,7 +43,7 @@ reactor模型中有三种角色，分别是：
 
 应用：redis4.0
 
-![20230209155247](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230209155247.png)
+![20230209155247](https://ddns.chensina.cn:29000/afatpig/blog/20230209155247.png)
 
 源码示例：
 
@@ -196,10 +196,10 @@ public class Main {
 
 ### 6.2 单reactor多线程
 
-![20230209155305](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230209155305.png)
+![20230209155305](https://ddns.chensina.cn:29000/afatpig/blog/20230209155305.png)
 
 ### 6.3 主从（多）reactor多线程
 
 应用：netty
 
-![20230209155722](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230209155722.png)
+![20230209155722](https://ddns.chensina.cn:29000/afatpig/blog/20230209155722.png)

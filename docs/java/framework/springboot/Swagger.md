@@ -31,4 +31,4 @@ java项目在引入swagger的时候，一般会引入如下依赖，当时只知
 从以上回到明显可看出，springfox和swagger是两个东西，springfox不能代表swagger,其实也好理解，因为swagger不是java专有的，比如php也有swagger,总不能让php也用springfox吧。
 还有一点，springfox官方已经放弃了维护，转为了springdoc,新项目使用springdoc。以下截图也可以看到springfox依赖于swagger。
 
-![20230509092040](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/20230509092040.png)
+![20230509092040](https://ddns.chensina.cn:29000/afatpig/blog/20230509092040.png)

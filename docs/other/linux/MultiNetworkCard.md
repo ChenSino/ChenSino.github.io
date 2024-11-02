@@ -31,13 +31,13 @@ $ screenfetch
 
 ### 1.1 内网设置
 
-![image-20220826145228508](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220826145228508.png)  
+![image-20220826145228508](https://ddns.chensina.cn:29000/afatpig/blog/image-20220826145228508.png)  
 以下代表ip以192.168开头或者以10.10开头统一走192.168.93.1内网网关
-![image-20220826145325906](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220826145325906.png)
+![image-20220826145325906](https://ddns.chensina.cn:29000/afatpig/blog/image-20220826145325906.png)
 
 ### 1.2 外网（无线）设置（保留默认即可）
 
-![image-20220826145534202](https://afatpig.oss-cn-chengdu.aliyuncs.com/blog/image-20220826145534202.png)
+![image-20220826145534202](https://ddns.chensina.cn:29000/afatpig/blog/image-20220826145534202.png)
 
 ## 2、双网卡DNS解析
 
