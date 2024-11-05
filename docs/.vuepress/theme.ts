@@ -30,7 +30,7 @@ export default hopeTheme({
   // sidebar
   sidebar: sidebar,
 
-  footer: "鄂ICP备2024079959号-1",
+  footer: "鄂ICP备2024079959号-1 鄂公网安备42018502007734号",
 
   copyright: '',
 

@@ -56,5 +56,13 @@ features:
 
 
 copyright: false
-footer: 鄂ICP备2024079959号-1
+footer: <div>
+          <a href="https://beian.mps.gov.cn/#/query/webSearch?code=鄂公网安备42018502007734号" target="_blank" style="text-decoration:none;" rel="noopener">
+          <img src="备案图标URL/这里放备案图标路径" style="width:16px;height:16px;vertical-align:middle;">
+          <span style="color:#939393;font-size:12px;vertical-align:middle;">鄂公网安备42018502007734号</span>
+          </a>
+          <a href="https://beian.miit.gov.cn/" target="_blank" style="text-decoration:none;" rel="noopener">
+          <span style="color:#939393;font-size:12px;vertical-align:middle;">鄂ICP备2024079959号-1</span>
+          </a> </div>
+
 ---
