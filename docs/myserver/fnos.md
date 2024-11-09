@@ -6,6 +6,10 @@ publish: true
 isOriginal: true
 ---
 
+#### 背景
+
+> nas端口暴露到公网，存在被扫描爆破的风险，使用fail2ban对账号进行保护
+
 #### 1.安装fail2ban
 
 ~~~shell
