@@ -56,6 +56,7 @@ export default hopeTheme({
   encrypt: {
     config: {
       "/guide/encrypt.html": ["123456"],
+      "/other/windows/系统安装.html": ["chensino"],
     },
   },
   plugins: {
