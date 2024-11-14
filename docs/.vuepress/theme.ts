@@ -13,8 +13,10 @@ export default hopeTheme({
     name: "ChenSino",
     url: "https://ChenSino.github.io",
   },
-
   iconAssets: "iconfont",
+  // iconAssets: [
+  //   "iconfont"
+  // ],
 
   logo: "/logo.svg",
 

@@ -1,10 +1,11 @@
 ---
 title: 即时通信软件需求
-date: 2024/8/20 
+date: 2024-8-20 
 author: chenkun
 publish: true
 isOriginal: true
 ---
+
 # 即时通信需求文档
 
 ## 1. 概述
@@ -308,7 +309,6 @@ isOriginal: true
 
 - 支持API接口，便于与其他系统进行数据交互。
 - 支持不同语言客户端
-
 
 ## 3. 非功能需求
 
