@@ -1,6 +1,6 @@
 ---
 home: true
-icon: home
+icon: house
 title: Home
 heroImage: /logo.svg
 heroText: ChenSino

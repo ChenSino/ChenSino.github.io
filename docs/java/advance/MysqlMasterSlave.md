@@ -88,7 +88,7 @@ tag:
 
 5. 启动master
 
-   ~~~/home/chenkun/DockerConfigs/mysql-cluster/master/mysql~~~是第二步设置的
+   `/home/chenkun/DockerConfigs/mysql-cluster/master/mysql`是第二步设置的
 
    ~~~shell
    docker run --name mysql_master -p 3001:3306 -e MYSQL_ROOT_PASSWORD=root -v /home/chenkun/DockerConfigs/mysql-cluster/master/mysql:/etc/mysql -d mysql:latest

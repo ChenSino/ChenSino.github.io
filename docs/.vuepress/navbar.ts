@@ -5,7 +5,7 @@ export default navbar([
   "/",
   {
     text: "Java",
-    icon: "java",
+    icon: "pen-to-square",
     prefix: "/java/",
     children: [
       { text: "Java基础", icon: "java", link: "base/Serialization" },
