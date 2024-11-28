@@ -74,6 +74,9 @@ SHOW REPLICA STATUS\G;
   Slave_SQL_Running: Yes
 ~~~
 
+
+
+
 ## 部署主主复制（互为主从）
 
 在以上步骤基础上，把从库也复制到主库，需要把主库的源指向从库
@@ -106,4 +109,29 @@ START SLAVE;
  
 #查看主从配置状态
 SHOW REPLICA STATUS\G;
+~~~
+
+
+## 重启操作
+
+当mysql重启后，在从库查看`show slave status`会发现状态不对，需要重新操作
+
+~~~shell
+#在从库中执行
+stop slave;
+reset slave;
+
+#在主库执行
+show master status;
+
+
+# 在从库重新执行（SOURCE_LOG_FILE，SOURCE_LOG_POS要切换为主库的）
+CHANGE REPLICATION SOURCE TO 
+    SOURCE_HOST='mysql-slave', 
+    SOURCE_USER='root', 
+    SOURCE_PASSWORD='123456', 
+    SOURCE_PORT=3306, 
+    SOURCE_LOG_FILE='slave-bin.000003', 
+    SOURCE_LOG_POS=761;
+START REPLICA;
 ~~~
