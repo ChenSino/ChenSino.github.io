@@ -1,6 +1,6 @@
 ---
 title: mysql8搭建主从复制
-date: 2019-08-19  
+date: 2018-08-19  
 category:
   - java
 tag:

@@ -1,6 +1,6 @@
 ---
 title: Mysql开启远程连接权限
-date: 2022-05-10
+date: 2021-05-10
 author: chenkun
 publish: true
 keys:

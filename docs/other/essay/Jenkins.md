@@ -1,6 +1,6 @@
 ---
 title: jenkins部署及使用
-date: 2022-04-15
+date: 2021-04-15
 author: chenkun
 publish: true
 keys:

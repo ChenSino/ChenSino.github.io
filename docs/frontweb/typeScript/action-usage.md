@@ -1,6 +1,6 @@
 ---
 title: typeScript项目实战
-date: 2022-10-20 16:57:01
+date: 2021-10-20 16:57:01
 author: qianxun
 category: 
   - vue知识点

@@ -1,6 +1,6 @@
 ---
 title: 自定义LRU实现
-date: 2022-03-22
+date: 2021-03-22
 category: 
   - java基础
 tag: 

@@ -46,7 +46,7 @@ export default hopeTheme({
   blog: {
     name:"ChenSino",
     avatar:"https://ddns.chensina.cn:29000/afatpig/blog/20220802180305.png",
-    description: "洛星星的爸爸",
+    description: "洛星星的笔记",
     intro: "https://chensina.cn/",
     medias: {
       Baidu: "https://example.com",

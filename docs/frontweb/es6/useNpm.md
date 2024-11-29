@@ -1,6 +1,6 @@
 ---
 title: 搞懂npm与cnpm
-date: 2022-10-14 16:57:01
+date: 2021-10-14 16:57:01
 author: qianxun
 category: 
   - vue知识点

@@ -1,6 +1,6 @@
 ---
 title: Mysql主从复制部署
-date: 2021-11-27
+date: 2020-11-27
 author: chensino
 publish: true
 isOriginal: true

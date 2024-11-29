@@ -1,6 +1,6 @@
 ---
 title: CDN静态资源加速
-date: 2020-02-20
+date: 2019-02-20
 author: John
 sticky: 8
 tag:

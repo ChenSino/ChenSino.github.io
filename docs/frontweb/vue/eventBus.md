@@ -1,6 +1,6 @@
 ---
 title: 事件总线Mitt
-date: 2022-03-09 16:57:01
+date: 2021-03-09 16:57:01
 author: qianxun
 category: 
   - vue知识点
