@@ -13,7 +13,7 @@ nginx反向代理到ddns服务器，当ddns域名绑定ip变化时，ngixn就无
 ## 解决方法
 
 设置`resovlver`，并且把ddns域名要设置为变量形式，在各自的`location`
-模块进行设置，
+模块进行设置
 
 ~~~conf
  location / {
@@ -30,8 +30,9 @@ nginx反向代理到ddns服务器，当ddns域名绑定ip变化时，ngixn就无
 
 ~~~
 
-如果有多个`location`下都使用了同一个ddns域名，不想重复设置怎么办？
-在http模块设置一个map（http模块不支持set），关于map用法这里不做详细介绍，以下map配置只需要把ddns改成你想要的名字即可，在引用的位置也要改成一样，$request不能少
+~~如果有多个`location`下都使用了同一个ddns域名，不想重复设置怎么办？
+在http模块设置一个map（http模块不支持set），关于map用法这里不做详细介绍，以下map配置只需要把ddns改成你想要的名字即可，在引用的位置也要改成一样，$request不能少~~
+==以上多余了，因为同一个ddns，只要在一个地方解析后，其他地方肯定也使用的是新解析的ip了，所以在随便一个location配置一次就行了==
 
 ~~~conf
 http {
