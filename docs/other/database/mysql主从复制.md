@@ -66,22 +66,20 @@ START REPLICA;
 #查看主从配置状态
 SHOW REPLICA STATUS\G;
 ~~~
- 
+
 当`SHOW REPLICA STATUS\G;`结果的以下字段为yes就ok了，若不是yes会在返回的而信息提供错误信息
- 
+
  ~~~shell
   Slave_IO_Running: Yes
   Slave_SQL_Running: Yes
 ~~~
-
-
-
 
 ## 部署主主复制（互为主从）
 
 在以上步骤基础上，把从库也复制到主库，需要把主库的源指向从库
 
 **在从库中执行**
+
 ~~~shell
 #为了避免从服务复制出现权限不足的情况需要执行
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
@@ -135,3 +133,7 @@ CHANGE REPLICATION SOURCE TO
     SOURCE_LOG_POS=761;
 START REPLICA;
 ~~~
+
+## springboot3读写分离
+
+参考[Springboot3读写分离](/java/framework/springboot/读写分离.md)
