@@ -30,31 +30,15 @@ export default sidebar({
       collapsible: true,
       children: "structure",
     },
-  ],
-  "/java/other/": [
-    "JdkVersion",
     {
-      text: "Maven",
-      icon: "discover",
-      prefix: "maven/",
-      collapsible: true,
-      children: "structure",
-    },
-    {
-      text: "Gradle",
-      icon: "discover",
-      prefix: "gradle/",
-      collapsible: true,
-      children: "structure",
-    },
-    {
-      text: "Java问题定位",
+      text: "Java其他",
       icon: "java",
-      prefix: "locateproblem/",
+      prefix: "other/",
       collapsible: true,
       children: "structure",
     },
   ],
+  
   "/frontweb/": [
     {
       text: "Vue",
