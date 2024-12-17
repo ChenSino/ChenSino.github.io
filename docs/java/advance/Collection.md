@@ -11,14 +11,11 @@ tag:
  分析集合数据结构，HashMap、ArrayList、LinkedList扩容原理等
  <!--more-->
 
-
-
 ### 1、Queue 队列
 
 #### 1.1 queue类图
-![在这里插入图片描述](https://i-blog.csdnimg.cn/blog_migrate/38afa9fecf13d0c9da10ee56a7207971.png#pic_center)
 
-
+![](https://ddns.chensina.cn:29000/afatpig/blog/20241217162443633.png)
 
 queue是java中的队列，可以实现队列特性，即：**先进先出**，先进先出这里就说明了要从队列中移除元素，**只能从头部移除**，因为要保证**先进先出**
 
@@ -37,11 +34,9 @@ queue是java中的队列，可以实现队列特性，即：**先进先出**，�
 
 ### 2、Deque （double ended queue）双向队列
 
-[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-g9Op8ggC-1633769259571)(/home/chenkun/TyporaProjects/学习/集合接口API.assets/image-20210917092142866.png)]
-
 实现了Queue，在其基础上扩充了一些自定义方法以及栈
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/blog_migrate/4f60fbef80b04da0ab122e0602f4b3b5.png#pic_center)
+![](https://ddns.chensina.cn:29000/afatpig/blog/20241217162603559.png)
 
 #### 2.1 栈方法
 
@@ -49,11 +44,11 @@ push ，从栈顶（头）加入一个元素，pop从栈顶弹出一个元素。
 
 Stack中只有一个push方法以及pop方法，下图左边演示了为什么push和pop都是操作的head
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/blog_migrate/15a35c1e0f72df92b338a570205c5498.png#pic_center)
+![](https://ddns.chensina.cn:29000/afatpig/blog/20241217162625530.png)
 
 #### 2.2、Dequeue的实现类LinkedList 
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/blog_migrate/f531d70d29991bb028321439c102f450.png#pic_center)
+![](https://ddns.chensina.cn:29000/afatpig/blog/20241217162640790.png)
 
 linkedlist中实现栈的push方法，可以看到实际就是在头部加了一个元素
 
@@ -75,7 +70,7 @@ public E pop() {
 
 #### 4.1 基础
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/blog_migrate/891bca6e8f42db224a3e0253eaa4b308.png#pic_center)
+![](https://ddns.chensina.cn:29000/afatpig/blog/20241217162659370.png)
 
 
 1. HashMap 数据结构组成：数组（桶）、单向链表、红黑树
@@ -114,4 +109,3 @@ public E pop() {
         }
     }
 ```
-
