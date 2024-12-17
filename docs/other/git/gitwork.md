@@ -1,6 +1,6 @@
 ---
 title: git工作区、暂存区、和版本库
-date: 2022-03-09 16:57:01
+date: 2021-03-09 16:57:01
 author: zxf
 category: 
   - git 操作

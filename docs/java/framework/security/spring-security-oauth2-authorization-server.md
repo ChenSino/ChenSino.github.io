@@ -1,6 +1,6 @@
 ---
 title: spring-security-oauth2-authorization-server
-date: 2023-05-09
+date: 2022-05-09
 isOriginal: true
 ---
 

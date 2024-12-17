@@ -1,6 +1,6 @@
 ---
 title: mysql8搭建主从复制
-date: 2019-08-19  
+date: 2018-08-19  
 category:
   - java
 tag:
@@ -88,7 +88,7 @@ tag:
 
 5. 启动master
 
-   ~~~/home/chenkun/DockerConfigs/mysql-cluster/master/mysql~~~是第二步设置的
+   `/home/chenkun/DockerConfigs/mysql-cluster/master/mysql`是第二步设置的
 
    ~~~shell
    docker run --name mysql_master -p 3001:3306 -e MYSQL_ROOT_PASSWORD=root -v /home/chenkun/DockerConfigs/mysql-cluster/master/mysql:/etc/mysql -d mysql:latest

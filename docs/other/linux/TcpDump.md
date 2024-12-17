@@ -1,6 +1,6 @@
 ---
 title: tcpdump抓包
-date: 2022-05-07
+date: 2021-05-07
 author: chenkun
 publish: true
 keys:
@@ -37,4 +37,16 @@ strings target.cap>temp.txt
 ~~~sh
 # port指定要抓包端口，
 sudo tcpdump tcp -i enp3s0f1  -t -s 0 -c 100 and port 6061 -w  ./target.cap
+~~~
+
+~~~shell
+#抓包dns解析
+ tcpdump -n -i any port 53
+
+# 返回结果
+
+09:18:34.758122 IP 172.30.172.203.57281 > 39.96.153.39.domain: 60693+ A? ddns.chensina.cn. (34)
+09:18:34.785945 IP 39.96.153.39.domain > 172.30.172.203.57281: 60693*- 1/0/0 A 111.175.28.51 (50)
+09:18:47.417797 IP 172.30.172.203.53346 > 100.100.2.136.domain: 59542+ [1au] A? cn-hangzhou.axt.aliyun.com. (55)
+09:18:47.417828 IP 172.30.172.203.54727 > 100.100.2.136.domain: 43247+ [1au] AAAA? cn-hangzhou.axt.aliyun.com. (55)
 ~~~

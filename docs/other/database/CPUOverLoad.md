@@ -1,6 +1,6 @@
 ---
 title: Mysql CPU负载过高
-date: 2022-07-20
+date: 2021-07-20
 author: chenkun
 publish: true
 keys:

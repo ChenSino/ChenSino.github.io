@@ -1,6 +1,6 @@
 ---
 title: 关于async/await的异常捕获
-date: 2022-11-10
+date: 2021-11-10
 author: qianxun
 publish: true
 category: 

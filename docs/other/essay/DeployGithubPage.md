@@ -1,6 +1,6 @@
 ---
 title: 如何在github部署静态网站
-date: 2022-03-15
+date: 2021-03-15
 author: Sino
 sticky: 5
 tag:

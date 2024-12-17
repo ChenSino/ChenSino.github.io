@@ -1,6 +1,6 @@
 ---
 title: 系统挂载磁盘
-date: 2023-01-27
+date: 2022-01-27
 author: chenkun
 publish: true
 keys:

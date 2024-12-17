@@ -1,6 +1,6 @@
 ---
 title: 在Manjaro中编译JDK11
-date: 2023-01-13
+date: 2022-01-13
 author: chenkun
 publish: true
 keys:

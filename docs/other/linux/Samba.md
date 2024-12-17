@@ -1,6 +1,6 @@
 ---
 title: 部署Samba
-date: 2022-06-27
+date: 2021-06-27
 author: chenkun
 publish: true
 keys:

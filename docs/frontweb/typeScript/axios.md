@@ -1,6 +1,6 @@
 ---
 title: typeScript中使用axios
-date: 2022-11-8 16:57:01
+date: 2021-11-8 16:57:01
 author: qianxun
 category: 
   - vue知识点

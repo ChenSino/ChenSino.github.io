@@ -1,6 +1,6 @@
 ---
 title: 利用vue-cli搭建项目
-date: 2022-07-06  
+date: 2021-07-06  
 author: qianxun
 category: 
   - vue知识点

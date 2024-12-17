@@ -1,6 +1,6 @@
 ---
 title: SSO协议
-date: 2023-01-03
+date: 2022-01-03
 tag:
     - oauth
     - sso

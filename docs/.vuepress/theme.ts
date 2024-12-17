@@ -13,8 +13,11 @@ export default hopeTheme({
     name: "ChenSino",
     url: "https://ChenSino.github.io",
   },
+  iconAssets: "fontawesome",
+  // iconAssets: [
+  //   "fontawesome-with-brands"
+  // ],
 
-  iconAssets: "iconfont",
 
   logo: "/logo.svg",
 
@@ -43,8 +46,7 @@ export default hopeTheme({
   blog: {
     name:"ChenSino",
     avatar:"https://ddns.chensina.cn:29000/afatpig/blog/20220802180305.png",
-    roundAvatar: true,
-    description: "洛星星的爸爸",
+    description: "洛星星的笔记",
     intro: "https://chensina.cn/",
     medias: {
       Baidu: "https://example.com",
@@ -56,6 +58,7 @@ export default hopeTheme({
   encrypt: {
     config: {
       "/guide/encrypt.html": ["123456"],
+      "/other/windows/系统安装.html": ["chensino"],
     },
   },
   plugins: {
@@ -69,9 +72,7 @@ export default hopeTheme({
           },
         },
     },
-    blog: {
-
-    },
+    blog: true,
     // 如果你不需要评论，可以直接删除 comment 配置，
     // 以下配置仅供体验，如果你需要评论，请自行配置并使用自己的环境，详见文档。
     // 为了避免打扰主题开发者以及消耗他的资源，请不要在你的正式环境中直接使用下列配置!!!!!
@@ -89,7 +90,31 @@ export default hopeTheme({
 
     },
     mdEnhance: {
-
+      align: true,
+      attrs: true,
+      component: true,
+      demo: true,
+      include: true,
+      mark: true,
+      plantuml: true,
+      spoiler: true,
+      stylize: [
+        {
+          matcher: "Recommended",
+          replacer: ({ tag }) => {
+            if (tag === "em")
+              return {
+                tag: "Badge",
+                attrs: { type: "tip" },
+                content: "Recommended",
+              };
+          },
+        },
+      ],
+      sub: true,
+      sup: true,
+      tasklist: true,
+      vPre: true,
     },
   }
 });

@@ -1,6 +1,6 @@
 ---
 title: Promise介绍
-date: 2023-09-13
+date: 2022-09-13
 isOriginal: true
 ---
 

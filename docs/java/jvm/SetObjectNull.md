@@ -1,6 +1,6 @@
 ---
 title: 给对象设置null的意义
-date: 2022-03-14  
+date: 2021-03-14  
 sticky: 2
 category:
   - java

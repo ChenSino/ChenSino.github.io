@@ -5,7 +5,7 @@ export default navbar([
   "/",
   {
     text: "Java",
-    icon: "java",
+    icon: "pen-to-square",
     prefix: "/java/",
     children: [
       { text: "Java基础", icon: "java", link: "base/Serialization" },
@@ -39,7 +39,7 @@ export default navbar([
       { text: "ES5", icon: "javascript", link: "es5/" },
       { text: "ES6", icon: "javascript", link: "es6/" },
       { text: "TypeScript", icon: "javascript", link: "typeScript/" },
-      { text: "NodeJS", icon: "nodejs", link: "nodejs/" },
+      { text: "NodeJS", icon: "node", link: "nodejs/" },
     ]
   },
   {
@@ -71,6 +71,7 @@ export default navbar([
       { text: "Web", icon: "vue", link: "web/" },
       { text: "Git", icon: "git", link: "git/GitCommands" },
       { text: "Linux", icon: "linux", link: "linux/CommonUsedCMD" },
+      { text: "Windows", icon: "windows", link: "windows/系统安装" },
       { text: "Docker", icon: "ubuntu", link: "docker/Docker.md" },
       { text: "DataBase", icon: "java", link: "database/CPUOverLoad" },
       { text: "MarkDown", icon: "markdown", link: "markdown/" },
@@ -80,7 +81,6 @@ export default navbar([
       { text: "电子书资源", icon: "app", link: "books/ebooks" },
       { text: "分布式微服务", icon: "class", link: "distributeservice/DistributeLock" },
       { text: "OAuth2.0", icon: "class", link: "oauth2/" },
-      { text: "PVE虚拟机", icon: "class", link: "pve/" },
     ]
   }
 ]);

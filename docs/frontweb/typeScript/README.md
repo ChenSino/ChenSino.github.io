@@ -1,6 +1,6 @@
 ---
 title: typeScript学习资料
-date: 2022-08-05 16:57:01
+date: 2021-08-05 16:57:01
 author: qianxun
 category: 
   - vue知识点
