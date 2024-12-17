@@ -19,11 +19,6 @@ export default navbar([
     link: "/designpattern/",
   },
   {
-    text: "前后分离项目搭建",
-    icon: "app",
-    link: "/other/web/"
-  },
-  {
     text: "C++学习",
     icon: "app",
     link: "/cpp/study/"
