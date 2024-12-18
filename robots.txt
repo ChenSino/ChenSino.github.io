@@ -1,5 +1,3 @@
 
 User-agent:*
 Disallow:
-
-Sitemap: https://ChenSino.github.io/sitemap.xml
