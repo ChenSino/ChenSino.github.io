@@ -62,6 +62,7 @@ export default hopeTheme({
     },
   },
   plugins: {
+    sitemap:false,
     search:{
         locales: {
           '/': {
@@ -89,32 +90,32 @@ export default hopeTheme({
     photoSwipe: {
 
     },
-    mdEnhance: {
-      align: true,
-      attrs: true,
-      component: true,
-      demo: true,
-      include: true,
-      mark: true,
-      plantuml: true,
-      spoiler: true,
-      stylize: [
-        {
-          matcher: "Recommended",
-          replacer: ({ tag }) => {
-            if (tag === "em")
-              return {
-                tag: "Badge",
-                attrs: { type: "tip" },
-                content: "Recommended",
-              };
-          },
+  },
+  markdown: {
+    align: true,
+    attrs: true,
+    component: true,
+    demo: true,
+    include: true,
+    mark: true,
+    plantuml: true,
+    spoiler: true,
+    stylize: [
+      {
+        matcher: "Recommended",
+        replacer: ({ tag }) => {
+          if (tag === "em")
+            return {
+              tag: "Badge",
+              attrs: { type: "tip" },
+              content: "Recommended",
+            };
         },
-      ],
-      sub: true,
-      sup: true,
-      tasklist: true,
-      vPre: true,
-    },
-  }
+      },
+    ],
+    sub: true,
+    sup: true,
+    tasklist: true,
+    vPre: true,
+  },
 });
