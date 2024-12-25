@@ -62,6 +62,14 @@ export default hopeTheme({
     },
   },
   plugins: {
+    pwa:{
+      showInstall: true,
+      manifest: {
+        name: "ChenSino技术博客",
+        short_name: "ChenSino",
+        description: "Good good study,day day up!"
+      }
+    },
     sitemap:false,
     search:{
         locales: {
