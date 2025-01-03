@@ -100,6 +100,7 @@ export default hopeTheme({
     },
   },
   markdown: {
+    mermaid: true,
     align: true,
     attrs: true,
     component: true,
