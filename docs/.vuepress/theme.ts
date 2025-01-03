@@ -96,7 +96,6 @@ export default hopeTheme({
     //   categoryId: "DIC_kwDOHwOlTc4CQkSn",
     // },
     photoSwipe: {
-
     },
   },
   markdown: {
