@@ -487,3 +487,20 @@ gtk开发的软件在kde桌面下，默认的窗口样式不好看，设置好�
 下载对应主题的gtk包，然后选择应用，当然有的主题作者没有提供gtk包，那就随便选择一个其他主题的gtk包就行了，
 ![20240815143437](https://ddns.chensina.cn:29000/afatpig/blog/20240815143437.png)
 
+### 13、zsh终端打开慢的一个解决思路
+
+某天发现zsh终端打开很慢，需要几秒钟。起初以为是ohmyzsh的插件设置太多，把插件全部去掉执行`source .zshrc`，还是不行。于是我就备份好`.zshrc`使用二分排除法，每次删除一半的配置重新测试，最终
+定位到终端打开慢的 原因是里面有一行`source /usr/share/nvm/init-nvm.sh`，是它引起的，每次打开终端都要执行它。在google上找到了一个可行的方法，就是把nvm改成一个函数，放到`.zshrc`,只有
+主动调用才会执行，类似懒加载的思想。
+
+~~~shell
+#source /usr/share/nvm/init-nvm.sh
+
+nvm() {
+  source /usr/share/nvm/init-nvm.sh
+  command "$@"
+}
+~~~
+
+如上注释掉原来的，添加一个nvm函数，`command "$@"` 的作用就是将传递给 nvm() 函数的所有参数原封不动地传递给 command 命令执行，从而实现调用各种 nvm 命令的功能。
+修改后需要重新执行`source .zshrc`。
