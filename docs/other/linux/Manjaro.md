@@ -490,17 +490,25 @@ gtk开发的软件在kde桌面下，默认的窗口样式不好看，设置好�
 ### 13、zsh终端打开慢的一个解决思路
 
 某天发现zsh终端打开很慢，需要几秒钟。起初以为是ohmyzsh的插件设置太多，把插件全部去掉执行`source .zshrc`，还是不行。于是我就备份好`.zshrc`使用二分排除法，每次删除一半的配置重新测试，最终
-定位到终端打开慢的 原因是里面有一行`source /usr/share/nvm/init-nvm.sh`，是它引起的，每次打开终端都要执行它。在google上找到了一个可行的方法，就是把nvm改成一个函数，放到`.zshrc`,只有
-主动调用才会执行，类似懒加载的思想。
+定位到终端打开慢的 原因是里面有一行`source /usr/share/nvm/init-nvm.sh`，是它引起的，每次打开终端都要执行它。
 
 ~~~shell
 #source /usr/share/nvm/init-nvm.sh
 
-nvm() {
-  source /usr/share/nvm/init-nvm.sh
-  command "$@"
-}
+# nvm lazy initialize
+if [ -s "$HOME/.nvm/nvm.sh" ] && [ ! "$(type -w __init_nvm)" = '__init_nvm: function' ]; then
+  export NVM_DIR="$HOME/.nvm"
+  export PATH=$PATH:$NVM_DIR/versions/node/v10.17.0/bin # 这里换成你的node默认版本号
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+  function __init_nvm() {
+    unalias nvm
+    . "$NVM_DIR"/nvm.sh --no-use
+    unset -f __init_nvm
+  }
+  alias nvm='__init_nvm && nvm'
+fi
 ~~~
 
-如上注释掉原来的，添加一个nvm函数，`command "$@"` 的作用就是将传递给 nvm() 函数的所有参数原封不动地传递给 command 命令执行，从而实现调用各种 nvm 命令的功能。
-修改后需要重新执行`source .zshrc`。
+如上注释掉原来的，添加一个懒加载，修改后需要重新执行`source .zshrc`。
+
+参考：<https://github.com/coppyC/blog/issues/22>
