@@ -9,6 +9,7 @@ export default defineUserConfig({
   description: "ChenSino's Blog",
   base: "/",
   theme,
+  shouldPrefetch: () => false,
   plugins: [
     baiduAnalyticsPlugin({ 
       id: '72987ff50abf7551a429a8b8d29d1687',
