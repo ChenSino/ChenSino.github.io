@@ -54,6 +54,11 @@ features:
     details: web开发优质博客
     link: https://pdai.tech
 
+  - title: 算法博客
+    icon: typescript
+    details: 基本算法博客
+    link: https://www.hello-algo.com/
+
 
 copyright: false
 footer: <div>

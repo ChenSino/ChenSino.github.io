@@ -13,12 +13,6 @@ export default hopeTheme({
     name: "ChenSino",
     url: "https://ChenSino.github.io",
   },
-  iconAssets: "fontawesome",
-  // iconAssets: [
-  //   "fontawesome-with-brands"
-  // ],
-
-
   logo: "/logo.svg",
 
   repo: "ChenSino/ChenSino.github.io",
@@ -62,6 +56,9 @@ export default hopeTheme({
     },
   },
   plugins: {
+    icon: {
+      assets: "fontawesome"
+    },
     pwa:{
       showInstall: true,
       manifest: {
