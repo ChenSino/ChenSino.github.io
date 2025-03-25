@@ -29,7 +29,7 @@ export default navbar([
     link: "/myserver/"
   },
   {
-    text: "其他",
+    text: "更多...",
     icon: "others",
     link: "/other/"
   }

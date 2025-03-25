@@ -40,7 +40,7 @@ public static void main(String[] args) {
 
 废话说完，我们继续。`ApplicationContext context = new ClassPathXmlApplicationContext(...)` 其实很好理解，从名字上就可以猜出一二，就是在 ClassPath 中寻找 xml 配置文件，根据 xml 文件内容来构建 ApplicationContext。当然，除了 ClassPathXmlApplicationContext 以外，我们也还有其他构建 ApplicationContext 的方案可供选择，我们先来看看大体的继承结构是怎么样的：
 
-![1](https://www.javadoop.com/blogimages/spring-context/1.png)
+![](https://ddns.chensina.cn:29000/afatpig/blog/1.png)
 
 > 读者可以大致看一下类名，源码分析的时候不至于找不着看哪个类，因为 Spring 为了适应各种使用场景，提供的各个接口都可能有很多的实现类。对于我们来说，就是揪着一个完整的分支看完。
 >
@@ -113,7 +113,7 @@ BeanFactory，从名字上也很好理解，生产 bean 的工厂，它负责生
 
 初学者可别以为我之前说那么多和 BeanFactory 无关，前面说的 ApplicationContext 其实就是一个 BeanFactory。我们来看下和 BeanFactory 接口相关的主要的继承结构：
 
-![2](https://www.javadoop.com/blogimages/spring-context/2.png)
+![](https://ddns.chensina.cn:29000/afatpig/blog/2.png)
 
 我想，大家看完这个图以后，可能就不是很开心了。ApplicationContext 往下的继承结构前面一张图说过了，这里就不重复了。这张图呢，背下来肯定是不需要的，有几个重点和大家说明下就好。
 
@@ -332,7 +332,7 @@ protected final void refreshBeanFactory() throws BeansException {
 
 我们说说为什么选择实例化 **DefaultListableBeanFactory** ？前面我们说了有个很重要的接口 ConfigurableListableBeanFactory，它实现了 BeanFactory 下面一层的所有三个接口，我把之前的继承图再拿过来大家再仔细看一下：
 
-![3](https://www.javadoop.com/blogimages/spring-context/3.png)
+![](https://ddns.chensina.cn:29000/afatpig/blog/3.png)
 
 我们可以看到 ConfigurableListableBeanFactory 只有一个实现类 DefaultListableBeanFactory，而且实现类 DefaultListableBeanFactory 还通过实现右边的 AbstractAutowireCapableBeanFactory 通吃了右路。所以结论就是，最底下这个家伙 DefaultListableBeanFactory 基本上是最牛的 BeanFactory 了，这也是为什么这边会使用这个类来实例化的原因。
 

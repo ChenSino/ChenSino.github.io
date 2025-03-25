@@ -126,3 +126,50 @@ nc localhost 8080
 ##监听指定网卡，指定的端口，配合nc命令可以清晰的查看tcp的三次握手情况
 tcpdump -nn -i <网卡id> port <port>
 ~~~
+
+### 10、查找某个进程的执行目录
+
+场景：某同事A启动了一个进程，有一天同事B想去重启，他只知道端口号，不知道服务具体工作目录在哪里。
+
+~~~shell
+#1.根据端口查看进程号，发现是个node进程
+root@master:~# netstat -tunpl|grep 3000
+tcp6       0      0 :::3000                 :::*                    LISTEN      55153/node
+~~~
+
+~~~shell
+# 2.查看工作进程目录ll /proc/<PID>
+root@master:~# ll /proc/55153
+总用量 0
+dr-xr-xr-x   9 root root 0 2月  28 14:56 ./
+dr-xr-xr-x 261 root root 0 12月 23 21:13 ../
+dr-xr-xr-x   2 root root 0 3月  10 09:20 attr/
+-rw-r--r--   1 root root 0 3月  10 09:20 autogroup
+-r--------   1 root root 0 3月  10 09:20 auxv
+-r--r--r--   1 root root 0 3月  10 09:20 cgroup
+--w-------   1 root root 0 3月  10 09:20 clear_refs
+-r--r--r--   1 root root 0 2月  28 14:56 cmdline
+-rw-r--r--   1 root root 0 3月  10 09:20 comm
+-rw-r--r--   1 root root 0 3月  10 09:20 coredump_filter
+-r--r--r--   1 root root 0 3月  10 09:20 cpuset
+lrwxrwxrwx   1 root root 0 3月   3 09:10 cwd -> /home/web/jiaoben/
+-r--------   1 root root 0 3月  10 09:20 environ
+lrwxrwxrwx   1 root root 0 2月  28 14:56 exe -> /root/.nvm/versions/node/v16.17.0/bin/node*
+dr-x------   2 root root 0 2月  28 14:56 fd/
+dr-x------   2 root root 0 3月  10 09:20 fdinfo/
+-rw-r--r--   1 root root 0 3月  10 09:20 gid_map
+-r--------   1 root root 0 3月  10 09:20 io
+-r--r--r--   1 root root 0 3月  10 09:20 limits
+-rw-r--r--   1 root root 0 3月  10 09:20 loginuid
+dr-x------   2 root root 0 3月  10 09:20 map_files/
+-r--r--r--   1 root root 0 3月  10 09:20 maps
+-rw-------   1 root root 0 3月  10 09:20 mem
+-r--r--r--   1 root root 0 3月  10 09:20 mountinfo
+-r--r--r--   1 root root 0 3月  10 09:20 mounts
+-r--------   1 root root 0 3月  10 09:20 mountstats
+dr-xr-xr-x   5 root root 0 3月  10 09:20 net/
+dr-x--x--x   2 root root 0 3月  10 09:20 ns/
+##....略
+~~~
+
+在这个目录可以看到两个软链接分别是：`exe`,`cwd`，其中`exe`对应的是可执行程序，`cwd`对应的是工作目录

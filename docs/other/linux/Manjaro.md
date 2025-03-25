@@ -478,7 +478,7 @@ vncserver :1
 设置后重启idea，效果如下，终于和我设置的样式一致了：
 ![20240808112611](https://ddns.chensina.cn:29000/afatpig/blog/20240808112611.png)
 
-### 12、GTK3主题设置
+### 14、GTK3主题设置
 
 gtk开发的软件在kde桌面下，默认的窗口样式不好看，设置好全局主题后对GTK软件是不生效的，需要单独设置GTK3主题，在kde桌面下，右键点击桌面，选择设置，选择主题，选择GTK3主题，有的主题会专门提供GTK，
 设置方法如下：
@@ -487,3 +487,37 @@ gtk开发的软件在kde桌面下，默认的窗口样式不好看，设置好�
 下载对应主题的gtk包，然后选择应用，当然有的主题作者没有提供gtk包，那就随便选择一个其他主题的gtk包就行了，
 ![20240815143437](https://ddns.chensina.cn:29000/afatpig/blog/20240815143437.png)
 
+### 15、zsh终端打开慢的一个解决思路
+
+某天发现zsh终端打开很慢，需要几秒钟。起初以为是ohmyzsh的插件设置太多，把插件全部去掉执行`source .zshrc`，还是不行。于是我就备份好`.zshrc`使用二分排除法，每次删除一半的配置重新测试，最终
+定位到终端打开慢的 原因是里面有一行`source /usr/share/nvm/init-nvm.sh`，是它引起的，每次打开终端都要执行它。
+
+~~~shell
+#source /usr/share/nvm/init-nvm.sh
+
+# nvm lazy initialize
+if [ -s "$HOME/.nvm/nvm.sh" ] && [ ! "$(type -w __init_nvm)" = '__init_nvm: function' ]; then
+  export NVM_DIR="$HOME/.nvm"
+  export PATH=$PATH:$NVM_DIR/versions/node/v10.17.0/bin # 这里换成你的node默认版本号
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+  function __init_nvm() {
+    unalias nvm
+    . "$NVM_DIR"/nvm.sh --no-use
+    unset -f __init_nvm
+  }
+  alias nvm='__init_nvm && nvm'
+fi
+~~~
+
+如上注释掉原来的，添加一个懒加载，修改后需要重新执行`source .zshrc`。
+
+参考：<https://github.com/coppyC/blog/issues/22>
+
+### 16、manjaro kde桌面的vscode使用系统窗口
+
+![](https://ddns.chensina.cn:29000/afatpig/blog/2025-03-05_17-21.png)
+
+### 17、flameshot在wayland显示环境，多屏截图问题
+
+参考如下设置：
+![](https://ddns.chensina.cn:29000/afatpig/blog/2025-03-06_09-39.png)
