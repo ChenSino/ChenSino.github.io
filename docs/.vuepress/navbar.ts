@@ -19,6 +19,11 @@ export default navbar([
     link: "/designpattern/",
   },
   {
+    text: "数据库",
+    icon: "database",
+    link: "/database/"
+  },
+  {
     text: "C++学习",
     icon: "app",
     link: "/cpp/study/"

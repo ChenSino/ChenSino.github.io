@@ -1,6 +1,15 @@
 import { sidebar } from "vuepress-theme-hope";
 
 export default sidebar({
+  "/database/":[
+    {
+      text: "MySQL",
+      icon: "database",
+      prefix: "mysql/",
+      collapsible: true,
+      children: "structure",
+    }
+  ],
   "/java/": [
     {
       text: "Java 基础",
@@ -114,13 +123,6 @@ export default sidebar({
       text: "Linux",
       icon: "linux",
       prefix: "linux/",
-      collapsible: true,
-      children: "structure",
-    },
-    {
-      text: "数据库",
-      icon: "repo",
-      prefix: "database/",
       collapsible: true,
       children: "structure",
     },

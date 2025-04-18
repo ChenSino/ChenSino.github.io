@@ -56,9 +56,6 @@ export default hopeTheme({
     },
   },
   plugins: {
-    icon: {
-      assets: "fontawesome"
-    },
     pwa:{
       showInstall: true,
       manifest: {
