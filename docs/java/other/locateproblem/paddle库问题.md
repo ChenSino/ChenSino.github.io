@@ -136,6 +136,6 @@ cat /proc/cpuinfo | grep avx
 2. 根据虚拟机平台（PVE、ESXI）自行修改cpu硬件设置。
 
 pve设置如下：
-![](https://ddns.chensina.cn:29000/afatpig/blog/2025-03-21_17-48.png)
+![](https://ddns.chensina.cn:2032/afatpig/blog/2025-03-21_17-48.png)
 
 ESXI设置自行百度，若没有类似host的选项可以看看有没有 硬件直通选项。

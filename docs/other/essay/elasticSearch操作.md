@@ -162,7 +162,7 @@ POST /索引库名/_doc/文档id
 
 注意事项：
 
-![20240805200816](https://ddns.chensina.cn:29000/afatpig/blog/20240805200816.png)
+![20240805200816](https://ddns.chensina.cn:2032/afatpig/blog/20240805200816.png)
 
 #### 2.2 查询文档
 
@@ -174,13 +174,13 @@ GET /{索引库名称}/_doc/{id}
 GET /{索引库名称}/_search
 ~~~
 
-![20240805200951](https://ddns.chensina.cn:29000/afatpig/blog/20240805200951.png)
+![20240805200951](https://ddns.chensina.cn:2032/afatpig/blog/20240805200951.png)
 
-![20240805201008](https://ddns.chensina.cn:29000/afatpig/blog/20240805201008.png)
+![20240805201008](https://ddns.chensina.cn:2032/afatpig/blog/20240805201008.png)
 
 #### 2.3 删除文档
 
-![20240805201048](https://ddns.chensina.cn:29000/afatpig/blog/20240805201048.png)
+![20240805201048](https://ddns.chensina.cn:2032/afatpig/blog/20240805201048.png)
 
 #### 2.4 修改文档
 
@@ -208,8 +208,8 @@ PUT /{索引库名}/_doc/文档id
 }
 ~~~
 
-![20240805201315](https://ddns.chensina.cn:29000/afatpig/blog/20240805201315.png)
-![20240805201332](https://ddns.chensina.cn:29000/afatpig/blog/20240805201332.png)
+![20240805201315](https://ddns.chensina.cn:2032/afatpig/blog/20240805201315.png)
+![20240805201332](https://ddns.chensina.cn:2032/afatpig/blog/20240805201332.png)
 
 #### 2.4.2 增量修改
 
@@ -303,7 +303,7 @@ GET /indexName/_search
 
 例如京东：
 
-![20240806110901](https://ddns.chensina.cn:29000/afatpig/blog/20240806110901.png)
+![20240806110901](https://ddns.chensina.cn:2032/afatpig/blog/20240806110901.png)
 
 因为是拿着词条去匹配，因此参与搜索的字段也必须是可分词的text类型的字段。
 
@@ -328,7 +328,7 @@ GET /indexName/_search
 ~~~
 
 match查询示例：
-![20240806111027](https://ddns.chensina.cn:29000/afatpig/blog/20240806111027.png)
+![20240806111027](https://ddns.chensina.cn:2032/afatpig/blog/20240806111027.png)
 
 ##### 3.2.3 mulit_match查询
 
@@ -347,7 +347,7 @@ GET /indexName/_search
 ~~~
 
 multi_match查询示例：
-![20240806111102](https://ddns.chensina.cn:29000/afatpig/blog/20240806111102.png)
+![20240806111102](https://ddns.chensina.cn:2032/afatpig/blog/20240806111102.png)
 
 #### 3.3  精准查询
 
@@ -379,10 +379,10 @@ GET /indexName/_search
 示例：
 
 当我搜索的是精确词条时，能正确查询出结果：
-![20240806111236](https://ddns.chensina.cn:29000/afatpig/blog/20240806111236.png)
+![20240806111236](https://ddns.chensina.cn:2032/afatpig/blog/20240806111236.png)
 
 但是，当我搜索的内容不是词条，而是多个词语形成的短语时，反而搜索不到：
-![20240806111247](https://ddns.chensina.cn:29000/afatpig/blog/20240806111247.png)
+![20240806111247](https://ddns.chensina.cn:2032/afatpig/blog/20240806111247.png)
 
 ##### 3.3.2 range查询
 
@@ -406,7 +406,7 @@ GET /indexName/_search
 ~~~
 
 示例：
-![20240806111328](https://ddns.chensina.cn:29000/afatpig/blog/20240806111328.png)
+![20240806111328](https://ddns.chensina.cn:2032/afatpig/blog/20240806111328.png)
 
 #### 3.4 地理坐标查询
 
@@ -419,16 +419,16 @@ GET /indexName/_search
 - 微信：搜索我附近的人
 
 附近的酒店：
-![20240806111437](https://ddns.chensina.cn:29000/afatpig/blog/20240806111437.png)
+![20240806111437](https://ddns.chensina.cn:2032/afatpig/blog/20240806111437.png)
 附近的车：
-![20240806111448](https://ddns.chensina.cn:29000/afatpig/blog/20240806111448.png)
+![20240806111448](https://ddns.chensina.cn:2032/afatpig/blog/20240806111448.png)
 
 ##### 3.4.1 矩形范围查询
 
 >很少有业务有这种需求
 
 矩形范围查询，也就是geo_bounding_box查询，查询坐标落在某个矩形范围的所有文档：
-![20240806111535](https://ddns.chensina.cn:29000/afatpig/blog/20240806111535.png)
+![20240806111535](https://ddns.chensina.cn:2032/afatpig/blog/20240806111535.png)
 
 查询时，需要指定矩形的左上、右下两个点的坐标，然后画出一个矩形，落在该矩形内的都是符合条件的点。
 
@@ -461,7 +461,7 @@ GET /indexName/_search
 
 换句话来说，在地图上找一个点作为圆心，以指定距离为半径，画一个圆，落在圆内的坐标都算符合条件：
 
-![20240806111615](https://ddns.chensina.cn:29000/afatpig/blog/20240806111615.png)
+![20240806111615](https://ddns.chensina.cn:2032/afatpig/blog/20240806111615.png)
 
 语法说明：
 
@@ -481,7 +481,7 @@ GET /indexName/_search
 示例：
 
 我们先搜索陆家嘴附近15km的酒店：
-![20240806111644](https://ddns.chensina.cn:29000/afatpig/blog/20240806111644.png)
+![20240806111644](https://ddns.chensina.cn:2032/afatpig/blog/20240806111644.png)
 发现共有47家酒店。
 
 #### 3.5 复合查询
@@ -566,13 +566,13 @@ GET /hotel/_search
 ~~~
 
 在elasticsearch中，早期使用的打分算法是TF-IDF算法，公式如下：
-![20240806112025](https://ddns.chensina.cn:29000/afatpig/blog/20240806112025.png)
+![20240806112025](https://ddns.chensina.cn:2032/afatpig/blog/20240806112025.png)
 
 在后来的5.1版本升级中，elasticsearch将算法改进为BM25算法，公式如下：
-![20240806112035](https://ddns.chensina.cn:29000/afatpig/blog/20240806112035.png)
+![20240806112035](https://ddns.chensina.cn:2032/afatpig/blog/20240806112035.png)
 
 TF-IDF算法有一各缺陷，就是词条频率越高，文档得分也会越高，单个词条对文档影响较大。而BM25则会让单个词条的算分有一个上限，曲线更加平滑：
-![20240806112045](https://ddns.chensina.cn:29000/afatpig/blog/20240806112045.png)
+![20240806112045](https://ddns.chensina.cn:2032/afatpig/blog/20240806112045.png)
 
 ##### 3.5.2 算分函数查询
 
@@ -586,11 +586,11 @@ TF-IDF算法有一各缺陷，就是词条频率越高，文档得分也会越�
 >- 根据相关度打分是比较合理的需求，但合理的不一定是产品经理需要的。
 
 以百度为例，你搜索的结果中，并不是相关度越高排名越靠前，而是谁掏的钱多排名就越靠前。如图：
-![20240806112142](https://ddns.chensina.cn:29000/afatpig/blog/20240806112142.png)
+![20240806112142](https://ddns.chensina.cn:2032/afatpig/blog/20240806112142.png)
 要想认为控制相关性算分，就需要利用elasticsearch中的function score 查询了。
 
 **function score 查询**
-![20240806112205](https://ddns.chensina.cn:29000/afatpig/blog/20240806112205.png)
+![20240806112205](https://ddns.chensina.cn:2032/afatpig/blog/20240806112205.png)
 
 unction score 查询中包含四部分内容：
 
@@ -647,9 +647,9 @@ GET /hotel/_search
 ~~~
 
 测试，在未添加算分函数时，如家得分如下：
-![20240806112530](https://ddns.chensina.cn:29000/afatpig/blog/20240806112530.png)
+![20240806112530](https://ddns.chensina.cn:2032/afatpig/blog/20240806112530.png)
 添加了算分函数后，如家得分就提升了：
-![20240806112540](https://ddns.chensina.cn:29000/afatpig/blog/20240806112540.png)
+![20240806112540](https://ddns.chensina.cn:2032/afatpig/blog/20240806112540.png)
 
 ##### 3.5.3 布尔查询
 
@@ -662,7 +662,7 @@ GET /hotel/_search
 > 注意：尽量在筛选的时候多使用不参与算分的must_not和filter，以保证性能良好
 
 比如在搜索酒店时，除了关键字搜索外，我们还可能根据品牌、价格、城市等字段做过滤：
-![20240806112714](https://ddns.chensina.cn:29000/afatpig/blog/20240806112714.png)
+![20240806112714](https://ddns.chensina.cn:2032/afatpig/blog/20240806112714.png)
 
 每一个不同的字段，其查询的条件、方式都不一样，必须是多个不同的查询，而要组合这些查询，就必须用bool查询了。
 
@@ -708,7 +708,7 @@ GET /hotel/_search
 - 价格不高于400，用range查询，属于过滤条件，不参与算分。放到must_not中
 - 周围10km范围内，用geo_distance查询，属于过滤条件，不参与算分。放到filter中
 
-![20240806112832](https://ddns.chensina.cn:29000/afatpig/blog/20240806112832.png)
+![20240806112832](https://ddns.chensina.cn:2032/afatpig/blog/20240806112832.png)
 
 ###### 设置搜索结果
 
@@ -723,8 +723,8 @@ GET /hotel/_search
 - highlight：高亮条件
 - aggs：定义聚合
 示例：
-![20240806112922](https://ddns.chensina.cn:29000/afatpig/blog/20240806112922.png)
-![20240806112938](https://ddns.chensina.cn:29000/afatpig/blog/20240806112938.png)
+![20240806112922](https://ddns.chensina.cn:2032/afatpig/blog/20240806112922.png)
+![20240806112938](https://ddns.chensina.cn:2032/afatpig/blog/20240806112938.png)
 
 2.1 排序
 >在使用排序后就不会进行算分了，根据排序设置的规则排列
@@ -759,7 +759,7 @@ GET /indexName/_search
 示例：
 
 需求描述：酒店数据按照用户评价（score)降序排序，评价相同的按照价格(price)升序排序
-![20240806113121](https://ddns.chensina.cn:29000/afatpig/blog/20240806113121.png)
+![20240806113121](https://ddns.chensina.cn:2032/afatpig/blog/20240806113121.png)
 
 2.1.2 地理坐标排序
 地理坐标排序略有不同。
@@ -796,7 +796,7 @@ GET /indexName/_search
 提示：获取你的位置的经纬度的方式：https://lbs.amap.com/demo/jsapi-v2/example/map/click-to-get-lnglat/
 
 假设我的位置是：31.034661，121.612282，寻找我周围距离最近的酒店。
-![20240806113209](https://ddns.chensina.cn:29000/afatpig/blog/20240806113209.png)
+![20240806113209](https://ddns.chensina.cn:2032/afatpig/blog/20240806113209.png)
 
 2.2 分页
 
@@ -853,7 +853,7 @@ GET /hotel/_search
 >- earch after：分页时需要排序，原理是从上一次的排序值开始，查询下一页数据。【官方推荐】
 >- scroll：原理将排序后的文档id形成快照，保存在内存。
 不过，elasticsearch内部分页时，必须先查询 0~1000条，然后截取其中的990 ~ 1000的这10条：
-![20240806113343](https://ddns.chensina.cn:29000/afatpig/blog/20240806113343.png)
+![20240806113343](https://ddns.chensina.cn:2032/afatpig/blog/20240806113343.png)
 
 查询TOP1000，如果es是单点模式，这并无太大影响。
 
@@ -862,7 +862,7 @@ GET /hotel/_search
 因为节点A的TOP200，在另一个节点可能排到10000名以外了。
 
 因此要想获取整个集群的TOP1000，必须先查询出每个节点的TOP1000，汇总结果后，重新排名，重新截取TOP1000。
-![20240806113401](https://ddns.chensina.cn:29000/afatpig/blog/20240806113401.png)
+![20240806113401](https://ddns.chensina.cn:2032/afatpig/blog/20240806113401.png)
 
 那如果我要查询9900~10000的数据呢？是不是要先查询TOP10000呢？那每个节点都要查询10000条？汇总到内存中？
 
@@ -905,7 +905,7 @@ GET /hotel/_search
 ~~~
 
 2）示例：组合字段all的案例
-![20240806113532](https://ddns.chensina.cn:29000/afatpig/blog/20240806113532.png)
+![20240806113532](https://ddns.chensina.cn:2032/afatpig/blog/20240806113532.png)
 
 2.4 数据聚合
 
@@ -984,7 +984,7 @@ GET /hotel/_search
 }
 ~~~
 
-![20240806113943](https://ddns.chensina.cn:29000/afatpig/blog/20240806113943.png)
+![20240806113943](https://ddns.chensina.cn:2032/afatpig/blog/20240806113943.png)
 
 2.4.3 度量(Metric) and 管道(pipeline)聚合
 > 度量聚合很少单独使用，一般是和桶聚合一并结合使用
@@ -1023,12 +1023,12 @@ GET /hotel/_search
 ~~~
 
 另外，我们还可以给聚合结果做个排序，例如按照每个桶的酒店平均分做排序：
-![20240806114025](https://ddns.chensina.cn:29000/afatpig/blog/20240806114025.png)
+![20240806114025](https://ddns.chensina.cn:2032/afatpig/blog/20240806114025.png)
 
 ### 4.客户端
 
 <https://www.elastic.co/guide/en/elasticsearch/client/index.html>
-![20240806163247](https://ddns.chensina.cn:29000/afatpig/blog/20240806163247.png)
+![20240806163247](https://ddns.chensina.cn:2032/afatpig/blog/20240806163247.png)
 
 java语言下的Elasticsearch客户端混乱，有以下四种：
 

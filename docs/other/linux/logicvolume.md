@@ -17,7 +17,7 @@ isOriginal: false
 逻辑卷（Logic Volume,LV）：VG中画出来的一块逻辑磁盘
 了解概念之后，逻辑卷是如何产生的就很清晰了：物理磁盘或者磁盘分区转换为物理卷，一个或多个物理卷聚集形成一个或多个卷组，而逻辑卷就是从某个卷组里面抽象出来的一块磁盘空间。具体架构如下：
 
-![](https://ddns.chensina.cn:29000/afatpig/blog/823295-20200513231715436-764135301.png)
+![](https://ddns.chensina.cn:2032/afatpig/blog/823295-20200513231715436-764135301.png)
 
 
 ### （二）为什么要使用逻辑卷
@@ -101,7 +101,7 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 
 磁盘分区之后，磁盘id为83，如果要使用逻辑卷管理，需要将id改为8e，才能创建物理卷。
 
-![](https://ddns.chensina.cn:29000/afatpig/blog/823295-20200513231716700-400843767.png)
+![](https://ddns.chensina.cn:2032/afatpig/blog/823295-20200513231716700-400843767.png)
 
 分区1修改id过程如下：
 
@@ -155,7 +155,7 @@ Calling ioctl() to re-read partition table.
 
 按照上面的过程，修改分区2，最终结果如下：
 
-![](https://ddns.chensina.cn:29000/afatpig/blog/823295-20200513231717369-997595744.png)
+![](https://ddns.chensina.cn:2032/afatpig/blog/823295-20200513231717369-997595744.png)
 
 接着进行创建物理卷(PV)即可
 
@@ -245,7 +245,7 @@ vgextend VG_NAME device1 ... devicen
 
 最终结果如下，发现PV数量和VG容量都发生了变化
 
-![](https://ddns.chensina.cn:29000/afatpig/blog/823295-20200513231718058-1985120739.png)
+![](https://ddns.chensina.cn:2032/afatpig/blog/823295-20200513231718058-1985120739.png)
 
 
 
@@ -367,7 +367,7 @@ resize2fs device lv_device
 
 扩容前文件磁盘大小如下：
 
-![](https://ddns.chensina.cn:29000/afatpig/blog/823295-20200513231719174-88647049.png)
+![](https://ddns.chensina.cn:2032/afatpig/blog/823295-20200513231719174-88647049.png)
 
 进行扩容操作：
 
@@ -379,7 +379,7 @@ resize2fs device lv_device
 ~~~
 之后查看磁盘大小，未发生改变：
 
-![](https://ddns.chensina.cn:29000/afatpig/blog/823295-20200513231719884-1598548425.png)
+![](https://ddns.chensina.cn:2032/afatpig/blog/823295-20200513231719884-1598548425.png)
 
 调整文件系统的大小：
 

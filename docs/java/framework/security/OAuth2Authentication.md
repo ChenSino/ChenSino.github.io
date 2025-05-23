@@ -10,7 +10,7 @@ category:
 
 ## 1、时序图
 
-![时序图](https://ddns.chensina.cn:29000/afatpig/blog/oauth.drawio.png)
+![时序图](https://ddns.chensina.cn:2032/afatpig/blog/oauth.drawio.png)
 
 ## 2、流程解析
 
@@ -19,14 +19,14 @@ category:
 ### 2.1 第1步
 
 用户还未登录，访问ruoyi前端，ruoyi会自动跳转到自己的登录首页  
-![20230104105625](https://ddns.chensina.cn:29000/afatpig/blog/20230104105625.png)
+![20230104105625](https://ddns.chensina.cn:2032/afatpig/blog/20230104105625.png)
 
 ### 2.2 第2步
 
    点击SSO登录会访问如下这样子的一个url,申请授权,(127.0.0.1:3000就是授权服务器)
   `https://127.0.0.1:3000/oauth/authorize?client_id=ruyi&response_type=code&scope=server&redirect_uri=http://127.0.0.1:1024/sso&TENANT-ID=1`，当授权服务收到这个请求时会发现用户还未登录授权服务器，会重定向到授权服务器的登录页面`http://127.0.0.1:3000/token/login`，大概就是下面这样
 
-  ![20230104105039](https://ddns.chensina.cn:29000/afatpig/blog/20230104105039.png)
+  ![20230104105039](https://ddns.chensina.cn:2032/afatpig/blog/20230104105039.png)
 
 ### 2.3 第3步
 
@@ -35,7 +35,7 @@ category:
 ### 2.4 第4步
 
 用户点击授权，
-![20230104105954](https://ddns.chensina.cn:29000/afatpig/blog/20230104105954.png)
+![20230104105954](https://ddns.chensina.cn:2032/afatpig/blog/20230104105954.png)
 
 ### 2.5 第5步
 
@@ -45,31 +45,31 @@ pig授权中心生成授权码
 
 pig产生授权码后，会带着这个授权码重定向到注册客户端时填的那个地址，这里就是`http://127.0.0.1:1024/sso?code=U1wLD7` 这个地址是在数据库注册好的，它是ruoyi前端的一个页面，并不是后端接口
 
-![20230104110557](https://ddns.chensina.cn:29000/afatpig/blog/20230104110557.png)
+![20230104110557](https://ddns.chensina.cn:2032/afatpig/blog/20230104110557.png)
 
-![20230104110449](https://ddns.chensina.cn:29000/afatpig/blog/20230104110449.png)
+![20230104110449](https://ddns.chensina.cn:2032/afatpig/blog/20230104110449.png)
 
 ### 2.7 第7步
 
 ruoyi前端构造一个请求，并且携带code请求ruoyi后端接口，
-![20230104110909](https://ddns.chensina.cn:29000/afatpig/blog/20230104110909.png)
-![20230104110921](https://ddns.chensina.cn:29000/afatpig/blog/20230104110921.png)
+![20230104110909](https://ddns.chensina.cn:2032/afatpig/blog/20230104110909.png)
+![20230104110921](https://ddns.chensina.cn:2032/afatpig/blog/20230104110921.png)
 
 ### 2.8 第8步
 
 ruoyi后端拿到code,发送post请求到`http://127.0.0.1:3000/oauth/token`获取token,注意这是个oauth的默认端点，不是用户写的，在TokenEndPoint类中
-![20230104111117](https://ddns.chensina.cn:29000/afatpig/blog/20230104111117.png)
+![20230104111117](https://ddns.chensina.cn:2032/afatpig/blog/20230104111117.png)
 
 
 ### 2.9 第9步
 
 pig授权中心生成token,这里生成token的逻辑可以自定义实现，具体的请参考pig的源码TokenService类
-![20230104111420](https://ddns.chensina.cn:29000/afatpig/blog/20230104111420.png)
+![20230104111420](https://ddns.chensina.cn:2032/afatpig/blog/20230104111420.png)
 
 ### 2.10 第10步
 
 pig授权中心生成的token返回到ruoyi后端，ruoyi后端拿到token
-![20230104111504](https://ddns.chensina.cn:29000/afatpig/blog/20230104111504.png)
+![20230104111504](https://ddns.chensina.cn:2032/afatpig/blog/20230104111504.png)
 
 ### 2.11 第11步
 

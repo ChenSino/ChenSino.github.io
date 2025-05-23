@@ -47,4 +47,4 @@ resource标签的操作是通过`maven-resource-plugin`插件来实现的,通过
 
 比如以下图中就是指定了`targetPath`的路径在项目下的一个叫做targetPath的目录,执行编译就可以看到确实把文件复制过去了
 
-![20230608173626](https://ddns.chensina.cn:29000/afatpig/blog/20230608173626.png)
+![20230608173626](https://ddns.chensina.cn:2032/afatpig/blog/20230608173626.png)

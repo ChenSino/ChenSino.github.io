@@ -132,4 +132,4 @@ Promise对象的回调函数是匿名函数时，this指向window，需要对回
 
 Promise对象的回调函数是箭头函数时，this指向外层第一个普通函数的this。本例中指向Vue实例。
 
-![img](https://ddns.chensina.cn:29000/afatpig/blog/1725c096bb763965~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![img](https://ddns.chensina.cn:2032/afatpig/blog/1725c096bb763965~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)

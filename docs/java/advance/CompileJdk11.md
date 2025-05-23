@@ -14,7 +14,7 @@ category:
 
 网上根据关键词查找jdk源码，查找出来很多可以下载源码的链接，这里我们使用github去官方仓库，openjdk是托管在github的[OpenJDK组织](https://github.com/openjdk?)下，该组织下有各个版本的openjdk源码，不要直接使用jdk仓库，这个仓库存放的是当前正在开发的最新版本代码，我们要用的是jdk11,因此我们搜索jdk11仓库，我这里选择的是jdk11u这个库。
 
-![20230113095229](https://ddns.chensina.cn:29000/afatpig/blog/20230113095229.png)
+![20230113095229](https://ddns.chensina.cn:2032/afatpig/blog/20230113095229.png)
 
 ~~~shell
 git clone https://github.com/openjdk/jdk11u.git
@@ -24,7 +24,7 @@ git clone https://github.com/openjdk/jdk11u.git
 
 按照readme的文档进行编译
 
-![20230113095821](https://ddns.chensina.cn:29000/afatpig/blog/20230113095821.png)
+![20230113095821](https://ddns.chensina.cn:2032/afatpig/blog/20230113095821.png)
 
 ### 2.1 configure
 
@@ -70,7 +70,7 @@ Build performance summary:
 ~~~
 
 如上，执行`bash configure`后，检查了环境包括Boot JDK,Toochain,C Compiler,C++ Compiler，这里c和c++编译器版本要一致，可以看到上面我的版本是12.2.0，这个版本太新会导致编译有问题，在building文档中也有说明，最新支持到7.4,更新的版本没有测试，可能兼容可能不兼容。
-![20230113101404](https://ddns.chensina.cn:29000/afatpig/blog/20230113101404.png)
+![20230113101404](https://ddns.chensina.cn:2032/afatpig/blog/20230113101404.png)
 
 ### 2.2 执行编译make images
 

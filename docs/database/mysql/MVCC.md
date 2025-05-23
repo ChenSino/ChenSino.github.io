@@ -12,7 +12,7 @@ isOriginal: true
  undo log是一种逻辑日志，当一个事务对记录做了变更操作就会产生undo log，也就是说undo log记录了记录变更的逻辑过程。当一个事务要更新一行记录时，会把当前记录当做历史快照保存下来，多个历史快照会用两个隐藏字段trx_id和roll_pointer串起来（关于隐藏字段，这里不用考虑隐式主键id:DB_ROW_ID），形成一个历史版本链。可以用于MVCC和事务回滚。
   比如多个事务对id为1的数据做了更新，会形成如下图这种历史版本链：
 
-![mvcc版本控制](https://ddns.chensina.cn:29000/afatpig/blog/20250418151238128.png)
+![mvcc版本控制](https://ddns.chensina.cn:2032/afatpig/blog/20250418151238128.png)
 
 ## Read View
 

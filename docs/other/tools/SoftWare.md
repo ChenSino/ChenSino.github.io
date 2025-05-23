@@ -10,7 +10,7 @@ keys:
 
 #### 1.1、下载
 
-[资源地址](https://ddns.chensina.cn:29000/afatpig/software/beyond_compare3.zip)
+[资源地址](https://ddns.chensina.cn:2032/afatpig/software/beyond_compare3.zip)
 
 #### 1.2 、集成到git 对比
 

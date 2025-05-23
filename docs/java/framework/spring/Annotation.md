@@ -21,11 +21,11 @@ category:
 
 [此参考此博客](https://juejin.cn/post/6965673679342551048)
 
-![Idea提示Field inject is not recommanded](https://ddns.chensina.cn:29000/afatpig/blog/20221223170907.png)
+![Idea提示Field inject is not recommanded](https://ddns.chensina.cn:2032/afatpig/blog/20221223170907.png)
 
 idea自动修复方法如下，正好说明了只有一个带参的构造方法时，可以省略构造方法上的@Autowired
 
-![Idea给出的修复方法](https://ddns.chensina.cn:29000/afatpig/blog/20221223170953.png)
+![Idea给出的修复方法](https://ddns.chensina.cn:2032/afatpig/blog/20221223170953.png)
 
 ### 2.1 如果使用@Autowoired在字段上，可能带来的问题
 

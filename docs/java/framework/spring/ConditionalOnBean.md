@@ -28,4 +28,4 @@ public @interface ConditionalOnBean {
 
 ConditionalOnBean注解依赖于OnBeanCondition这个类进行实际的处理判断。经过一系列的代码最终会执行到`org.springframework.boot.autoconfigure.condition.OnBeanCondition#getMatchingBeans(org.springframework.boot.autoconfigure.condition.OnBeanCondition.Spec<?>)`，可以在断点添加过滤条件方便观察，这里我观察的是`org.springframework.security.web.SecurityFilterChain`，知道在哪里打断点就可以了，其他细节不再赘述
 
-![](https://ddns.chensina.cn:29000/afatpig/blog/2025-02-07_11-57.png)
+![](https://ddns.chensina.cn:2032/afatpig/blog/2025-02-07_11-57.png)
