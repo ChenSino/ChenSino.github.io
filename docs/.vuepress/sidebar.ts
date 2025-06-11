@@ -91,6 +91,13 @@ export default sidebar({
       collapsible: true,
       children: "structure",
     },
+    {
+      text: "其他",
+      icon: "nodejs",
+      prefix: "other/",
+      collapsible: true,
+      children: "structure",
+    },
   ],
 
   "/designpattern/": "structure",
