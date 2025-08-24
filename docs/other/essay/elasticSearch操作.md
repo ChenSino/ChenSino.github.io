@@ -1051,7 +1051,7 @@ java语言下的Elasticsearch客户端混乱，有以下四种：
 </dependency>
 ~~~
 
-3.Java Transport Client
+3.Java Transport Client  
 4.Java API Client（推荐，依赖于elasticsearch-rest-client）
 
   ~~~xml
@@ -1062,4 +1062,4 @@ java语言下的Elasticsearch客户端混乱，有以下四种：
     </dependency>
   ~~~
 
-推荐直接使用第4个ava API Client
+推荐直接使用第4个Java API Client
